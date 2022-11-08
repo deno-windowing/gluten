@@ -3,7 +3,7 @@ import {
   pollEvents,
 } from "https://raw.githubusercontent.com/DjDeveloperr/dwm/main/mod.ts";
 import * as ctx from "../mod.ts";
-import { Canvas } from "../../../skia_canvas/mod.ts";
+import { Canvas } from "https://raw.githubusercontent.com/DjDeveloperr/skia_canvas/windowing/mod.ts";
 
 ctx.init();
 
@@ -13,7 +13,7 @@ const window = createWindow({
   height: 600,
 });
 
-const context = ctx.createContext(window.nativeHandle, 3, 2);
+const context = ctx.createContext(window.nativeHandle, 3, 2, false);
 const canvas = new Canvas(800, 600, true);
 const cx = canvas.getContext("2d");
 

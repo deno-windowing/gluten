@@ -115,6 +115,7 @@ export function createContext(
   hwnd: WindowHandle,
   major = 2,
   minor = 0,
+  vsync = true,
 ): GlContext {
   const hdc = Gdi.GetDC(hwnd);
   const pfd = Gl.allocPIXELFORMATDESCRIPTOR({
@@ -192,14 +193,15 @@ export function createContext(
   }
 
   // Enable VSync
-  new Deno.UnsafeFnPointer(
-    wglSwapIntervalEXT!,
-    {
-      parameters: ["i32"],
-      result: "i32",
-    } as const,
-  ).call(1);
-
+  if (vsync) {
+    new Deno.UnsafeFnPointer(
+      wglSwapIntervalEXT!,
+      {
+        parameters: ["i32"],
+        result: "i32",
+      } as const,
+    ).call(1);
+  }
   return {
     hwnd,
     hdc: hdc!,

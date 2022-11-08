@@ -12,6 +12,7 @@ export interface Platform {
     window: WindowHandle,
     major?: number,
     minor?: number,
+    vsync?: boolean
   ) => GlContext;
   destroyContext: (context: GlContext) => void;
   makeCurrent: (context: GlContext) => void;
