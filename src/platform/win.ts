@@ -7,6 +7,7 @@ import { GlContext, Platform, WindowHandle } from "../common.ts";
 let wglInstace: Deno.PointerValue;
 let wglChoosePixelFormatARB: Deno.PointerValue;
 let wglCreateContextAttribsARB: Deno.PointerValue;
+let wglSwapIntervalEXT: Deno.PointerValue;
 
 export function init() {
   const wndproca = new Deno.UnsafeCallback(
@@ -86,12 +87,17 @@ export function init() {
   wglCreateContextAttribsARB = Gl.wglGetProcAddress(
     "wglCreateContextAttribsARB",
   )!;
+  wglSwapIntervalEXT = Gl.wglGetProcAddress("wglSwapIntervalEXT")!;
 
   if (!wglChoosePixelFormatARB) {
     throw new Error("wglGetProcAddress() failed");
   }
 
   if (!wglCreateContextAttribsARB) {
+    throw new Error("wglGetProcAddress() failed");
+  }
+
+  if (!wglSwapIntervalEXT) {
     throw new Error("wglGetProcAddress() failed");
   }
 
@@ -184,6 +190,15 @@ export function createContext(
   if (!Gl.wglMakeCurrent(hdc, hRC)) {
     throw new Error("wglMakeCurrent() failed");
   }
+
+  // Enable VSync
+  new Deno.UnsafeFnPointer(
+    wglSwapIntervalEXT!,
+    {
+      parameters: ["i32"],
+      result: "i32",
+    } as const,
+  ).call(1);
 
   return {
     hwnd,
