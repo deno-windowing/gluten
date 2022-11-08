@@ -260,7 +260,7 @@ src += "// Loader\n\n";
 src += `export function loadGL(proc: (name: string) => Deno.PointerValue) {\n`;
 for (const name in functions) {
   src +=
-    `  ${name} = new Deno.UnsafeFnPointer(proc("${name}"), def_${name});\n`;
+    `  ${name} = new Deno.UnsafeFnPointer(BigInt(proc("${name}")), def_${name});\n`;
 }
 src += `}\n`;
 
