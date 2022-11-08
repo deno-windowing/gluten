@@ -105,7 +105,11 @@ export function init() {
   wglInstace = Lib.LoadLibraryA("opengl32.dll")!;
 }
 
-export function createContext(hwnd: WindowHandle): GlContext {
+export function createContext(
+  hwnd: WindowHandle,
+  major = 2,
+  minor = 0,
+): GlContext {
   const hdc = Gdi.GetDC(hwnd);
   const pfd = Gl.allocPIXELFORMATDESCRIPTOR({
     nSize: Gl.sizeofPIXELFORMATDESCRIPTOR,
@@ -166,8 +170,8 @@ export function createContext(hwnd: WindowHandle): GlContext {
     0,
     // deno-fmt-ignore
     new Int32Array([
-      0x2091, 2, // WGL_CONTEXT_MAJOR_VERSION_ARB
-      0x2092, 0, // WGL_CONTEXT_MINOR_VERSION_ARB
+      0x2091, major, // WGL_CONTEXT_MAJOR_VERSION_ARB
+      0x2092, minor, // WGL_CONTEXT_MINOR_VERSION_ARB
       0x9126, 0x00000001,
       0, 0,
     ]),

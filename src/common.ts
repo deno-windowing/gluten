@@ -8,7 +8,11 @@ export interface GlContext {
 
 export interface Platform {
   init: () => void;
-  createContext: (window: WindowHandle) => GlContext;
+  createContext: (
+    window: WindowHandle,
+    major?: number,
+    minor?: number,
+  ) => GlContext;
   destroyContext: (context: GlContext) => void;
   makeCurrent: (context: GlContext) => void;
   swapBuffers: (context: GlContext) => void;

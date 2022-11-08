@@ -14,7 +14,7 @@ const window = createWindow({
   resizable: true,
 });
 
-const context = ctx.createContext(window.nativeHandle);
+const context = ctx.createContext(window.nativeHandle, 2, 0);
 gl.loadGL(ctx.getProcAddress);
 
 function loadShader(type: number, src: string) {

@@ -1,5 +1,5 @@
 const gl2_h = Deno.readTextFileSync(
-  new URL("../OpenGL-Registry/api/GLES2/gl2.h", import.meta.url),
+  new URL("../OpenGL-Registry/api/GLES3/gl32.h", import.meta.url),
 );
 // const gl2ext_h = Deno.readTextFileSync(
 //   new URL("../OpenGL-Registry/api/GLES2/gl2ext.h", import.meta.url),
@@ -40,9 +40,9 @@ for (let line of lines) {
           continue;
         }
         const parts = p.split(/ +/);
-        let name = parts.pop()!;
-        if (name.includes("const*string")) {
-          name = "*const_string";
+        let name = parts.pop()!.trim();
+        if (name.includes("const*")) {
+          name = "*" + name.replace("const*", "const_");
         }
         const type = parts.join(" ");
         parameters[name] = type;
@@ -78,9 +78,9 @@ for (let line of lines) {
         continue;
       }
       const parts = p.split(/ +/);
-      let name = parts.pop()!;
-      if (name.includes("const*string")) {
-        name = "*const_string";
+      let name = parts.pop()!.trim();
+      if (name.includes("const*")) {
+        name = "*" + name.replace("const*", "const_");
       }
       const type = parts.join("_");
       parameters[name] = type;
@@ -113,6 +113,8 @@ const SPECIAL_TYPEDEFS: Record<string, string> = {
   "unsigned_char": '"u8"',
   "int": '"i32"',
   "khronos_intptr_t": '"pointer"',
+  "GLsync": '"pointer"',
+  "GLDEBUGPROC": '"pointer"',
 };
 
 const FFI_TO_JS: Record<string, string> = {
@@ -143,15 +145,16 @@ for (let name in typedefs) {
     name = name.slice(1);
     v = '"pointer"';
   }
-  src += `export const ${name} = ${v};\n`;
+  src += `export const ${name.replaceAll(")", "")} = ${v};\n`;
 }
 
 src += "\n// Constants\n\n";
 
 for (const name in constants) {
   if (constants[name].endsWith("*")) continue;
+  const v = constants[name];
   src += `export const ${name.startsWith("GL_") ? name.slice(3) : name} = ${
-    constants[name]
+    v.trim().replace(/(u|ull)$/, "")
   };\n`;
 }
 
@@ -239,7 +242,7 @@ for (const name in functions) {
   }
   if (!rtype.startsWith('"')) {
     throw new Error(
-      `Unknown type: ${rtype} (${functions[name].result})`,
+      `Unknown type: ${rtype} (${functions[name].result}) :: ${name}`,
     );
   }
   rtype = rtype.slice(1, -1);
@@ -264,4 +267,4 @@ for (const name in functions) {
 }
 src += `}\n`;
 
-Deno.writeTextFileSync(new URL("../src/api/gles2.ts", import.meta.url), src);
+Deno.writeTextFileSync(new URL("../src/api/gles32.ts", import.meta.url), src);
