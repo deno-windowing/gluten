@@ -1,0 +1,9 @@
+{
+  "fmt": {
+    "files": {
+      "exclude": [
+        "./OpenGL-Registry"
+      ]
+    }
+  }
+}

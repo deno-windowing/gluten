@@ -1,3 +1,3 @@
-# Deno OpenGL Library
+# Deno WebGL
 
 Name TODO
