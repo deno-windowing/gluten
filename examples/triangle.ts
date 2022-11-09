@@ -3,7 +3,7 @@ import {
   pollEvents,
 } from "https://raw.githubusercontent.com/DjDeveloperr/dwm/main/mod.ts";
 import * as ctx from "../mod.ts";
-import * as gl from "../src/api/gles2.ts";
+import * as gl from "../src/api/gles32.ts";
 
 ctx.init();
 
@@ -14,7 +14,11 @@ const window = createWindow({
   resizable: true,
 });
 
-const context = ctx.createContext(window.nativeHandle, 2, 0);
+const context = ctx.createContext(window.nativeHandle, {
+  major: 3,
+  minor: 2,
+  profile: ctx.GlContextProfile.ES,
+});
 gl.loadGL(ctx.getProcAddress);
 
 function loadShader(type: number, src: string) {
@@ -52,7 +56,6 @@ void main() {
 `;
 
 const fShaderSrc = `
-precision mediump float;
 void main() {
   gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
 }

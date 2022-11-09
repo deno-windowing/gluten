@@ -2,7 +2,12 @@ import * as Wm from "https://win32.deno.dev/main/UI.WindowsAndMessaging";
 import * as Gdi from "https://win32.deno.dev/main/Graphics.Gdi";
 import * as Gl from "https://win32.deno.dev/main/Graphics.OpenGL";
 import * as Lib from "https://win32.deno.dev/main/System.LibraryLoader";
-import { GlContext, Platform, WindowHandle } from "../common.ts";
+import {
+  GlContext,
+  GlContextOptions,
+  Platform,
+  WindowHandle,
+} from "../common.ts";
 
 let wglInstace: Deno.PointerValue;
 let wglChoosePixelFormatARB: Deno.PointerValue;
@@ -113,14 +118,13 @@ export function init() {
 
 export function createContext(
   hwnd: WindowHandle,
-  major = 2,
-  minor = 0,
+  options: GlContextOptions = {},
 ): GlContext {
   const hdc = Gdi.GetDC(hwnd);
   const pfd = Gl.allocPIXELFORMATDESCRIPTOR({
     nSize: Gl.sizeofPIXELFORMATDESCRIPTOR,
     dwFlags: Gl.PFD_DRAW_TO_WINDOW | Gl.PFD_SUPPORT_OPENGL |
-      Gl.GL_DOUBLEBUFFER | 0,
+      Gl.GL_DOUBLEBUFFER,
     iPixelType: Gl.PFD_TYPE_RGBA,
     cColorBits: 32,
     cDepthBits: 24,
@@ -148,6 +152,7 @@ export function createContext(
       0x2014, 32,
       0x2022, 24,
       0x2023, 8,
+      0x2042, options.samples ?? 4, // WGL_SAMPLES_ARB
       0, 0,
     ]),
     null,
@@ -176,9 +181,9 @@ export function createContext(
     0,
     // deno-fmt-ignore
     new Int32Array([
-      0x2091, major, // WGL_CONTEXT_MAJOR_VERSION_ARB
-      0x2092, minor, // WGL_CONTEXT_MINOR_VERSION_ARB
-      0x9126, 0x00000001,
+      0x2091, options.major ?? 2, // WGL_CONTEXT_MAJOR_VERSION_ARB
+      0x2092, options.minor ?? 0, // WGL_CONTEXT_MINOR_VERSION_ARB
+      0x9126, options.profile ?? 1, // WGL_CONTEXT_PROFILE_MASK_ARB
       0, 0,
     ]),
   );

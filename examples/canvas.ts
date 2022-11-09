@@ -1,7 +1,7 @@
 import {
   createWindow,
   pollEvents,
-} from "https://raw.githubusercontent.com/DjDeveloperr/dwm/main/mod.ts";
+} from "https://raw.githubusercontent.com/DjDeveloperr/dwm/55ccbf6/mod.ts";
 import * as ctx from "../mod.ts";
 import { Canvas } from "../../../skia_canvas/mod.ts";
 
@@ -13,7 +13,11 @@ const window = createWindow({
   height: 600,
 });
 
-const context = ctx.createContext(window.nativeHandle, 3, 2);
+const context = ctx.createContext(window.nativeHandle, {
+  major: 3,
+  minor: 3,
+  profile: ctx.GlContextProfile.CORE,
+});
 const canvas = new Canvas(800, 600, true);
 const cx = canvas.getContext("2d");
 
@@ -50,6 +54,12 @@ addEventListener("redrawRequested", () => {
   ctx.swapBuffers(context);
 });
 
-while (!window.closed) {
+function step() {
+  if (window.closed) {
+    return;
+  }
   pollEvents();
+  setTimeout(step, 0);
 }
+
+step();
