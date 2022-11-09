@@ -17,6 +17,7 @@ export interface GlContextOptions {
   minor?: number;
   profile?: GlContextProfile;
   samples?: number;
+  vsync?: boolean;
 }
 
 export interface Platform {

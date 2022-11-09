@@ -197,14 +197,15 @@ export function createContext(
   }
 
   // Enable VSync
-  new Deno.UnsafeFnPointer(
-    wglSwapIntervalEXT!,
-    {
-      parameters: ["i32"],
-      result: "i32",
-    } as const,
-  ).call(1);
-
+  if (options.vsync !== false) {
+    new Deno.UnsafeFnPointer(
+      wglSwapIntervalEXT!,
+      {
+        parameters: ["i32"],
+        result: "i32",
+      } as const,
+    ).call(1);
+  }
   return {
     hwnd,
     hdc: hdc!,

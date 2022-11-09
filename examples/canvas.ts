@@ -3,7 +3,7 @@ import {
   pollEvents,
 } from "https://raw.githubusercontent.com/DjDeveloperr/dwm/55ccbf6/mod.ts";
 import * as ctx from "../mod.ts";
-import { Canvas } from "../../../skia_canvas/mod.ts";
+import { Canvas } from "https://raw.githubusercontent.com/DjDeveloperr/skia_canvas/windowing/mod.ts";
 
 ctx.init();
 
