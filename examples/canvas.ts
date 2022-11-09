@@ -1,7 +1,4 @@
-import {
-  createWindow,
-  pollEvents,
-} from "https://raw.githubusercontent.com/DjDeveloperr/dwm/55ccbf6/mod.ts";
+import { createWindow } from "https://raw.githubusercontent.com/DjDeveloperr/dwm/f63c56e/mod.ts";
 import * as ctx from "../mod.ts";
 import { Canvas } from "https://raw.githubusercontent.com/DjDeveloperr/skia_canvas/windowing/mod.ts";
 
@@ -32,7 +29,7 @@ addEventListener("mousemove", (e) => {
   my = e.y + 45;
 });
 
-addEventListener("redrawRequested", () => {
+function frame() {
   const now = performance.now();
   while (times.length > 0 && times[0] <= now - 1000) {
     times.shift();
@@ -52,14 +49,7 @@ addEventListener("redrawRequested", () => {
   cx.fillText(`FPS: ${fps}`, 10, 50);
   canvas.flush();
   ctx.swapBuffers(context);
-});
-
-function step() {
-  if (window.closed) {
-    return;
-  }
-  pollEvents();
-  setTimeout(step, 0);
+  requestAnimationFrame(frame);
 }
 
-step();
+requestAnimationFrame(frame);

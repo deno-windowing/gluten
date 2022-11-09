@@ -1,7 +1,4 @@
-import {
-  createWindow,
-  pollEvents,
-} from "https://raw.githubusercontent.com/DjDeveloperr/dwm/main/mod.ts";
+import { createWindow } from "https://raw.githubusercontent.com/DjDeveloperr/dwm/f63c56e/mod.ts";
 import * as ctx from "../mod.ts";
 import * as gl from "../src/api/gles32.ts";
 
@@ -49,8 +46,6 @@ function loadShader(type: number, src: string) {
 }
 
 const vShaderSrc = `
-#version 330 core
-
 attribute vec4 vPosition;
 void main() {
   gl_Position = vPosition;
@@ -92,7 +87,7 @@ addEventListener("resize", (event) => {
   gl.Viewport(0, 0, event.width, event.height);
 });
 
-addEventListener("redrawRequested", () => {
+function frame() {
   gl.Clear(gl.COLOR_BUFFER_BIT);
   gl.UseProgram(program);
   // deno-fmt-ignore
@@ -104,8 +99,7 @@ addEventListener("redrawRequested", () => {
   gl.EnableVertexAttribArray(0);
   gl.DrawArrays(gl.TRIANGLES, 0, 3);
   ctx.swapBuffers(context);
-});
-
-while (!window.closed) {
-  pollEvents();
+  requestAnimationFrame(frame);
 }
+
+requestAnimationFrame(frame);
