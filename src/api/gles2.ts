@@ -19,7 +19,7 @@ export const GLuint = "u32";
 export const GLchar = "i8";
 export const GLfloat = "f32";
 export const GLsizeiptr = "isize";
-export const GLintptr = "pointer";
+export const GLintptr = "isize";
 export const GLbitfield = "u32";
 export const GLint = "i32";
 export const GLboolean = "u8";
@@ -1867,7 +1867,7 @@ const def_glBufferSubData = {
     /* target: */ GLenum,
     /* offset: */ GLintptr,
     /* size: */ GLsizeiptr,
-    /* data: */ "buffer",
+    /* data: */ "pointer",
   ],
   result: "void",
 } as const;
@@ -1876,9 +1876,9 @@ let glBufferSubData!: Deno.UnsafeFnPointer<typeof def_glBufferSubData>;
 
 export function BufferSubData(
   target: number,
-  offset: Deno.PointerValue,
+  offset: number | bigint,
   size: number | bigint,
-  data: TypedArray,
+  data: Deno.PointerValue,
 ): void {
   return glBufferSubData.call(
     target,
@@ -2034,7 +2034,7 @@ const def_glCompressedTexImage2D = {
     /* height: */ GLsizei,
     /* border: */ GLint,
     /* imageSize: */ GLsizei,
-    /* data: */ "buffer",
+    /* data: */ "pointer",
   ],
   result: "void",
 } as const;
@@ -2049,7 +2049,7 @@ export function CompressedTexImage2D(
   height: number,
   border: number,
   imageSize: number,
-  data: TypedArray,
+  data: Deno.PointerValue,
 ): void {
   return glCompressedTexImage2D.call(
     target,
@@ -2073,7 +2073,7 @@ const def_glCompressedTexSubImage2D = {
     /* height: */ GLsizei,
     /* format: */ GLenum,
     /* imageSize: */ GLsizei,
-    /* data: */ "buffer",
+    /* data: */ "pointer",
   ],
   result: "void",
 } as const;
@@ -2089,7 +2089,7 @@ export function CompressedTexSubImage2D(
   height: number,
   format: number,
   imageSize: number,
-  data: TypedArray,
+  data: Deno.PointerValue,
 ): void {
   return glCompressedTexSubImage2D.call(
     target,
@@ -2478,7 +2478,7 @@ const def_glDrawElements = {
     /* mode: */ GLenum,
     /* count: */ GLsizei,
     /* type: */ GLenum,
-    /* indices: */ "buffer",
+    /* indices: */ "pointer",
   ],
   result: "void",
 } as const;
@@ -2489,7 +2489,7 @@ export function DrawElements(
   mode: number,
   count: number,
   type: number,
-  indices: TypedArray,
+  indices: Deno.PointerValue,
 ): void {
   return glDrawElements.call(
     mode,
@@ -3321,7 +3321,7 @@ const def_glGetVertexAttribPointerv = {
   parameters: [
     /* index: */ GLuint,
     /* pname: */ GLenum,
-    /* pointer: */ "buffer",
+    /* pointer: */ "pointer",
   ],
   result: "void",
 } as const;
@@ -3331,7 +3331,7 @@ let glGetVertexAttribPointerv!: Deno.UnsafeFnPointer<typeof def_glGetVertexAttri
 export function GetVertexAttribPointerv(
   index: number,
   pname: number,
-  pointer: TypedArray,
+  pointer: Deno.PointerValue,
 ): void {
   return glGetVertexAttribPointerv.call(
     index,
@@ -3561,7 +3561,7 @@ const def_glReadPixels = {
     /* height: */ GLsizei,
     /* format: */ GLenum,
     /* type: */ GLenum,
-    /* pixels: */ "buffer",
+    /* pixels: */ "pointer",
   ],
   result: "void",
 } as const;
@@ -3575,7 +3575,7 @@ export function ReadPixels(
   height: number,
   format: number,
   type: number,
-  pixels: TypedArray,
+  pixels: Deno.PointerValue,
 ): void {
   return glReadPixels.call(
     x,
@@ -3679,7 +3679,7 @@ const def_glShaderBinary = {
     /* count: */ GLsizei,
     /* shaders: */ "buffer",
     /* binaryFormat: */ GLenum,
-    /* binary: */ "buffer",
+    /* binary: */ "pointer",
     /* length: */ GLsizei,
   ],
   result: "void",
@@ -3691,7 +3691,7 @@ export function ShaderBinary(
   count: number,
   shaders: TypedArray,
   binaryFormat: number,
-  binary: TypedArray,
+  binary: Deno.PointerValue,
   length: number,
 ): void {
   return glShaderBinary.call(
@@ -3874,7 +3874,7 @@ const def_glTexImage2D = {
     /* border: */ GLint,
     /* format: */ GLenum,
     /* type: */ GLenum,
-    /* pixels: */ "buffer",
+    /* pixels: */ "pointer",
   ],
   result: "void",
 } as const;
@@ -3890,7 +3890,7 @@ export function TexImage2D(
   border: number,
   format: number,
   type: number,
-  pixels: TypedArray,
+  pixels: Deno.PointerValue,
 ): void {
   return glTexImage2D.call(
     target,
@@ -4007,7 +4007,7 @@ const def_glTexSubImage2D = {
     /* height: */ GLsizei,
     /* format: */ GLenum,
     /* type: */ GLenum,
-    /* pixels: */ "buffer",
+    /* pixels: */ "pointer",
   ],
   result: "void",
 } as const;
@@ -4023,7 +4023,7 @@ export function TexSubImage2D(
   height: number,
   format: number,
   type: number,
-  pixels: TypedArray,
+  pixels: Deno.PointerValue,
 ): void {
   return glTexSubImage2D.call(
     target,
@@ -4715,7 +4715,7 @@ const def_glVertexAttribPointer = {
     /* type: */ GLenum,
     /* normalized: */ GLboolean,
     /* stride: */ GLsizei,
-    /* pointer: */ "buffer",
+    /* pointer: */ "pointer",
   ],
   result: "void",
 } as const;
@@ -4728,7 +4728,7 @@ export function VertexAttribPointer(
   type: number,
   normalized: number,
   stride: number,
-  pointer: TypedArray,
+  pointer: Deno.PointerValue,
 ): void {
   return glVertexAttribPointer.call(
     index,

@@ -1,5 +1,5 @@
 const gl2_h = Deno.readTextFileSync(
-  new URL("../OpenGL-Registry/api/GLES3/gl32.h", import.meta.url),
+  new URL("../OpenGL-Registry/api/GLES2/gl2.h", import.meta.url),
 );
 // const gl2ext_h = Deno.readTextFileSync(
 //   new URL("../OpenGL-Registry/api/GLES2/gl2ext.h", import.meta.url),
@@ -112,7 +112,7 @@ const SPECIAL_TYPEDEFS: Record<string, string> = {
   "char": '"i8"',
   "unsigned_char": '"u8"',
   "int": '"i32"',
-  "khronos_intptr_t": '"pointer"',
+  "khronos_intptr_t": '"isize"',
   "GLsync": '"pointer"',
   "GLDEBUGPROC": '"pointer"',
 };
@@ -190,13 +190,17 @@ for (const name in functions) {
   src += `const def_${name} = {\n`;
   src += `  parameters: [\n`;
   for (let pname in functions[name].parameters) {
+    const originalPname = pname;
     let v = functions[name].parameters[pname];
     if (v in SPECIAL_TYPEDEFS) {
       v = SPECIAL_TYPEDEFS[v];
     }
     while (pname.startsWith("*")) {
       pname = pname.slice(1);
-      v = '"buffer"';
+      v = functions[name].parameters[originalPname].includes("void") &&
+          !["glBufferData"].includes(name)
+        ? '"pointer"'
+        : '"buffer"';
     }
     src += `    /* ${pname}: */ ${v},\n`;
   }
@@ -211,13 +215,17 @@ for (const name in functions) {
   src += `let ${name}!: Deno.UnsafeFnPointer<typeof def_${name}>;\n\n`;
   src += `export function ${name.startsWith("gl") ? name.slice(2) : name}(\n`;
   for (let pname in functions[name].parameters) {
+    const originalPname = pname;
     let v = functions[name].parameters[pname].trim();
     if (v in SPECIAL_TYPEDEFS) {
       v = SPECIAL_TYPEDEFS[v];
     }
     while (pname.startsWith("*")) {
       pname = pname.slice(1);
-      v = '"buffer"';
+      v = functions[name].parameters[originalPname].includes("void") &&
+          !["glBufferData"].includes(name)
+        ? '"pointer"'
+        : '"buffer"';
     }
     while (v in typedefs) {
       v = typedefs[v];
@@ -267,4 +275,4 @@ for (const name in functions) {
 }
 src += `}\n`;
 
-Deno.writeTextFileSync(new URL("../src/api/gles32.ts", import.meta.url), src);
+Deno.writeTextFileSync(new URL("../src/api/gles2.ts", import.meta.url), src);

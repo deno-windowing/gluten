@@ -14,7 +14,13 @@ let wglChoosePixelFormatARB: Deno.PointerValue;
 let wglCreateContextAttribsARB: Deno.PointerValue;
 let wglSwapIntervalEXT: Deno.PointerValue;
 
+let initalized = false;
+
 export function init() {
+  if (initalized) {
+    return;
+  }
+
   const wndproca = new Deno.UnsafeCallback(
     {
       parameters: ["pointer", "u32", "pointer", "pointer"],
@@ -114,6 +120,8 @@ export function init() {
   wndproca.close();
 
   wglInstace = Lib.LoadLibraryA("opengl32.dll")!;
+
+  initalized = true;
 }
 
 export function createContext(

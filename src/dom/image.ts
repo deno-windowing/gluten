@@ -86,6 +86,12 @@ export class Image extends HTMLElement {
   }
 }
 
-Object.defineProperty(window, "Image", {
+Object.defineProperty(globalThis, "Image", {
   value: Image,
 });
+
+const ImageAlias = Image;
+
+declare global {
+  class Image extends ImageAlias {}
+}

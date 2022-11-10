@@ -1,5 +1,5 @@
 // deno-lint-ignore-file no-explicit-any
-import { Canvas } from "./canvas.ts";
+import { WebGLCanvas } from "../webgl/canvas.ts";
 import { HTMLElement } from "./element.ts";
 import { Image } from "./image.ts";
 
@@ -15,8 +15,8 @@ export class FakeDocument extends EventTarget {
     if (tagName === "img") {
       return new Image();
     } else if (tagName === "canvas") {
-      return new Canvas({
-        title: "GLFW Canvas",
+      return new WebGLCanvas({
+        title: "Deno WebGLCanvas",
         width: (globalThis as any)._width ?? 800,
         height: (globalThis as any)._height ?? 600,
         visible: !(globalThis as any).HEADLESS,
@@ -45,13 +45,21 @@ export class FakeDocument extends EventTarget {
 
 export const document = new FakeDocument();
 
-declare global {
-  interface globalThis {
-    document: typeof document;
-  }
-}
-
 Object.defineProperty(globalThis, "document", {
   value: document,
   writable: false,
 });
+
+Object.defineProperties(globalThis, {
+  pageXOffset: {
+    value: 0,
+  },
+  pageYOffset: {
+    value: 0,
+  },
+});
+
+declare global {
+  const document: FakeDocument;
+  class Document extends FakeDocument {}
+}

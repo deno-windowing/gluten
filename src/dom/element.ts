@@ -41,3 +41,11 @@ Object.defineProperty(globalThis, "Element", {
   value: Element,
   writable: false,
 });
+
+const HTMLElementAlias = HTMLElement;
+const ElementAlias = Element;
+
+declare global {
+  class HTMLElement extends HTMLElementAlias {}
+  class Element extends ElementAlias {}
+}
