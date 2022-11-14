@@ -1,22 +1,20 @@
-import { createWindow } from "https://raw.githubusercontent.com/DjDeveloperr/dwm/f63c56e/mod.ts";
-import * as ctx from "../mod.ts";
+import {
+  createWindow,
+  getProcAddress,
+  mainloop,
+} from "https://raw.githubusercontent.com/DjDeveloperr/dwm/45bc008/mod.ts";
 import * as gl from "../src/api/gles32.ts";
-
-ctx.init();
 
 const window = createWindow({
   title: "DenoGL",
   width: 800,
   height: 600,
   resizable: true,
+  glVersion: [3, 2],
+  gles: true,
 });
 
-const context = ctx.createContext(window.nativeHandle, {
-  major: 3,
-  minor: 2,
-  profile: ctx.GlContextProfile.ES,
-});
-gl.loadGL(ctx.getProcAddress);
+gl.loadGL(getProcAddress);
 
 function loadShader(type: number, src: string) {
   const shader = gl.CreateShader(type);
@@ -98,8 +96,7 @@ function frame() {
   ]));
   gl.EnableVertexAttribArray(0);
   gl.DrawArrays(gl.TRIANGLES, 0, 3);
-  ctx.swapBuffers(context);
-  requestAnimationFrame(frame);
+  window.swapBuffers();
 }
 
-requestAnimationFrame(frame);
+await mainloop(frame);

@@ -19,12 +19,12 @@ Object.defineProperties(window, {
   },
   innerWidth: {
     get() {
-      return canvas.width;
+      return canvas.window.framebufferSize.width;
     },
   },
   innerHeight: {
     get() {
-      return canvas.height;
+      return canvas.window.framebufferSize.height;
     },
   },
 });
@@ -249,3 +249,5 @@ function render() {
   renderer.setRenderTarget(null);
   renderer.render(scene, camera);
 }
+
+await canvas.run();

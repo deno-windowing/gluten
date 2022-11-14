@@ -1,18 +1,9 @@
 // https://registry.khronos.org/webgl/specs/latest/1.0/
 
-import type { DwmWindow } from "./deps.ts";
-import {
-  createContext,
-  getProcAddress,
-  GlContextProfile,
-  init,
-  swapBuffers,
-} from "../../mod.ts";
+import { DwmWindow, getProcAddress } from "./deps.ts";
 import * as gl from "../api/gles2.ts";
-import { glObjectName, _uniformLocation } from "./object.ts";
+import { _uniformLocation, glObjectName } from "./object.ts";
 import { cstr } from "./utils.ts";
-
-init();
 
 export interface WebGLContextAttributes {
   alpha?: boolean;
@@ -30,36 +21,19 @@ export interface WebGLContextAttributes {
  * Provides an interface to the OpenGL ES 2.0 graphics rendering context for the drawing surface of a dwm window.
  */
 export class WebGLRenderingContext {
-  #context;
   #attributes: WebGLContextAttributes | null = null;
 
-  get context() {
-    return this.#context;
-  }
-
   constructor(public window: DwmWindow, attributes?: WebGLContextAttributes) {
-    this.#context = createContext(window.nativeHandle, {
-      major: 2,
-      minor: 0,
-      profile: GlContextProfile.ES,
-      vsync: true,
-      samples: 4,
-    });
     gl.loadGL(getProcAddress);
-    addEventListener("redrawRequested", (event) => {
-      if (event.window.id === window.id) {
-        swapBuffers(this.#context);
-      }
-    });
     this.#attributes = attributes ?? null;
   }
 
   get drawingBufferHeight() {
-    return this.window.size.height;
+    return this.window.framebufferSize.height;
   }
 
   get drawingBufferWidth() {
-    return this.window.size.width;
+    return this.window.framebufferSize.width;
   }
 
   /// 5.14.2 Getting information about the context
@@ -90,7 +64,12 @@ export class WebGLRenderingContext {
     gl.BlendFunc(sfactor, dfactor);
   }
 
-  blendFuncSeparate(srcRGB: number, dstRGB: number, srcAlpha: number, dstAlpha: number) {
+  blendFuncSeparate(
+    srcRGB: number,
+    dstRGB: number,
+    srcAlpha: number,
+    dstAlpha: number,
+  ) {
     gl.BlendFuncSeparate(srcRGB, dstRGB, srcAlpha, dstAlpha);
   }
 
@@ -148,7 +127,7 @@ export class WebGLRenderingContext {
     switch (pname) {
       case this.VERSION:
         return `WebGL 1.0 (OpenGL ES 2.0 Deno ${Deno.version.deno})`;
-      
+
       case this.VENDOR:
         return "Deno";
 
@@ -387,10 +366,42 @@ export class WebGLRenderingContext {
     gl.BindTexture(target, texture?.[glObjectName] ?? 0);
   }
 
+  copyTexImage2D(
+    target: number,
+    level: number,
+    internalformat: number,
+    x: number,
+    y: number,
+    width: number,
+    height: number,
+    border: number,
+  ) {
+    gl.CopyTexImage2D(
+      target,
+      level,
+      internalformat,
+      x,
+      y,
+      width,
+      height,
+      border,
+    );
+  }
+
   createTexture() {
     const texture = new Uint32Array(1);
     gl.GenTextures(1, texture);
     return new WebGLTexture(texture[0]);
+  }
+
+  deleteTexture(texture: WebGLTexture | null) {
+    if (texture) {
+      gl.DeleteTextures(1, new Uint32Array([texture[glObjectName]]));
+    }
+  }
+
+  generateMipmap(target: number) {
+    gl.GenerateMipmap(target);
   }
 
   texParameteri(target: number, pname: number, param: number) {
@@ -408,26 +419,33 @@ export class WebGLRenderingContext {
     type: number,
     pixels: ArrayBufferView | null,
   ) {
-    console.log("texImage2D", target,
-    level,
-    internalformat,
-    width,
-    height,
-    border,
-    format,
-    type,
-    pixels?.buffer ? Deno.UnsafePointer.of(pixels.buffer) : 0);
-    gl.TexImage2D(
-      target,
-      level,
-      internalformat,
-      width,
-      height,
-      border,
-      format,
-      type,
-      pixels?.buffer ? Deno.UnsafePointer.of(pixels.buffer) : 0,
-    );
+    if (arguments.length === 6) {
+      // deno-lint-ignore no-explicit-any
+      const img = border as any;
+      gl.TexImage2D(
+        target,
+        level,
+        internalformat,
+        img.width,
+        img.height,
+        0,
+        width,
+        height,
+        Deno.UnsafePointer.of(img.rawData),
+      );
+    } else {
+      gl.TexImage2D(
+        target,
+        level,
+        internalformat,
+        width,
+        height,
+        border,
+        format,
+        type,
+        pixels?.buffer ? Deno.UnsafePointer.of(pixels.buffer) : 0,
+      );
+    }
   }
 
   /// 5.14.9 Programs and Shaders
@@ -492,6 +510,20 @@ export class WebGLRenderingContext {
         return count[0];
       }
     }
+  }
+
+  getShaderPrecisionFormat(
+    shaderType: number,
+    precisionType: number,
+  ) {
+    const range = new Int32Array(2);
+    const precision = new Int32Array(1);
+    gl.GetShaderPrecisionFormat(shaderType, precisionType, range, precision);
+    return {
+      rangeMin: range[0],
+      rangeMax: range[1],
+      precision,
+    };
   }
 
   getProgramInfoLog(program: WebGLProgram) {
@@ -740,16 +772,38 @@ export class WebGLRenderingContext {
     gl.Uniform1f(location?.[_uniformLocation] ?? 0, x);
   }
 
-  uniform3f(location: WebGLUniformLocation | null, x: number, y: number, z: number) {
+  uniform2f(location: WebGLUniformLocation | null, x: number, y: number) {
+    gl.Uniform2f(location?.[_uniformLocation] ?? 0, x, y);
+  }
+
+  uniform3f(
+    location: WebGLUniformLocation | null,
+    x: number,
+    y: number,
+    z: number,
+  ) {
     gl.Uniform3f(location?.[_uniformLocation] ?? 0, x, y, z);
   }
 
-  uniform4f(location: WebGLUniformLocation | null, x: number, y: number, z: number, w: number) {
-    gl.Uniform4f(location?.[_uniformLocation] ?? 0, x, y, z, w); 
+  uniform4f(
+    location: WebGLUniformLocation | null,
+    x: number,
+    y: number,
+    z: number,
+    w: number,
+  ) {
+    gl.Uniform4f(location?.[_uniformLocation] ?? 0, x, y, z, w);
   }
 
-  uniform3fv(location: WebGLUniformLocation | null, v: Float32Array | number[]) {
-    gl.Uniform3fv(location?.[_uniformLocation] ?? 0, v.length, new Float32Array(v));
+  uniform3fv(
+    location: WebGLUniformLocation | null,
+    v: Float32Array | number[],
+  ) {
+    gl.Uniform3fv(
+      location?.[_uniformLocation] ?? 0,
+      v.length,
+      new Float32Array(v),
+    );
   }
 
   uniformMatrix3fv(
@@ -759,9 +813,7 @@ export class WebGLRenderingContext {
   ) {
     gl.UniformMatrix3fv(
       location?.[_uniformLocation] ?? 0,
-      value.length
-        ? value.length / 9
-        : 0,
+      value.length ? value.length / 9 : 0,
       Number(transpose),
       new Float32Array(value),
     );
@@ -1197,6 +1249,11 @@ export class WebGLRenderingContext {
   CONTEXT_LOST_WEBGL = 0x9242;
   UNPACK_COLORSPACE_CONVERSION_WEBGL = 0x9243;
   BROWSER_DEFAULT_WEBGL = 0x9244;
+
+  HALF_FLOAT_OES = 0x8D61;
+  RGBA16F = 0x881A;
+  RGBA32F = 0x8814;
+  DEPTH24_STENCIL8 = 0x88F0;
 }
 
 Object.assign(globalThis, {

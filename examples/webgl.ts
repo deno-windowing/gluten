@@ -88,3 +88,5 @@ function frame() {
 
 init();
 requestAnimationFrame(frame);
+
+await window.run();

@@ -1,5 +1,12 @@
+// deno-lint-ignore-file no-explicit-any
+
 import { HTMLElement } from "../dom/element.ts";
-import { CreateWindowOptions, DwmWindow, createWindow } from "./deps.ts";
+import {
+  createWindow,
+  CreateWindowOptions,
+  DwmWindow,
+  mainloop,
+} from "./deps.ts";
 import "./renderingContext.ts";
 
 export class WebGLCanvas extends HTMLElement {
@@ -8,7 +15,10 @@ export class WebGLCanvas extends HTMLElement {
 
   constructor(options: CreateWindowOptions) {
     super();
-    this.window = createWindow(options);
+    this.window = createWindow(Object.assign({
+      glVersion: [2, 0],
+      gles: true,
+    }, options));
     this.#context = new WebGLRenderingContext(this.window);
   }
 
@@ -63,5 +73,11 @@ export class WebGLCanvas extends HTMLElement {
 
   removeEventListener(...args: any[]): void {
     (removeEventListener as any)(...args);
+  }
+
+  async run() {
+    await mainloop(() => {
+      this.window.swapBuffers();
+    }, false);
   }
 }

@@ -1,2 +1,1 @@
-export * from "./src/platform/mod.ts";
-export * from "./src/common.ts";
+export * from "./src/webgl/mod.ts";
