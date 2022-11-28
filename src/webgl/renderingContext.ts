@@ -814,6 +814,86 @@ export class WebGLRenderingContext {
     return location < 0 ? null : new WebGLUniformLocation(location);
   }
 
+  vertexAttrib1f(
+    index: number,
+    x: number,
+  ): void {
+    gl.VertexAttrib1f(index, Number(x));
+  }
+
+  vertexAttrib2f(
+    index: number,
+    x: number,
+    y: number,
+  ): void {
+    gl.VertexAttrib2f(index, Number(x), Number(y));
+  }
+
+  vertexAttrib3f(
+    index: number,
+    x: number,
+    y: number,
+    z: number,
+  ): void {
+    gl.VertexAttrib3f(index, Number(x), Number(y), Number(z));
+  }
+
+  vertexAttrib4f(
+    index: number,
+    x: number,
+    y: number,
+    z: number,
+    w: number,
+  ): void {
+    gl.VertexAttrib4f(
+      index,
+      Number(x),
+      Number(y),
+      Number(z),
+      Number(w),
+    );
+  }
+
+  vertexAttrib1fv(
+    index: number,
+    v: Float32Array | number[],
+  ): void {
+    gl.VertexAttrib1fv(
+      index,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
+  vertexAttrib2fv(
+    index: number,
+    v: Float32Array | number[],
+  ): void {
+    gl.VertexAttrib2fv(
+      index,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
+  vertexAttrib3fv(
+    index: number,
+    v: Float32Array | number[],
+  ): void {
+    gl.VertexAttrib3fv(
+      index,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
+  vertexAttrib4fv(
+    index: number,
+    v: Float32Array | number[],
+  ): void {
+    gl.VertexAttrib4fv(
+      index,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
   /**
    * Specify constant values for generic vertex attributes.
    */
@@ -898,12 +978,64 @@ export class WebGLRenderingContext {
     gl.Uniform1i(location?.[_uniformLocation] ?? 0, Number(v0));
   }
 
+  uniform1iv(
+    location: WebGLUniformLocation,
+    v: Int32Array | number[],
+  ): void {
+    gl.Uniform1iv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Int32Array(v) : v,
+    );
+  }
+
   uniform1f(location: WebGLUniformLocation | null, x: number) {
     gl.Uniform1f(location?.[_uniformLocation] ?? 0, x);
   }
 
+  uniform1fv(
+    location: WebGLUniformLocation,
+    v: Float32Array | number[],
+  ) {
+    gl.Uniform1fv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
   uniform2f(location: WebGLUniformLocation | null, x: number, y: number) {
     gl.Uniform2f(location?.[_uniformLocation] ?? 0, x, y);
+  }
+
+  uniform2i(
+    location: WebGLUniformLocation,
+    x: number,
+    y: number,
+  ) {
+    gl.Uniform2i(location[_uniformLocation], Number(x), Number(y));
+  }
+
+  uniform2fv(
+    location: WebGLUniformLocation,
+    v: Float32Array | number[],
+  ) {
+    gl.Uniform2fv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
+  uniform2iv(
+    location: WebGLUniformLocation,
+    v: Int32Array | number[],
+  ): void {
+    gl.Uniform2iv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Int32Array(v) : v,
+    );
   }
 
   uniform3f(
@@ -913,6 +1045,40 @@ export class WebGLRenderingContext {
     z: number,
   ) {
     gl.Uniform3f(location?.[_uniformLocation] ?? 0, x, y, z);
+  }
+
+  uniform3i(
+    location: WebGLUniformLocation,
+    x: number,
+    y: number,
+    z: number,
+  ) {
+    gl.Uniform3i(location[_uniformLocation], Number(x), Number(y), Number(z));
+  }
+
+  uniform3iv(
+    location: WebGLUniformLocation | null,
+    v: Int32Array | number[],
+  ): void {
+    if (location === null) {
+      return console.warn("uniform3iv: got null location");
+    }
+    gl.Uniform3iv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Int32Array(v) : v,
+    );
+  }
+
+  uniform4iv(
+    location: WebGLUniformLocation,
+    v: Int32Array | number[],
+  ): void {
+    gl.Uniform4iv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Int32Array(v) : v,
+    );
   }
 
   uniform4f(
@@ -925,6 +1091,22 @@ export class WebGLRenderingContext {
     gl.Uniform4f(location?.[_uniformLocation] ?? 0, x, y, z, w);
   }
 
+  uniform4i(
+    location: WebGLUniformLocation,
+    x: number,
+    y: number,
+    z: number,
+    w: number,
+  ) {
+    gl.Uniform4i(
+      location[_uniformLocation],
+      Number(x),
+      Number(y),
+      Number(z),
+      Number(w),
+    );
+  }
+
   uniform3fv(
     location: WebGLUniformLocation | null,
     v: Float32Array | number[],
@@ -933,6 +1115,30 @@ export class WebGLRenderingContext {
       location?.[_uniformLocation] ?? 0,
       v.length,
       new Float32Array(v),
+    );
+  }
+
+  uniform4fv(
+    location: WebGLUniformLocation,
+    v: Float32Array | number[],
+  ): void {
+    gl.Uniform4fv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
+  uniformMatrix2fv(
+    location: WebGLUniformLocation,
+    transpose: boolean,
+    value: Float32Array | number[],
+  ): void {
+    gl.UniformMatrix2fv(
+      location[_uniformLocation],
+      1,
+      Number(transpose),
+      Array.isArray(value) ? new Float32Array(value) : value,
     );
   }
 
