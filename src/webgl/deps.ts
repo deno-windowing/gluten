@@ -1,2 +1,2 @@
-export * from "https://raw.githubusercontent.com/DjDeveloperr/dwm/a6deada/mod.ts";
+export * from "https://raw.githubusercontent.com/deno-windowing/dwm/main/mod.ts";
 // export * from "../../../dwm/mod.ts";

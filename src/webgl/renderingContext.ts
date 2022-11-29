@@ -28,42 +28,78 @@ export class WebGLRenderingContext {
     this.#attributes = attributes ?? null;
   }
 
+  /**
+   * Represents the actual height of the current drawing buffer.
+   * It should match the height attribute of the window associated with this context,
+   * but might differ if the implementation is not able to provide the requested height.
+   */
   get drawingBufferHeight() {
     return this.window.framebufferSize.height;
   }
 
+  /**
+   * Represents the actual width of the current drawing buffer.
+   * It should match the width attribute of the window associated with this context,
+   * but might differ if the implementation is not able to provide the requested width.
+   */
   get drawingBufferWidth() {
     return this.window.framebufferSize.width;
   }
 
   /// 5.14.2 Getting information about the context
 
+  /**
+   * Returns a WebGLContextAttributes object that contains the actual context parameters. Might return null, if the context is lost.
+   */
   getContextAttributes() {
     return this.#attributes;
   }
 
   /// 5.14.3 Setting and getting state
 
+  /**
+   * Specifies which texture unit to make active.
+   * @param texture texture unit to activate
+   */
   activeTexture(texture: number) {
     gl.ActiveTexture(texture);
   }
 
+  /**
+   * Sets the source and destination blending factors.
+   * @param r red value
+   * @param g green value
+   * @param b blue value
+   * @param a alpha value
+   */
   blendColor(r: number, g: number, b: number, a: number) {
     gl.BlendColor(r, g, b, a);
   }
 
+  /**
+   * Sets both the RGB blend equation and alpha blend equation to a single equation.
+   */
   blendEquation(mode: number) {
     gl.BlendEquation(mode);
   }
 
+  /**
+   * Sets the RGB blend equation and alpha blend equation separately.
+   */
   blendEquationSeparate(modeRGB: number, modeAlpha: number) {
     gl.BlendEquationSeparate(modeRGB, modeAlpha);
   }
 
+  /**
+   * Defines which function is used for blending pixel arithmetic.
+   */
   blendFunc(sfactor: number, dfactor: number) {
     gl.BlendFunc(sfactor, dfactor);
   }
 
+  /**
+   * Defines which function is used for blending pixel arithmetic for RGB and alpha components separately.
+   */
   blendFuncSeparate(
     srcRGB: number,
     dstRGB: number,
@@ -80,34 +116,58 @@ export class WebGLRenderingContext {
     gl.ClearColor(r, g, b, a);
   }
 
+  /**
+   * Specifies the clear value for the depth buffer.
+   */
   clearDepth(depth: number) {
     gl.ClearDepthf(depth);
   }
 
+  /**
+   * Specifies the clear value for the stencil buffer.
+   */
   clearStencil(s: number) {
     gl.ClearStencil(s);
   }
 
+  /**
+   * Sets which color components to enable or to disable when drawing or rendering to a WebGLFramebuffer.
+   */
   colorMask(r: boolean, g: boolean, b: boolean, a: boolean) {
     gl.ColorMask(Number(r), Number(g), Number(b), Number(a));
   }
 
+  /**
+   * Specifies whether or not front- and/or back-facing polygons can be culled.
+   */
   cullFace(mode: number) {
     gl.CullFace(mode);
   }
 
+  /**
+   * Specifies a function that compares incoming pixel depth to the current depth buffer value.
+   */
   depthFunc(func: number) {
     gl.DepthFunc(func);
   }
 
+  /**
+   * Sets whether writing into the depth buffer is enabled or disabled.
+   */
   depthMask(flag: boolean) {
     gl.DepthMask(Number(flag));
   }
 
+  /**
+   * Specifies the depth range mapping from normalized device coordinates to window or viewport coordinates.
+   */
   depthRange(zNear: number, zFar: number) {
     gl.DepthRangef(zNear, zFar);
   }
 
+  /**
+   * Disables specific WebGL capabilities for this context.
+   */
   disable(cap: number) {
     gl.Disable(cap);
   }
@@ -119,10 +179,16 @@ export class WebGLRenderingContext {
     gl.Enable(cap);
   }
 
+  /**
+   * Specifies whether polygons are front- or back-facing by setting a winding orientation.
+   */
   frontFace(mode: number) {
     gl.FrontFace(mode);
   }
 
+  /**
+   * Returns a value for the passed parameter name.
+   */
   getParameter(pname: number) {
     switch (pname) {
       case this.VERSION:
@@ -175,61 +241,104 @@ export class WebGLRenderingContext {
     }
   }
 
+  /**
+   * Returns error information.
+   */
   getError() {
     return gl.GetError();
   }
 
+  /**
+   * Specifies hints for certain behaviors. The interpretation of these hints depend on the implementation.
+   */
   hint(target: number, mode: number) {
     gl.Hint(target, mode);
   }
 
+  /**
+   * Tests whether a specific WebGL capability is enabled or not for this context.
+   */
   isEnabled(cap: number) {
     return gl.IsEnabled(cap) === gl.TRUE;
   }
 
+  /**
+   * Sets the line width of rasterized lines.
+   */
   lineWidth(width: number) {
     gl.LineWidth(width);
   }
 
+  /**
+   * Specifies the pixel storage modes.
+   */
   pixelStorei(pname: number, param: number) {
     console.log("STUB: pixelStorei:", pname, param);
     gl.PixelStorei(pname, param);
   }
 
+  /**
+   * Specifies the scale factors and units to calculate depth values.
+   * The offset is added before the depth test is performed and before the value is written into the depth buffer.
+   */
   polygonOffset(factor: number, units: number) {
     gl.PolygonOffset(factor, units);
   }
 
+  /**
+   * Specifies multi-sample coverage parameters for anti-aliasing effects.
+   */
   sampleCoverage(value: number, invert: boolean) {
     gl.SampleCoverage(value, Number(invert));
   }
 
+  /**
+   * Sets the front and back function and reference value for stencil testing.
+   */
   stencilFunc(func: number, ref: number, mask: number) {
     gl.StencilFunc(func, ref, mask);
   }
 
+  /**
+   * Sets the front and/or back function and reference value for stencil testing.
+   */
   stencilFuncSeparate(face: number, func: number, ref: number, mask: number) {
     gl.StencilFuncSeparate(face, func, ref, mask);
   }
 
+  /**
+   * Controls enabling and disabling of both the front and back writing of individual bits in the stencil planes.
+   */
   stencilMask(mask: number) {
     gl.StencilMask(mask);
   }
 
+  /**
+   *  controls enabling and disabling of front and/or back writing of individual bits in the stencil planes.
+   * The WebGLRenderingContext.stencilMask() method can set both, the front and back stencil writemasks to one value at the same time.
+   */
   stencilMaskSeparate(face: number, mask: number) {
     gl.StencilMaskSeparate(face, mask);
   }
 
+  /**
+   * Sets both the front and back-facing stencil test actions.
+   */
   stencilOp(fail: number, zfail: number, zpass: number) {
     gl.StencilOp(fail, zfail, zpass);
   }
 
+  /**
+   * Sets the front and/or back-facing stencil test actions.
+   */
   stencilOpSeparate(face: number, fail: number, zfail: number, zpass: number) {
     gl.StencilOpSeparate(face, fail, zfail, zpass);
   }
 
   /// 5.14.4 Viewing and clipping
-
+  /**
+   * Sets a scissor box, which limits the drawing to a specified rectangle.
+   */
   scissor(x: number, y: number, width: number, height: number) {
     gl.Scissor(x, y, width, height);
   }
@@ -285,6 +394,9 @@ export class WebGLRenderingContext {
     return new WebGLBuffer(buffer[0]);
   }
 
+  /**
+   * Deletes a given WebGLBuffer. This method has no effect if the buffer has already been deleted.
+   */
   deleteBuffer(buffer: WebGLBuffer | null) {
     if (buffer) {
       gl.DeleteBuffers(1, new Uint32Array([buffer[glObjectName]]));
@@ -297,18 +409,27 @@ export class WebGLRenderingContext {
     gl.BindFramebuffer(target, framebuffer?.[glObjectName] ?? 0);
   }
 
+  /**
+   * Creates and initializes a {@link WebGLFramebuffer} object.
+   */
   createFramebuffer() {
     const framebuffer = new Uint32Array(1);
     gl.GenFramebuffers(1, framebuffer);
     return new WebGLFramebuffer(framebuffer[0]);
   }
 
+  /**
+   * Deletes a given {@link WebGLFramebuffer} object. This method has no effect if the frame buffer has already been deleted.
+   */
   deleteFramebuffer(framebuffer: WebGLFramebuffer | null) {
     if (framebuffer) {
       gl.DeleteFramebuffers(1, new Uint32Array([framebuffer[glObjectName]]));
     }
   }
 
+  /**
+   * Attaches a {@link WebGLRenderbuffer} object to a {@link WebGLFramebuffer} object.
+   */
   framebufferRenderbuffer(
     target: number,
     attachment: number,
@@ -323,6 +444,9 @@ export class WebGLRenderingContext {
     );
   }
 
+  /**
+   * Attaches a texture to a {@link WebGLFramebuffer}.
+   */
   framebufferTexture2D(
     target: number,
     attachment: number,
@@ -545,6 +669,12 @@ export class WebGLRenderingContext {
   }
 
   /**
+   * Returns a list of all the supported WebGL extensions.
+   */
+  getSupportedExtensions(): string[] {
+    return [];
+  }
+  /**
    * Returns information about the given shader.
    */
   getShaderParameter(shader: WebGLShader, pname: number) {
@@ -684,6 +814,86 @@ export class WebGLRenderingContext {
     return location < 0 ? null : new WebGLUniformLocation(location);
   }
 
+  vertexAttrib1f(
+    index: number,
+    x: number,
+  ): void {
+    gl.VertexAttrib1f(index, Number(x));
+  }
+
+  vertexAttrib2f(
+    index: number,
+    x: number,
+    y: number,
+  ): void {
+    gl.VertexAttrib2f(index, Number(x), Number(y));
+  }
+
+  vertexAttrib3f(
+    index: number,
+    x: number,
+    y: number,
+    z: number,
+  ): void {
+    gl.VertexAttrib3f(index, Number(x), Number(y), Number(z));
+  }
+
+  vertexAttrib4f(
+    index: number,
+    x: number,
+    y: number,
+    z: number,
+    w: number,
+  ): void {
+    gl.VertexAttrib4f(
+      index,
+      Number(x),
+      Number(y),
+      Number(z),
+      Number(w),
+    );
+  }
+
+  vertexAttrib1fv(
+    index: number,
+    v: Float32Array | number[],
+  ): void {
+    gl.VertexAttrib1fv(
+      index,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
+  vertexAttrib2fv(
+    index: number,
+    v: Float32Array | number[],
+  ): void {
+    gl.VertexAttrib2fv(
+      index,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
+  vertexAttrib3fv(
+    index: number,
+    v: Float32Array | number[],
+  ): void {
+    gl.VertexAttrib3fv(
+      index,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
+  vertexAttrib4fv(
+    index: number,
+    v: Float32Array | number[],
+  ): void {
+    gl.VertexAttrib4fv(
+      index,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
   /**
    * Specify constant values for generic vertex attributes.
    */
@@ -768,12 +978,64 @@ export class WebGLRenderingContext {
     gl.Uniform1i(location?.[_uniformLocation] ?? 0, Number(v0));
   }
 
+  uniform1iv(
+    location: WebGLUniformLocation,
+    v: Int32Array | number[],
+  ): void {
+    gl.Uniform1iv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Int32Array(v) : v,
+    );
+  }
+
   uniform1f(location: WebGLUniformLocation | null, x: number) {
     gl.Uniform1f(location?.[_uniformLocation] ?? 0, x);
   }
 
+  uniform1fv(
+    location: WebGLUniformLocation,
+    v: Float32Array | number[],
+  ) {
+    gl.Uniform1fv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
   uniform2f(location: WebGLUniformLocation | null, x: number, y: number) {
     gl.Uniform2f(location?.[_uniformLocation] ?? 0, x, y);
+  }
+
+  uniform2i(
+    location: WebGLUniformLocation,
+    x: number,
+    y: number,
+  ) {
+    gl.Uniform2i(location[_uniformLocation], Number(x), Number(y));
+  }
+
+  uniform2fv(
+    location: WebGLUniformLocation,
+    v: Float32Array | number[],
+  ) {
+    gl.Uniform2fv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
+  uniform2iv(
+    location: WebGLUniformLocation,
+    v: Int32Array | number[],
+  ): void {
+    gl.Uniform2iv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Int32Array(v) : v,
+    );
   }
 
   uniform3f(
@@ -783,6 +1045,40 @@ export class WebGLRenderingContext {
     z: number,
   ) {
     gl.Uniform3f(location?.[_uniformLocation] ?? 0, x, y, z);
+  }
+
+  uniform3i(
+    location: WebGLUniformLocation,
+    x: number,
+    y: number,
+    z: number,
+  ) {
+    gl.Uniform3i(location[_uniformLocation], Number(x), Number(y), Number(z));
+  }
+
+  uniform3iv(
+    location: WebGLUniformLocation | null,
+    v: Int32Array | number[],
+  ): void {
+    if (location === null) {
+      return console.warn("uniform3iv: got null location");
+    }
+    gl.Uniform3iv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Int32Array(v) : v,
+    );
+  }
+
+  uniform4iv(
+    location: WebGLUniformLocation,
+    v: Int32Array | number[],
+  ): void {
+    gl.Uniform4iv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Int32Array(v) : v,
+    );
   }
 
   uniform4f(
@@ -795,6 +1091,22 @@ export class WebGLRenderingContext {
     gl.Uniform4f(location?.[_uniformLocation] ?? 0, x, y, z, w);
   }
 
+  uniform4i(
+    location: WebGLUniformLocation,
+    x: number,
+    y: number,
+    z: number,
+    w: number,
+  ) {
+    gl.Uniform4i(
+      location[_uniformLocation],
+      Number(x),
+      Number(y),
+      Number(z),
+      Number(w),
+    );
+  }
+
   uniform3fv(
     location: WebGLUniformLocation | null,
     v: Float32Array | number[],
@@ -803,6 +1115,30 @@ export class WebGLRenderingContext {
       location?.[_uniformLocation] ?? 0,
       v.length,
       new Float32Array(v),
+    );
+  }
+
+  uniform4fv(
+    location: WebGLUniformLocation,
+    v: Float32Array | number[],
+  ): void {
+    gl.Uniform4fv(
+      location[_uniformLocation],
+      1,
+      Array.isArray(v) ? new Float32Array(v) : v,
+    );
+  }
+
+  uniformMatrix2fv(
+    location: WebGLUniformLocation,
+    transpose: boolean,
+    value: Float32Array | number[],
+  ): void {
+    gl.UniformMatrix2fv(
+      location[_uniformLocation],
+      1,
+      Number(transpose),
+      Array.isArray(value) ? new Float32Array(value) : value,
     );
   }
 
