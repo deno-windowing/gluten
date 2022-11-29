@@ -1,4 +1,8 @@
 {
+  "tasks": {
+    "parse-xml": "deno run -A --unstable ./scripts/parse_xml.ts",
+    "gen": "deno run -A --unstable ./scripts/emitter.ts"
+  },
   "fmt": {
     "files": {
       "exclude": [
