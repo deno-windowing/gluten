@@ -1,7 +1,7 @@
 // https://registry.khronos.org/webgl/specs/latest/1.0/
 
 import { DwmWindow, getProcAddress } from "./deps.ts";
-import * as gl from "../api/gles2.ts";
+import * as gl from "../../api/gles22.ts";
 import { _uniformLocation, glObjectName } from "./object.ts";
 import { cstr } from "./utils.ts";
 
@@ -24,7 +24,7 @@ export class WebGLRenderingContext {
   #attributes: WebGLContextAttributes | null = null;
 
   constructor(public window: DwmWindow, attributes?: WebGLContextAttributes) {
-    gl.loadGL(getProcAddress);
+    gl.load(getProcAddress);
     this.#attributes = attributes ?? null;
   }
 

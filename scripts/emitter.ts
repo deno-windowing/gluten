@@ -1,4 +1,5 @@
 import {
+  Command,
   commands,
   enums,
   Extension,
@@ -39,11 +40,23 @@ export function jsify(name: string) {
   }
 }
 
+export function stripGL(name: string) {
+  if (name.startsWith("gl")) {
+    name = name.slice(2);
+  } else if (name.startsWith("GL_")) {
+    name = name.slice(3);
+  }
+  if (name.match(/^[0-9]/)) {
+    name = "GL_" + name;
+  }
+  return name;
+}
+
 export function write(file: string) {
   Deno.writeTextFileSync(new URL(file, import.meta.url), src);
 }
 
-export function toJSType(ty: string) {
+export function toJSType(ty: string): string {
   switch (ty) {
     case "u8":
     case "u16":
@@ -60,14 +73,86 @@ export function toJSType(ty: string) {
     case "i64":
     case "usize":
     case "isize":
-    case "pointer":
       return "Deno.PointerValue";
-    default:
+    case "buffer":
+    case "pointer":
+      return "Buffer";
+    default: {
+      if (ty.endsWith("*")) {
+        return toJSType("pointer");
+      }
+      const td = typedefs.find((t) => t.name === ty);
+      if (td) {
+        return td.name;
+      }
       throw new Error(`Unknown type: ${ty}`);
+    }
+  }
+}
+
+export function toFFIType(ty: string): string {
+  switch (ty) {
+    case "u8":
+    case "u16":
+    case "u32":
+    case "i8":
+    case "i16":
+    case "i32":
+    case "f32":
+    case "f64":
+    case "void":
+    case "u64":
+    case "i64":
+    case "usize":
+    case "isize":
+    case "buffer":
+      return ty;
+    case "pointer":
+      return "buffer";
+    default: {
+      if (ty.endsWith("*")) {
+        return toFFIType("pointer");
+      }
+      const td = typedefs.find((t) => t.name === ty);
+      if (td) {
+        return toFFIType(td.type);
+      }
+      throw new Error(`Unknown type: ${ty}`);
+    }
   }
 }
 
 export function emitRequire(req: RequireOrRemove) {
+  newline();
+  emit("/// Util");
+  emit(
+    `export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;`,
+  );
+  emit(
+    `export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;`,
+  );
+  newline();
+  emit("export function bufferToFFI(buf: Buffer): Uint8Array | null {");
+  block(() => {
+    emit("if (buf === null) return null;");
+    emit(`else if (typeof buf === "number" || typeof buf === "bigint") {`);
+    block(() => {
+      emit("if (buf === 0 || buf === 0n) return null;");
+      emit(
+        "return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));",
+      );
+    });
+    emit(`} else if (buf instanceof ArrayBuffer) {`);
+    block(() => {
+      emit(`return new Uint8Array(buf);`);
+    });
+    emit(`} else {`);
+    block(() => {
+      emit(`return new Uint8Array(buf.buffer);`);
+    });
+    emit(`}`);
+  });
+  emit("}");
   newline();
   emit("/// Typedefs");
   for (const td of typedefs) {
@@ -86,7 +171,7 @@ export function emitRequire(req: RequireOrRemove) {
         throw new Error(`Enum ${name} not found`);
       }
       emit(
-        `export const ${en.name} = ${
+        `export const ${stripGL(en.name)} = ${
           typeof en.value === "number"
             ? ("0x" + en.value.toString(16))
             : en.value
@@ -104,8 +189,77 @@ export function emitRequire(req: RequireOrRemove) {
         throw new Error(`Command ${name} not found`);
       }
       newline();
+      emitCommand(cmd);
     }
+
+    newline();
+    emit(`/** Loads all OpenGL API function pointers. */`);
+    emit(
+      `export function load(proc: (name: string) => Deno.PointerValue): void {`,
+    );
+    block(() => {
+      for (const name of req.commands) {
+        const cmd = commands.find((c) => c.name === name);
+        if (!cmd) {
+          throw new Error(`Command ${name} not found`);
+        }
+        emit(
+          `fn_${cmd.name} = new Deno.UnsafeFnPointer(proc("${cmd.name}"), def_${cmd.name});`,
+        );
+      }
+    });
+    emit(`}`);
   }
+}
+
+export function emitCommand(cmd: Command) {
+  emit(`export const def_${cmd.name} = {`);
+  block(() => {
+    emit(
+      `parameters: [${
+        cmd.params.map((e) => `"${toFFIType(e.type)}"`).join(", ")
+      }],`,
+    );
+    emit(`result: "${toFFIType(cmd.result)}",`);
+  });
+  emit(`} as const;`);
+  newline();
+  emit(`let fn_${cmd.name}!: Deno.UnsafeFnPointer<typeof def_${cmd.name}>;`);
+  newline();
+  if (cmd.comment) {
+    emit(`/** ${cmd.comment} */`);
+  }
+  const rtype = toJSType(cmd.result);
+  if (cmd.params.length) {
+    emit(`export function ${stripGL(cmd.name)}(`);
+    block(() => {
+      for (const p of cmd.params) {
+        emit(`${p.name}: ${toJSType(p.type)},`);
+      }
+    });
+    emit(`): ${rtype} {`);
+  } else {
+    emit(`export function ${stripGL(cmd.name)}(): ${rtype} {`);
+  }
+  block(() => {
+    const ret = cmd.result !== "void" ? "return " : "";
+    if (cmd.params.length === 0) {
+      emit(`${ret}fn_${cmd.name}.call();`);
+    } else {
+      emit(`${ret}fn_${cmd.name}.call(`);
+      block(() => {
+        for (const p of cmd.params) {
+          emit(
+            `${
+              toFFIType(p.type) === "buffer" ? `bufferToFFI(${p.name})` : p.name
+            },`,
+          );
+        }
+      });
+      emit(`);`);
+    }
+  });
+  emit(`}`);
 }
 
 export function emitFeature(feature: Feature) {
@@ -156,6 +310,6 @@ for (const feature of features) {
   emitFeature(feature);
 }
 
-// for (const ext of extensions) {
-//   emitExtension(ext);
-// }
+for (const ext of extensions) {
+  emitExtension(ext);
+}

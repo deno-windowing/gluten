@@ -3,7 +3,7 @@ import {
   getProcAddress,
   mainloop,
 } from "https://raw.githubusercontent.com/DjDeveloperr/dwm/45bc008/mod.ts";
-import * as gl from "../src/api/gles32.ts";
+import * as gl from "../api/gles23.2.ts";
 
 const window = createWindow({
   title: "DenoGL",
@@ -14,7 +14,7 @@ const window = createWindow({
   gles: true,
 });
 
-gl.loadGL(getProcAddress);
+gl.load(getProcAddress);
 
 function loadShader(type: number, src: string) {
   const shader = gl.CreateShader(type);
