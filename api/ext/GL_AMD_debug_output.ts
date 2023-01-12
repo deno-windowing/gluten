@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -82,7 +90,9 @@ export const def_glDebugMessageEnableAMD = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageEnableAMD!: Deno.UnsafeFnPointer<typeof def_glDebugMessageEnableAMD>;
+let fn_glDebugMessageEnableAMD!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageEnableAMD
+>;
 
 export function DebugMessageEnableAMD(
   category: GLenum,
@@ -105,7 +115,9 @@ export const def_glDebugMessageInsertAMD = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageInsertAMD!: Deno.UnsafeFnPointer<typeof def_glDebugMessageInsertAMD>;
+let fn_glDebugMessageInsertAMD!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageInsertAMD
+>;
 
 export function DebugMessageInsertAMD(
   category: GLenum,
@@ -128,7 +140,9 @@ export const def_glDebugMessageCallbackAMD = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageCallbackAMD!: Deno.UnsafeFnPointer<typeof def_glDebugMessageCallbackAMD>;
+let fn_glDebugMessageCallbackAMD!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageCallbackAMD
+>;
 
 export function DebugMessageCallbackAMD(
   callback: GLDEBUGPROCAMD,
@@ -145,7 +159,9 @@ export const def_glGetDebugMessageLogAMD = {
   result: "u32",
 } as const;
 
-let fn_glGetDebugMessageLogAMD!: Deno.UnsafeFnPointer<typeof def_glGetDebugMessageLogAMD>;
+let fn_glGetDebugMessageLogAMD!: Deno.UnsafeFnPointer<
+  typeof def_glGetDebugMessageLogAMD
+>;
 
 export function GetDebugMessageLogAMD(
   count: GLuint,
@@ -169,8 +185,20 @@ export function GetDebugMessageLogAMD(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDebugMessageEnableAMD = new Deno.UnsafeFnPointer(proc("glDebugMessageEnableAMD"), def_glDebugMessageEnableAMD);
-  fn_glDebugMessageInsertAMD = new Deno.UnsafeFnPointer(proc("glDebugMessageInsertAMD"), def_glDebugMessageInsertAMD);
-  fn_glDebugMessageCallbackAMD = new Deno.UnsafeFnPointer(proc("glDebugMessageCallbackAMD"), def_glDebugMessageCallbackAMD);
-  fn_glGetDebugMessageLogAMD = new Deno.UnsafeFnPointer(proc("glGetDebugMessageLogAMD"), def_glGetDebugMessageLogAMD);
+  fn_glDebugMessageEnableAMD = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageEnableAMD"),
+    def_glDebugMessageEnableAMD,
+  );
+  fn_glDebugMessageInsertAMD = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageInsertAMD"),
+    def_glDebugMessageInsertAMD,
+  );
+  fn_glDebugMessageCallbackAMD = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageCallbackAMD"),
+    def_glDebugMessageCallbackAMD,
+  );
+  fn_glGetDebugMessageLogAMD = new Deno.UnsafeFnPointer(
+    proc("glGetDebugMessageLogAMD"),
+    def_glGetDebugMessageLogAMD,
+  );
 }

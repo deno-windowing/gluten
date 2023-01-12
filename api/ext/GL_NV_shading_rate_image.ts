@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -89,7 +97,9 @@ export const def_glBindShadingRateImageNV = {
   result: "void",
 } as const;
 
-let fn_glBindShadingRateImageNV!: Deno.UnsafeFnPointer<typeof def_glBindShadingRateImageNV>;
+let fn_glBindShadingRateImageNV!: Deno.UnsafeFnPointer<
+  typeof def_glBindShadingRateImageNV
+>;
 
 export function BindShadingRateImageNV(
   texture: GLuint,
@@ -104,7 +114,9 @@ export const def_glGetShadingRateImagePaletteNV = {
   result: "void",
 } as const;
 
-let fn_glGetShadingRateImagePaletteNV!: Deno.UnsafeFnPointer<typeof def_glGetShadingRateImagePaletteNV>;
+let fn_glGetShadingRateImagePaletteNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetShadingRateImagePaletteNV
+>;
 
 export function GetShadingRateImagePaletteNV(
   viewport: GLuint,
@@ -123,7 +135,9 @@ export const def_glGetShadingRateSampleLocationivNV = {
   result: "void",
 } as const;
 
-let fn_glGetShadingRateSampleLocationivNV!: Deno.UnsafeFnPointer<typeof def_glGetShadingRateSampleLocationivNV>;
+let fn_glGetShadingRateSampleLocationivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetShadingRateSampleLocationivNV
+>;
 
 export function GetShadingRateSampleLocationivNV(
   rate: GLenum,
@@ -144,7 +158,9 @@ export const def_glShadingRateImageBarrierNV = {
   result: "void",
 } as const;
 
-let fn_glShadingRateImageBarrierNV!: Deno.UnsafeFnPointer<typeof def_glShadingRateImageBarrierNV>;
+let fn_glShadingRateImageBarrierNV!: Deno.UnsafeFnPointer<
+  typeof def_glShadingRateImageBarrierNV
+>;
 
 export function ShadingRateImageBarrierNV(
   synchronize: GLboolean,
@@ -159,7 +175,9 @@ export const def_glShadingRateImagePaletteNV = {
   result: "void",
 } as const;
 
-let fn_glShadingRateImagePaletteNV!: Deno.UnsafeFnPointer<typeof def_glShadingRateImagePaletteNV>;
+let fn_glShadingRateImagePaletteNV!: Deno.UnsafeFnPointer<
+  typeof def_glShadingRateImagePaletteNV
+>;
 
 export function ShadingRateImagePaletteNV(
   viewport: GLuint,
@@ -180,7 +198,9 @@ export const def_glShadingRateSampleOrderNV = {
   result: "void",
 } as const;
 
-let fn_glShadingRateSampleOrderNV!: Deno.UnsafeFnPointer<typeof def_glShadingRateSampleOrderNV>;
+let fn_glShadingRateSampleOrderNV!: Deno.UnsafeFnPointer<
+  typeof def_glShadingRateSampleOrderNV
+>;
 
 export function ShadingRateSampleOrderNV(
   order: GLenum,
@@ -195,7 +215,9 @@ export const def_glShadingRateSampleOrderCustomNV = {
   result: "void",
 } as const;
 
-let fn_glShadingRateSampleOrderCustomNV!: Deno.UnsafeFnPointer<typeof def_glShadingRateSampleOrderCustomNV>;
+let fn_glShadingRateSampleOrderCustomNV!: Deno.UnsafeFnPointer<
+  typeof def_glShadingRateSampleOrderCustomNV
+>;
 
 export function ShadingRateSampleOrderCustomNV(
   rate: GLenum,
@@ -211,11 +233,32 @@ export function ShadingRateSampleOrderCustomNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBindShadingRateImageNV = new Deno.UnsafeFnPointer(proc("glBindShadingRateImageNV"), def_glBindShadingRateImageNV);
-  fn_glGetShadingRateImagePaletteNV = new Deno.UnsafeFnPointer(proc("glGetShadingRateImagePaletteNV"), def_glGetShadingRateImagePaletteNV);
-  fn_glGetShadingRateSampleLocationivNV = new Deno.UnsafeFnPointer(proc("glGetShadingRateSampleLocationivNV"), def_glGetShadingRateSampleLocationivNV);
-  fn_glShadingRateImageBarrierNV = new Deno.UnsafeFnPointer(proc("glShadingRateImageBarrierNV"), def_glShadingRateImageBarrierNV);
-  fn_glShadingRateImagePaletteNV = new Deno.UnsafeFnPointer(proc("glShadingRateImagePaletteNV"), def_glShadingRateImagePaletteNV);
-  fn_glShadingRateSampleOrderNV = new Deno.UnsafeFnPointer(proc("glShadingRateSampleOrderNV"), def_glShadingRateSampleOrderNV);
-  fn_glShadingRateSampleOrderCustomNV = new Deno.UnsafeFnPointer(proc("glShadingRateSampleOrderCustomNV"), def_glShadingRateSampleOrderCustomNV);
+  fn_glBindShadingRateImageNV = new Deno.UnsafeFnPointer(
+    proc("glBindShadingRateImageNV"),
+    def_glBindShadingRateImageNV,
+  );
+  fn_glGetShadingRateImagePaletteNV = new Deno.UnsafeFnPointer(
+    proc("glGetShadingRateImagePaletteNV"),
+    def_glGetShadingRateImagePaletteNV,
+  );
+  fn_glGetShadingRateSampleLocationivNV = new Deno.UnsafeFnPointer(
+    proc("glGetShadingRateSampleLocationivNV"),
+    def_glGetShadingRateSampleLocationivNV,
+  );
+  fn_glShadingRateImageBarrierNV = new Deno.UnsafeFnPointer(
+    proc("glShadingRateImageBarrierNV"),
+    def_glShadingRateImageBarrierNV,
+  );
+  fn_glShadingRateImagePaletteNV = new Deno.UnsafeFnPointer(
+    proc("glShadingRateImagePaletteNV"),
+    def_glShadingRateImagePaletteNV,
+  );
+  fn_glShadingRateSampleOrderNV = new Deno.UnsafeFnPointer(
+    proc("glShadingRateSampleOrderNV"),
+    def_glShadingRateSampleOrderNV,
+  );
+  fn_glShadingRateSampleOrderCustomNV = new Deno.UnsafeFnPointer(
+    proc("glShadingRateSampleOrderCustomNV"),
+    def_glShadingRateSampleOrderCustomNV,
+  );
 }

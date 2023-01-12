@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -88,7 +96,9 @@ export const def_glBeginPerfQueryINTEL = {
   result: "void",
 } as const;
 
-let fn_glBeginPerfQueryINTEL!: Deno.UnsafeFnPointer<typeof def_glBeginPerfQueryINTEL>;
+let fn_glBeginPerfQueryINTEL!: Deno.UnsafeFnPointer<
+  typeof def_glBeginPerfQueryINTEL
+>;
 
 export function BeginPerfQueryINTEL(
   queryHandle: GLuint,
@@ -103,7 +113,9 @@ export const def_glCreatePerfQueryINTEL = {
   result: "void",
 } as const;
 
-let fn_glCreatePerfQueryINTEL!: Deno.UnsafeFnPointer<typeof def_glCreatePerfQueryINTEL>;
+let fn_glCreatePerfQueryINTEL!: Deno.UnsafeFnPointer<
+  typeof def_glCreatePerfQueryINTEL
+>;
 
 export function CreatePerfQueryINTEL(
   queryId: GLuint,
@@ -120,7 +132,9 @@ export const def_glDeletePerfQueryINTEL = {
   result: "void",
 } as const;
 
-let fn_glDeletePerfQueryINTEL!: Deno.UnsafeFnPointer<typeof def_glDeletePerfQueryINTEL>;
+let fn_glDeletePerfQueryINTEL!: Deno.UnsafeFnPointer<
+  typeof def_glDeletePerfQueryINTEL
+>;
 
 export function DeletePerfQueryINTEL(
   queryHandle: GLuint,
@@ -135,7 +149,9 @@ export const def_glEndPerfQueryINTEL = {
   result: "void",
 } as const;
 
-let fn_glEndPerfQueryINTEL!: Deno.UnsafeFnPointer<typeof def_glEndPerfQueryINTEL>;
+let fn_glEndPerfQueryINTEL!: Deno.UnsafeFnPointer<
+  typeof def_glEndPerfQueryINTEL
+>;
 
 export function EndPerfQueryINTEL(
   queryHandle: GLuint,
@@ -150,7 +166,9 @@ export const def_glGetFirstPerfQueryIdINTEL = {
   result: "void",
 } as const;
 
-let fn_glGetFirstPerfQueryIdINTEL!: Deno.UnsafeFnPointer<typeof def_glGetFirstPerfQueryIdINTEL>;
+let fn_glGetFirstPerfQueryIdINTEL!: Deno.UnsafeFnPointer<
+  typeof def_glGetFirstPerfQueryIdINTEL
+>;
 
 export function GetFirstPerfQueryIdINTEL(
   queryId: Buffer,
@@ -165,7 +183,9 @@ export const def_glGetNextPerfQueryIdINTEL = {
   result: "void",
 } as const;
 
-let fn_glGetNextPerfQueryIdINTEL!: Deno.UnsafeFnPointer<typeof def_glGetNextPerfQueryIdINTEL>;
+let fn_glGetNextPerfQueryIdINTEL!: Deno.UnsafeFnPointer<
+  typeof def_glGetNextPerfQueryIdINTEL
+>;
 
 export function GetNextPerfQueryIdINTEL(
   queryId: GLuint,
@@ -178,11 +198,25 @@ export function GetNextPerfQueryIdINTEL(
 }
 
 export const def_glGetPerfCounterInfoINTEL = {
-  parameters: ["u32", "u32", "u32", "buffer", "u32", "buffer", "buffer", "buffer", "buffer", "buffer", "buffer"],
+  parameters: [
+    "u32",
+    "u32",
+    "u32",
+    "buffer",
+    "u32",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
-let fn_glGetPerfCounterInfoINTEL!: Deno.UnsafeFnPointer<typeof def_glGetPerfCounterInfoINTEL>;
+let fn_glGetPerfCounterInfoINTEL!: Deno.UnsafeFnPointer<
+  typeof def_glGetPerfCounterInfoINTEL
+>;
 
 export function GetPerfCounterInfoINTEL(
   queryId: GLuint,
@@ -217,7 +251,9 @@ export const def_glGetPerfQueryDataINTEL = {
   result: "void",
 } as const;
 
-let fn_glGetPerfQueryDataINTEL!: Deno.UnsafeFnPointer<typeof def_glGetPerfQueryDataINTEL>;
+let fn_glGetPerfQueryDataINTEL!: Deno.UnsafeFnPointer<
+  typeof def_glGetPerfQueryDataINTEL
+>;
 
 export function GetPerfQueryDataINTEL(
   queryHandle: GLuint,
@@ -240,7 +276,9 @@ export const def_glGetPerfQueryIdByNameINTEL = {
   result: "void",
 } as const;
 
-let fn_glGetPerfQueryIdByNameINTEL!: Deno.UnsafeFnPointer<typeof def_glGetPerfQueryIdByNameINTEL>;
+let fn_glGetPerfQueryIdByNameINTEL!: Deno.UnsafeFnPointer<
+  typeof def_glGetPerfQueryIdByNameINTEL
+>;
 
 export function GetPerfQueryIdByNameINTEL(
   queryName: Buffer,
@@ -257,7 +295,9 @@ export const def_glGetPerfQueryInfoINTEL = {
   result: "void",
 } as const;
 
-let fn_glGetPerfQueryInfoINTEL!: Deno.UnsafeFnPointer<typeof def_glGetPerfQueryInfoINTEL>;
+let fn_glGetPerfQueryInfoINTEL!: Deno.UnsafeFnPointer<
+  typeof def_glGetPerfQueryInfoINTEL
+>;
 
 export function GetPerfQueryInfoINTEL(
   queryId: GLuint,
@@ -281,14 +321,44 @@ export function GetPerfQueryInfoINTEL(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBeginPerfQueryINTEL = new Deno.UnsafeFnPointer(proc("glBeginPerfQueryINTEL"), def_glBeginPerfQueryINTEL);
-  fn_glCreatePerfQueryINTEL = new Deno.UnsafeFnPointer(proc("glCreatePerfQueryINTEL"), def_glCreatePerfQueryINTEL);
-  fn_glDeletePerfQueryINTEL = new Deno.UnsafeFnPointer(proc("glDeletePerfQueryINTEL"), def_glDeletePerfQueryINTEL);
-  fn_glEndPerfQueryINTEL = new Deno.UnsafeFnPointer(proc("glEndPerfQueryINTEL"), def_glEndPerfQueryINTEL);
-  fn_glGetFirstPerfQueryIdINTEL = new Deno.UnsafeFnPointer(proc("glGetFirstPerfQueryIdINTEL"), def_glGetFirstPerfQueryIdINTEL);
-  fn_glGetNextPerfQueryIdINTEL = new Deno.UnsafeFnPointer(proc("glGetNextPerfQueryIdINTEL"), def_glGetNextPerfQueryIdINTEL);
-  fn_glGetPerfCounterInfoINTEL = new Deno.UnsafeFnPointer(proc("glGetPerfCounterInfoINTEL"), def_glGetPerfCounterInfoINTEL);
-  fn_glGetPerfQueryDataINTEL = new Deno.UnsafeFnPointer(proc("glGetPerfQueryDataINTEL"), def_glGetPerfQueryDataINTEL);
-  fn_glGetPerfQueryIdByNameINTEL = new Deno.UnsafeFnPointer(proc("glGetPerfQueryIdByNameINTEL"), def_glGetPerfQueryIdByNameINTEL);
-  fn_glGetPerfQueryInfoINTEL = new Deno.UnsafeFnPointer(proc("glGetPerfQueryInfoINTEL"), def_glGetPerfQueryInfoINTEL);
+  fn_glBeginPerfQueryINTEL = new Deno.UnsafeFnPointer(
+    proc("glBeginPerfQueryINTEL"),
+    def_glBeginPerfQueryINTEL,
+  );
+  fn_glCreatePerfQueryINTEL = new Deno.UnsafeFnPointer(
+    proc("glCreatePerfQueryINTEL"),
+    def_glCreatePerfQueryINTEL,
+  );
+  fn_glDeletePerfQueryINTEL = new Deno.UnsafeFnPointer(
+    proc("glDeletePerfQueryINTEL"),
+    def_glDeletePerfQueryINTEL,
+  );
+  fn_glEndPerfQueryINTEL = new Deno.UnsafeFnPointer(
+    proc("glEndPerfQueryINTEL"),
+    def_glEndPerfQueryINTEL,
+  );
+  fn_glGetFirstPerfQueryIdINTEL = new Deno.UnsafeFnPointer(
+    proc("glGetFirstPerfQueryIdINTEL"),
+    def_glGetFirstPerfQueryIdINTEL,
+  );
+  fn_glGetNextPerfQueryIdINTEL = new Deno.UnsafeFnPointer(
+    proc("glGetNextPerfQueryIdINTEL"),
+    def_glGetNextPerfQueryIdINTEL,
+  );
+  fn_glGetPerfCounterInfoINTEL = new Deno.UnsafeFnPointer(
+    proc("glGetPerfCounterInfoINTEL"),
+    def_glGetPerfCounterInfoINTEL,
+  );
+  fn_glGetPerfQueryDataINTEL = new Deno.UnsafeFnPointer(
+    proc("glGetPerfQueryDataINTEL"),
+    def_glGetPerfQueryDataINTEL,
+  );
+  fn_glGetPerfQueryIdByNameINTEL = new Deno.UnsafeFnPointer(
+    proc("glGetPerfQueryIdByNameINTEL"),
+    def_glGetPerfQueryIdByNameINTEL,
+  );
+  fn_glGetPerfQueryInfoINTEL = new Deno.UnsafeFnPointer(
+    proc("glGetPerfQueryInfoINTEL"),
+    def_glGetPerfQueryInfoINTEL,
+  );
 }

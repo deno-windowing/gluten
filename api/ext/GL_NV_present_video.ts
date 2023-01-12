@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -70,11 +78,25 @@ export const PRESENT_DURATION_NV = 0x8e2b;
 /// Commands
 
 export const def_glPresentFrameKeyedNV = {
-  parameters: ["u32", "u64", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32"],
+  parameters: [
+    "u32",
+    "u64",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+  ],
   result: "void",
 } as const;
 
-let fn_glPresentFrameKeyedNV!: Deno.UnsafeFnPointer<typeof def_glPresentFrameKeyedNV>;
+let fn_glPresentFrameKeyedNV!: Deno.UnsafeFnPointer<
+  typeof def_glPresentFrameKeyedNV
+>;
 
 export function PresentFrameKeyedNV(
   video_slot: GLuint,
@@ -105,11 +127,27 @@ export function PresentFrameKeyedNV(
 }
 
 export const def_glPresentFrameDualFillNV = {
-  parameters: ["u32", "u64", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32"],
+  parameters: [
+    "u32",
+    "u64",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+  ],
   result: "void",
 } as const;
 
-let fn_glPresentFrameDualFillNV!: Deno.UnsafeFnPointer<typeof def_glPresentFrameDualFillNV>;
+let fn_glPresentFrameDualFillNV!: Deno.UnsafeFnPointer<
+  typeof def_glPresentFrameDualFillNV
+>;
 
 export function PresentFrameDualFillNV(
   video_slot: GLuint,
@@ -221,10 +259,28 @@ export function GetVideoui64vNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glPresentFrameKeyedNV = new Deno.UnsafeFnPointer(proc("glPresentFrameKeyedNV"), def_glPresentFrameKeyedNV);
-  fn_glPresentFrameDualFillNV = new Deno.UnsafeFnPointer(proc("glPresentFrameDualFillNV"), def_glPresentFrameDualFillNV);
-  fn_glGetVideoivNV = new Deno.UnsafeFnPointer(proc("glGetVideoivNV"), def_glGetVideoivNV);
-  fn_glGetVideouivNV = new Deno.UnsafeFnPointer(proc("glGetVideouivNV"), def_glGetVideouivNV);
-  fn_glGetVideoi64vNV = new Deno.UnsafeFnPointer(proc("glGetVideoi64vNV"), def_glGetVideoi64vNV);
-  fn_glGetVideoui64vNV = new Deno.UnsafeFnPointer(proc("glGetVideoui64vNV"), def_glGetVideoui64vNV);
+  fn_glPresentFrameKeyedNV = new Deno.UnsafeFnPointer(
+    proc("glPresentFrameKeyedNV"),
+    def_glPresentFrameKeyedNV,
+  );
+  fn_glPresentFrameDualFillNV = new Deno.UnsafeFnPointer(
+    proc("glPresentFrameDualFillNV"),
+    def_glPresentFrameDualFillNV,
+  );
+  fn_glGetVideoivNV = new Deno.UnsafeFnPointer(
+    proc("glGetVideoivNV"),
+    def_glGetVideoivNV,
+  );
+  fn_glGetVideouivNV = new Deno.UnsafeFnPointer(
+    proc("glGetVideouivNV"),
+    def_glGetVideouivNV,
+  );
+  fn_glGetVideoi64vNV = new Deno.UnsafeFnPointer(
+    proc("glGetVideoi64vNV"),
+    def_glGetVideoi64vNV,
+  );
+  fn_glGetVideoui64vNV = new Deno.UnsafeFnPointer(
+    proc("glGetVideoui64vNV"),
+    def_glGetVideoui64vNV,
+  );
 }

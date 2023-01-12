@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -101,7 +109,9 @@ export const def_glTexBufferRangeEXT = {
   result: "void",
 } as const;
 
-let fn_glTexBufferRangeEXT!: Deno.UnsafeFnPointer<typeof def_glTexBufferRangeEXT>;
+let fn_glTexBufferRangeEXT!: Deno.UnsafeFnPointer<
+  typeof def_glTexBufferRangeEXT
+>;
 
 export function TexBufferRangeEXT(
   target: GLenum,
@@ -121,6 +131,12 @@ export function TexBufferRangeEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexBufferEXT = new Deno.UnsafeFnPointer(proc("glTexBufferEXT"), def_glTexBufferEXT);
-  fn_glTexBufferRangeEXT = new Deno.UnsafeFnPointer(proc("glTexBufferRangeEXT"), def_glTexBufferRangeEXT);
+  fn_glTexBufferEXT = new Deno.UnsafeFnPointer(
+    proc("glTexBufferEXT"),
+    def_glTexBufferEXT,
+  );
+  fn_glTexBufferRangeEXT = new Deno.UnsafeFnPointer(
+    proc("glTexBufferRangeEXT"),
+    def_glTexBufferRangeEXT,
+  );
 }

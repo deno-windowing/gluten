@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -90,7 +98,9 @@ export const def_glDebugMessageControlARB = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageControlARB!: Deno.UnsafeFnPointer<typeof def_glDebugMessageControlARB>;
+let fn_glDebugMessageControlARB!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageControlARB
+>;
 
 export function DebugMessageControlARB(
   source: GLenum,
@@ -115,7 +125,9 @@ export const def_glDebugMessageInsertARB = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageInsertARB!: Deno.UnsafeFnPointer<typeof def_glDebugMessageInsertARB>;
+let fn_glDebugMessageInsertARB!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageInsertARB
+>;
 
 export function DebugMessageInsertARB(
   source: GLenum,
@@ -140,7 +152,9 @@ export const def_glDebugMessageCallbackARB = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageCallbackARB!: Deno.UnsafeFnPointer<typeof def_glDebugMessageCallbackARB>;
+let fn_glDebugMessageCallbackARB!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageCallbackARB
+>;
 
 export function DebugMessageCallbackARB(
   callback: GLDEBUGPROCARB,
@@ -153,11 +167,22 @@ export function DebugMessageCallbackARB(
 }
 
 export const def_glGetDebugMessageLogARB = {
-  parameters: ["u32", "i32", "buffer", "buffer", "buffer", "buffer", "buffer", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+  ],
   result: "u32",
 } as const;
 
-let fn_glGetDebugMessageLogARB!: Deno.UnsafeFnPointer<typeof def_glGetDebugMessageLogARB>;
+let fn_glGetDebugMessageLogARB!: Deno.UnsafeFnPointer<
+  typeof def_glGetDebugMessageLogARB
+>;
 
 export function GetDebugMessageLogARB(
   count: GLuint,
@@ -183,8 +208,20 @@ export function GetDebugMessageLogARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDebugMessageControlARB = new Deno.UnsafeFnPointer(proc("glDebugMessageControlARB"), def_glDebugMessageControlARB);
-  fn_glDebugMessageInsertARB = new Deno.UnsafeFnPointer(proc("glDebugMessageInsertARB"), def_glDebugMessageInsertARB);
-  fn_glDebugMessageCallbackARB = new Deno.UnsafeFnPointer(proc("glDebugMessageCallbackARB"), def_glDebugMessageCallbackARB);
-  fn_glGetDebugMessageLogARB = new Deno.UnsafeFnPointer(proc("glGetDebugMessageLogARB"), def_glGetDebugMessageLogARB);
+  fn_glDebugMessageControlARB = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageControlARB"),
+    def_glDebugMessageControlARB,
+  );
+  fn_glDebugMessageInsertARB = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageInsertARB"),
+    def_glDebugMessageInsertARB,
+  );
+  fn_glDebugMessageCallbackARB = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageCallbackARB"),
+    def_glDebugMessageCallbackARB,
+  );
+  fn_glGetDebugMessageLogARB = new Deno.UnsafeFnPointer(
+    proc("glGetDebugMessageLogARB"),
+    def_glGetDebugMessageLogARB,
+  );
 }

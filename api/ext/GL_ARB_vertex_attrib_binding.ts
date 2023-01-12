@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -96,7 +104,9 @@ export const def_glVertexAttribFormat = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribFormat!: Deno.UnsafeFnPointer<typeof def_glVertexAttribFormat>;
+let fn_glVertexAttribFormat!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribFormat
+>;
 
 export function VertexAttribFormat(
   attribindex: GLuint,
@@ -119,7 +129,9 @@ export const def_glVertexAttribIFormat = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribIFormat!: Deno.UnsafeFnPointer<typeof def_glVertexAttribIFormat>;
+let fn_glVertexAttribIFormat!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribIFormat
+>;
 
 export function VertexAttribIFormat(
   attribindex: GLuint,
@@ -140,7 +152,9 @@ export const def_glVertexAttribLFormat = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribLFormat!: Deno.UnsafeFnPointer<typeof def_glVertexAttribLFormat>;
+let fn_glVertexAttribLFormat!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribLFormat
+>;
 
 export function VertexAttribLFormat(
   attribindex: GLuint,
@@ -161,7 +175,9 @@ export const def_glVertexAttribBinding = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribBinding!: Deno.UnsafeFnPointer<typeof def_glVertexAttribBinding>;
+let fn_glVertexAttribBinding!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribBinding
+>;
 
 export function VertexAttribBinding(
   attribindex: GLuint,
@@ -178,7 +194,9 @@ export const def_glVertexBindingDivisor = {
   result: "void",
 } as const;
 
-let fn_glVertexBindingDivisor!: Deno.UnsafeFnPointer<typeof def_glVertexBindingDivisor>;
+let fn_glVertexBindingDivisor!: Deno.UnsafeFnPointer<
+  typeof def_glVertexBindingDivisor
+>;
 
 export function VertexBindingDivisor(
   bindingindex: GLuint,
@@ -192,10 +210,28 @@ export function VertexBindingDivisor(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBindVertexBuffer = new Deno.UnsafeFnPointer(proc("glBindVertexBuffer"), def_glBindVertexBuffer);
-  fn_glVertexAttribFormat = new Deno.UnsafeFnPointer(proc("glVertexAttribFormat"), def_glVertexAttribFormat);
-  fn_glVertexAttribIFormat = new Deno.UnsafeFnPointer(proc("glVertexAttribIFormat"), def_glVertexAttribIFormat);
-  fn_glVertexAttribLFormat = new Deno.UnsafeFnPointer(proc("glVertexAttribLFormat"), def_glVertexAttribLFormat);
-  fn_glVertexAttribBinding = new Deno.UnsafeFnPointer(proc("glVertexAttribBinding"), def_glVertexAttribBinding);
-  fn_glVertexBindingDivisor = new Deno.UnsafeFnPointer(proc("glVertexBindingDivisor"), def_glVertexBindingDivisor);
+  fn_glBindVertexBuffer = new Deno.UnsafeFnPointer(
+    proc("glBindVertexBuffer"),
+    def_glBindVertexBuffer,
+  );
+  fn_glVertexAttribFormat = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribFormat"),
+    def_glVertexAttribFormat,
+  );
+  fn_glVertexAttribIFormat = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribIFormat"),
+    def_glVertexAttribIFormat,
+  );
+  fn_glVertexAttribLFormat = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribLFormat"),
+    def_glVertexAttribLFormat,
+  );
+  fn_glVertexAttribBinding = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribBinding"),
+    def_glVertexAttribBinding,
+  );
+  fn_glVertexBindingDivisor = new Deno.UnsafeFnPointer(
+    proc("glVertexBindingDivisor"),
+    def_glVertexBindingDivisor,
+  );
 }

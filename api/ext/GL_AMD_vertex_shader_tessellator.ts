@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -75,7 +83,9 @@ export const def_glTessellationFactorAMD = {
   result: "void",
 } as const;
 
-let fn_glTessellationFactorAMD!: Deno.UnsafeFnPointer<typeof def_glTessellationFactorAMD>;
+let fn_glTessellationFactorAMD!: Deno.UnsafeFnPointer<
+  typeof def_glTessellationFactorAMD
+>;
 
 export function TessellationFactorAMD(
   factor: GLfloat,
@@ -90,7 +100,9 @@ export const def_glTessellationModeAMD = {
   result: "void",
 } as const;
 
-let fn_glTessellationModeAMD!: Deno.UnsafeFnPointer<typeof def_glTessellationModeAMD>;
+let fn_glTessellationModeAMD!: Deno.UnsafeFnPointer<
+  typeof def_glTessellationModeAMD
+>;
 
 export function TessellationModeAMD(
   mode: GLenum,
@@ -102,6 +114,12 @@ export function TessellationModeAMD(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTessellationFactorAMD = new Deno.UnsafeFnPointer(proc("glTessellationFactorAMD"), def_glTessellationFactorAMD);
-  fn_glTessellationModeAMD = new Deno.UnsafeFnPointer(proc("glTessellationModeAMD"), def_glTessellationModeAMD);
+  fn_glTessellationFactorAMD = new Deno.UnsafeFnPointer(
+    proc("glTessellationFactorAMD"),
+    def_glTessellationFactorAMD,
+  );
+  fn_glTessellationModeAMD = new Deno.UnsafeFnPointer(
+    proc("glTessellationModeAMD"),
+    def_glTessellationModeAMD,
+  );
 }

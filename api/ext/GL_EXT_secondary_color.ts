@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -75,7 +83,9 @@ export const def_glSecondaryColor3bEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3bEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3bEXT>;
+let fn_glSecondaryColor3bEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3bEXT
+>;
 
 export function SecondaryColor3bEXT(
   red: GLbyte,
@@ -94,7 +104,9 @@ export const def_glSecondaryColor3bvEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3bvEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3bvEXT>;
+let fn_glSecondaryColor3bvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3bvEXT
+>;
 
 export function SecondaryColor3bvEXT(
   v: Buffer,
@@ -109,7 +121,9 @@ export const def_glSecondaryColor3dEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3dEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3dEXT>;
+let fn_glSecondaryColor3dEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3dEXT
+>;
 
 export function SecondaryColor3dEXT(
   red: GLdouble,
@@ -128,7 +142,9 @@ export const def_glSecondaryColor3dvEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3dvEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3dvEXT>;
+let fn_glSecondaryColor3dvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3dvEXT
+>;
 
 export function SecondaryColor3dvEXT(
   v: Buffer,
@@ -143,7 +159,9 @@ export const def_glSecondaryColor3fEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3fEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3fEXT>;
+let fn_glSecondaryColor3fEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3fEXT
+>;
 
 export function SecondaryColor3fEXT(
   red: GLfloat,
@@ -162,7 +180,9 @@ export const def_glSecondaryColor3fvEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3fvEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3fvEXT>;
+let fn_glSecondaryColor3fvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3fvEXT
+>;
 
 export function SecondaryColor3fvEXT(
   v: Buffer,
@@ -177,7 +197,9 @@ export const def_glSecondaryColor3iEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3iEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3iEXT>;
+let fn_glSecondaryColor3iEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3iEXT
+>;
 
 export function SecondaryColor3iEXT(
   red: GLint,
@@ -196,7 +218,9 @@ export const def_glSecondaryColor3ivEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3ivEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3ivEXT>;
+let fn_glSecondaryColor3ivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3ivEXT
+>;
 
 export function SecondaryColor3ivEXT(
   v: Buffer,
@@ -211,7 +235,9 @@ export const def_glSecondaryColor3sEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3sEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3sEXT>;
+let fn_glSecondaryColor3sEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3sEXT
+>;
 
 export function SecondaryColor3sEXT(
   red: GLshort,
@@ -230,7 +256,9 @@ export const def_glSecondaryColor3svEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3svEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3svEXT>;
+let fn_glSecondaryColor3svEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3svEXT
+>;
 
 export function SecondaryColor3svEXT(
   v: Buffer,
@@ -245,7 +273,9 @@ export const def_glSecondaryColor3ubEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3ubEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3ubEXT>;
+let fn_glSecondaryColor3ubEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3ubEXT
+>;
 
 export function SecondaryColor3ubEXT(
   red: GLubyte,
@@ -264,7 +294,9 @@ export const def_glSecondaryColor3ubvEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3ubvEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3ubvEXT>;
+let fn_glSecondaryColor3ubvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3ubvEXT
+>;
 
 export function SecondaryColor3ubvEXT(
   v: Buffer,
@@ -279,7 +311,9 @@ export const def_glSecondaryColor3uiEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3uiEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3uiEXT>;
+let fn_glSecondaryColor3uiEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3uiEXT
+>;
 
 export function SecondaryColor3uiEXT(
   red: GLuint,
@@ -298,7 +332,9 @@ export const def_glSecondaryColor3uivEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3uivEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3uivEXT>;
+let fn_glSecondaryColor3uivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3uivEXT
+>;
 
 export function SecondaryColor3uivEXT(
   v: Buffer,
@@ -313,7 +349,9 @@ export const def_glSecondaryColor3usEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3usEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3usEXT>;
+let fn_glSecondaryColor3usEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3usEXT
+>;
 
 export function SecondaryColor3usEXT(
   red: GLushort,
@@ -332,7 +370,9 @@ export const def_glSecondaryColor3usvEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3usvEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3usvEXT>;
+let fn_glSecondaryColor3usvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColor3usvEXT
+>;
 
 export function SecondaryColor3usvEXT(
   v: Buffer,
@@ -347,7 +387,9 @@ export const def_glSecondaryColorPointerEXT = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColorPointerEXT!: Deno.UnsafeFnPointer<typeof def_glSecondaryColorPointerEXT>;
+let fn_glSecondaryColorPointerEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSecondaryColorPointerEXT
+>;
 
 export function SecondaryColorPointerEXT(
   size: GLint,
@@ -365,21 +407,72 @@ export function SecondaryColorPointerEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glSecondaryColor3bEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3bEXT"), def_glSecondaryColor3bEXT);
-  fn_glSecondaryColor3bvEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3bvEXT"), def_glSecondaryColor3bvEXT);
-  fn_glSecondaryColor3dEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3dEXT"), def_glSecondaryColor3dEXT);
-  fn_glSecondaryColor3dvEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3dvEXT"), def_glSecondaryColor3dvEXT);
-  fn_glSecondaryColor3fEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3fEXT"), def_glSecondaryColor3fEXT);
-  fn_glSecondaryColor3fvEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3fvEXT"), def_glSecondaryColor3fvEXT);
-  fn_glSecondaryColor3iEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3iEXT"), def_glSecondaryColor3iEXT);
-  fn_glSecondaryColor3ivEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3ivEXT"), def_glSecondaryColor3ivEXT);
-  fn_glSecondaryColor3sEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3sEXT"), def_glSecondaryColor3sEXT);
-  fn_glSecondaryColor3svEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3svEXT"), def_glSecondaryColor3svEXT);
-  fn_glSecondaryColor3ubEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3ubEXT"), def_glSecondaryColor3ubEXT);
-  fn_glSecondaryColor3ubvEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3ubvEXT"), def_glSecondaryColor3ubvEXT);
-  fn_glSecondaryColor3uiEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3uiEXT"), def_glSecondaryColor3uiEXT);
-  fn_glSecondaryColor3uivEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3uivEXT"), def_glSecondaryColor3uivEXT);
-  fn_glSecondaryColor3usEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3usEXT"), def_glSecondaryColor3usEXT);
-  fn_glSecondaryColor3usvEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColor3usvEXT"), def_glSecondaryColor3usvEXT);
-  fn_glSecondaryColorPointerEXT = new Deno.UnsafeFnPointer(proc("glSecondaryColorPointerEXT"), def_glSecondaryColorPointerEXT);
+  fn_glSecondaryColor3bEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3bEXT"),
+    def_glSecondaryColor3bEXT,
+  );
+  fn_glSecondaryColor3bvEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3bvEXT"),
+    def_glSecondaryColor3bvEXT,
+  );
+  fn_glSecondaryColor3dEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3dEXT"),
+    def_glSecondaryColor3dEXT,
+  );
+  fn_glSecondaryColor3dvEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3dvEXT"),
+    def_glSecondaryColor3dvEXT,
+  );
+  fn_glSecondaryColor3fEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3fEXT"),
+    def_glSecondaryColor3fEXT,
+  );
+  fn_glSecondaryColor3fvEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3fvEXT"),
+    def_glSecondaryColor3fvEXT,
+  );
+  fn_glSecondaryColor3iEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3iEXT"),
+    def_glSecondaryColor3iEXT,
+  );
+  fn_glSecondaryColor3ivEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3ivEXT"),
+    def_glSecondaryColor3ivEXT,
+  );
+  fn_glSecondaryColor3sEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3sEXT"),
+    def_glSecondaryColor3sEXT,
+  );
+  fn_glSecondaryColor3svEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3svEXT"),
+    def_glSecondaryColor3svEXT,
+  );
+  fn_glSecondaryColor3ubEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3ubEXT"),
+    def_glSecondaryColor3ubEXT,
+  );
+  fn_glSecondaryColor3ubvEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3ubvEXT"),
+    def_glSecondaryColor3ubvEXT,
+  );
+  fn_glSecondaryColor3uiEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3uiEXT"),
+    def_glSecondaryColor3uiEXT,
+  );
+  fn_glSecondaryColor3uivEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3uivEXT"),
+    def_glSecondaryColor3uivEXT,
+  );
+  fn_glSecondaryColor3usEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3usEXT"),
+    def_glSecondaryColor3usEXT,
+  );
+  fn_glSecondaryColor3usvEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColor3usvEXT"),
+    def_glSecondaryColor3usvEXT,
+  );
+  fn_glSecondaryColorPointerEXT = new Deno.UnsafeFnPointer(
+    proc("glSecondaryColorPointerEXT"),
+    def_glSecondaryColorPointerEXT,
+  );
 }

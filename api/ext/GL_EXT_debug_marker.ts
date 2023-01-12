@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glInsertEventMarkerEXT = {
   result: "void",
 } as const;
 
-let fn_glInsertEventMarkerEXT!: Deno.UnsafeFnPointer<typeof def_glInsertEventMarkerEXT>;
+let fn_glInsertEventMarkerEXT!: Deno.UnsafeFnPointer<
+  typeof def_glInsertEventMarkerEXT
+>;
 
 export function InsertEventMarkerEXT(
   length: GLsizei,
@@ -83,7 +93,9 @@ export const def_glPushGroupMarkerEXT = {
   result: "void",
 } as const;
 
-let fn_glPushGroupMarkerEXT!: Deno.UnsafeFnPointer<typeof def_glPushGroupMarkerEXT>;
+let fn_glPushGroupMarkerEXT!: Deno.UnsafeFnPointer<
+  typeof def_glPushGroupMarkerEXT
+>;
 
 export function PushGroupMarkerEXT(
   length: GLsizei,
@@ -100,7 +112,9 @@ export const def_glPopGroupMarkerEXT = {
   result: "void",
 } as const;
 
-let fn_glPopGroupMarkerEXT!: Deno.UnsafeFnPointer<typeof def_glPopGroupMarkerEXT>;
+let fn_glPopGroupMarkerEXT!: Deno.UnsafeFnPointer<
+  typeof def_glPopGroupMarkerEXT
+>;
 
 export function PopGroupMarkerEXT(): void {
   fn_glPopGroupMarkerEXT.call();
@@ -108,7 +122,16 @@ export function PopGroupMarkerEXT(): void {
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glInsertEventMarkerEXT = new Deno.UnsafeFnPointer(proc("glInsertEventMarkerEXT"), def_glInsertEventMarkerEXT);
-  fn_glPushGroupMarkerEXT = new Deno.UnsafeFnPointer(proc("glPushGroupMarkerEXT"), def_glPushGroupMarkerEXT);
-  fn_glPopGroupMarkerEXT = new Deno.UnsafeFnPointer(proc("glPopGroupMarkerEXT"), def_glPopGroupMarkerEXT);
+  fn_glInsertEventMarkerEXT = new Deno.UnsafeFnPointer(
+    proc("glInsertEventMarkerEXT"),
+    def_glInsertEventMarkerEXT,
+  );
+  fn_glPushGroupMarkerEXT = new Deno.UnsafeFnPointer(
+    proc("glPushGroupMarkerEXT"),
+    def_glPushGroupMarkerEXT,
+  );
+  fn_glPopGroupMarkerEXT = new Deno.UnsafeFnPointer(
+    proc("glPopGroupMarkerEXT"),
+    def_glPopGroupMarkerEXT,
+  );
 }

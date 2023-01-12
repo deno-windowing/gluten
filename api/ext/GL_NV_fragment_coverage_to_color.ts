@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -70,7 +78,9 @@ export const def_glFragmentCoverageColorNV = {
   result: "void",
 } as const;
 
-let fn_glFragmentCoverageColorNV!: Deno.UnsafeFnPointer<typeof def_glFragmentCoverageColorNV>;
+let fn_glFragmentCoverageColorNV!: Deno.UnsafeFnPointer<
+  typeof def_glFragmentCoverageColorNV
+>;
 
 export function FragmentCoverageColorNV(
   color: GLuint,
@@ -82,5 +92,8 @@ export function FragmentCoverageColorNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFragmentCoverageColorNV = new Deno.UnsafeFnPointer(proc("glFragmentCoverageColorNV"), def_glFragmentCoverageColorNV);
+  fn_glFragmentCoverageColorNV = new Deno.UnsafeFnPointer(
+    proc("glFragmentCoverageColorNV"),
+    def_glFragmentCoverageColorNV,
+  );
 }

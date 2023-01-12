@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glTexStorage2DMultisample = {
   result: "void",
 } as const;
 
-let fn_glTexStorage2DMultisample!: Deno.UnsafeFnPointer<typeof def_glTexStorage2DMultisample>;
+let fn_glTexStorage2DMultisample!: Deno.UnsafeFnPointer<
+  typeof def_glTexStorage2DMultisample
+>;
 
 export function TexStorage2DMultisample(
   target: GLenum,
@@ -91,7 +101,9 @@ export const def_glTexStorage3DMultisample = {
   result: "void",
 } as const;
 
-let fn_glTexStorage3DMultisample!: Deno.UnsafeFnPointer<typeof def_glTexStorage3DMultisample>;
+let fn_glTexStorage3DMultisample!: Deno.UnsafeFnPointer<
+  typeof def_glTexStorage3DMultisample
+>;
 
 export function TexStorage3DMultisample(
   target: GLenum,
@@ -115,6 +127,12 @@ export function TexStorage3DMultisample(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexStorage2DMultisample = new Deno.UnsafeFnPointer(proc("glTexStorage2DMultisample"), def_glTexStorage2DMultisample);
-  fn_glTexStorage3DMultisample = new Deno.UnsafeFnPointer(proc("glTexStorage3DMultisample"), def_glTexStorage3DMultisample);
+  fn_glTexStorage2DMultisample = new Deno.UnsafeFnPointer(
+    proc("glTexStorage2DMultisample"),
+    def_glTexStorage2DMultisample,
+  );
+  fn_glTexStorage3DMultisample = new Deno.UnsafeFnPointer(
+    proc("glTexStorage3DMultisample"),
+    def_glTexStorage3DMultisample,
+  );
 }

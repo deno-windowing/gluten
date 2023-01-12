@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -88,7 +96,9 @@ export const def_glProgramParameteriEXT = {
   result: "void",
 } as const;
 
-let fn_glProgramParameteriEXT!: Deno.UnsafeFnPointer<typeof def_glProgramParameteriEXT>;
+let fn_glProgramParameteriEXT!: Deno.UnsafeFnPointer<
+  typeof def_glProgramParameteriEXT
+>;
 
 export function ProgramParameteriEXT(
   program: GLuint,
@@ -104,5 +114,8 @@ export function ProgramParameteriEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glProgramParameteriEXT = new Deno.UnsafeFnPointer(proc("glProgramParameteriEXT"), def_glProgramParameteriEXT);
+  fn_glProgramParameteriEXT = new Deno.UnsafeFnPointer(
+    proc("glProgramParameteriEXT"),
+    def_glProgramParameteriEXT,
+  );
 }

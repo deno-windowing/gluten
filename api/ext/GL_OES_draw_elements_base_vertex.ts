@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glDrawElementsBaseVertexOES = {
   result: "void",
 } as const;
 
-let fn_glDrawElementsBaseVertexOES!: Deno.UnsafeFnPointer<typeof def_glDrawElementsBaseVertexOES>;
+let fn_glDrawElementsBaseVertexOES!: Deno.UnsafeFnPointer<
+  typeof def_glDrawElementsBaseVertexOES
+>;
 
 export function DrawElementsBaseVertexOES(
   mode: GLenum,
@@ -89,7 +99,9 @@ export const def_glDrawRangeElementsBaseVertexOES = {
   result: "void",
 } as const;
 
-let fn_glDrawRangeElementsBaseVertexOES!: Deno.UnsafeFnPointer<typeof def_glDrawRangeElementsBaseVertexOES>;
+let fn_glDrawRangeElementsBaseVertexOES!: Deno.UnsafeFnPointer<
+  typeof def_glDrawRangeElementsBaseVertexOES
+>;
 
 export function DrawRangeElementsBaseVertexOES(
   mode: GLenum,
@@ -116,7 +128,9 @@ export const def_glDrawElementsInstancedBaseVertexOES = {
   result: "void",
 } as const;
 
-let fn_glDrawElementsInstancedBaseVertexOES!: Deno.UnsafeFnPointer<typeof def_glDrawElementsInstancedBaseVertexOES>;
+let fn_glDrawElementsInstancedBaseVertexOES!: Deno.UnsafeFnPointer<
+  typeof def_glDrawElementsInstancedBaseVertexOES
+>;
 
 export function DrawElementsInstancedBaseVertexOES(
   mode: GLenum,
@@ -141,7 +155,9 @@ export const def_glMultiDrawElementsBaseVertexEXT = {
   result: "void",
 } as const;
 
-let fn_glMultiDrawElementsBaseVertexEXT!: Deno.UnsafeFnPointer<typeof def_glMultiDrawElementsBaseVertexEXT>;
+let fn_glMultiDrawElementsBaseVertexEXT!: Deno.UnsafeFnPointer<
+  typeof def_glMultiDrawElementsBaseVertexEXT
+>;
 
 export function MultiDrawElementsBaseVertexEXT(
   mode: GLenum,
@@ -163,8 +179,20 @@ export function MultiDrawElementsBaseVertexEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDrawElementsBaseVertexOES = new Deno.UnsafeFnPointer(proc("glDrawElementsBaseVertexOES"), def_glDrawElementsBaseVertexOES);
-  fn_glDrawRangeElementsBaseVertexOES = new Deno.UnsafeFnPointer(proc("glDrawRangeElementsBaseVertexOES"), def_glDrawRangeElementsBaseVertexOES);
-  fn_glDrawElementsInstancedBaseVertexOES = new Deno.UnsafeFnPointer(proc("glDrawElementsInstancedBaseVertexOES"), def_glDrawElementsInstancedBaseVertexOES);
-  fn_glMultiDrawElementsBaseVertexEXT = new Deno.UnsafeFnPointer(proc("glMultiDrawElementsBaseVertexEXT"), def_glMultiDrawElementsBaseVertexEXT);
+  fn_glDrawElementsBaseVertexOES = new Deno.UnsafeFnPointer(
+    proc("glDrawElementsBaseVertexOES"),
+    def_glDrawElementsBaseVertexOES,
+  );
+  fn_glDrawRangeElementsBaseVertexOES = new Deno.UnsafeFnPointer(
+    proc("glDrawRangeElementsBaseVertexOES"),
+    def_glDrawRangeElementsBaseVertexOES,
+  );
+  fn_glDrawElementsInstancedBaseVertexOES = new Deno.UnsafeFnPointer(
+    proc("glDrawElementsInstancedBaseVertexOES"),
+    def_glDrawElementsInstancedBaseVertexOES,
+  );
+  fn_glMultiDrawElementsBaseVertexEXT = new Deno.UnsafeFnPointer(
+    proc("glMultiDrawElementsBaseVertexEXT"),
+    def_glMultiDrawElementsBaseVertexEXT,
+  );
 }

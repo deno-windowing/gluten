@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -70,7 +78,9 @@ export const def_glGlobalAlphaFactorbSUN = {
   result: "void",
 } as const;
 
-let fn_glGlobalAlphaFactorbSUN!: Deno.UnsafeFnPointer<typeof def_glGlobalAlphaFactorbSUN>;
+let fn_glGlobalAlphaFactorbSUN!: Deno.UnsafeFnPointer<
+  typeof def_glGlobalAlphaFactorbSUN
+>;
 
 export function GlobalAlphaFactorbSUN(
   factor: GLbyte,
@@ -85,7 +95,9 @@ export const def_glGlobalAlphaFactorsSUN = {
   result: "void",
 } as const;
 
-let fn_glGlobalAlphaFactorsSUN!: Deno.UnsafeFnPointer<typeof def_glGlobalAlphaFactorsSUN>;
+let fn_glGlobalAlphaFactorsSUN!: Deno.UnsafeFnPointer<
+  typeof def_glGlobalAlphaFactorsSUN
+>;
 
 export function GlobalAlphaFactorsSUN(
   factor: GLshort,
@@ -100,7 +112,9 @@ export const def_glGlobalAlphaFactoriSUN = {
   result: "void",
 } as const;
 
-let fn_glGlobalAlphaFactoriSUN!: Deno.UnsafeFnPointer<typeof def_glGlobalAlphaFactoriSUN>;
+let fn_glGlobalAlphaFactoriSUN!: Deno.UnsafeFnPointer<
+  typeof def_glGlobalAlphaFactoriSUN
+>;
 
 export function GlobalAlphaFactoriSUN(
   factor: GLint,
@@ -115,7 +129,9 @@ export const def_glGlobalAlphaFactorfSUN = {
   result: "void",
 } as const;
 
-let fn_glGlobalAlphaFactorfSUN!: Deno.UnsafeFnPointer<typeof def_glGlobalAlphaFactorfSUN>;
+let fn_glGlobalAlphaFactorfSUN!: Deno.UnsafeFnPointer<
+  typeof def_glGlobalAlphaFactorfSUN
+>;
 
 export function GlobalAlphaFactorfSUN(
   factor: GLfloat,
@@ -130,7 +146,9 @@ export const def_glGlobalAlphaFactordSUN = {
   result: "void",
 } as const;
 
-let fn_glGlobalAlphaFactordSUN!: Deno.UnsafeFnPointer<typeof def_glGlobalAlphaFactordSUN>;
+let fn_glGlobalAlphaFactordSUN!: Deno.UnsafeFnPointer<
+  typeof def_glGlobalAlphaFactordSUN
+>;
 
 export function GlobalAlphaFactordSUN(
   factor: GLdouble,
@@ -145,7 +163,9 @@ export const def_glGlobalAlphaFactorubSUN = {
   result: "void",
 } as const;
 
-let fn_glGlobalAlphaFactorubSUN!: Deno.UnsafeFnPointer<typeof def_glGlobalAlphaFactorubSUN>;
+let fn_glGlobalAlphaFactorubSUN!: Deno.UnsafeFnPointer<
+  typeof def_glGlobalAlphaFactorubSUN
+>;
 
 export function GlobalAlphaFactorubSUN(
   factor: GLubyte,
@@ -160,7 +180,9 @@ export const def_glGlobalAlphaFactorusSUN = {
   result: "void",
 } as const;
 
-let fn_glGlobalAlphaFactorusSUN!: Deno.UnsafeFnPointer<typeof def_glGlobalAlphaFactorusSUN>;
+let fn_glGlobalAlphaFactorusSUN!: Deno.UnsafeFnPointer<
+  typeof def_glGlobalAlphaFactorusSUN
+>;
 
 export function GlobalAlphaFactorusSUN(
   factor: GLushort,
@@ -175,7 +197,9 @@ export const def_glGlobalAlphaFactoruiSUN = {
   result: "void",
 } as const;
 
-let fn_glGlobalAlphaFactoruiSUN!: Deno.UnsafeFnPointer<typeof def_glGlobalAlphaFactoruiSUN>;
+let fn_glGlobalAlphaFactoruiSUN!: Deno.UnsafeFnPointer<
+  typeof def_glGlobalAlphaFactoruiSUN
+>;
 
 export function GlobalAlphaFactoruiSUN(
   factor: GLuint,
@@ -187,12 +211,36 @@ export function GlobalAlphaFactoruiSUN(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGlobalAlphaFactorbSUN = new Deno.UnsafeFnPointer(proc("glGlobalAlphaFactorbSUN"), def_glGlobalAlphaFactorbSUN);
-  fn_glGlobalAlphaFactorsSUN = new Deno.UnsafeFnPointer(proc("glGlobalAlphaFactorsSUN"), def_glGlobalAlphaFactorsSUN);
-  fn_glGlobalAlphaFactoriSUN = new Deno.UnsafeFnPointer(proc("glGlobalAlphaFactoriSUN"), def_glGlobalAlphaFactoriSUN);
-  fn_glGlobalAlphaFactorfSUN = new Deno.UnsafeFnPointer(proc("glGlobalAlphaFactorfSUN"), def_glGlobalAlphaFactorfSUN);
-  fn_glGlobalAlphaFactordSUN = new Deno.UnsafeFnPointer(proc("glGlobalAlphaFactordSUN"), def_glGlobalAlphaFactordSUN);
-  fn_glGlobalAlphaFactorubSUN = new Deno.UnsafeFnPointer(proc("glGlobalAlphaFactorubSUN"), def_glGlobalAlphaFactorubSUN);
-  fn_glGlobalAlphaFactorusSUN = new Deno.UnsafeFnPointer(proc("glGlobalAlphaFactorusSUN"), def_glGlobalAlphaFactorusSUN);
-  fn_glGlobalAlphaFactoruiSUN = new Deno.UnsafeFnPointer(proc("glGlobalAlphaFactoruiSUN"), def_glGlobalAlphaFactoruiSUN);
+  fn_glGlobalAlphaFactorbSUN = new Deno.UnsafeFnPointer(
+    proc("glGlobalAlphaFactorbSUN"),
+    def_glGlobalAlphaFactorbSUN,
+  );
+  fn_glGlobalAlphaFactorsSUN = new Deno.UnsafeFnPointer(
+    proc("glGlobalAlphaFactorsSUN"),
+    def_glGlobalAlphaFactorsSUN,
+  );
+  fn_glGlobalAlphaFactoriSUN = new Deno.UnsafeFnPointer(
+    proc("glGlobalAlphaFactoriSUN"),
+    def_glGlobalAlphaFactoriSUN,
+  );
+  fn_glGlobalAlphaFactorfSUN = new Deno.UnsafeFnPointer(
+    proc("glGlobalAlphaFactorfSUN"),
+    def_glGlobalAlphaFactorfSUN,
+  );
+  fn_glGlobalAlphaFactordSUN = new Deno.UnsafeFnPointer(
+    proc("glGlobalAlphaFactordSUN"),
+    def_glGlobalAlphaFactordSUN,
+  );
+  fn_glGlobalAlphaFactorubSUN = new Deno.UnsafeFnPointer(
+    proc("glGlobalAlphaFactorubSUN"),
+    def_glGlobalAlphaFactorubSUN,
+  );
+  fn_glGlobalAlphaFactorusSUN = new Deno.UnsafeFnPointer(
+    proc("glGlobalAlphaFactorusSUN"),
+    def_glGlobalAlphaFactorusSUN,
+  );
+  fn_glGlobalAlphaFactoruiSUN = new Deno.UnsafeFnPointer(
+    proc("glGlobalAlphaFactoruiSUN"),
+    def_glGlobalAlphaFactoruiSUN,
+  );
 }

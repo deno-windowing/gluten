@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -73,7 +81,9 @@ export const def_glProgramBufferParametersfvNV = {
   result: "void",
 } as const;
 
-let fn_glProgramBufferParametersfvNV!: Deno.UnsafeFnPointer<typeof def_glProgramBufferParametersfvNV>;
+let fn_glProgramBufferParametersfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramBufferParametersfvNV
+>;
 
 export function ProgramBufferParametersfvNV(
   target: GLenum,
@@ -96,7 +106,9 @@ export const def_glProgramBufferParametersIivNV = {
   result: "void",
 } as const;
 
-let fn_glProgramBufferParametersIivNV!: Deno.UnsafeFnPointer<typeof def_glProgramBufferParametersIivNV>;
+let fn_glProgramBufferParametersIivNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramBufferParametersIivNV
+>;
 
 export function ProgramBufferParametersIivNV(
   target: GLenum,
@@ -119,7 +131,9 @@ export const def_glProgramBufferParametersIuivNV = {
   result: "void",
 } as const;
 
-let fn_glProgramBufferParametersIuivNV!: Deno.UnsafeFnPointer<typeof def_glProgramBufferParametersIuivNV>;
+let fn_glProgramBufferParametersIuivNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramBufferParametersIuivNV
+>;
 
 export function ProgramBufferParametersIuivNV(
   target: GLenum,
@@ -139,7 +153,16 @@ export function ProgramBufferParametersIuivNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glProgramBufferParametersfvNV = new Deno.UnsafeFnPointer(proc("glProgramBufferParametersfvNV"), def_glProgramBufferParametersfvNV);
-  fn_glProgramBufferParametersIivNV = new Deno.UnsafeFnPointer(proc("glProgramBufferParametersIivNV"), def_glProgramBufferParametersIivNV);
-  fn_glProgramBufferParametersIuivNV = new Deno.UnsafeFnPointer(proc("glProgramBufferParametersIuivNV"), def_glProgramBufferParametersIuivNV);
+  fn_glProgramBufferParametersfvNV = new Deno.UnsafeFnPointer(
+    proc("glProgramBufferParametersfvNV"),
+    def_glProgramBufferParametersfvNV,
+  );
+  fn_glProgramBufferParametersIivNV = new Deno.UnsafeFnPointer(
+    proc("glProgramBufferParametersIivNV"),
+    def_glProgramBufferParametersIivNV,
+  );
+  fn_glProgramBufferParametersIuivNV = new Deno.UnsafeFnPointer(
+    proc("glProgramBufferParametersIuivNV"),
+    def_glProgramBufferParametersIuivNV,
+  );
 }

@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -69,7 +77,9 @@ export const def_glFramebufferParameteriMESA = {
   result: "void",
 } as const;
 
-let fn_glFramebufferParameteriMESA!: Deno.UnsafeFnPointer<typeof def_glFramebufferParameteriMESA>;
+let fn_glFramebufferParameteriMESA!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferParameteriMESA
+>;
 
 export function FramebufferParameteriMESA(
   target: GLenum,
@@ -88,7 +98,9 @@ export const def_glGetFramebufferParameterivMESA = {
   result: "void",
 } as const;
 
-let fn_glGetFramebufferParameterivMESA!: Deno.UnsafeFnPointer<typeof def_glGetFramebufferParameterivMESA>;
+let fn_glGetFramebufferParameterivMESA!: Deno.UnsafeFnPointer<
+  typeof def_glGetFramebufferParameterivMESA
+>;
 
 export function GetFramebufferParameterivMESA(
   target: GLenum,
@@ -104,6 +116,12 @@ export function GetFramebufferParameterivMESA(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFramebufferParameteriMESA = new Deno.UnsafeFnPointer(proc("glFramebufferParameteriMESA"), def_glFramebufferParameteriMESA);
-  fn_glGetFramebufferParameterivMESA = new Deno.UnsafeFnPointer(proc("glGetFramebufferParameterivMESA"), def_glGetFramebufferParameterivMESA);
+  fn_glFramebufferParameteriMESA = new Deno.UnsafeFnPointer(
+    proc("glFramebufferParameteriMESA"),
+    def_glFramebufferParameteriMESA,
+  );
+  fn_glGetFramebufferParameterivMESA = new Deno.UnsafeFnPointer(
+    proc("glGetFramebufferParameterivMESA"),
+    def_glGetFramebufferParameterivMESA,
+  );
 }

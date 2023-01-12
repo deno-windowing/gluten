@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -88,7 +96,9 @@ export const def_glConvolutionFilter1DEXT = {
   result: "void",
 } as const;
 
-let fn_glConvolutionFilter1DEXT!: Deno.UnsafeFnPointer<typeof def_glConvolutionFilter1DEXT>;
+let fn_glConvolutionFilter1DEXT!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionFilter1DEXT
+>;
 
 export function ConvolutionFilter1DEXT(
   target: GLenum,
@@ -113,7 +123,9 @@ export const def_glConvolutionFilter2DEXT = {
   result: "void",
 } as const;
 
-let fn_glConvolutionFilter2DEXT!: Deno.UnsafeFnPointer<typeof def_glConvolutionFilter2DEXT>;
+let fn_glConvolutionFilter2DEXT!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionFilter2DEXT
+>;
 
 export function ConvolutionFilter2DEXT(
   target: GLenum,
@@ -140,7 +152,9 @@ export const def_glConvolutionParameterfEXT = {
   result: "void",
 } as const;
 
-let fn_glConvolutionParameterfEXT!: Deno.UnsafeFnPointer<typeof def_glConvolutionParameterfEXT>;
+let fn_glConvolutionParameterfEXT!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionParameterfEXT
+>;
 
 export function ConvolutionParameterfEXT(
   target: GLenum,
@@ -159,7 +173,9 @@ export const def_glConvolutionParameterfvEXT = {
   result: "void",
 } as const;
 
-let fn_glConvolutionParameterfvEXT!: Deno.UnsafeFnPointer<typeof def_glConvolutionParameterfvEXT>;
+let fn_glConvolutionParameterfvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionParameterfvEXT
+>;
 
 export function ConvolutionParameterfvEXT(
   target: GLenum,
@@ -178,7 +194,9 @@ export const def_glConvolutionParameteriEXT = {
   result: "void",
 } as const;
 
-let fn_glConvolutionParameteriEXT!: Deno.UnsafeFnPointer<typeof def_glConvolutionParameteriEXT>;
+let fn_glConvolutionParameteriEXT!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionParameteriEXT
+>;
 
 export function ConvolutionParameteriEXT(
   target: GLenum,
@@ -197,7 +215,9 @@ export const def_glConvolutionParameterivEXT = {
   result: "void",
 } as const;
 
-let fn_glConvolutionParameterivEXT!: Deno.UnsafeFnPointer<typeof def_glConvolutionParameterivEXT>;
+let fn_glConvolutionParameterivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionParameterivEXT
+>;
 
 export function ConvolutionParameterivEXT(
   target: GLenum,
@@ -216,7 +236,9 @@ export const def_glCopyConvolutionFilter1DEXT = {
   result: "void",
 } as const;
 
-let fn_glCopyConvolutionFilter1DEXT!: Deno.UnsafeFnPointer<typeof def_glCopyConvolutionFilter1DEXT>;
+let fn_glCopyConvolutionFilter1DEXT!: Deno.UnsafeFnPointer<
+  typeof def_glCopyConvolutionFilter1DEXT
+>;
 
 export function CopyConvolutionFilter1DEXT(
   target: GLenum,
@@ -239,7 +261,9 @@ export const def_glCopyConvolutionFilter2DEXT = {
   result: "void",
 } as const;
 
-let fn_glCopyConvolutionFilter2DEXT!: Deno.UnsafeFnPointer<typeof def_glCopyConvolutionFilter2DEXT>;
+let fn_glCopyConvolutionFilter2DEXT!: Deno.UnsafeFnPointer<
+  typeof def_glCopyConvolutionFilter2DEXT
+>;
 
 export function CopyConvolutionFilter2DEXT(
   target: GLenum,
@@ -264,7 +288,9 @@ export const def_glGetConvolutionFilterEXT = {
   result: "void",
 } as const;
 
-let fn_glGetConvolutionFilterEXT!: Deno.UnsafeFnPointer<typeof def_glGetConvolutionFilterEXT>;
+let fn_glGetConvolutionFilterEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetConvolutionFilterEXT
+>;
 
 export function GetConvolutionFilterEXT(
   target: GLenum,
@@ -285,7 +311,9 @@ export const def_glGetConvolutionParameterfvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetConvolutionParameterfvEXT!: Deno.UnsafeFnPointer<typeof def_glGetConvolutionParameterfvEXT>;
+let fn_glGetConvolutionParameterfvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetConvolutionParameterfvEXT
+>;
 
 export function GetConvolutionParameterfvEXT(
   target: GLenum,
@@ -304,7 +332,9 @@ export const def_glGetConvolutionParameterivEXT = {
   result: "void",
 } as const;
 
-let fn_glGetConvolutionParameterivEXT!: Deno.UnsafeFnPointer<typeof def_glGetConvolutionParameterivEXT>;
+let fn_glGetConvolutionParameterivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetConvolutionParameterivEXT
+>;
 
 export function GetConvolutionParameterivEXT(
   target: GLenum,
@@ -323,7 +353,9 @@ export const def_glGetSeparableFilterEXT = {
   result: "void",
 } as const;
 
-let fn_glGetSeparableFilterEXT!: Deno.UnsafeFnPointer<typeof def_glGetSeparableFilterEXT>;
+let fn_glGetSeparableFilterEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetSeparableFilterEXT
+>;
 
 export function GetSeparableFilterEXT(
   target: GLenum,
@@ -348,7 +380,9 @@ export const def_glSeparableFilter2DEXT = {
   result: "void",
 } as const;
 
-let fn_glSeparableFilter2DEXT!: Deno.UnsafeFnPointer<typeof def_glSeparableFilter2DEXT>;
+let fn_glSeparableFilter2DEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSeparableFilter2DEXT
+>;
 
 export function SeparableFilter2DEXT(
   target: GLenum,
@@ -374,17 +408,56 @@ export function SeparableFilter2DEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glConvolutionFilter1DEXT = new Deno.UnsafeFnPointer(proc("glConvolutionFilter1DEXT"), def_glConvolutionFilter1DEXT);
-  fn_glConvolutionFilter2DEXT = new Deno.UnsafeFnPointer(proc("glConvolutionFilter2DEXT"), def_glConvolutionFilter2DEXT);
-  fn_glConvolutionParameterfEXT = new Deno.UnsafeFnPointer(proc("glConvolutionParameterfEXT"), def_glConvolutionParameterfEXT);
-  fn_glConvolutionParameterfvEXT = new Deno.UnsafeFnPointer(proc("glConvolutionParameterfvEXT"), def_glConvolutionParameterfvEXT);
-  fn_glConvolutionParameteriEXT = new Deno.UnsafeFnPointer(proc("glConvolutionParameteriEXT"), def_glConvolutionParameteriEXT);
-  fn_glConvolutionParameterivEXT = new Deno.UnsafeFnPointer(proc("glConvolutionParameterivEXT"), def_glConvolutionParameterivEXT);
-  fn_glCopyConvolutionFilter1DEXT = new Deno.UnsafeFnPointer(proc("glCopyConvolutionFilter1DEXT"), def_glCopyConvolutionFilter1DEXT);
-  fn_glCopyConvolutionFilter2DEXT = new Deno.UnsafeFnPointer(proc("glCopyConvolutionFilter2DEXT"), def_glCopyConvolutionFilter2DEXT);
-  fn_glGetConvolutionFilterEXT = new Deno.UnsafeFnPointer(proc("glGetConvolutionFilterEXT"), def_glGetConvolutionFilterEXT);
-  fn_glGetConvolutionParameterfvEXT = new Deno.UnsafeFnPointer(proc("glGetConvolutionParameterfvEXT"), def_glGetConvolutionParameterfvEXT);
-  fn_glGetConvolutionParameterivEXT = new Deno.UnsafeFnPointer(proc("glGetConvolutionParameterivEXT"), def_glGetConvolutionParameterivEXT);
-  fn_glGetSeparableFilterEXT = new Deno.UnsafeFnPointer(proc("glGetSeparableFilterEXT"), def_glGetSeparableFilterEXT);
-  fn_glSeparableFilter2DEXT = new Deno.UnsafeFnPointer(proc("glSeparableFilter2DEXT"), def_glSeparableFilter2DEXT);
+  fn_glConvolutionFilter1DEXT = new Deno.UnsafeFnPointer(
+    proc("glConvolutionFilter1DEXT"),
+    def_glConvolutionFilter1DEXT,
+  );
+  fn_glConvolutionFilter2DEXT = new Deno.UnsafeFnPointer(
+    proc("glConvolutionFilter2DEXT"),
+    def_glConvolutionFilter2DEXT,
+  );
+  fn_glConvolutionParameterfEXT = new Deno.UnsafeFnPointer(
+    proc("glConvolutionParameterfEXT"),
+    def_glConvolutionParameterfEXT,
+  );
+  fn_glConvolutionParameterfvEXT = new Deno.UnsafeFnPointer(
+    proc("glConvolutionParameterfvEXT"),
+    def_glConvolutionParameterfvEXT,
+  );
+  fn_glConvolutionParameteriEXT = new Deno.UnsafeFnPointer(
+    proc("glConvolutionParameteriEXT"),
+    def_glConvolutionParameteriEXT,
+  );
+  fn_glConvolutionParameterivEXT = new Deno.UnsafeFnPointer(
+    proc("glConvolutionParameterivEXT"),
+    def_glConvolutionParameterivEXT,
+  );
+  fn_glCopyConvolutionFilter1DEXT = new Deno.UnsafeFnPointer(
+    proc("glCopyConvolutionFilter1DEXT"),
+    def_glCopyConvolutionFilter1DEXT,
+  );
+  fn_glCopyConvolutionFilter2DEXT = new Deno.UnsafeFnPointer(
+    proc("glCopyConvolutionFilter2DEXT"),
+    def_glCopyConvolutionFilter2DEXT,
+  );
+  fn_glGetConvolutionFilterEXT = new Deno.UnsafeFnPointer(
+    proc("glGetConvolutionFilterEXT"),
+    def_glGetConvolutionFilterEXT,
+  );
+  fn_glGetConvolutionParameterfvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetConvolutionParameterfvEXT"),
+    def_glGetConvolutionParameterfvEXT,
+  );
+  fn_glGetConvolutionParameterivEXT = new Deno.UnsafeFnPointer(
+    proc("glGetConvolutionParameterivEXT"),
+    def_glGetConvolutionParameterivEXT,
+  );
+  fn_glGetSeparableFilterEXT = new Deno.UnsafeFnPointer(
+    proc("glGetSeparableFilterEXT"),
+    def_glGetSeparableFilterEXT,
+  );
+  fn_glSeparableFilter2DEXT = new Deno.UnsafeFnPointer(
+    proc("glSeparableFilter2DEXT"),
+    def_glSeparableFilter2DEXT,
+  );
 }

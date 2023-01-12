@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glDrawTransformFeedbackEXT = {
   result: "void",
 } as const;
 
-let fn_glDrawTransformFeedbackEXT!: Deno.UnsafeFnPointer<typeof def_glDrawTransformFeedbackEXT>;
+let fn_glDrawTransformFeedbackEXT!: Deno.UnsafeFnPointer<
+  typeof def_glDrawTransformFeedbackEXT
+>;
 
 export function DrawTransformFeedbackEXT(
   mode: GLenum,
@@ -83,7 +93,9 @@ export const def_glDrawTransformFeedbackInstancedEXT = {
   result: "void",
 } as const;
 
-let fn_glDrawTransformFeedbackInstancedEXT!: Deno.UnsafeFnPointer<typeof def_glDrawTransformFeedbackInstancedEXT>;
+let fn_glDrawTransformFeedbackInstancedEXT!: Deno.UnsafeFnPointer<
+  typeof def_glDrawTransformFeedbackInstancedEXT
+>;
 
 export function DrawTransformFeedbackInstancedEXT(
   mode: GLenum,
@@ -99,6 +111,12 @@ export function DrawTransformFeedbackInstancedEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDrawTransformFeedbackEXT = new Deno.UnsafeFnPointer(proc("glDrawTransformFeedbackEXT"), def_glDrawTransformFeedbackEXT);
-  fn_glDrawTransformFeedbackInstancedEXT = new Deno.UnsafeFnPointer(proc("glDrawTransformFeedbackInstancedEXT"), def_glDrawTransformFeedbackInstancedEXT);
+  fn_glDrawTransformFeedbackEXT = new Deno.UnsafeFnPointer(
+    proc("glDrawTransformFeedbackEXT"),
+    def_glDrawTransformFeedbackEXT,
+  );
+  fn_glDrawTransformFeedbackInstancedEXT = new Deno.UnsafeFnPointer(
+    proc("glDrawTransformFeedbackInstancedEXT"),
+    def_glDrawTransformFeedbackInstancedEXT,
+  );
 }

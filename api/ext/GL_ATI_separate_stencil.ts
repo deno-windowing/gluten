@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -72,7 +80,9 @@ export const def_glStencilOpSeparateATI = {
   result: "void",
 } as const;
 
-let fn_glStencilOpSeparateATI!: Deno.UnsafeFnPointer<typeof def_glStencilOpSeparateATI>;
+let fn_glStencilOpSeparateATI!: Deno.UnsafeFnPointer<
+  typeof def_glStencilOpSeparateATI
+>;
 
 export function StencilOpSeparateATI(
   face: GLenum,
@@ -93,7 +103,9 @@ export const def_glStencilFuncSeparateATI = {
   result: "void",
 } as const;
 
-let fn_glStencilFuncSeparateATI!: Deno.UnsafeFnPointer<typeof def_glStencilFuncSeparateATI>;
+let fn_glStencilFuncSeparateATI!: Deno.UnsafeFnPointer<
+  typeof def_glStencilFuncSeparateATI
+>;
 
 export function StencilFuncSeparateATI(
   frontfunc: GLenum,
@@ -111,6 +123,12 @@ export function StencilFuncSeparateATI(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glStencilOpSeparateATI = new Deno.UnsafeFnPointer(proc("glStencilOpSeparateATI"), def_glStencilOpSeparateATI);
-  fn_glStencilFuncSeparateATI = new Deno.UnsafeFnPointer(proc("glStencilFuncSeparateATI"), def_glStencilFuncSeparateATI);
+  fn_glStencilOpSeparateATI = new Deno.UnsafeFnPointer(
+    proc("glStencilOpSeparateATI"),
+    def_glStencilOpSeparateATI,
+  );
+  fn_glStencilFuncSeparateATI = new Deno.UnsafeFnPointer(
+    proc("glStencilFuncSeparateATI"),
+    def_glStencilFuncSeparateATI,
+  );
 }

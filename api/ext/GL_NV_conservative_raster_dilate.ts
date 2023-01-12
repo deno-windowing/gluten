@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -71,7 +79,9 @@ export const def_glConservativeRasterParameterfNV = {
   result: "void",
 } as const;
 
-let fn_glConservativeRasterParameterfNV!: Deno.UnsafeFnPointer<typeof def_glConservativeRasterParameterfNV>;
+let fn_glConservativeRasterParameterfNV!: Deno.UnsafeFnPointer<
+  typeof def_glConservativeRasterParameterfNV
+>;
 
 export function ConservativeRasterParameterfNV(
   pname: GLenum,
@@ -85,5 +95,8 @@ export function ConservativeRasterParameterfNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glConservativeRasterParameterfNV = new Deno.UnsafeFnPointer(proc("glConservativeRasterParameterfNV"), def_glConservativeRasterParameterfNV);
+  fn_glConservativeRasterParameterfNV = new Deno.UnsafeFnPointer(
+    proc("glConservativeRasterParameterfNV"),
+    def_glConservativeRasterParameterfNV,
+  );
 }

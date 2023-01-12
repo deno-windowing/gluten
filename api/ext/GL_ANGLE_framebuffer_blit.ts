@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -68,11 +76,24 @@ export const READ_FRAMEBUFFER_BINDING_ANGLE = 0x8caa;
 /// Commands
 
 export const def_glBlitFramebufferANGLE = {
-  parameters: ["i32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "u32", "u32"],
+  parameters: [
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+  ],
   result: "void",
 } as const;
 
-let fn_glBlitFramebufferANGLE!: Deno.UnsafeFnPointer<typeof def_glBlitFramebufferANGLE>;
+let fn_glBlitFramebufferANGLE!: Deno.UnsafeFnPointer<
+  typeof def_glBlitFramebufferANGLE
+>;
 
 export function BlitFramebufferANGLE(
   srcX0: GLint,
@@ -102,5 +123,8 @@ export function BlitFramebufferANGLE(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBlitFramebufferANGLE = new Deno.UnsafeFnPointer(proc("glBlitFramebufferANGLE"), def_glBlitFramebufferANGLE);
+  fn_glBlitFramebufferANGLE = new Deno.UnsafeFnPointer(
+    proc("glBlitFramebufferANGLE"),
+    def_glBlitFramebufferANGLE,
+  );
 }

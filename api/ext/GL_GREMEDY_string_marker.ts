@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glStringMarkerGREMEDY = {
   result: "void",
 } as const;
 
-let fn_glStringMarkerGREMEDY!: Deno.UnsafeFnPointer<typeof def_glStringMarkerGREMEDY>;
+let fn_glStringMarkerGREMEDY!: Deno.UnsafeFnPointer<
+  typeof def_glStringMarkerGREMEDY
+>;
 
 export function StringMarkerGREMEDY(
   len: GLsizei,
@@ -80,5 +90,8 @@ export function StringMarkerGREMEDY(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glStringMarkerGREMEDY = new Deno.UnsafeFnPointer(proc("glStringMarkerGREMEDY"), def_glStringMarkerGREMEDY);
+  fn_glStringMarkerGREMEDY = new Deno.UnsafeFnPointer(
+    proc("glStringMarkerGREMEDY"),
+    def_glStringMarkerGREMEDY,
+  );
 }

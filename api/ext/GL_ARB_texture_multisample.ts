@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -89,7 +97,9 @@ export const def_glTexImage2DMultisample = {
   result: "void",
 } as const;
 
-let fn_glTexImage2DMultisample!: Deno.UnsafeFnPointer<typeof def_glTexImage2DMultisample>;
+let fn_glTexImage2DMultisample!: Deno.UnsafeFnPointer<
+  typeof def_glTexImage2DMultisample
+>;
 
 export function TexImage2DMultisample(
   target: GLenum,
@@ -114,7 +124,9 @@ export const def_glTexImage3DMultisample = {
   result: "void",
 } as const;
 
-let fn_glTexImage3DMultisample!: Deno.UnsafeFnPointer<typeof def_glTexImage3DMultisample>;
+let fn_glTexImage3DMultisample!: Deno.UnsafeFnPointer<
+  typeof def_glTexImage3DMultisample
+>;
 
 export function TexImage3DMultisample(
   target: GLenum,
@@ -174,8 +186,20 @@ export function SampleMaski(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexImage2DMultisample = new Deno.UnsafeFnPointer(proc("glTexImage2DMultisample"), def_glTexImage2DMultisample);
-  fn_glTexImage3DMultisample = new Deno.UnsafeFnPointer(proc("glTexImage3DMultisample"), def_glTexImage3DMultisample);
-  fn_glGetMultisamplefv = new Deno.UnsafeFnPointer(proc("glGetMultisamplefv"), def_glGetMultisamplefv);
-  fn_glSampleMaski = new Deno.UnsafeFnPointer(proc("glSampleMaski"), def_glSampleMaski);
+  fn_glTexImage2DMultisample = new Deno.UnsafeFnPointer(
+    proc("glTexImage2DMultisample"),
+    def_glTexImage2DMultisample,
+  );
+  fn_glTexImage3DMultisample = new Deno.UnsafeFnPointer(
+    proc("glTexImage3DMultisample"),
+    def_glTexImage3DMultisample,
+  );
+  fn_glGetMultisamplefv = new Deno.UnsafeFnPointer(
+    proc("glGetMultisamplefv"),
+    def_glGetMultisamplefv,
+  );
+  fn_glSampleMaski = new Deno.UnsafeFnPointer(
+    proc("glSampleMaski"),
+    def_glSampleMaski,
+  );
 }

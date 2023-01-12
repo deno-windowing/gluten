@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -84,7 +92,9 @@ export const def_glProgramVertexLimitNV = {
   result: "void",
 } as const;
 
-let fn_glProgramVertexLimitNV!: Deno.UnsafeFnPointer<typeof def_glProgramVertexLimitNV>;
+let fn_glProgramVertexLimitNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramVertexLimitNV
+>;
 
 export function ProgramVertexLimitNV(
   target: GLenum,
@@ -101,7 +111,9 @@ export const def_glFramebufferTextureEXT = {
   result: "void",
 } as const;
 
-let fn_glFramebufferTextureEXT!: Deno.UnsafeFnPointer<typeof def_glFramebufferTextureEXT>;
+let fn_glFramebufferTextureEXT!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferTextureEXT
+>;
 
 export function FramebufferTextureEXT(
   target: GLenum,
@@ -122,7 +134,9 @@ export const def_glFramebufferTextureLayerEXT = {
   result: "void",
 } as const;
 
-let fn_glFramebufferTextureLayerEXT!: Deno.UnsafeFnPointer<typeof def_glFramebufferTextureLayerEXT>;
+let fn_glFramebufferTextureLayerEXT!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferTextureLayerEXT
+>;
 
 export function FramebufferTextureLayerEXT(
   target: GLenum,
@@ -145,7 +159,9 @@ export const def_glFramebufferTextureFaceEXT = {
   result: "void",
 } as const;
 
-let fn_glFramebufferTextureFaceEXT!: Deno.UnsafeFnPointer<typeof def_glFramebufferTextureFaceEXT>;
+let fn_glFramebufferTextureFaceEXT!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferTextureFaceEXT
+>;
 
 export function FramebufferTextureFaceEXT(
   target: GLenum,
@@ -165,8 +181,20 @@ export function FramebufferTextureFaceEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glProgramVertexLimitNV = new Deno.UnsafeFnPointer(proc("glProgramVertexLimitNV"), def_glProgramVertexLimitNV);
-  fn_glFramebufferTextureEXT = new Deno.UnsafeFnPointer(proc("glFramebufferTextureEXT"), def_glFramebufferTextureEXT);
-  fn_glFramebufferTextureLayerEXT = new Deno.UnsafeFnPointer(proc("glFramebufferTextureLayerEXT"), def_glFramebufferTextureLayerEXT);
-  fn_glFramebufferTextureFaceEXT = new Deno.UnsafeFnPointer(proc("glFramebufferTextureFaceEXT"), def_glFramebufferTextureFaceEXT);
+  fn_glProgramVertexLimitNV = new Deno.UnsafeFnPointer(
+    proc("glProgramVertexLimitNV"),
+    def_glProgramVertexLimitNV,
+  );
+  fn_glFramebufferTextureEXT = new Deno.UnsafeFnPointer(
+    proc("glFramebufferTextureEXT"),
+    def_glFramebufferTextureEXT,
+  );
+  fn_glFramebufferTextureLayerEXT = new Deno.UnsafeFnPointer(
+    proc("glFramebufferTextureLayerEXT"),
+    def_glFramebufferTextureLayerEXT,
+  );
+  fn_glFramebufferTextureFaceEXT = new Deno.UnsafeFnPointer(
+    proc("glFramebufferTextureFaceEXT"),
+    def_glFramebufferTextureFaceEXT,
+  );
 }

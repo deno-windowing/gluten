@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -83,7 +91,9 @@ export const def_glBeginTransformFeedbackEXT = {
   result: "void",
 } as const;
 
-let fn_glBeginTransformFeedbackEXT!: Deno.UnsafeFnPointer<typeof def_glBeginTransformFeedbackEXT>;
+let fn_glBeginTransformFeedbackEXT!: Deno.UnsafeFnPointer<
+  typeof def_glBeginTransformFeedbackEXT
+>;
 
 export function BeginTransformFeedbackEXT(
   primitiveMode: GLenum,
@@ -98,7 +108,9 @@ export const def_glEndTransformFeedbackEXT = {
   result: "void",
 } as const;
 
-let fn_glEndTransformFeedbackEXT!: Deno.UnsafeFnPointer<typeof def_glEndTransformFeedbackEXT>;
+let fn_glEndTransformFeedbackEXT!: Deno.UnsafeFnPointer<
+  typeof def_glEndTransformFeedbackEXT
+>;
 
 export function EndTransformFeedbackEXT(): void {
   fn_glEndTransformFeedbackEXT.call();
@@ -109,7 +121,9 @@ export const def_glBindBufferRangeEXT = {
   result: "void",
 } as const;
 
-let fn_glBindBufferRangeEXT!: Deno.UnsafeFnPointer<typeof def_glBindBufferRangeEXT>;
+let fn_glBindBufferRangeEXT!: Deno.UnsafeFnPointer<
+  typeof def_glBindBufferRangeEXT
+>;
 
 export function BindBufferRangeEXT(
   target: GLenum,
@@ -132,7 +146,9 @@ export const def_glBindBufferOffsetEXT = {
   result: "void",
 } as const;
 
-let fn_glBindBufferOffsetEXT!: Deno.UnsafeFnPointer<typeof def_glBindBufferOffsetEXT>;
+let fn_glBindBufferOffsetEXT!: Deno.UnsafeFnPointer<
+  typeof def_glBindBufferOffsetEXT
+>;
 
 export function BindBufferOffsetEXT(
   target: GLenum,
@@ -153,7 +169,9 @@ export const def_glBindBufferBaseEXT = {
   result: "void",
 } as const;
 
-let fn_glBindBufferBaseEXT!: Deno.UnsafeFnPointer<typeof def_glBindBufferBaseEXT>;
+let fn_glBindBufferBaseEXT!: Deno.UnsafeFnPointer<
+  typeof def_glBindBufferBaseEXT
+>;
 
 export function BindBufferBaseEXT(
   target: GLenum,
@@ -172,7 +190,9 @@ export const def_glTransformFeedbackVaryingsEXT = {
   result: "void",
 } as const;
 
-let fn_glTransformFeedbackVaryingsEXT!: Deno.UnsafeFnPointer<typeof def_glTransformFeedbackVaryingsEXT>;
+let fn_glTransformFeedbackVaryingsEXT!: Deno.UnsafeFnPointer<
+  typeof def_glTransformFeedbackVaryingsEXT
+>;
 
 export function TransformFeedbackVaryingsEXT(
   program: GLuint,
@@ -193,7 +213,9 @@ export const def_glGetTransformFeedbackVaryingEXT = {
   result: "void",
 } as const;
 
-let fn_glGetTransformFeedbackVaryingEXT!: Deno.UnsafeFnPointer<typeof def_glGetTransformFeedbackVaryingEXT>;
+let fn_glGetTransformFeedbackVaryingEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetTransformFeedbackVaryingEXT
+>;
 
 export function GetTransformFeedbackVaryingEXT(
   program: GLuint,
@@ -217,11 +239,32 @@ export function GetTransformFeedbackVaryingEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBeginTransformFeedbackEXT = new Deno.UnsafeFnPointer(proc("glBeginTransformFeedbackEXT"), def_glBeginTransformFeedbackEXT);
-  fn_glEndTransformFeedbackEXT = new Deno.UnsafeFnPointer(proc("glEndTransformFeedbackEXT"), def_glEndTransformFeedbackEXT);
-  fn_glBindBufferRangeEXT = new Deno.UnsafeFnPointer(proc("glBindBufferRangeEXT"), def_glBindBufferRangeEXT);
-  fn_glBindBufferOffsetEXT = new Deno.UnsafeFnPointer(proc("glBindBufferOffsetEXT"), def_glBindBufferOffsetEXT);
-  fn_glBindBufferBaseEXT = new Deno.UnsafeFnPointer(proc("glBindBufferBaseEXT"), def_glBindBufferBaseEXT);
-  fn_glTransformFeedbackVaryingsEXT = new Deno.UnsafeFnPointer(proc("glTransformFeedbackVaryingsEXT"), def_glTransformFeedbackVaryingsEXT);
-  fn_glGetTransformFeedbackVaryingEXT = new Deno.UnsafeFnPointer(proc("glGetTransformFeedbackVaryingEXT"), def_glGetTransformFeedbackVaryingEXT);
+  fn_glBeginTransformFeedbackEXT = new Deno.UnsafeFnPointer(
+    proc("glBeginTransformFeedbackEXT"),
+    def_glBeginTransformFeedbackEXT,
+  );
+  fn_glEndTransformFeedbackEXT = new Deno.UnsafeFnPointer(
+    proc("glEndTransformFeedbackEXT"),
+    def_glEndTransformFeedbackEXT,
+  );
+  fn_glBindBufferRangeEXT = new Deno.UnsafeFnPointer(
+    proc("glBindBufferRangeEXT"),
+    def_glBindBufferRangeEXT,
+  );
+  fn_glBindBufferOffsetEXT = new Deno.UnsafeFnPointer(
+    proc("glBindBufferOffsetEXT"),
+    def_glBindBufferOffsetEXT,
+  );
+  fn_glBindBufferBaseEXT = new Deno.UnsafeFnPointer(
+    proc("glBindBufferBaseEXT"),
+    def_glBindBufferBaseEXT,
+  );
+  fn_glTransformFeedbackVaryingsEXT = new Deno.UnsafeFnPointer(
+    proc("glTransformFeedbackVaryingsEXT"),
+    def_glTransformFeedbackVaryingsEXT,
+  );
+  fn_glGetTransformFeedbackVaryingEXT = new Deno.UnsafeFnPointer(
+    proc("glGetTransformFeedbackVaryingEXT"),
+    def_glGetTransformFeedbackVaryingEXT,
+  );
 }

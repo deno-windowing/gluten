@@ -54,4 +54,4 @@ deno run --unstable --allow-ffi <file>
 
 [Apache-2.0](./LICENSE) licensed.
 
-Copyright 2022 © The Deno Windowing Team
+Copyright 2023 © The Deno Windowing Team

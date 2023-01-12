@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glProgramEnvParameters4fvEXT = {
   result: "void",
 } as const;
 
-let fn_glProgramEnvParameters4fvEXT!: Deno.UnsafeFnPointer<typeof def_glProgramEnvParameters4fvEXT>;
+let fn_glProgramEnvParameters4fvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glProgramEnvParameters4fvEXT
+>;
 
 export function ProgramEnvParameters4fvEXT(
   target: GLenum,
@@ -87,7 +97,9 @@ export const def_glProgramLocalParameters4fvEXT = {
   result: "void",
 } as const;
 
-let fn_glProgramLocalParameters4fvEXT!: Deno.UnsafeFnPointer<typeof def_glProgramLocalParameters4fvEXT>;
+let fn_glProgramLocalParameters4fvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glProgramLocalParameters4fvEXT
+>;
 
 export function ProgramLocalParameters4fvEXT(
   target: GLenum,
@@ -105,6 +117,12 @@ export function ProgramLocalParameters4fvEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glProgramEnvParameters4fvEXT = new Deno.UnsafeFnPointer(proc("glProgramEnvParameters4fvEXT"), def_glProgramEnvParameters4fvEXT);
-  fn_glProgramLocalParameters4fvEXT = new Deno.UnsafeFnPointer(proc("glProgramLocalParameters4fvEXT"), def_glProgramLocalParameters4fvEXT);
+  fn_glProgramEnvParameters4fvEXT = new Deno.UnsafeFnPointer(
+    proc("glProgramEnvParameters4fvEXT"),
+    def_glProgramEnvParameters4fvEXT,
+  );
+  fn_glProgramLocalParameters4fvEXT = new Deno.UnsafeFnPointer(
+    proc("glProgramLocalParameters4fvEXT"),
+    def_glProgramLocalParameters4fvEXT,
+  );
 }

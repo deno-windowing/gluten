@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glMultiDrawArraysIndirect = {
   result: "void",
 } as const;
 
-let fn_glMultiDrawArraysIndirect!: Deno.UnsafeFnPointer<typeof def_glMultiDrawArraysIndirect>;
+let fn_glMultiDrawArraysIndirect!: Deno.UnsafeFnPointer<
+  typeof def_glMultiDrawArraysIndirect
+>;
 
 export function MultiDrawArraysIndirect(
   mode: GLenum,
@@ -87,7 +97,9 @@ export const def_glMultiDrawElementsIndirect = {
   result: "void",
 } as const;
 
-let fn_glMultiDrawElementsIndirect!: Deno.UnsafeFnPointer<typeof def_glMultiDrawElementsIndirect>;
+let fn_glMultiDrawElementsIndirect!: Deno.UnsafeFnPointer<
+  typeof def_glMultiDrawElementsIndirect
+>;
 
 export function MultiDrawElementsIndirect(
   mode: GLenum,
@@ -107,6 +119,12 @@ export function MultiDrawElementsIndirect(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glMultiDrawArraysIndirect = new Deno.UnsafeFnPointer(proc("glMultiDrawArraysIndirect"), def_glMultiDrawArraysIndirect);
-  fn_glMultiDrawElementsIndirect = new Deno.UnsafeFnPointer(proc("glMultiDrawElementsIndirect"), def_glMultiDrawElementsIndirect);
+  fn_glMultiDrawArraysIndirect = new Deno.UnsafeFnPointer(
+    proc("glMultiDrawArraysIndirect"),
+    def_glMultiDrawArraysIndirect,
+  );
+  fn_glMultiDrawElementsIndirect = new Deno.UnsafeFnPointer(
+    proc("glMultiDrawElementsIndirect"),
+    def_glMultiDrawElementsIndirect,
+  );
 }

@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -153,7 +161,9 @@ export const def_glGetCommandHeaderNV = {
   result: "u32",
 } as const;
 
-let fn_glGetCommandHeaderNV!: Deno.UnsafeFnPointer<typeof def_glGetCommandHeaderNV>;
+let fn_glGetCommandHeaderNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetCommandHeaderNV
+>;
 
 export function GetCommandHeaderNV(
   tokenID: GLenum,
@@ -208,7 +218,9 @@ export const def_glDrawCommandsAddressNV = {
   result: "void",
 } as const;
 
-let fn_glDrawCommandsAddressNV!: Deno.UnsafeFnPointer<typeof def_glDrawCommandsAddressNV>;
+let fn_glDrawCommandsAddressNV!: Deno.UnsafeFnPointer<
+  typeof def_glDrawCommandsAddressNV
+>;
 
 export function DrawCommandsAddressNV(
   primitiveMode: GLenum,
@@ -229,7 +241,9 @@ export const def_glDrawCommandsStatesNV = {
   result: "void",
 } as const;
 
-let fn_glDrawCommandsStatesNV!: Deno.UnsafeFnPointer<typeof def_glDrawCommandsStatesNV>;
+let fn_glDrawCommandsStatesNV!: Deno.UnsafeFnPointer<
+  typeof def_glDrawCommandsStatesNV
+>;
 
 export function DrawCommandsStatesNV(
   buffer: GLuint,
@@ -254,7 +268,9 @@ export const def_glDrawCommandsStatesAddressNV = {
   result: "void",
 } as const;
 
-let fn_glDrawCommandsStatesAddressNV!: Deno.UnsafeFnPointer<typeof def_glDrawCommandsStatesAddressNV>;
+let fn_glDrawCommandsStatesAddressNV!: Deno.UnsafeFnPointer<
+  typeof def_glDrawCommandsStatesAddressNV
+>;
 
 export function DrawCommandsStatesAddressNV(
   indirects: Buffer,
@@ -277,7 +293,9 @@ export const def_glCreateCommandListsNV = {
   result: "void",
 } as const;
 
-let fn_glCreateCommandListsNV!: Deno.UnsafeFnPointer<typeof def_glCreateCommandListsNV>;
+let fn_glCreateCommandListsNV!: Deno.UnsafeFnPointer<
+  typeof def_glCreateCommandListsNV
+>;
 
 export function CreateCommandListsNV(
   n: GLsizei,
@@ -294,7 +312,9 @@ export const def_glDeleteCommandListsNV = {
   result: "void",
 } as const;
 
-let fn_glDeleteCommandListsNV!: Deno.UnsafeFnPointer<typeof def_glDeleteCommandListsNV>;
+let fn_glDeleteCommandListsNV!: Deno.UnsafeFnPointer<
+  typeof def_glDeleteCommandListsNV
+>;
 
 export function DeleteCommandListsNV(
   n: GLsizei,
@@ -326,7 +346,9 @@ export const def_glListDrawCommandsStatesClientNV = {
   result: "void",
 } as const;
 
-let fn_glListDrawCommandsStatesClientNV!: Deno.UnsafeFnPointer<typeof def_glListDrawCommandsStatesClientNV>;
+let fn_glListDrawCommandsStatesClientNV!: Deno.UnsafeFnPointer<
+  typeof def_glListDrawCommandsStatesClientNV
+>;
 
 export function ListDrawCommandsStatesClientNV(
   list: GLuint,
@@ -353,7 +375,9 @@ export const def_glCommandListSegmentsNV = {
   result: "void",
 } as const;
 
-let fn_glCommandListSegmentsNV!: Deno.UnsafeFnPointer<typeof def_glCommandListSegmentsNV>;
+let fn_glCommandListSegmentsNV!: Deno.UnsafeFnPointer<
+  typeof def_glCommandListSegmentsNV
+>;
 
 export function CommandListSegmentsNV(
   list: GLuint,
@@ -370,7 +394,9 @@ export const def_glCompileCommandListNV = {
   result: "void",
 } as const;
 
-let fn_glCompileCommandListNV!: Deno.UnsafeFnPointer<typeof def_glCompileCommandListNV>;
+let fn_glCompileCommandListNV!: Deno.UnsafeFnPointer<
+  typeof def_glCompileCommandListNV
+>;
 
 export function CompileCommandListNV(
   list: GLuint,
@@ -385,7 +411,9 @@ export const def_glCallCommandListNV = {
   result: "void",
 } as const;
 
-let fn_glCallCommandListNV!: Deno.UnsafeFnPointer<typeof def_glCallCommandListNV>;
+let fn_glCallCommandListNV!: Deno.UnsafeFnPointer<
+  typeof def_glCallCommandListNV
+>;
 
 export function CallCommandListNV(
   list: GLuint,
@@ -397,21 +425,72 @@ export function CallCommandListNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glCreateStatesNV = new Deno.UnsafeFnPointer(proc("glCreateStatesNV"), def_glCreateStatesNV);
-  fn_glDeleteStatesNV = new Deno.UnsafeFnPointer(proc("glDeleteStatesNV"), def_glDeleteStatesNV);
-  fn_glIsStateNV = new Deno.UnsafeFnPointer(proc("glIsStateNV"), def_glIsStateNV);
-  fn_glStateCaptureNV = new Deno.UnsafeFnPointer(proc("glStateCaptureNV"), def_glStateCaptureNV);
-  fn_glGetCommandHeaderNV = new Deno.UnsafeFnPointer(proc("glGetCommandHeaderNV"), def_glGetCommandHeaderNV);
-  fn_glGetStageIndexNV = new Deno.UnsafeFnPointer(proc("glGetStageIndexNV"), def_glGetStageIndexNV);
-  fn_glDrawCommandsNV = new Deno.UnsafeFnPointer(proc("glDrawCommandsNV"), def_glDrawCommandsNV);
-  fn_glDrawCommandsAddressNV = new Deno.UnsafeFnPointer(proc("glDrawCommandsAddressNV"), def_glDrawCommandsAddressNV);
-  fn_glDrawCommandsStatesNV = new Deno.UnsafeFnPointer(proc("glDrawCommandsStatesNV"), def_glDrawCommandsStatesNV);
-  fn_glDrawCommandsStatesAddressNV = new Deno.UnsafeFnPointer(proc("glDrawCommandsStatesAddressNV"), def_glDrawCommandsStatesAddressNV);
-  fn_glCreateCommandListsNV = new Deno.UnsafeFnPointer(proc("glCreateCommandListsNV"), def_glCreateCommandListsNV);
-  fn_glDeleteCommandListsNV = new Deno.UnsafeFnPointer(proc("glDeleteCommandListsNV"), def_glDeleteCommandListsNV);
-  fn_glIsCommandListNV = new Deno.UnsafeFnPointer(proc("glIsCommandListNV"), def_glIsCommandListNV);
-  fn_glListDrawCommandsStatesClientNV = new Deno.UnsafeFnPointer(proc("glListDrawCommandsStatesClientNV"), def_glListDrawCommandsStatesClientNV);
-  fn_glCommandListSegmentsNV = new Deno.UnsafeFnPointer(proc("glCommandListSegmentsNV"), def_glCommandListSegmentsNV);
-  fn_glCompileCommandListNV = new Deno.UnsafeFnPointer(proc("glCompileCommandListNV"), def_glCompileCommandListNV);
-  fn_glCallCommandListNV = new Deno.UnsafeFnPointer(proc("glCallCommandListNV"), def_glCallCommandListNV);
+  fn_glCreateStatesNV = new Deno.UnsafeFnPointer(
+    proc("glCreateStatesNV"),
+    def_glCreateStatesNV,
+  );
+  fn_glDeleteStatesNV = new Deno.UnsafeFnPointer(
+    proc("glDeleteStatesNV"),
+    def_glDeleteStatesNV,
+  );
+  fn_glIsStateNV = new Deno.UnsafeFnPointer(
+    proc("glIsStateNV"),
+    def_glIsStateNV,
+  );
+  fn_glStateCaptureNV = new Deno.UnsafeFnPointer(
+    proc("glStateCaptureNV"),
+    def_glStateCaptureNV,
+  );
+  fn_glGetCommandHeaderNV = new Deno.UnsafeFnPointer(
+    proc("glGetCommandHeaderNV"),
+    def_glGetCommandHeaderNV,
+  );
+  fn_glGetStageIndexNV = new Deno.UnsafeFnPointer(
+    proc("glGetStageIndexNV"),
+    def_glGetStageIndexNV,
+  );
+  fn_glDrawCommandsNV = new Deno.UnsafeFnPointer(
+    proc("glDrawCommandsNV"),
+    def_glDrawCommandsNV,
+  );
+  fn_glDrawCommandsAddressNV = new Deno.UnsafeFnPointer(
+    proc("glDrawCommandsAddressNV"),
+    def_glDrawCommandsAddressNV,
+  );
+  fn_glDrawCommandsStatesNV = new Deno.UnsafeFnPointer(
+    proc("glDrawCommandsStatesNV"),
+    def_glDrawCommandsStatesNV,
+  );
+  fn_glDrawCommandsStatesAddressNV = new Deno.UnsafeFnPointer(
+    proc("glDrawCommandsStatesAddressNV"),
+    def_glDrawCommandsStatesAddressNV,
+  );
+  fn_glCreateCommandListsNV = new Deno.UnsafeFnPointer(
+    proc("glCreateCommandListsNV"),
+    def_glCreateCommandListsNV,
+  );
+  fn_glDeleteCommandListsNV = new Deno.UnsafeFnPointer(
+    proc("glDeleteCommandListsNV"),
+    def_glDeleteCommandListsNV,
+  );
+  fn_glIsCommandListNV = new Deno.UnsafeFnPointer(
+    proc("glIsCommandListNV"),
+    def_glIsCommandListNV,
+  );
+  fn_glListDrawCommandsStatesClientNV = new Deno.UnsafeFnPointer(
+    proc("glListDrawCommandsStatesClientNV"),
+    def_glListDrawCommandsStatesClientNV,
+  );
+  fn_glCommandListSegmentsNV = new Deno.UnsafeFnPointer(
+    proc("glCommandListSegmentsNV"),
+    def_glCommandListSegmentsNV,
+  );
+  fn_glCompileCommandListNV = new Deno.UnsafeFnPointer(
+    proc("glCompileCommandListNV"),
+    def_glCompileCommandListNV,
+  );
+  fn_glCallCommandListNV = new Deno.UnsafeFnPointer(
+    proc("glCallCommandListNV"),
+    def_glCallCommandListNV,
+  );
 }

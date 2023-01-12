@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glMultiModeDrawArraysIBM = {
   result: "void",
 } as const;
 
-let fn_glMultiModeDrawArraysIBM!: Deno.UnsafeFnPointer<typeof def_glMultiModeDrawArraysIBM>;
+let fn_glMultiModeDrawArraysIBM!: Deno.UnsafeFnPointer<
+  typeof def_glMultiModeDrawArraysIBM
+>;
 
 export function MultiModeDrawArraysIBM(
   mode: Buffer,
@@ -89,7 +99,9 @@ export const def_glMultiModeDrawElementsIBM = {
   result: "void",
 } as const;
 
-let fn_glMultiModeDrawElementsIBM!: Deno.UnsafeFnPointer<typeof def_glMultiModeDrawElementsIBM>;
+let fn_glMultiModeDrawElementsIBM!: Deno.UnsafeFnPointer<
+  typeof def_glMultiModeDrawElementsIBM
+>;
 
 export function MultiModeDrawElementsIBM(
   mode: Buffer,
@@ -111,6 +123,12 @@ export function MultiModeDrawElementsIBM(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glMultiModeDrawArraysIBM = new Deno.UnsafeFnPointer(proc("glMultiModeDrawArraysIBM"), def_glMultiModeDrawArraysIBM);
-  fn_glMultiModeDrawElementsIBM = new Deno.UnsafeFnPointer(proc("glMultiModeDrawElementsIBM"), def_glMultiModeDrawElementsIBM);
+  fn_glMultiModeDrawArraysIBM = new Deno.UnsafeFnPointer(
+    proc("glMultiModeDrawArraysIBM"),
+    def_glMultiModeDrawArraysIBM,
+  );
+  fn_glMultiModeDrawElementsIBM = new Deno.UnsafeFnPointer(
+    proc("glMultiModeDrawElementsIBM"),
+    def_glMultiModeDrawElementsIBM,
+  );
 }

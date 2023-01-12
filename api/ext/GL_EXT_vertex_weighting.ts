@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -96,7 +104,9 @@ export const def_glVertexWeightfvEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexWeightfvEXT!: Deno.UnsafeFnPointer<typeof def_glVertexWeightfvEXT>;
+let fn_glVertexWeightfvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexWeightfvEXT
+>;
 
 export function VertexWeightfvEXT(
   weight: Buffer,
@@ -111,7 +121,9 @@ export const def_glVertexWeightPointerEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexWeightPointerEXT!: Deno.UnsafeFnPointer<typeof def_glVertexWeightPointerEXT>;
+let fn_glVertexWeightPointerEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexWeightPointerEXT
+>;
 
 export function VertexWeightPointerEXT(
   size: GLint,
@@ -129,7 +141,16 @@ export function VertexWeightPointerEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glVertexWeightfEXT = new Deno.UnsafeFnPointer(proc("glVertexWeightfEXT"), def_glVertexWeightfEXT);
-  fn_glVertexWeightfvEXT = new Deno.UnsafeFnPointer(proc("glVertexWeightfvEXT"), def_glVertexWeightfvEXT);
-  fn_glVertexWeightPointerEXT = new Deno.UnsafeFnPointer(proc("glVertexWeightPointerEXT"), def_glVertexWeightPointerEXT);
+  fn_glVertexWeightfEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexWeightfEXT"),
+    def_glVertexWeightfEXT,
+  );
+  fn_glVertexWeightfvEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexWeightfvEXT"),
+    def_glVertexWeightfvEXT,
+  );
+  fn_glVertexWeightPointerEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexWeightPointerEXT"),
+    def_glVertexWeightPointerEXT,
+  );
 }

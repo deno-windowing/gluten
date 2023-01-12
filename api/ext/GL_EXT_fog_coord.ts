@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -136,7 +144,9 @@ export const def_glFogCoordPointerEXT = {
   result: "void",
 } as const;
 
-let fn_glFogCoordPointerEXT!: Deno.UnsafeFnPointer<typeof def_glFogCoordPointerEXT>;
+let fn_glFogCoordPointerEXT!: Deno.UnsafeFnPointer<
+  typeof def_glFogCoordPointerEXT
+>;
 
 export function FogCoordPointerEXT(
   type: GLenum,
@@ -152,9 +162,24 @@ export function FogCoordPointerEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFogCoordfEXT = new Deno.UnsafeFnPointer(proc("glFogCoordfEXT"), def_glFogCoordfEXT);
-  fn_glFogCoordfvEXT = new Deno.UnsafeFnPointer(proc("glFogCoordfvEXT"), def_glFogCoordfvEXT);
-  fn_glFogCoorddEXT = new Deno.UnsafeFnPointer(proc("glFogCoorddEXT"), def_glFogCoorddEXT);
-  fn_glFogCoorddvEXT = new Deno.UnsafeFnPointer(proc("glFogCoorddvEXT"), def_glFogCoorddvEXT);
-  fn_glFogCoordPointerEXT = new Deno.UnsafeFnPointer(proc("glFogCoordPointerEXT"), def_glFogCoordPointerEXT);
+  fn_glFogCoordfEXT = new Deno.UnsafeFnPointer(
+    proc("glFogCoordfEXT"),
+    def_glFogCoordfEXT,
+  );
+  fn_glFogCoordfvEXT = new Deno.UnsafeFnPointer(
+    proc("glFogCoordfvEXT"),
+    def_glFogCoordfvEXT,
+  );
+  fn_glFogCoorddEXT = new Deno.UnsafeFnPointer(
+    proc("glFogCoorddEXT"),
+    def_glFogCoorddEXT,
+  );
+  fn_glFogCoorddvEXT = new Deno.UnsafeFnPointer(
+    proc("glFogCoorddvEXT"),
+    def_glFogCoorddvEXT,
+  );
+  fn_glFogCoordPointerEXT = new Deno.UnsafeFnPointer(
+    proc("glFogCoordPointerEXT"),
+    def_glFogCoordPointerEXT,
+  );
 }

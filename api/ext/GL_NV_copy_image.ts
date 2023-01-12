@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -62,11 +70,29 @@ export type GLVULKANPROCNV = Buffer;
 /// Commands
 
 export const def_glCopyImageSubDataNV = {
-  parameters: ["u32", "u32", "i32", "i32", "i32", "i32", "u32", "u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32"],
+  parameters: [
+    "u32",
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+  ],
   result: "void",
 } as const;
 
-let fn_glCopyImageSubDataNV!: Deno.UnsafeFnPointer<typeof def_glCopyImageSubDataNV>;
+let fn_glCopyImageSubDataNV!: Deno.UnsafeFnPointer<
+  typeof def_glCopyImageSubDataNV
+>;
 
 export function CopyImageSubDataNV(
   srcName: GLuint,
@@ -106,5 +132,8 @@ export function CopyImageSubDataNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glCopyImageSubDataNV = new Deno.UnsafeFnPointer(proc("glCopyImageSubDataNV"), def_glCopyImageSubDataNV);
+  fn_glCopyImageSubDataNV = new Deno.UnsafeFnPointer(
+    proc("glCopyImageSubDataNV"),
+    def_glCopyImageSubDataNV,
+  );
 }

@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -77,7 +85,9 @@ export const def_glTexStorageSparseAMD = {
   result: "void",
 } as const;
 
-let fn_glTexStorageSparseAMD!: Deno.UnsafeFnPointer<typeof def_glTexStorageSparseAMD>;
+let fn_glTexStorageSparseAMD!: Deno.UnsafeFnPointer<
+  typeof def_glTexStorageSparseAMD
+>;
 
 export function TexStorageSparseAMD(
   target: GLenum,
@@ -104,7 +114,9 @@ export const def_glTextureStorageSparseAMD = {
   result: "void",
 } as const;
 
-let fn_glTextureStorageSparseAMD!: Deno.UnsafeFnPointer<typeof def_glTextureStorageSparseAMD>;
+let fn_glTextureStorageSparseAMD!: Deno.UnsafeFnPointer<
+  typeof def_glTextureStorageSparseAMD
+>;
 
 export function TextureStorageSparseAMD(
   texture: GLuint,
@@ -130,6 +142,12 @@ export function TextureStorageSparseAMD(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexStorageSparseAMD = new Deno.UnsafeFnPointer(proc("glTexStorageSparseAMD"), def_glTexStorageSparseAMD);
-  fn_glTextureStorageSparseAMD = new Deno.UnsafeFnPointer(proc("glTextureStorageSparseAMD"), def_glTextureStorageSparseAMD);
+  fn_glTexStorageSparseAMD = new Deno.UnsafeFnPointer(
+    proc("glTexStorageSparseAMD"),
+    def_glTexStorageSparseAMD,
+  );
+  fn_glTextureStorageSparseAMD = new Deno.UnsafeFnPointer(
+    proc("glTextureStorageSparseAMD"),
+    def_glTextureStorageSparseAMD,
+  );
 }

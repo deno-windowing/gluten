@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -76,7 +84,9 @@ export const def_glProgramSubroutineParametersuivNV = {
   result: "void",
 } as const;
 
-let fn_glProgramSubroutineParametersuivNV!: Deno.UnsafeFnPointer<typeof def_glProgramSubroutineParametersuivNV>;
+let fn_glProgramSubroutineParametersuivNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramSubroutineParametersuivNV
+>;
 
 export function ProgramSubroutineParametersuivNV(
   target: GLenum,
@@ -95,7 +105,9 @@ export const def_glGetProgramSubroutineParameteruivNV = {
   result: "void",
 } as const;
 
-let fn_glGetProgramSubroutineParameteruivNV!: Deno.UnsafeFnPointer<typeof def_glGetProgramSubroutineParameteruivNV>;
+let fn_glGetProgramSubroutineParameteruivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetProgramSubroutineParameteruivNV
+>;
 
 export function GetProgramSubroutineParameteruivNV(
   target: GLenum,
@@ -111,6 +123,12 @@ export function GetProgramSubroutineParameteruivNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glProgramSubroutineParametersuivNV = new Deno.UnsafeFnPointer(proc("glProgramSubroutineParametersuivNV"), def_glProgramSubroutineParametersuivNV);
-  fn_glGetProgramSubroutineParameteruivNV = new Deno.UnsafeFnPointer(proc("glGetProgramSubroutineParameteruivNV"), def_glGetProgramSubroutineParameteruivNV);
+  fn_glProgramSubroutineParametersuivNV = new Deno.UnsafeFnPointer(
+    proc("glProgramSubroutineParametersuivNV"),
+    def_glProgramSubroutineParametersuivNV,
+  );
+  fn_glGetProgramSubroutineParameteruivNV = new Deno.UnsafeFnPointer(
+    proc("glGetProgramSubroutineParameteruivNV"),
+    def_glGetProgramSubroutineParameteruivNV,
+  );
 }

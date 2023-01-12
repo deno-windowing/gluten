@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -72,7 +80,9 @@ export const def_glPointParameterfARB = {
   result: "void",
 } as const;
 
-let fn_glPointParameterfARB!: Deno.UnsafeFnPointer<typeof def_glPointParameterfARB>;
+let fn_glPointParameterfARB!: Deno.UnsafeFnPointer<
+  typeof def_glPointParameterfARB
+>;
 
 export function PointParameterfARB(
   pname: GLenum,
@@ -89,7 +99,9 @@ export const def_glPointParameterfvARB = {
   result: "void",
 } as const;
 
-let fn_glPointParameterfvARB!: Deno.UnsafeFnPointer<typeof def_glPointParameterfvARB>;
+let fn_glPointParameterfvARB!: Deno.UnsafeFnPointer<
+  typeof def_glPointParameterfvARB
+>;
 
 export function PointParameterfvARB(
   pname: GLenum,
@@ -103,6 +115,12 @@ export function PointParameterfvARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glPointParameterfARB = new Deno.UnsafeFnPointer(proc("glPointParameterfARB"), def_glPointParameterfARB);
-  fn_glPointParameterfvARB = new Deno.UnsafeFnPointer(proc("glPointParameterfvARB"), def_glPointParameterfvARB);
+  fn_glPointParameterfARB = new Deno.UnsafeFnPointer(
+    proc("glPointParameterfARB"),
+    def_glPointParameterfARB,
+  );
+  fn_glPointParameterfvARB = new Deno.UnsafeFnPointer(
+    proc("glPointParameterfvARB"),
+    def_glPointParameterfvARB,
+  );
 }

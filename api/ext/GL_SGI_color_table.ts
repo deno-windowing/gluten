@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -109,7 +117,9 @@ export const def_glColorTableParameterfvSGI = {
   result: "void",
 } as const;
 
-let fn_glColorTableParameterfvSGI!: Deno.UnsafeFnPointer<typeof def_glColorTableParameterfvSGI>;
+let fn_glColorTableParameterfvSGI!: Deno.UnsafeFnPointer<
+  typeof def_glColorTableParameterfvSGI
+>;
 
 export function ColorTableParameterfvSGI(
   target: GLenum,
@@ -128,7 +138,9 @@ export const def_glColorTableParameterivSGI = {
   result: "void",
 } as const;
 
-let fn_glColorTableParameterivSGI!: Deno.UnsafeFnPointer<typeof def_glColorTableParameterivSGI>;
+let fn_glColorTableParameterivSGI!: Deno.UnsafeFnPointer<
+  typeof def_glColorTableParameterivSGI
+>;
 
 export function ColorTableParameterivSGI(
   target: GLenum,
@@ -147,7 +159,9 @@ export const def_glCopyColorTableSGI = {
   result: "void",
 } as const;
 
-let fn_glCopyColorTableSGI!: Deno.UnsafeFnPointer<typeof def_glCopyColorTableSGI>;
+let fn_glCopyColorTableSGI!: Deno.UnsafeFnPointer<
+  typeof def_glCopyColorTableSGI
+>;
 
 export function CopyColorTableSGI(
   target: GLenum,
@@ -191,7 +205,9 @@ export const def_glGetColorTableParameterfvSGI = {
   result: "void",
 } as const;
 
-let fn_glGetColorTableParameterfvSGI!: Deno.UnsafeFnPointer<typeof def_glGetColorTableParameterfvSGI>;
+let fn_glGetColorTableParameterfvSGI!: Deno.UnsafeFnPointer<
+  typeof def_glGetColorTableParameterfvSGI
+>;
 
 export function GetColorTableParameterfvSGI(
   target: GLenum,
@@ -210,7 +226,9 @@ export const def_glGetColorTableParameterivSGI = {
   result: "void",
 } as const;
 
-let fn_glGetColorTableParameterivSGI!: Deno.UnsafeFnPointer<typeof def_glGetColorTableParameterivSGI>;
+let fn_glGetColorTableParameterivSGI!: Deno.UnsafeFnPointer<
+  typeof def_glGetColorTableParameterivSGI
+>;
 
 export function GetColorTableParameterivSGI(
   target: GLenum,
@@ -226,11 +244,32 @@ export function GetColorTableParameterivSGI(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glColorTableSGI = new Deno.UnsafeFnPointer(proc("glColorTableSGI"), def_glColorTableSGI);
-  fn_glColorTableParameterfvSGI = new Deno.UnsafeFnPointer(proc("glColorTableParameterfvSGI"), def_glColorTableParameterfvSGI);
-  fn_glColorTableParameterivSGI = new Deno.UnsafeFnPointer(proc("glColorTableParameterivSGI"), def_glColorTableParameterivSGI);
-  fn_glCopyColorTableSGI = new Deno.UnsafeFnPointer(proc("glCopyColorTableSGI"), def_glCopyColorTableSGI);
-  fn_glGetColorTableSGI = new Deno.UnsafeFnPointer(proc("glGetColorTableSGI"), def_glGetColorTableSGI);
-  fn_glGetColorTableParameterfvSGI = new Deno.UnsafeFnPointer(proc("glGetColorTableParameterfvSGI"), def_glGetColorTableParameterfvSGI);
-  fn_glGetColorTableParameterivSGI = new Deno.UnsafeFnPointer(proc("glGetColorTableParameterivSGI"), def_glGetColorTableParameterivSGI);
+  fn_glColorTableSGI = new Deno.UnsafeFnPointer(
+    proc("glColorTableSGI"),
+    def_glColorTableSGI,
+  );
+  fn_glColorTableParameterfvSGI = new Deno.UnsafeFnPointer(
+    proc("glColorTableParameterfvSGI"),
+    def_glColorTableParameterfvSGI,
+  );
+  fn_glColorTableParameterivSGI = new Deno.UnsafeFnPointer(
+    proc("glColorTableParameterivSGI"),
+    def_glColorTableParameterivSGI,
+  );
+  fn_glCopyColorTableSGI = new Deno.UnsafeFnPointer(
+    proc("glCopyColorTableSGI"),
+    def_glCopyColorTableSGI,
+  );
+  fn_glGetColorTableSGI = new Deno.UnsafeFnPointer(
+    proc("glGetColorTableSGI"),
+    def_glGetColorTableSGI,
+  );
+  fn_glGetColorTableParameterfvSGI = new Deno.UnsafeFnPointer(
+    proc("glGetColorTableParameterfvSGI"),
+    def_glGetColorTableParameterfvSGI,
+  );
+  fn_glGetColorTableParameterivSGI = new Deno.UnsafeFnPointer(
+    proc("glGetColorTableParameterivSGI"),
+    def_glGetColorTableParameterivSGI,
+  );
 }

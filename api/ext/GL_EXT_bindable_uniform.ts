@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -93,7 +101,9 @@ export const def_glGetUniformBufferSizeEXT = {
   result: "i32",
 } as const;
 
-let fn_glGetUniformBufferSizeEXT!: Deno.UnsafeFnPointer<typeof def_glGetUniformBufferSizeEXT>;
+let fn_glGetUniformBufferSizeEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetUniformBufferSizeEXT
+>;
 
 export function GetUniformBufferSizeEXT(
   program: GLuint,
@@ -110,7 +120,9 @@ export const def_glGetUniformOffsetEXT = {
   result: "buffer",
 } as const;
 
-let fn_glGetUniformOffsetEXT!: Deno.UnsafeFnPointer<typeof def_glGetUniformOffsetEXT>;
+let fn_glGetUniformOffsetEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetUniformOffsetEXT
+>;
 
 export function GetUniformOffsetEXT(
   program: GLuint,
@@ -124,7 +136,16 @@ export function GetUniformOffsetEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glUniformBufferEXT = new Deno.UnsafeFnPointer(proc("glUniformBufferEXT"), def_glUniformBufferEXT);
-  fn_glGetUniformBufferSizeEXT = new Deno.UnsafeFnPointer(proc("glGetUniformBufferSizeEXT"), def_glGetUniformBufferSizeEXT);
-  fn_glGetUniformOffsetEXT = new Deno.UnsafeFnPointer(proc("glGetUniformOffsetEXT"), def_glGetUniformOffsetEXT);
+  fn_glUniformBufferEXT = new Deno.UnsafeFnPointer(
+    proc("glUniformBufferEXT"),
+    def_glUniformBufferEXT,
+  );
+  fn_glGetUniformBufferSizeEXT = new Deno.UnsafeFnPointer(
+    proc("glGetUniformBufferSizeEXT"),
+    def_glGetUniformBufferSizeEXT,
+  );
+  fn_glGetUniformOffsetEXT = new Deno.UnsafeFnPointer(
+    proc("glGetUniformOffsetEXT"),
+    def_glGetUniformOffsetEXT,
+  );
 }

@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -76,7 +84,9 @@ export const def_glGetGraphicsResetStatusEXT = {
   result: "u32",
 } as const;
 
-let fn_glGetGraphicsResetStatusEXT!: Deno.UnsafeFnPointer<typeof def_glGetGraphicsResetStatusEXT>;
+let fn_glGetGraphicsResetStatusEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetGraphicsResetStatusEXT
+>;
 
 export function GetGraphicsResetStatusEXT(): GLenum {
   return fn_glGetGraphicsResetStatusEXT.call();
@@ -155,8 +165,20 @@ export function GetnUniformivEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetGraphicsResetStatusEXT = new Deno.UnsafeFnPointer(proc("glGetGraphicsResetStatusEXT"), def_glGetGraphicsResetStatusEXT);
-  fn_glReadnPixelsEXT = new Deno.UnsafeFnPointer(proc("glReadnPixelsEXT"), def_glReadnPixelsEXT);
-  fn_glGetnUniformfvEXT = new Deno.UnsafeFnPointer(proc("glGetnUniformfvEXT"), def_glGetnUniformfvEXT);
-  fn_glGetnUniformivEXT = new Deno.UnsafeFnPointer(proc("glGetnUniformivEXT"), def_glGetnUniformivEXT);
+  fn_glGetGraphicsResetStatusEXT = new Deno.UnsafeFnPointer(
+    proc("glGetGraphicsResetStatusEXT"),
+    def_glGetGraphicsResetStatusEXT,
+  );
+  fn_glReadnPixelsEXT = new Deno.UnsafeFnPointer(
+    proc("glReadnPixelsEXT"),
+    def_glReadnPixelsEXT,
+  );
+  fn_glGetnUniformfvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetnUniformfvEXT"),
+    def_glGetnUniformfvEXT,
+  );
+  fn_glGetnUniformivEXT = new Deno.UnsafeFnPointer(
+    proc("glGetnUniformivEXT"),
+    def_glGetnUniformivEXT,
+  );
 }

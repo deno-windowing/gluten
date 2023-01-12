@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glCopyTextureLevelsAPPLE = {
   result: "void",
 } as const;
 
-let fn_glCopyTextureLevelsAPPLE!: Deno.UnsafeFnPointer<typeof def_glCopyTextureLevelsAPPLE>;
+let fn_glCopyTextureLevelsAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glCopyTextureLevelsAPPLE
+>;
 
 export function CopyTextureLevelsAPPLE(
   destinationTexture: GLuint,
@@ -84,5 +94,8 @@ export function CopyTextureLevelsAPPLE(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glCopyTextureLevelsAPPLE = new Deno.UnsafeFnPointer(proc("glCopyTextureLevelsAPPLE"), def_glCopyTextureLevelsAPPLE);
+  fn_glCopyTextureLevelsAPPLE = new Deno.UnsafeFnPointer(
+    proc("glCopyTextureLevelsAPPLE"),
+    def_glCopyTextureLevelsAPPLE,
+  );
 }

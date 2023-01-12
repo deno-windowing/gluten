@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -115,7 +123,9 @@ export const def_glBindFragDataLocationEXT = {
   result: "void",
 } as const;
 
-let fn_glBindFragDataLocationEXT!: Deno.UnsafeFnPointer<typeof def_glBindFragDataLocationEXT>;
+let fn_glBindFragDataLocationEXT!: Deno.UnsafeFnPointer<
+  typeof def_glBindFragDataLocationEXT
+>;
 
 export function BindFragDataLocationEXT(
   program: GLuint,
@@ -134,7 +144,9 @@ export const def_glGetFragDataLocationEXT = {
   result: "i32",
 } as const;
 
-let fn_glGetFragDataLocationEXT!: Deno.UnsafeFnPointer<typeof def_glGetFragDataLocationEXT>;
+let fn_glGetFragDataLocationEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetFragDataLocationEXT
+>;
 
 export function GetFragDataLocationEXT(
   program: GLuint,
@@ -307,7 +319,9 @@ export const def_glVertexAttribI1iEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI1iEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI1iEXT>;
+let fn_glVertexAttribI1iEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI1iEXT
+>;
 
 export function VertexAttribI1iEXT(
   index: GLuint,
@@ -324,7 +338,9 @@ export const def_glVertexAttribI2iEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI2iEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI2iEXT>;
+let fn_glVertexAttribI2iEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI2iEXT
+>;
 
 export function VertexAttribI2iEXT(
   index: GLuint,
@@ -343,7 +359,9 @@ export const def_glVertexAttribI3iEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI3iEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI3iEXT>;
+let fn_glVertexAttribI3iEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI3iEXT
+>;
 
 export function VertexAttribI3iEXT(
   index: GLuint,
@@ -364,7 +382,9 @@ export const def_glVertexAttribI4iEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI4iEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI4iEXT>;
+let fn_glVertexAttribI4iEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI4iEXT
+>;
 
 export function VertexAttribI4iEXT(
   index: GLuint,
@@ -387,7 +407,9 @@ export const def_glVertexAttribI1uiEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI1uiEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI1uiEXT>;
+let fn_glVertexAttribI1uiEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI1uiEXT
+>;
 
 export function VertexAttribI1uiEXT(
   index: GLuint,
@@ -404,7 +426,9 @@ export const def_glVertexAttribI2uiEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI2uiEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI2uiEXT>;
+let fn_glVertexAttribI2uiEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI2uiEXT
+>;
 
 export function VertexAttribI2uiEXT(
   index: GLuint,
@@ -423,7 +447,9 @@ export const def_glVertexAttribI3uiEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI3uiEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI3uiEXT>;
+let fn_glVertexAttribI3uiEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI3uiEXT
+>;
 
 export function VertexAttribI3uiEXT(
   index: GLuint,
@@ -444,7 +470,9 @@ export const def_glVertexAttribI4uiEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI4uiEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI4uiEXT>;
+let fn_glVertexAttribI4uiEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI4uiEXT
+>;
 
 export function VertexAttribI4uiEXT(
   index: GLuint,
@@ -467,7 +495,9 @@ export const def_glVertexAttribI1ivEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI1ivEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI1ivEXT>;
+let fn_glVertexAttribI1ivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI1ivEXT
+>;
 
 export function VertexAttribI1ivEXT(
   index: GLuint,
@@ -484,7 +514,9 @@ export const def_glVertexAttribI2ivEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI2ivEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI2ivEXT>;
+let fn_glVertexAttribI2ivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI2ivEXT
+>;
 
 export function VertexAttribI2ivEXT(
   index: GLuint,
@@ -501,7 +533,9 @@ export const def_glVertexAttribI3ivEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI3ivEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI3ivEXT>;
+let fn_glVertexAttribI3ivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI3ivEXT
+>;
 
 export function VertexAttribI3ivEXT(
   index: GLuint,
@@ -518,7 +552,9 @@ export const def_glVertexAttribI4ivEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI4ivEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI4ivEXT>;
+let fn_glVertexAttribI4ivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI4ivEXT
+>;
 
 export function VertexAttribI4ivEXT(
   index: GLuint,
@@ -535,7 +571,9 @@ export const def_glVertexAttribI1uivEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI1uivEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI1uivEXT>;
+let fn_glVertexAttribI1uivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI1uivEXT
+>;
 
 export function VertexAttribI1uivEXT(
   index: GLuint,
@@ -552,7 +590,9 @@ export const def_glVertexAttribI2uivEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI2uivEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI2uivEXT>;
+let fn_glVertexAttribI2uivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI2uivEXT
+>;
 
 export function VertexAttribI2uivEXT(
   index: GLuint,
@@ -569,7 +609,9 @@ export const def_glVertexAttribI3uivEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI3uivEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI3uivEXT>;
+let fn_glVertexAttribI3uivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI3uivEXT
+>;
 
 export function VertexAttribI3uivEXT(
   index: GLuint,
@@ -586,7 +628,9 @@ export const def_glVertexAttribI4uivEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI4uivEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI4uivEXT>;
+let fn_glVertexAttribI4uivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI4uivEXT
+>;
 
 export function VertexAttribI4uivEXT(
   index: GLuint,
@@ -603,7 +647,9 @@ export const def_glVertexAttribI4bvEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI4bvEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI4bvEXT>;
+let fn_glVertexAttribI4bvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI4bvEXT
+>;
 
 export function VertexAttribI4bvEXT(
   index: GLuint,
@@ -620,7 +666,9 @@ export const def_glVertexAttribI4svEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI4svEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI4svEXT>;
+let fn_glVertexAttribI4svEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI4svEXT
+>;
 
 export function VertexAttribI4svEXT(
   index: GLuint,
@@ -637,7 +685,9 @@ export const def_glVertexAttribI4ubvEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI4ubvEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI4ubvEXT>;
+let fn_glVertexAttribI4ubvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI4ubvEXT
+>;
 
 export function VertexAttribI4ubvEXT(
   index: GLuint,
@@ -654,7 +704,9 @@ export const def_glVertexAttribI4usvEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribI4usvEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribI4usvEXT>;
+let fn_glVertexAttribI4usvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribI4usvEXT
+>;
 
 export function VertexAttribI4usvEXT(
   index: GLuint,
@@ -671,7 +723,9 @@ export const def_glVertexAttribIPointerEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribIPointerEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribIPointerEXT>;
+let fn_glVertexAttribIPointerEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribIPointerEXT
+>;
 
 export function VertexAttribIPointerEXT(
   index: GLuint,
@@ -694,7 +748,9 @@ export const def_glGetVertexAttribIivEXT = {
   result: "void",
 } as const;
 
-let fn_glGetVertexAttribIivEXT!: Deno.UnsafeFnPointer<typeof def_glGetVertexAttribIivEXT>;
+let fn_glGetVertexAttribIivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetVertexAttribIivEXT
+>;
 
 export function GetVertexAttribIivEXT(
   index: GLuint,
@@ -713,7 +769,9 @@ export const def_glGetVertexAttribIuivEXT = {
   result: "void",
 } as const;
 
-let fn_glGetVertexAttribIuivEXT!: Deno.UnsafeFnPointer<typeof def_glGetVertexAttribIuivEXT>;
+let fn_glGetVertexAttribIuivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetVertexAttribIuivEXT
+>;
 
 export function GetVertexAttribIuivEXT(
   index: GLuint,
@@ -729,38 +787,140 @@ export function GetVertexAttribIuivEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetUniformuivEXT = new Deno.UnsafeFnPointer(proc("glGetUniformuivEXT"), def_glGetUniformuivEXT);
-  fn_glBindFragDataLocationEXT = new Deno.UnsafeFnPointer(proc("glBindFragDataLocationEXT"), def_glBindFragDataLocationEXT);
-  fn_glGetFragDataLocationEXT = new Deno.UnsafeFnPointer(proc("glGetFragDataLocationEXT"), def_glGetFragDataLocationEXT);
-  fn_glUniform1uiEXT = new Deno.UnsafeFnPointer(proc("glUniform1uiEXT"), def_glUniform1uiEXT);
-  fn_glUniform2uiEXT = new Deno.UnsafeFnPointer(proc("glUniform2uiEXT"), def_glUniform2uiEXT);
-  fn_glUniform3uiEXT = new Deno.UnsafeFnPointer(proc("glUniform3uiEXT"), def_glUniform3uiEXT);
-  fn_glUniform4uiEXT = new Deno.UnsafeFnPointer(proc("glUniform4uiEXT"), def_glUniform4uiEXT);
-  fn_glUniform1uivEXT = new Deno.UnsafeFnPointer(proc("glUniform1uivEXT"), def_glUniform1uivEXT);
-  fn_glUniform2uivEXT = new Deno.UnsafeFnPointer(proc("glUniform2uivEXT"), def_glUniform2uivEXT);
-  fn_glUniform3uivEXT = new Deno.UnsafeFnPointer(proc("glUniform3uivEXT"), def_glUniform3uivEXT);
-  fn_glUniform4uivEXT = new Deno.UnsafeFnPointer(proc("glUniform4uivEXT"), def_glUniform4uivEXT);
-  fn_glVertexAttribI1iEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI1iEXT"), def_glVertexAttribI1iEXT);
-  fn_glVertexAttribI2iEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI2iEXT"), def_glVertexAttribI2iEXT);
-  fn_glVertexAttribI3iEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI3iEXT"), def_glVertexAttribI3iEXT);
-  fn_glVertexAttribI4iEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI4iEXT"), def_glVertexAttribI4iEXT);
-  fn_glVertexAttribI1uiEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI1uiEXT"), def_glVertexAttribI1uiEXT);
-  fn_glVertexAttribI2uiEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI2uiEXT"), def_glVertexAttribI2uiEXT);
-  fn_glVertexAttribI3uiEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI3uiEXT"), def_glVertexAttribI3uiEXT);
-  fn_glVertexAttribI4uiEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI4uiEXT"), def_glVertexAttribI4uiEXT);
-  fn_glVertexAttribI1ivEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI1ivEXT"), def_glVertexAttribI1ivEXT);
-  fn_glVertexAttribI2ivEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI2ivEXT"), def_glVertexAttribI2ivEXT);
-  fn_glVertexAttribI3ivEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI3ivEXT"), def_glVertexAttribI3ivEXT);
-  fn_glVertexAttribI4ivEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI4ivEXT"), def_glVertexAttribI4ivEXT);
-  fn_glVertexAttribI1uivEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI1uivEXT"), def_glVertexAttribI1uivEXT);
-  fn_glVertexAttribI2uivEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI2uivEXT"), def_glVertexAttribI2uivEXT);
-  fn_glVertexAttribI3uivEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI3uivEXT"), def_glVertexAttribI3uivEXT);
-  fn_glVertexAttribI4uivEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI4uivEXT"), def_glVertexAttribI4uivEXT);
-  fn_glVertexAttribI4bvEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI4bvEXT"), def_glVertexAttribI4bvEXT);
-  fn_glVertexAttribI4svEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI4svEXT"), def_glVertexAttribI4svEXT);
-  fn_glVertexAttribI4ubvEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI4ubvEXT"), def_glVertexAttribI4ubvEXT);
-  fn_glVertexAttribI4usvEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribI4usvEXT"), def_glVertexAttribI4usvEXT);
-  fn_glVertexAttribIPointerEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribIPointerEXT"), def_glVertexAttribIPointerEXT);
-  fn_glGetVertexAttribIivEXT = new Deno.UnsafeFnPointer(proc("glGetVertexAttribIivEXT"), def_glGetVertexAttribIivEXT);
-  fn_glGetVertexAttribIuivEXT = new Deno.UnsafeFnPointer(proc("glGetVertexAttribIuivEXT"), def_glGetVertexAttribIuivEXT);
+  fn_glGetUniformuivEXT = new Deno.UnsafeFnPointer(
+    proc("glGetUniformuivEXT"),
+    def_glGetUniformuivEXT,
+  );
+  fn_glBindFragDataLocationEXT = new Deno.UnsafeFnPointer(
+    proc("glBindFragDataLocationEXT"),
+    def_glBindFragDataLocationEXT,
+  );
+  fn_glGetFragDataLocationEXT = new Deno.UnsafeFnPointer(
+    proc("glGetFragDataLocationEXT"),
+    def_glGetFragDataLocationEXT,
+  );
+  fn_glUniform1uiEXT = new Deno.UnsafeFnPointer(
+    proc("glUniform1uiEXT"),
+    def_glUniform1uiEXT,
+  );
+  fn_glUniform2uiEXT = new Deno.UnsafeFnPointer(
+    proc("glUniform2uiEXT"),
+    def_glUniform2uiEXT,
+  );
+  fn_glUniform3uiEXT = new Deno.UnsafeFnPointer(
+    proc("glUniform3uiEXT"),
+    def_glUniform3uiEXT,
+  );
+  fn_glUniform4uiEXT = new Deno.UnsafeFnPointer(
+    proc("glUniform4uiEXT"),
+    def_glUniform4uiEXT,
+  );
+  fn_glUniform1uivEXT = new Deno.UnsafeFnPointer(
+    proc("glUniform1uivEXT"),
+    def_glUniform1uivEXT,
+  );
+  fn_glUniform2uivEXT = new Deno.UnsafeFnPointer(
+    proc("glUniform2uivEXT"),
+    def_glUniform2uivEXT,
+  );
+  fn_glUniform3uivEXT = new Deno.UnsafeFnPointer(
+    proc("glUniform3uivEXT"),
+    def_glUniform3uivEXT,
+  );
+  fn_glUniform4uivEXT = new Deno.UnsafeFnPointer(
+    proc("glUniform4uivEXT"),
+    def_glUniform4uivEXT,
+  );
+  fn_glVertexAttribI1iEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI1iEXT"),
+    def_glVertexAttribI1iEXT,
+  );
+  fn_glVertexAttribI2iEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI2iEXT"),
+    def_glVertexAttribI2iEXT,
+  );
+  fn_glVertexAttribI3iEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI3iEXT"),
+    def_glVertexAttribI3iEXT,
+  );
+  fn_glVertexAttribI4iEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI4iEXT"),
+    def_glVertexAttribI4iEXT,
+  );
+  fn_glVertexAttribI1uiEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI1uiEXT"),
+    def_glVertexAttribI1uiEXT,
+  );
+  fn_glVertexAttribI2uiEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI2uiEXT"),
+    def_glVertexAttribI2uiEXT,
+  );
+  fn_glVertexAttribI3uiEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI3uiEXT"),
+    def_glVertexAttribI3uiEXT,
+  );
+  fn_glVertexAttribI4uiEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI4uiEXT"),
+    def_glVertexAttribI4uiEXT,
+  );
+  fn_glVertexAttribI1ivEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI1ivEXT"),
+    def_glVertexAttribI1ivEXT,
+  );
+  fn_glVertexAttribI2ivEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI2ivEXT"),
+    def_glVertexAttribI2ivEXT,
+  );
+  fn_glVertexAttribI3ivEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI3ivEXT"),
+    def_glVertexAttribI3ivEXT,
+  );
+  fn_glVertexAttribI4ivEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI4ivEXT"),
+    def_glVertexAttribI4ivEXT,
+  );
+  fn_glVertexAttribI1uivEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI1uivEXT"),
+    def_glVertexAttribI1uivEXT,
+  );
+  fn_glVertexAttribI2uivEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI2uivEXT"),
+    def_glVertexAttribI2uivEXT,
+  );
+  fn_glVertexAttribI3uivEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI3uivEXT"),
+    def_glVertexAttribI3uivEXT,
+  );
+  fn_glVertexAttribI4uivEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI4uivEXT"),
+    def_glVertexAttribI4uivEXT,
+  );
+  fn_glVertexAttribI4bvEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI4bvEXT"),
+    def_glVertexAttribI4bvEXT,
+  );
+  fn_glVertexAttribI4svEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI4svEXT"),
+    def_glVertexAttribI4svEXT,
+  );
+  fn_glVertexAttribI4ubvEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI4ubvEXT"),
+    def_glVertexAttribI4ubvEXT,
+  );
+  fn_glVertexAttribI4usvEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribI4usvEXT"),
+    def_glVertexAttribI4usvEXT,
+  );
+  fn_glVertexAttribIPointerEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribIPointerEXT"),
+    def_glVertexAttribIPointerEXT,
+  );
+  fn_glGetVertexAttribIivEXT = new Deno.UnsafeFnPointer(
+    proc("glGetVertexAttribIivEXT"),
+    def_glGetVertexAttribIivEXT,
+  );
+  fn_glGetVertexAttribIuivEXT = new Deno.UnsafeFnPointer(
+    proc("glGetVertexAttribIuivEXT"),
+    def_glGetVertexAttribIuivEXT,
+  );
 }

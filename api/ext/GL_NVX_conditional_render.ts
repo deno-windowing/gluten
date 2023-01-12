@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glBeginConditionalRenderNVX = {
   result: "void",
 } as const;
 
-let fn_glBeginConditionalRenderNVX!: Deno.UnsafeFnPointer<typeof def_glBeginConditionalRenderNVX>;
+let fn_glBeginConditionalRenderNVX!: Deno.UnsafeFnPointer<
+  typeof def_glBeginConditionalRenderNVX
+>;
 
 export function BeginConditionalRenderNVX(
   id: GLuint,
@@ -81,7 +91,9 @@ export const def_glEndConditionalRenderNVX = {
   result: "void",
 } as const;
 
-let fn_glEndConditionalRenderNVX!: Deno.UnsafeFnPointer<typeof def_glEndConditionalRenderNVX>;
+let fn_glEndConditionalRenderNVX!: Deno.UnsafeFnPointer<
+  typeof def_glEndConditionalRenderNVX
+>;
 
 export function EndConditionalRenderNVX(): void {
   fn_glEndConditionalRenderNVX.call();
@@ -89,6 +101,12 @@ export function EndConditionalRenderNVX(): void {
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBeginConditionalRenderNVX = new Deno.UnsafeFnPointer(proc("glBeginConditionalRenderNVX"), def_glBeginConditionalRenderNVX);
-  fn_glEndConditionalRenderNVX = new Deno.UnsafeFnPointer(proc("glEndConditionalRenderNVX"), def_glEndConditionalRenderNVX);
+  fn_glBeginConditionalRenderNVX = new Deno.UnsafeFnPointer(
+    proc("glBeginConditionalRenderNVX"),
+    def_glBeginConditionalRenderNVX,
+  );
+  fn_glEndConditionalRenderNVX = new Deno.UnsafeFnPointer(
+    proc("glEndConditionalRenderNVX"),
+    def_glEndConditionalRenderNVX,
+  );
 }

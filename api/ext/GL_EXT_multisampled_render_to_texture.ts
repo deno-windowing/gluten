@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -72,7 +80,9 @@ export const def_glRenderbufferStorageMultisampleEXT = {
   result: "void",
 } as const;
 
-let fn_glRenderbufferStorageMultisampleEXT!: Deno.UnsafeFnPointer<typeof def_glRenderbufferStorageMultisampleEXT>;
+let fn_glRenderbufferStorageMultisampleEXT!: Deno.UnsafeFnPointer<
+  typeof def_glRenderbufferStorageMultisampleEXT
+>;
 
 export function RenderbufferStorageMultisampleEXT(
   target: GLenum,
@@ -95,7 +105,9 @@ export const def_glFramebufferTexture2DMultisampleEXT = {
   result: "void",
 } as const;
 
-let fn_glFramebufferTexture2DMultisampleEXT!: Deno.UnsafeFnPointer<typeof def_glFramebufferTexture2DMultisampleEXT>;
+let fn_glFramebufferTexture2DMultisampleEXT!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferTexture2DMultisampleEXT
+>;
 
 export function FramebufferTexture2DMultisampleEXT(
   target: GLenum,
@@ -117,6 +129,12 @@ export function FramebufferTexture2DMultisampleEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glRenderbufferStorageMultisampleEXT = new Deno.UnsafeFnPointer(proc("glRenderbufferStorageMultisampleEXT"), def_glRenderbufferStorageMultisampleEXT);
-  fn_glFramebufferTexture2DMultisampleEXT = new Deno.UnsafeFnPointer(proc("glFramebufferTexture2DMultisampleEXT"), def_glFramebufferTexture2DMultisampleEXT);
+  fn_glRenderbufferStorageMultisampleEXT = new Deno.UnsafeFnPointer(
+    proc("glRenderbufferStorageMultisampleEXT"),
+    def_glRenderbufferStorageMultisampleEXT,
+  );
+  fn_glFramebufferTexture2DMultisampleEXT = new Deno.UnsafeFnPointer(
+    proc("glFramebufferTexture2DMultisampleEXT"),
+    def_glFramebufferTexture2DMultisampleEXT,
+  );
 }

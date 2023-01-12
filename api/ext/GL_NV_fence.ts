@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -183,11 +191,32 @@ export function SetFenceNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDeleteFencesNV = new Deno.UnsafeFnPointer(proc("glDeleteFencesNV"), def_glDeleteFencesNV);
-  fn_glGenFencesNV = new Deno.UnsafeFnPointer(proc("glGenFencesNV"), def_glGenFencesNV);
-  fn_glIsFenceNV = new Deno.UnsafeFnPointer(proc("glIsFenceNV"), def_glIsFenceNV);
-  fn_glTestFenceNV = new Deno.UnsafeFnPointer(proc("glTestFenceNV"), def_glTestFenceNV);
-  fn_glGetFenceivNV = new Deno.UnsafeFnPointer(proc("glGetFenceivNV"), def_glGetFenceivNV);
-  fn_glFinishFenceNV = new Deno.UnsafeFnPointer(proc("glFinishFenceNV"), def_glFinishFenceNV);
-  fn_glSetFenceNV = new Deno.UnsafeFnPointer(proc("glSetFenceNV"), def_glSetFenceNV);
+  fn_glDeleteFencesNV = new Deno.UnsafeFnPointer(
+    proc("glDeleteFencesNV"),
+    def_glDeleteFencesNV,
+  );
+  fn_glGenFencesNV = new Deno.UnsafeFnPointer(
+    proc("glGenFencesNV"),
+    def_glGenFencesNV,
+  );
+  fn_glIsFenceNV = new Deno.UnsafeFnPointer(
+    proc("glIsFenceNV"),
+    def_glIsFenceNV,
+  );
+  fn_glTestFenceNV = new Deno.UnsafeFnPointer(
+    proc("glTestFenceNV"),
+    def_glTestFenceNV,
+  );
+  fn_glGetFenceivNV = new Deno.UnsafeFnPointer(
+    proc("glGetFenceivNV"),
+    def_glGetFenceivNV,
+  );
+  fn_glFinishFenceNV = new Deno.UnsafeFnPointer(
+    proc("glFinishFenceNV"),
+    def_glFinishFenceNV,
+  );
+  fn_glSetFenceNV = new Deno.UnsafeFnPointer(
+    proc("glSetFenceNV"),
+    def_glSetFenceNV,
+  );
 }

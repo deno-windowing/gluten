@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -69,7 +77,9 @@ export const def_glCombinerStageParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glCombinerStageParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glCombinerStageParameterfvNV>;
+let fn_glCombinerStageParameterfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glCombinerStageParameterfvNV
+>;
 
 export function CombinerStageParameterfvNV(
   stage: GLenum,
@@ -88,7 +98,9 @@ export const def_glGetCombinerStageParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glGetCombinerStageParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glGetCombinerStageParameterfvNV>;
+let fn_glGetCombinerStageParameterfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetCombinerStageParameterfvNV
+>;
 
 export function GetCombinerStageParameterfvNV(
   stage: GLenum,
@@ -104,6 +116,12 @@ export function GetCombinerStageParameterfvNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glCombinerStageParameterfvNV = new Deno.UnsafeFnPointer(proc("glCombinerStageParameterfvNV"), def_glCombinerStageParameterfvNV);
-  fn_glGetCombinerStageParameterfvNV = new Deno.UnsafeFnPointer(proc("glGetCombinerStageParameterfvNV"), def_glGetCombinerStageParameterfvNV);
+  fn_glCombinerStageParameterfvNV = new Deno.UnsafeFnPointer(
+    proc("glCombinerStageParameterfvNV"),
+    def_glCombinerStageParameterfvNV,
+  );
+  fn_glGetCombinerStageParameterfvNV = new Deno.UnsafeFnPointer(
+    proc("glGetCombinerStageParameterfvNV"),
+    def_glGetCombinerStageParameterfvNV,
+  );
 }

@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -72,7 +80,9 @@ export const def_glBindTransformFeedbackNV = {
   result: "void",
 } as const;
 
-let fn_glBindTransformFeedbackNV!: Deno.UnsafeFnPointer<typeof def_glBindTransformFeedbackNV>;
+let fn_glBindTransformFeedbackNV!: Deno.UnsafeFnPointer<
+  typeof def_glBindTransformFeedbackNV
+>;
 
 export function BindTransformFeedbackNV(
   target: GLenum,
@@ -89,7 +99,9 @@ export const def_glDeleteTransformFeedbacksNV = {
   result: "void",
 } as const;
 
-let fn_glDeleteTransformFeedbacksNV!: Deno.UnsafeFnPointer<typeof def_glDeleteTransformFeedbacksNV>;
+let fn_glDeleteTransformFeedbacksNV!: Deno.UnsafeFnPointer<
+  typeof def_glDeleteTransformFeedbacksNV
+>;
 
 export function DeleteTransformFeedbacksNV(
   n: GLsizei,
@@ -106,7 +118,9 @@ export const def_glGenTransformFeedbacksNV = {
   result: "void",
 } as const;
 
-let fn_glGenTransformFeedbacksNV!: Deno.UnsafeFnPointer<typeof def_glGenTransformFeedbacksNV>;
+let fn_glGenTransformFeedbacksNV!: Deno.UnsafeFnPointer<
+  typeof def_glGenTransformFeedbacksNV
+>;
 
 export function GenTransformFeedbacksNV(
   n: GLsizei,
@@ -123,7 +137,9 @@ export const def_glIsTransformFeedbackNV = {
   result: "u8",
 } as const;
 
-let fn_glIsTransformFeedbackNV!: Deno.UnsafeFnPointer<typeof def_glIsTransformFeedbackNV>;
+let fn_glIsTransformFeedbackNV!: Deno.UnsafeFnPointer<
+  typeof def_glIsTransformFeedbackNV
+>;
 
 export function IsTransformFeedbackNV(
   id: GLuint,
@@ -138,7 +154,9 @@ export const def_glPauseTransformFeedbackNV = {
   result: "void",
 } as const;
 
-let fn_glPauseTransformFeedbackNV!: Deno.UnsafeFnPointer<typeof def_glPauseTransformFeedbackNV>;
+let fn_glPauseTransformFeedbackNV!: Deno.UnsafeFnPointer<
+  typeof def_glPauseTransformFeedbackNV
+>;
 
 export function PauseTransformFeedbackNV(): void {
   fn_glPauseTransformFeedbackNV.call();
@@ -149,7 +167,9 @@ export const def_glResumeTransformFeedbackNV = {
   result: "void",
 } as const;
 
-let fn_glResumeTransformFeedbackNV!: Deno.UnsafeFnPointer<typeof def_glResumeTransformFeedbackNV>;
+let fn_glResumeTransformFeedbackNV!: Deno.UnsafeFnPointer<
+  typeof def_glResumeTransformFeedbackNV
+>;
 
 export function ResumeTransformFeedbackNV(): void {
   fn_glResumeTransformFeedbackNV.call();
@@ -160,7 +180,9 @@ export const def_glDrawTransformFeedbackNV = {
   result: "void",
 } as const;
 
-let fn_glDrawTransformFeedbackNV!: Deno.UnsafeFnPointer<typeof def_glDrawTransformFeedbackNV>;
+let fn_glDrawTransformFeedbackNV!: Deno.UnsafeFnPointer<
+  typeof def_glDrawTransformFeedbackNV
+>;
 
 export function DrawTransformFeedbackNV(
   mode: GLenum,
@@ -174,11 +196,32 @@ export function DrawTransformFeedbackNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBindTransformFeedbackNV = new Deno.UnsafeFnPointer(proc("glBindTransformFeedbackNV"), def_glBindTransformFeedbackNV);
-  fn_glDeleteTransformFeedbacksNV = new Deno.UnsafeFnPointer(proc("glDeleteTransformFeedbacksNV"), def_glDeleteTransformFeedbacksNV);
-  fn_glGenTransformFeedbacksNV = new Deno.UnsafeFnPointer(proc("glGenTransformFeedbacksNV"), def_glGenTransformFeedbacksNV);
-  fn_glIsTransformFeedbackNV = new Deno.UnsafeFnPointer(proc("glIsTransformFeedbackNV"), def_glIsTransformFeedbackNV);
-  fn_glPauseTransformFeedbackNV = new Deno.UnsafeFnPointer(proc("glPauseTransformFeedbackNV"), def_glPauseTransformFeedbackNV);
-  fn_glResumeTransformFeedbackNV = new Deno.UnsafeFnPointer(proc("glResumeTransformFeedbackNV"), def_glResumeTransformFeedbackNV);
-  fn_glDrawTransformFeedbackNV = new Deno.UnsafeFnPointer(proc("glDrawTransformFeedbackNV"), def_glDrawTransformFeedbackNV);
+  fn_glBindTransformFeedbackNV = new Deno.UnsafeFnPointer(
+    proc("glBindTransformFeedbackNV"),
+    def_glBindTransformFeedbackNV,
+  );
+  fn_glDeleteTransformFeedbacksNV = new Deno.UnsafeFnPointer(
+    proc("glDeleteTransformFeedbacksNV"),
+    def_glDeleteTransformFeedbacksNV,
+  );
+  fn_glGenTransformFeedbacksNV = new Deno.UnsafeFnPointer(
+    proc("glGenTransformFeedbacksNV"),
+    def_glGenTransformFeedbacksNV,
+  );
+  fn_glIsTransformFeedbackNV = new Deno.UnsafeFnPointer(
+    proc("glIsTransformFeedbackNV"),
+    def_glIsTransformFeedbackNV,
+  );
+  fn_glPauseTransformFeedbackNV = new Deno.UnsafeFnPointer(
+    proc("glPauseTransformFeedbackNV"),
+    def_glPauseTransformFeedbackNV,
+  );
+  fn_glResumeTransformFeedbackNV = new Deno.UnsafeFnPointer(
+    proc("glResumeTransformFeedbackNV"),
+    def_glResumeTransformFeedbackNV,
+  );
+  fn_glDrawTransformFeedbackNV = new Deno.UnsafeFnPointer(
+    proc("glDrawTransformFeedbackNV"),
+    def_glDrawTransformFeedbackNV,
+  );
 }

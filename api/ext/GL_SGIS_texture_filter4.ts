@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -70,7 +78,9 @@ export const def_glGetTexFilterFuncSGIS = {
   result: "void",
 } as const;
 
-let fn_glGetTexFilterFuncSGIS!: Deno.UnsafeFnPointer<typeof def_glGetTexFilterFuncSGIS>;
+let fn_glGetTexFilterFuncSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glGetTexFilterFuncSGIS
+>;
 
 export function GetTexFilterFuncSGIS(
   target: GLenum,
@@ -89,7 +99,9 @@ export const def_glTexFilterFuncSGIS = {
   result: "void",
 } as const;
 
-let fn_glTexFilterFuncSGIS!: Deno.UnsafeFnPointer<typeof def_glTexFilterFuncSGIS>;
+let fn_glTexFilterFuncSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glTexFilterFuncSGIS
+>;
 
 export function TexFilterFuncSGIS(
   target: GLenum,
@@ -107,6 +119,12 @@ export function TexFilterFuncSGIS(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetTexFilterFuncSGIS = new Deno.UnsafeFnPointer(proc("glGetTexFilterFuncSGIS"), def_glGetTexFilterFuncSGIS);
-  fn_glTexFilterFuncSGIS = new Deno.UnsafeFnPointer(proc("glTexFilterFuncSGIS"), def_glTexFilterFuncSGIS);
+  fn_glGetTexFilterFuncSGIS = new Deno.UnsafeFnPointer(
+    proc("glGetTexFilterFuncSGIS"),
+    def_glGetTexFilterFuncSGIS,
+  );
+  fn_glTexFilterFuncSGIS = new Deno.UnsafeFnPointer(
+    proc("glTexFilterFuncSGIS"),
+    def_glTexFilterFuncSGIS,
+  );
 }

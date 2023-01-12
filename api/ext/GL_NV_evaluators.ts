@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -92,7 +100,9 @@ export const def_glMapControlPointsNV = {
   result: "void",
 } as const;
 
-let fn_glMapControlPointsNV!: Deno.UnsafeFnPointer<typeof def_glMapControlPointsNV>;
+let fn_glMapControlPointsNV!: Deno.UnsafeFnPointer<
+  typeof def_glMapControlPointsNV
+>;
 
 export function MapControlPointsNV(
   target: GLenum,
@@ -161,7 +171,9 @@ export const def_glGetMapControlPointsNV = {
   result: "void",
 } as const;
 
-let fn_glGetMapControlPointsNV!: Deno.UnsafeFnPointer<typeof def_glGetMapControlPointsNV>;
+let fn_glGetMapControlPointsNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetMapControlPointsNV
+>;
 
 export function GetMapControlPointsNV(
   target: GLenum,
@@ -188,7 +200,9 @@ export const def_glGetMapParameterivNV = {
   result: "void",
 } as const;
 
-let fn_glGetMapParameterivNV!: Deno.UnsafeFnPointer<typeof def_glGetMapParameterivNV>;
+let fn_glGetMapParameterivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetMapParameterivNV
+>;
 
 export function GetMapParameterivNV(
   target: GLenum,
@@ -207,7 +221,9 @@ export const def_glGetMapParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glGetMapParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glGetMapParameterfvNV>;
+let fn_glGetMapParameterfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetMapParameterfvNV
+>;
 
 export function GetMapParameterfvNV(
   target: GLenum,
@@ -226,7 +242,9 @@ export const def_glGetMapAttribParameterivNV = {
   result: "void",
 } as const;
 
-let fn_glGetMapAttribParameterivNV!: Deno.UnsafeFnPointer<typeof def_glGetMapAttribParameterivNV>;
+let fn_glGetMapAttribParameterivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetMapAttribParameterivNV
+>;
 
 export function GetMapAttribParameterivNV(
   target: GLenum,
@@ -247,7 +265,9 @@ export const def_glGetMapAttribParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glGetMapAttribParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glGetMapAttribParameterfvNV>;
+let fn_glGetMapAttribParameterfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetMapAttribParameterfvNV
+>;
 
 export function GetMapAttribParameterfvNV(
   target: GLenum,
@@ -282,13 +302,40 @@ export function EvalMapsNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glMapControlPointsNV = new Deno.UnsafeFnPointer(proc("glMapControlPointsNV"), def_glMapControlPointsNV);
-  fn_glMapParameterivNV = new Deno.UnsafeFnPointer(proc("glMapParameterivNV"), def_glMapParameterivNV);
-  fn_glMapParameterfvNV = new Deno.UnsafeFnPointer(proc("glMapParameterfvNV"), def_glMapParameterfvNV);
-  fn_glGetMapControlPointsNV = new Deno.UnsafeFnPointer(proc("glGetMapControlPointsNV"), def_glGetMapControlPointsNV);
-  fn_glGetMapParameterivNV = new Deno.UnsafeFnPointer(proc("glGetMapParameterivNV"), def_glGetMapParameterivNV);
-  fn_glGetMapParameterfvNV = new Deno.UnsafeFnPointer(proc("glGetMapParameterfvNV"), def_glGetMapParameterfvNV);
-  fn_glGetMapAttribParameterivNV = new Deno.UnsafeFnPointer(proc("glGetMapAttribParameterivNV"), def_glGetMapAttribParameterivNV);
-  fn_glGetMapAttribParameterfvNV = new Deno.UnsafeFnPointer(proc("glGetMapAttribParameterfvNV"), def_glGetMapAttribParameterfvNV);
-  fn_glEvalMapsNV = new Deno.UnsafeFnPointer(proc("glEvalMapsNV"), def_glEvalMapsNV);
+  fn_glMapControlPointsNV = new Deno.UnsafeFnPointer(
+    proc("glMapControlPointsNV"),
+    def_glMapControlPointsNV,
+  );
+  fn_glMapParameterivNV = new Deno.UnsafeFnPointer(
+    proc("glMapParameterivNV"),
+    def_glMapParameterivNV,
+  );
+  fn_glMapParameterfvNV = new Deno.UnsafeFnPointer(
+    proc("glMapParameterfvNV"),
+    def_glMapParameterfvNV,
+  );
+  fn_glGetMapControlPointsNV = new Deno.UnsafeFnPointer(
+    proc("glGetMapControlPointsNV"),
+    def_glGetMapControlPointsNV,
+  );
+  fn_glGetMapParameterivNV = new Deno.UnsafeFnPointer(
+    proc("glGetMapParameterivNV"),
+    def_glGetMapParameterivNV,
+  );
+  fn_glGetMapParameterfvNV = new Deno.UnsafeFnPointer(
+    proc("glGetMapParameterfvNV"),
+    def_glGetMapParameterfvNV,
+  );
+  fn_glGetMapAttribParameterivNV = new Deno.UnsafeFnPointer(
+    proc("glGetMapAttribParameterivNV"),
+    def_glGetMapAttribParameterivNV,
+  );
+  fn_glGetMapAttribParameterfvNV = new Deno.UnsafeFnPointer(
+    proc("glGetMapAttribParameterfvNV"),
+    def_glGetMapAttribParameterfvNV,
+  );
+  fn_glEvalMapsNV = new Deno.UnsafeFnPointer(
+    proc("glEvalMapsNV"),
+    def_glEvalMapsNV,
+  );
 }

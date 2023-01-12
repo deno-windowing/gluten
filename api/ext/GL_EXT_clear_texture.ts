@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -85,11 +93,25 @@ export function ClearTexImageEXT(
 }
 
 export const def_glClearTexSubImageEXT = {
-  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "u32", "u32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
-let fn_glClearTexSubImageEXT!: Deno.UnsafeFnPointer<typeof def_glClearTexSubImageEXT>;
+let fn_glClearTexSubImageEXT!: Deno.UnsafeFnPointer<
+  typeof def_glClearTexSubImageEXT
+>;
 
 export function ClearTexSubImageEXT(
   texture: GLuint,
@@ -121,6 +143,12 @@ export function ClearTexSubImageEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glClearTexImageEXT = new Deno.UnsafeFnPointer(proc("glClearTexImageEXT"), def_glClearTexImageEXT);
-  fn_glClearTexSubImageEXT = new Deno.UnsafeFnPointer(proc("glClearTexSubImageEXT"), def_glClearTexSubImageEXT);
+  fn_glClearTexImageEXT = new Deno.UnsafeFnPointer(
+    proc("glClearTexImageEXT"),
+    def_glClearTexImageEXT,
+  );
+  fn_glClearTexSubImageEXT = new Deno.UnsafeFnPointer(
+    proc("glClearTexSubImageEXT"),
+    def_glClearTexSubImageEXT,
+  );
 }

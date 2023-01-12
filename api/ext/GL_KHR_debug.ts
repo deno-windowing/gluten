@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -149,7 +157,9 @@ export const def_glDebugMessageControl = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageControl!: Deno.UnsafeFnPointer<typeof def_glDebugMessageControl>;
+let fn_glDebugMessageControl!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageControl
+>;
 
 export function DebugMessageControl(
   source: GLenum,
@@ -174,7 +184,9 @@ export const def_glDebugMessageInsert = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageInsert!: Deno.UnsafeFnPointer<typeof def_glDebugMessageInsert>;
+let fn_glDebugMessageInsert!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageInsert
+>;
 
 export function DebugMessageInsert(
   source: GLenum,
@@ -199,7 +211,9 @@ export const def_glDebugMessageCallback = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageCallback!: Deno.UnsafeFnPointer<typeof def_glDebugMessageCallback>;
+let fn_glDebugMessageCallback!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageCallback
+>;
 
 export function DebugMessageCallback(
   callback: GLDEBUGPROC,
@@ -212,11 +226,22 @@ export function DebugMessageCallback(
 }
 
 export const def_glGetDebugMessageLog = {
-  parameters: ["u32", "i32", "buffer", "buffer", "buffer", "buffer", "buffer", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+  ],
   result: "u32",
 } as const;
 
-let fn_glGetDebugMessageLog!: Deno.UnsafeFnPointer<typeof def_glGetDebugMessageLog>;
+let fn_glGetDebugMessageLog!: Deno.UnsafeFnPointer<
+  typeof def_glGetDebugMessageLog
+>;
 
 export function GetDebugMessageLog(
   count: GLuint,
@@ -340,7 +365,9 @@ export const def_glGetObjectPtrLabel = {
   result: "void",
 } as const;
 
-let fn_glGetObjectPtrLabel!: Deno.UnsafeFnPointer<typeof def_glGetObjectPtrLabel>;
+let fn_glGetObjectPtrLabel!: Deno.UnsafeFnPointer<
+  typeof def_glGetObjectPtrLabel
+>;
 
 export function GetObjectPtrLabel(
   ptr: Buffer,
@@ -378,7 +405,9 @@ export const def_glDebugMessageControlKHR = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageControlKHR!: Deno.UnsafeFnPointer<typeof def_glDebugMessageControlKHR>;
+let fn_glDebugMessageControlKHR!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageControlKHR
+>;
 
 export function DebugMessageControlKHR(
   source: GLenum,
@@ -403,7 +432,9 @@ export const def_glDebugMessageInsertKHR = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageInsertKHR!: Deno.UnsafeFnPointer<typeof def_glDebugMessageInsertKHR>;
+let fn_glDebugMessageInsertKHR!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageInsertKHR
+>;
 
 export function DebugMessageInsertKHR(
   source: GLenum,
@@ -428,7 +459,9 @@ export const def_glDebugMessageCallbackKHR = {
   result: "void",
 } as const;
 
-let fn_glDebugMessageCallbackKHR!: Deno.UnsafeFnPointer<typeof def_glDebugMessageCallbackKHR>;
+let fn_glDebugMessageCallbackKHR!: Deno.UnsafeFnPointer<
+  typeof def_glDebugMessageCallbackKHR
+>;
 
 export function DebugMessageCallbackKHR(
   callback: GLDEBUGPROCKHR,
@@ -441,11 +474,22 @@ export function DebugMessageCallbackKHR(
 }
 
 export const def_glGetDebugMessageLogKHR = {
-  parameters: ["u32", "i32", "buffer", "buffer", "buffer", "buffer", "buffer", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+  ],
   result: "u32",
 } as const;
 
-let fn_glGetDebugMessageLogKHR!: Deno.UnsafeFnPointer<typeof def_glGetDebugMessageLogKHR>;
+let fn_glGetDebugMessageLogKHR!: Deno.UnsafeFnPointer<
+  typeof def_glGetDebugMessageLogKHR
+>;
 
 export function GetDebugMessageLogKHR(
   count: GLuint,
@@ -474,7 +518,9 @@ export const def_glPushDebugGroupKHR = {
   result: "void",
 } as const;
 
-let fn_glPushDebugGroupKHR!: Deno.UnsafeFnPointer<typeof def_glPushDebugGroupKHR>;
+let fn_glPushDebugGroupKHR!: Deno.UnsafeFnPointer<
+  typeof def_glPushDebugGroupKHR
+>;
 
 export function PushDebugGroupKHR(
   source: GLenum,
@@ -527,7 +573,9 @@ export const def_glGetObjectLabelKHR = {
   result: "void",
 } as const;
 
-let fn_glGetObjectLabelKHR!: Deno.UnsafeFnPointer<typeof def_glGetObjectLabelKHR>;
+let fn_glGetObjectLabelKHR!: Deno.UnsafeFnPointer<
+  typeof def_glGetObjectLabelKHR
+>;
 
 export function GetObjectLabelKHR(
   identifier: GLenum,
@@ -550,7 +598,9 @@ export const def_glObjectPtrLabelKHR = {
   result: "void",
 } as const;
 
-let fn_glObjectPtrLabelKHR!: Deno.UnsafeFnPointer<typeof def_glObjectPtrLabelKHR>;
+let fn_glObjectPtrLabelKHR!: Deno.UnsafeFnPointer<
+  typeof def_glObjectPtrLabelKHR
+>;
 
 export function ObjectPtrLabelKHR(
   ptr: Buffer,
@@ -569,7 +619,9 @@ export const def_glGetObjectPtrLabelKHR = {
   result: "void",
 } as const;
 
-let fn_glGetObjectPtrLabelKHR!: Deno.UnsafeFnPointer<typeof def_glGetObjectPtrLabelKHR>;
+let fn_glGetObjectPtrLabelKHR!: Deno.UnsafeFnPointer<
+  typeof def_glGetObjectPtrLabelKHR
+>;
 
 export function GetObjectPtrLabelKHR(
   ptr: Buffer,
@@ -604,26 +656,92 @@ export function GetPointervKHR(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDebugMessageControl = new Deno.UnsafeFnPointer(proc("glDebugMessageControl"), def_glDebugMessageControl);
-  fn_glDebugMessageInsert = new Deno.UnsafeFnPointer(proc("glDebugMessageInsert"), def_glDebugMessageInsert);
-  fn_glDebugMessageCallback = new Deno.UnsafeFnPointer(proc("glDebugMessageCallback"), def_glDebugMessageCallback);
-  fn_glGetDebugMessageLog = new Deno.UnsafeFnPointer(proc("glGetDebugMessageLog"), def_glGetDebugMessageLog);
-  fn_glPushDebugGroup = new Deno.UnsafeFnPointer(proc("glPushDebugGroup"), def_glPushDebugGroup);
-  fn_glPopDebugGroup = new Deno.UnsafeFnPointer(proc("glPopDebugGroup"), def_glPopDebugGroup);
-  fn_glObjectLabel = new Deno.UnsafeFnPointer(proc("glObjectLabel"), def_glObjectLabel);
-  fn_glGetObjectLabel = new Deno.UnsafeFnPointer(proc("glGetObjectLabel"), def_glGetObjectLabel);
-  fn_glObjectPtrLabel = new Deno.UnsafeFnPointer(proc("glObjectPtrLabel"), def_glObjectPtrLabel);
-  fn_glGetObjectPtrLabel = new Deno.UnsafeFnPointer(proc("glGetObjectPtrLabel"), def_glGetObjectPtrLabel);
-  fn_glGetPointerv = new Deno.UnsafeFnPointer(proc("glGetPointerv"), def_glGetPointerv);
-  fn_glDebugMessageControlKHR = new Deno.UnsafeFnPointer(proc("glDebugMessageControlKHR"), def_glDebugMessageControlKHR);
-  fn_glDebugMessageInsertKHR = new Deno.UnsafeFnPointer(proc("glDebugMessageInsertKHR"), def_glDebugMessageInsertKHR);
-  fn_glDebugMessageCallbackKHR = new Deno.UnsafeFnPointer(proc("glDebugMessageCallbackKHR"), def_glDebugMessageCallbackKHR);
-  fn_glGetDebugMessageLogKHR = new Deno.UnsafeFnPointer(proc("glGetDebugMessageLogKHR"), def_glGetDebugMessageLogKHR);
-  fn_glPushDebugGroupKHR = new Deno.UnsafeFnPointer(proc("glPushDebugGroupKHR"), def_glPushDebugGroupKHR);
-  fn_glPopDebugGroupKHR = new Deno.UnsafeFnPointer(proc("glPopDebugGroupKHR"), def_glPopDebugGroupKHR);
-  fn_glObjectLabelKHR = new Deno.UnsafeFnPointer(proc("glObjectLabelKHR"), def_glObjectLabelKHR);
-  fn_glGetObjectLabelKHR = new Deno.UnsafeFnPointer(proc("glGetObjectLabelKHR"), def_glGetObjectLabelKHR);
-  fn_glObjectPtrLabelKHR = new Deno.UnsafeFnPointer(proc("glObjectPtrLabelKHR"), def_glObjectPtrLabelKHR);
-  fn_glGetObjectPtrLabelKHR = new Deno.UnsafeFnPointer(proc("glGetObjectPtrLabelKHR"), def_glGetObjectPtrLabelKHR);
-  fn_glGetPointervKHR = new Deno.UnsafeFnPointer(proc("glGetPointervKHR"), def_glGetPointervKHR);
+  fn_glDebugMessageControl = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageControl"),
+    def_glDebugMessageControl,
+  );
+  fn_glDebugMessageInsert = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageInsert"),
+    def_glDebugMessageInsert,
+  );
+  fn_glDebugMessageCallback = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageCallback"),
+    def_glDebugMessageCallback,
+  );
+  fn_glGetDebugMessageLog = new Deno.UnsafeFnPointer(
+    proc("glGetDebugMessageLog"),
+    def_glGetDebugMessageLog,
+  );
+  fn_glPushDebugGroup = new Deno.UnsafeFnPointer(
+    proc("glPushDebugGroup"),
+    def_glPushDebugGroup,
+  );
+  fn_glPopDebugGroup = new Deno.UnsafeFnPointer(
+    proc("glPopDebugGroup"),
+    def_glPopDebugGroup,
+  );
+  fn_glObjectLabel = new Deno.UnsafeFnPointer(
+    proc("glObjectLabel"),
+    def_glObjectLabel,
+  );
+  fn_glGetObjectLabel = new Deno.UnsafeFnPointer(
+    proc("glGetObjectLabel"),
+    def_glGetObjectLabel,
+  );
+  fn_glObjectPtrLabel = new Deno.UnsafeFnPointer(
+    proc("glObjectPtrLabel"),
+    def_glObjectPtrLabel,
+  );
+  fn_glGetObjectPtrLabel = new Deno.UnsafeFnPointer(
+    proc("glGetObjectPtrLabel"),
+    def_glGetObjectPtrLabel,
+  );
+  fn_glGetPointerv = new Deno.UnsafeFnPointer(
+    proc("glGetPointerv"),
+    def_glGetPointerv,
+  );
+  fn_glDebugMessageControlKHR = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageControlKHR"),
+    def_glDebugMessageControlKHR,
+  );
+  fn_glDebugMessageInsertKHR = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageInsertKHR"),
+    def_glDebugMessageInsertKHR,
+  );
+  fn_glDebugMessageCallbackKHR = new Deno.UnsafeFnPointer(
+    proc("glDebugMessageCallbackKHR"),
+    def_glDebugMessageCallbackKHR,
+  );
+  fn_glGetDebugMessageLogKHR = new Deno.UnsafeFnPointer(
+    proc("glGetDebugMessageLogKHR"),
+    def_glGetDebugMessageLogKHR,
+  );
+  fn_glPushDebugGroupKHR = new Deno.UnsafeFnPointer(
+    proc("glPushDebugGroupKHR"),
+    def_glPushDebugGroupKHR,
+  );
+  fn_glPopDebugGroupKHR = new Deno.UnsafeFnPointer(
+    proc("glPopDebugGroupKHR"),
+    def_glPopDebugGroupKHR,
+  );
+  fn_glObjectLabelKHR = new Deno.UnsafeFnPointer(
+    proc("glObjectLabelKHR"),
+    def_glObjectLabelKHR,
+  );
+  fn_glGetObjectLabelKHR = new Deno.UnsafeFnPointer(
+    proc("glGetObjectLabelKHR"),
+    def_glGetObjectLabelKHR,
+  );
+  fn_glObjectPtrLabelKHR = new Deno.UnsafeFnPointer(
+    proc("glObjectPtrLabelKHR"),
+    def_glObjectPtrLabelKHR,
+  );
+  fn_glGetObjectPtrLabelKHR = new Deno.UnsafeFnPointer(
+    proc("glGetObjectPtrLabelKHR"),
+    def_glGetObjectPtrLabelKHR,
+  );
+  fn_glGetPointervKHR = new Deno.UnsafeFnPointer(
+    proc("glGetPointervKHR"),
+    def_glGetPointervKHR,
+  );
 }

@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -69,7 +77,9 @@ export const def_glMemoryBarrierByRegion = {
   result: "void",
 } as const;
 
-let fn_glMemoryBarrierByRegion!: Deno.UnsafeFnPointer<typeof def_glMemoryBarrierByRegion>;
+let fn_glMemoryBarrierByRegion!: Deno.UnsafeFnPointer<
+  typeof def_glMemoryBarrierByRegion
+>;
 
 export function MemoryBarrierByRegion(
   barriers: GLbitfield,
@@ -81,5 +91,8 @@ export function MemoryBarrierByRegion(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glMemoryBarrierByRegion = new Deno.UnsafeFnPointer(proc("glMemoryBarrierByRegion"), def_glMemoryBarrierByRegion);
+  fn_glMemoryBarrierByRegion = new Deno.UnsafeFnPointer(
+    proc("glMemoryBarrierByRegion"),
+    def_glMemoryBarrierByRegion,
+  );
 }

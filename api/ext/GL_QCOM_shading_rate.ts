@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -88,5 +96,8 @@ export function ShadingRateQCOM(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glShadingRateQCOM = new Deno.UnsafeFnPointer(proc("glShadingRateQCOM"), def_glShadingRateQCOM);
+  fn_glShadingRateQCOM = new Deno.UnsafeFnPointer(
+    proc("glShadingRateQCOM"),
+    def_glShadingRateQCOM,
+  );
 }

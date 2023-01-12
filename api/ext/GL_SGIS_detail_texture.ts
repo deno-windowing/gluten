@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -76,7 +84,9 @@ export const def_glDetailTexFuncSGIS = {
   result: "void",
 } as const;
 
-let fn_glDetailTexFuncSGIS!: Deno.UnsafeFnPointer<typeof def_glDetailTexFuncSGIS>;
+let fn_glDetailTexFuncSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glDetailTexFuncSGIS
+>;
 
 export function DetailTexFuncSGIS(
   target: GLenum,
@@ -95,7 +105,9 @@ export const def_glGetDetailTexFuncSGIS = {
   result: "void",
 } as const;
 
-let fn_glGetDetailTexFuncSGIS!: Deno.UnsafeFnPointer<typeof def_glGetDetailTexFuncSGIS>;
+let fn_glGetDetailTexFuncSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glGetDetailTexFuncSGIS
+>;
 
 export function GetDetailTexFuncSGIS(
   target: GLenum,
@@ -109,6 +121,12 @@ export function GetDetailTexFuncSGIS(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDetailTexFuncSGIS = new Deno.UnsafeFnPointer(proc("glDetailTexFuncSGIS"), def_glDetailTexFuncSGIS);
-  fn_glGetDetailTexFuncSGIS = new Deno.UnsafeFnPointer(proc("glGetDetailTexFuncSGIS"), def_glGetDetailTexFuncSGIS);
+  fn_glDetailTexFuncSGIS = new Deno.UnsafeFnPointer(
+    proc("glDetailTexFuncSGIS"),
+    def_glDetailTexFuncSGIS,
+  );
+  fn_glGetDetailTexFuncSGIS = new Deno.UnsafeFnPointer(
+    proc("glGetDetailTexFuncSGIS"),
+    def_glGetDetailTexFuncSGIS,
+  );
 }

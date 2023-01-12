@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -69,7 +77,9 @@ export const def_glBindVertexArrayOES = {
   result: "void",
 } as const;
 
-let fn_glBindVertexArrayOES!: Deno.UnsafeFnPointer<typeof def_glBindVertexArrayOES>;
+let fn_glBindVertexArrayOES!: Deno.UnsafeFnPointer<
+  typeof def_glBindVertexArrayOES
+>;
 
 export function BindVertexArrayOES(
   array: GLuint,
@@ -84,7 +94,9 @@ export const def_glDeleteVertexArraysOES = {
   result: "void",
 } as const;
 
-let fn_glDeleteVertexArraysOES!: Deno.UnsafeFnPointer<typeof def_glDeleteVertexArraysOES>;
+let fn_glDeleteVertexArraysOES!: Deno.UnsafeFnPointer<
+  typeof def_glDeleteVertexArraysOES
+>;
 
 export function DeleteVertexArraysOES(
   n: GLsizei,
@@ -101,7 +113,9 @@ export const def_glGenVertexArraysOES = {
   result: "void",
 } as const;
 
-let fn_glGenVertexArraysOES!: Deno.UnsafeFnPointer<typeof def_glGenVertexArraysOES>;
+let fn_glGenVertexArraysOES!: Deno.UnsafeFnPointer<
+  typeof def_glGenVertexArraysOES
+>;
 
 export function GenVertexArraysOES(
   n: GLsizei,
@@ -130,8 +144,20 @@ export function IsVertexArrayOES(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBindVertexArrayOES = new Deno.UnsafeFnPointer(proc("glBindVertexArrayOES"), def_glBindVertexArrayOES);
-  fn_glDeleteVertexArraysOES = new Deno.UnsafeFnPointer(proc("glDeleteVertexArraysOES"), def_glDeleteVertexArraysOES);
-  fn_glGenVertexArraysOES = new Deno.UnsafeFnPointer(proc("glGenVertexArraysOES"), def_glGenVertexArraysOES);
-  fn_glIsVertexArrayOES = new Deno.UnsafeFnPointer(proc("glIsVertexArrayOES"), def_glIsVertexArrayOES);
+  fn_glBindVertexArrayOES = new Deno.UnsafeFnPointer(
+    proc("glBindVertexArrayOES"),
+    def_glBindVertexArrayOES,
+  );
+  fn_glDeleteVertexArraysOES = new Deno.UnsafeFnPointer(
+    proc("glDeleteVertexArraysOES"),
+    def_glDeleteVertexArraysOES,
+  );
+  fn_glGenVertexArraysOES = new Deno.UnsafeFnPointer(
+    proc("glGenVertexArraysOES"),
+    def_glGenVertexArraysOES,
+  );
+  fn_glIsVertexArrayOES = new Deno.UnsafeFnPointer(
+    proc("glIsVertexArrayOES"),
+    def_glIsVertexArrayOES,
+  );
 }

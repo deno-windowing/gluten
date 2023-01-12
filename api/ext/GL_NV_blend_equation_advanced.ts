@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -119,7 +127,9 @@ export const def_glBlendParameteriNV = {
   result: "void",
 } as const;
 
-let fn_glBlendParameteriNV!: Deno.UnsafeFnPointer<typeof def_glBlendParameteriNV>;
+let fn_glBlendParameteriNV!: Deno.UnsafeFnPointer<
+  typeof def_glBlendParameteriNV
+>;
 
 export function BlendParameteriNV(
   pname: GLenum,
@@ -144,6 +154,12 @@ export function BlendBarrierNV(): void {
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBlendParameteriNV = new Deno.UnsafeFnPointer(proc("glBlendParameteriNV"), def_glBlendParameteriNV);
-  fn_glBlendBarrierNV = new Deno.UnsafeFnPointer(proc("glBlendBarrierNV"), def_glBlendBarrierNV);
+  fn_glBlendParameteriNV = new Deno.UnsafeFnPointer(
+    proc("glBlendParameteriNV"),
+    def_glBlendParameteriNV,
+  );
+  fn_glBlendBarrierNV = new Deno.UnsafeFnPointer(
+    proc("glBlendBarrierNV"),
+    def_glBlendBarrierNV,
+  );
 }

@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glEGLImageTargetTexStorageEXT = {
   result: "void",
 } as const;
 
-let fn_glEGLImageTargetTexStorageEXT!: Deno.UnsafeFnPointer<typeof def_glEGLImageTargetTexStorageEXT>;
+let fn_glEGLImageTargetTexStorageEXT!: Deno.UnsafeFnPointer<
+  typeof def_glEGLImageTargetTexStorageEXT
+>;
 
 export function EGLImageTargetTexStorageEXT(
   target: GLenum,
@@ -85,7 +95,9 @@ export const def_glEGLImageTargetTextureStorageEXT = {
   result: "void",
 } as const;
 
-let fn_glEGLImageTargetTextureStorageEXT!: Deno.UnsafeFnPointer<typeof def_glEGLImageTargetTextureStorageEXT>;
+let fn_glEGLImageTargetTextureStorageEXT!: Deno.UnsafeFnPointer<
+  typeof def_glEGLImageTargetTextureStorageEXT
+>;
 
 export function EGLImageTargetTextureStorageEXT(
   texture: GLuint,
@@ -101,6 +113,12 @@ export function EGLImageTargetTextureStorageEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glEGLImageTargetTexStorageEXT = new Deno.UnsafeFnPointer(proc("glEGLImageTargetTexStorageEXT"), def_glEGLImageTargetTexStorageEXT);
-  fn_glEGLImageTargetTextureStorageEXT = new Deno.UnsafeFnPointer(proc("glEGLImageTargetTextureStorageEXT"), def_glEGLImageTargetTextureStorageEXT);
+  fn_glEGLImageTargetTexStorageEXT = new Deno.UnsafeFnPointer(
+    proc("glEGLImageTargetTexStorageEXT"),
+    def_glEGLImageTargetTexStorageEXT,
+  );
+  fn_glEGLImageTargetTextureStorageEXT = new Deno.UnsafeFnPointer(
+    proc("glEGLImageTargetTextureStorageEXT"),
+    def_glEGLImageTargetTextureStorageEXT,
+  );
 }

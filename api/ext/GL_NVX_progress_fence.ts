@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glCreateProgressFenceNVX = {
   result: "u32",
 } as const;
 
-let fn_glCreateProgressFenceNVX!: Deno.UnsafeFnPointer<typeof def_glCreateProgressFenceNVX>;
+let fn_glCreateProgressFenceNVX!: Deno.UnsafeFnPointer<
+  typeof def_glCreateProgressFenceNVX
+>;
 
 export function CreateProgressFenceNVX(): GLuint {
   return fn_glCreateProgressFenceNVX.call();
@@ -77,7 +87,9 @@ export const def_glSignalSemaphoreui64NVX = {
   result: "void",
 } as const;
 
-let fn_glSignalSemaphoreui64NVX!: Deno.UnsafeFnPointer<typeof def_glSignalSemaphoreui64NVX>;
+let fn_glSignalSemaphoreui64NVX!: Deno.UnsafeFnPointer<
+  typeof def_glSignalSemaphoreui64NVX
+>;
 
 export function SignalSemaphoreui64NVX(
   signalGpu: GLuint,
@@ -98,7 +110,9 @@ export const def_glWaitSemaphoreui64NVX = {
   result: "void",
 } as const;
 
-let fn_glWaitSemaphoreui64NVX!: Deno.UnsafeFnPointer<typeof def_glWaitSemaphoreui64NVX>;
+let fn_glWaitSemaphoreui64NVX!: Deno.UnsafeFnPointer<
+  typeof def_glWaitSemaphoreui64NVX
+>;
 
 export function WaitSemaphoreui64NVX(
   waitGpu: GLuint,
@@ -119,7 +133,9 @@ export const def_glClientWaitSemaphoreui64NVX = {
   result: "void",
 } as const;
 
-let fn_glClientWaitSemaphoreui64NVX!: Deno.UnsafeFnPointer<typeof def_glClientWaitSemaphoreui64NVX>;
+let fn_glClientWaitSemaphoreui64NVX!: Deno.UnsafeFnPointer<
+  typeof def_glClientWaitSemaphoreui64NVX
+>;
 
 export function ClientWaitSemaphoreui64NVX(
   fenceObjectCount: GLsizei,
@@ -135,8 +151,20 @@ export function ClientWaitSemaphoreui64NVX(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glCreateProgressFenceNVX = new Deno.UnsafeFnPointer(proc("glCreateProgressFenceNVX"), def_glCreateProgressFenceNVX);
-  fn_glSignalSemaphoreui64NVX = new Deno.UnsafeFnPointer(proc("glSignalSemaphoreui64NVX"), def_glSignalSemaphoreui64NVX);
-  fn_glWaitSemaphoreui64NVX = new Deno.UnsafeFnPointer(proc("glWaitSemaphoreui64NVX"), def_glWaitSemaphoreui64NVX);
-  fn_glClientWaitSemaphoreui64NVX = new Deno.UnsafeFnPointer(proc("glClientWaitSemaphoreui64NVX"), def_glClientWaitSemaphoreui64NVX);
+  fn_glCreateProgressFenceNVX = new Deno.UnsafeFnPointer(
+    proc("glCreateProgressFenceNVX"),
+    def_glCreateProgressFenceNVX,
+  );
+  fn_glSignalSemaphoreui64NVX = new Deno.UnsafeFnPointer(
+    proc("glSignalSemaphoreui64NVX"),
+    def_glSignalSemaphoreui64NVX,
+  );
+  fn_glWaitSemaphoreui64NVX = new Deno.UnsafeFnPointer(
+    proc("glWaitSemaphoreui64NVX"),
+    def_glWaitSemaphoreui64NVX,
+  );
+  fn_glClientWaitSemaphoreui64NVX = new Deno.UnsafeFnPointer(
+    proc("glClientWaitSemaphoreui64NVX"),
+    def_glClientWaitSemaphoreui64NVX,
+  );
 }

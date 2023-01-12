@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -95,7 +103,9 @@ export const def_glFlushMappedBufferRange = {
   result: "void",
 } as const;
 
-let fn_glFlushMappedBufferRange!: Deno.UnsafeFnPointer<typeof def_glFlushMappedBufferRange>;
+let fn_glFlushMappedBufferRange!: Deno.UnsafeFnPointer<
+  typeof def_glFlushMappedBufferRange
+>;
 
 export function FlushMappedBufferRange(
   target: GLenum,
@@ -111,6 +121,12 @@ export function FlushMappedBufferRange(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glMapBufferRange = new Deno.UnsafeFnPointer(proc("glMapBufferRange"), def_glMapBufferRange);
-  fn_glFlushMappedBufferRange = new Deno.UnsafeFnPointer(proc("glFlushMappedBufferRange"), def_glFlushMappedBufferRange);
+  fn_glMapBufferRange = new Deno.UnsafeFnPointer(
+    proc("glMapBufferRange"),
+    def_glMapBufferRange,
+  );
+  fn_glFlushMappedBufferRange = new Deno.UnsafeFnPointer(
+    proc("glFlushMappedBufferRange"),
+    def_glFlushMappedBufferRange,
+  );
 }

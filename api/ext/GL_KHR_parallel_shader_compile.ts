@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -70,7 +78,9 @@ export const def_glMaxShaderCompilerThreadsKHR = {
   result: "void",
 } as const;
 
-let fn_glMaxShaderCompilerThreadsKHR!: Deno.UnsafeFnPointer<typeof def_glMaxShaderCompilerThreadsKHR>;
+let fn_glMaxShaderCompilerThreadsKHR!: Deno.UnsafeFnPointer<
+  typeof def_glMaxShaderCompilerThreadsKHR
+>;
 
 export function MaxShaderCompilerThreadsKHR(
   count: GLuint,
@@ -82,5 +92,8 @@ export function MaxShaderCompilerThreadsKHR(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glMaxShaderCompilerThreadsKHR = new Deno.UnsafeFnPointer(proc("glMaxShaderCompilerThreadsKHR"), def_glMaxShaderCompilerThreadsKHR);
+  fn_glMaxShaderCompilerThreadsKHR = new Deno.UnsafeFnPointer(
+    proc("glMaxShaderCompilerThreadsKHR"),
+    def_glMaxShaderCompilerThreadsKHR,
+  );
 }

@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -80,11 +88,14 @@ export const MIN_FRAGMENT_SHADING_RATE_ATTACHMENT_TEXEL_WIDTH_EXT = 0x96d7;
 export const MAX_FRAGMENT_SHADING_RATE_ATTACHMENT_TEXEL_WIDTH_EXT = 0x96d8;
 export const MIN_FRAGMENT_SHADING_RATE_ATTACHMENT_TEXEL_HEIGHT_EXT = 0x96d9;
 export const MAX_FRAGMENT_SHADING_RATE_ATTACHMENT_TEXEL_HEIGHT_EXT = 0x96da;
-export const MAX_FRAGMENT_SHADING_RATE_ATTACHMENT_TEXEL_ASPECT_RATIO_EXT = 0x96db;
+export const MAX_FRAGMENT_SHADING_RATE_ATTACHMENT_TEXEL_ASPECT_RATIO_EXT =
+  0x96db;
 export const MAX_FRAGMENT_SHADING_RATE_ATTACHMENT_LAYERS_EXT = 0x96dc;
-export const FRAGMENT_SHADING_RATE_WITH_SHADER_DEPTH_STENCIL_WRITES_SUPPORTED_EXT = 0x96dd;
+export const FRAGMENT_SHADING_RATE_WITH_SHADER_DEPTH_STENCIL_WRITES_SUPPORTED_EXT =
+  0x96dd;
 export const FRAGMENT_SHADING_RATE_WITH_SAMPLE_MASK_SUPPORTED_EXT = 0x96de;
-export const FRAGMENT_SHADING_RATE_ATTACHMENT_WITH_DEFAULT_FRAMEBUFFER_SUPPORTED_EXT = 0x96df;
+export const FRAGMENT_SHADING_RATE_ATTACHMENT_WITH_DEFAULT_FRAMEBUFFER_SUPPORTED_EXT =
+  0x96df;
 export const FRAGMENT_SHADING_RATE_NON_TRIVIAL_COMBINERS_SUPPORTED_EXT = 0x8f6f;
 
 /// Commands
@@ -94,7 +105,9 @@ export const def_glGetFragmentShadingRatesEXT = {
   result: "void",
 } as const;
 
-let fn_glGetFragmentShadingRatesEXT!: Deno.UnsafeFnPointer<typeof def_glGetFragmentShadingRatesEXT>;
+let fn_glGetFragmentShadingRatesEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetFragmentShadingRatesEXT
+>;
 
 export function GetFragmentShadingRatesEXT(
   samples: GLsizei,
@@ -130,7 +143,9 @@ export const def_glShadingRateCombinerOpsEXT = {
   result: "void",
 } as const;
 
-let fn_glShadingRateCombinerOpsEXT!: Deno.UnsafeFnPointer<typeof def_glShadingRateCombinerOpsEXT>;
+let fn_glShadingRateCombinerOpsEXT!: Deno.UnsafeFnPointer<
+  typeof def_glShadingRateCombinerOpsEXT
+>;
 
 export function ShadingRateCombinerOpsEXT(
   combinerOp0: GLenum,
@@ -147,7 +162,9 @@ export const def_glFramebufferShadingRateEXT = {
   result: "void",
 } as const;
 
-let fn_glFramebufferShadingRateEXT!: Deno.UnsafeFnPointer<typeof def_glFramebufferShadingRateEXT>;
+let fn_glFramebufferShadingRateEXT!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferShadingRateEXT
+>;
 
 export function FramebufferShadingRateEXT(
   target: GLenum,
@@ -171,8 +188,20 @@ export function FramebufferShadingRateEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetFragmentShadingRatesEXT = new Deno.UnsafeFnPointer(proc("glGetFragmentShadingRatesEXT"), def_glGetFragmentShadingRatesEXT);
-  fn_glShadingRateEXT = new Deno.UnsafeFnPointer(proc("glShadingRateEXT"), def_glShadingRateEXT);
-  fn_glShadingRateCombinerOpsEXT = new Deno.UnsafeFnPointer(proc("glShadingRateCombinerOpsEXT"), def_glShadingRateCombinerOpsEXT);
-  fn_glFramebufferShadingRateEXT = new Deno.UnsafeFnPointer(proc("glFramebufferShadingRateEXT"), def_glFramebufferShadingRateEXT);
+  fn_glGetFragmentShadingRatesEXT = new Deno.UnsafeFnPointer(
+    proc("glGetFragmentShadingRatesEXT"),
+    def_glGetFragmentShadingRatesEXT,
+  );
+  fn_glShadingRateEXT = new Deno.UnsafeFnPointer(
+    proc("glShadingRateEXT"),
+    def_glShadingRateEXT,
+  );
+  fn_glShadingRateCombinerOpsEXT = new Deno.UnsafeFnPointer(
+    proc("glShadingRateCombinerOpsEXT"),
+    def_glShadingRateCombinerOpsEXT,
+  );
+  fn_glFramebufferShadingRateEXT = new Deno.UnsafeFnPointer(
+    proc("glFramebufferShadingRateEXT"),
+    def_glFramebufferShadingRateEXT,
+  );
 }

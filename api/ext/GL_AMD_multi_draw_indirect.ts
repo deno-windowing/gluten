@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glMultiDrawArraysIndirectAMD = {
   result: "void",
 } as const;
 
-let fn_glMultiDrawArraysIndirectAMD!: Deno.UnsafeFnPointer<typeof def_glMultiDrawArraysIndirectAMD>;
+let fn_glMultiDrawArraysIndirectAMD!: Deno.UnsafeFnPointer<
+  typeof def_glMultiDrawArraysIndirectAMD
+>;
 
 export function MultiDrawArraysIndirectAMD(
   mode: GLenum,
@@ -87,7 +97,9 @@ export const def_glMultiDrawElementsIndirectAMD = {
   result: "void",
 } as const;
 
-let fn_glMultiDrawElementsIndirectAMD!: Deno.UnsafeFnPointer<typeof def_glMultiDrawElementsIndirectAMD>;
+let fn_glMultiDrawElementsIndirectAMD!: Deno.UnsafeFnPointer<
+  typeof def_glMultiDrawElementsIndirectAMD
+>;
 
 export function MultiDrawElementsIndirectAMD(
   mode: GLenum,
@@ -107,6 +119,12 @@ export function MultiDrawElementsIndirectAMD(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glMultiDrawArraysIndirectAMD = new Deno.UnsafeFnPointer(proc("glMultiDrawArraysIndirectAMD"), def_glMultiDrawArraysIndirectAMD);
-  fn_glMultiDrawElementsIndirectAMD = new Deno.UnsafeFnPointer(proc("glMultiDrawElementsIndirectAMD"), def_glMultiDrawElementsIndirectAMD);
+  fn_glMultiDrawArraysIndirectAMD = new Deno.UnsafeFnPointer(
+    proc("glMultiDrawArraysIndirectAMD"),
+    def_glMultiDrawArraysIndirectAMD,
+  );
+  fn_glMultiDrawElementsIndirectAMD = new Deno.UnsafeFnPointer(
+    proc("glMultiDrawElementsIndirectAMD"),
+    def_glMultiDrawElementsIndirectAMD,
+  );
 }

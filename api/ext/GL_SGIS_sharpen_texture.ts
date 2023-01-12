@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -72,7 +80,9 @@ export const def_glSharpenTexFuncSGIS = {
   result: "void",
 } as const;
 
-let fn_glSharpenTexFuncSGIS!: Deno.UnsafeFnPointer<typeof def_glSharpenTexFuncSGIS>;
+let fn_glSharpenTexFuncSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glSharpenTexFuncSGIS
+>;
 
 export function SharpenTexFuncSGIS(
   target: GLenum,
@@ -91,7 +101,9 @@ export const def_glGetSharpenTexFuncSGIS = {
   result: "void",
 } as const;
 
-let fn_glGetSharpenTexFuncSGIS!: Deno.UnsafeFnPointer<typeof def_glGetSharpenTexFuncSGIS>;
+let fn_glGetSharpenTexFuncSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glGetSharpenTexFuncSGIS
+>;
 
 export function GetSharpenTexFuncSGIS(
   target: GLenum,
@@ -105,6 +117,12 @@ export function GetSharpenTexFuncSGIS(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glSharpenTexFuncSGIS = new Deno.UnsafeFnPointer(proc("glSharpenTexFuncSGIS"), def_glSharpenTexFuncSGIS);
-  fn_glGetSharpenTexFuncSGIS = new Deno.UnsafeFnPointer(proc("glGetSharpenTexFuncSGIS"), def_glGetSharpenTexFuncSGIS);
+  fn_glSharpenTexFuncSGIS = new Deno.UnsafeFnPointer(
+    proc("glSharpenTexFuncSGIS"),
+    def_glSharpenTexFuncSGIS,
+  );
+  fn_glGetSharpenTexFuncSGIS = new Deno.UnsafeFnPointer(
+    proc("glGetSharpenTexFuncSGIS"),
+    def_glGetSharpenTexFuncSGIS,
+  );
 }

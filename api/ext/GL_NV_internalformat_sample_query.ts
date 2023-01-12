@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -75,7 +83,9 @@ export const def_glGetInternalformatSampleivNV = {
   result: "void",
 } as const;
 
-let fn_glGetInternalformatSampleivNV!: Deno.UnsafeFnPointer<typeof def_glGetInternalformatSampleivNV>;
+let fn_glGetInternalformatSampleivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetInternalformatSampleivNV
+>;
 
 export function GetInternalformatSampleivNV(
   target: GLenum,
@@ -97,5 +107,8 @@ export function GetInternalformatSampleivNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetInternalformatSampleivNV = new Deno.UnsafeFnPointer(proc("glGetInternalformatSampleivNV"), def_glGetInternalformatSampleivNV);
+  fn_glGetInternalformatSampleivNV = new Deno.UnsafeFnPointer(
+    proc("glGetInternalformatSampleivNV"),
+    def_glGetInternalformatSampleivNV,
+  );
 }

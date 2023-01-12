@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -69,7 +77,9 @@ export const def_glDrawArraysInstancedEXT = {
   result: "void",
 } as const;
 
-let fn_glDrawArraysInstancedEXT!: Deno.UnsafeFnPointer<typeof def_glDrawArraysInstancedEXT>;
+let fn_glDrawArraysInstancedEXT!: Deno.UnsafeFnPointer<
+  typeof def_glDrawArraysInstancedEXT
+>;
 
 export function DrawArraysInstancedEXT(
   mode: GLenum,
@@ -90,7 +100,9 @@ export const def_glDrawElementsInstancedEXT = {
   result: "void",
 } as const;
 
-let fn_glDrawElementsInstancedEXT!: Deno.UnsafeFnPointer<typeof def_glDrawElementsInstancedEXT>;
+let fn_glDrawElementsInstancedEXT!: Deno.UnsafeFnPointer<
+  typeof def_glDrawElementsInstancedEXT
+>;
 
 export function DrawElementsInstancedEXT(
   mode: GLenum,
@@ -113,7 +125,9 @@ export const def_glVertexAttribDivisorEXT = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribDivisorEXT!: Deno.UnsafeFnPointer<typeof def_glVertexAttribDivisorEXT>;
+let fn_glVertexAttribDivisorEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribDivisorEXT
+>;
 
 export function VertexAttribDivisorEXT(
   index: GLuint,
@@ -127,7 +141,16 @@ export function VertexAttribDivisorEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDrawArraysInstancedEXT = new Deno.UnsafeFnPointer(proc("glDrawArraysInstancedEXT"), def_glDrawArraysInstancedEXT);
-  fn_glDrawElementsInstancedEXT = new Deno.UnsafeFnPointer(proc("glDrawElementsInstancedEXT"), def_glDrawElementsInstancedEXT);
-  fn_glVertexAttribDivisorEXT = new Deno.UnsafeFnPointer(proc("glVertexAttribDivisorEXT"), def_glVertexAttribDivisorEXT);
+  fn_glDrawArraysInstancedEXT = new Deno.UnsafeFnPointer(
+    proc("glDrawArraysInstancedEXT"),
+    def_glDrawArraysInstancedEXT,
+  );
+  fn_glDrawElementsInstancedEXT = new Deno.UnsafeFnPointer(
+    proc("glDrawElementsInstancedEXT"),
+    def_glDrawElementsInstancedEXT,
+  );
+  fn_glVertexAttribDivisorEXT = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribDivisorEXT"),
+    def_glVertexAttribDivisorEXT,
+  );
 }

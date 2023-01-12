@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -72,7 +80,9 @@ export const def_glGenOcclusionQueriesNV = {
   result: "void",
 } as const;
 
-let fn_glGenOcclusionQueriesNV!: Deno.UnsafeFnPointer<typeof def_glGenOcclusionQueriesNV>;
+let fn_glGenOcclusionQueriesNV!: Deno.UnsafeFnPointer<
+  typeof def_glGenOcclusionQueriesNV
+>;
 
 export function GenOcclusionQueriesNV(
   n: GLsizei,
@@ -89,7 +99,9 @@ export const def_glDeleteOcclusionQueriesNV = {
   result: "void",
 } as const;
 
-let fn_glDeleteOcclusionQueriesNV!: Deno.UnsafeFnPointer<typeof def_glDeleteOcclusionQueriesNV>;
+let fn_glDeleteOcclusionQueriesNV!: Deno.UnsafeFnPointer<
+  typeof def_glDeleteOcclusionQueriesNV
+>;
 
 export function DeleteOcclusionQueriesNV(
   n: GLsizei,
@@ -106,7 +118,9 @@ export const def_glIsOcclusionQueryNV = {
   result: "u8",
 } as const;
 
-let fn_glIsOcclusionQueryNV!: Deno.UnsafeFnPointer<typeof def_glIsOcclusionQueryNV>;
+let fn_glIsOcclusionQueryNV!: Deno.UnsafeFnPointer<
+  typeof def_glIsOcclusionQueryNV
+>;
 
 export function IsOcclusionQueryNV(
   id: GLuint,
@@ -121,7 +135,9 @@ export const def_glBeginOcclusionQueryNV = {
   result: "void",
 } as const;
 
-let fn_glBeginOcclusionQueryNV!: Deno.UnsafeFnPointer<typeof def_glBeginOcclusionQueryNV>;
+let fn_glBeginOcclusionQueryNV!: Deno.UnsafeFnPointer<
+  typeof def_glBeginOcclusionQueryNV
+>;
 
 export function BeginOcclusionQueryNV(
   id: GLuint,
@@ -136,7 +152,9 @@ export const def_glEndOcclusionQueryNV = {
   result: "void",
 } as const;
 
-let fn_glEndOcclusionQueryNV!: Deno.UnsafeFnPointer<typeof def_glEndOcclusionQueryNV>;
+let fn_glEndOcclusionQueryNV!: Deno.UnsafeFnPointer<
+  typeof def_glEndOcclusionQueryNV
+>;
 
 export function EndOcclusionQueryNV(): void {
   fn_glEndOcclusionQueryNV.call();
@@ -147,7 +165,9 @@ export const def_glGetOcclusionQueryivNV = {
   result: "void",
 } as const;
 
-let fn_glGetOcclusionQueryivNV!: Deno.UnsafeFnPointer<typeof def_glGetOcclusionQueryivNV>;
+let fn_glGetOcclusionQueryivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetOcclusionQueryivNV
+>;
 
 export function GetOcclusionQueryivNV(
   id: GLuint,
@@ -166,7 +186,9 @@ export const def_glGetOcclusionQueryuivNV = {
   result: "void",
 } as const;
 
-let fn_glGetOcclusionQueryuivNV!: Deno.UnsafeFnPointer<typeof def_glGetOcclusionQueryuivNV>;
+let fn_glGetOcclusionQueryuivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetOcclusionQueryuivNV
+>;
 
 export function GetOcclusionQueryuivNV(
   id: GLuint,
@@ -182,11 +204,32 @@ export function GetOcclusionQueryuivNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGenOcclusionQueriesNV = new Deno.UnsafeFnPointer(proc("glGenOcclusionQueriesNV"), def_glGenOcclusionQueriesNV);
-  fn_glDeleteOcclusionQueriesNV = new Deno.UnsafeFnPointer(proc("glDeleteOcclusionQueriesNV"), def_glDeleteOcclusionQueriesNV);
-  fn_glIsOcclusionQueryNV = new Deno.UnsafeFnPointer(proc("glIsOcclusionQueryNV"), def_glIsOcclusionQueryNV);
-  fn_glBeginOcclusionQueryNV = new Deno.UnsafeFnPointer(proc("glBeginOcclusionQueryNV"), def_glBeginOcclusionQueryNV);
-  fn_glEndOcclusionQueryNV = new Deno.UnsafeFnPointer(proc("glEndOcclusionQueryNV"), def_glEndOcclusionQueryNV);
-  fn_glGetOcclusionQueryivNV = new Deno.UnsafeFnPointer(proc("glGetOcclusionQueryivNV"), def_glGetOcclusionQueryivNV);
-  fn_glGetOcclusionQueryuivNV = new Deno.UnsafeFnPointer(proc("glGetOcclusionQueryuivNV"), def_glGetOcclusionQueryuivNV);
+  fn_glGenOcclusionQueriesNV = new Deno.UnsafeFnPointer(
+    proc("glGenOcclusionQueriesNV"),
+    def_glGenOcclusionQueriesNV,
+  );
+  fn_glDeleteOcclusionQueriesNV = new Deno.UnsafeFnPointer(
+    proc("glDeleteOcclusionQueriesNV"),
+    def_glDeleteOcclusionQueriesNV,
+  );
+  fn_glIsOcclusionQueryNV = new Deno.UnsafeFnPointer(
+    proc("glIsOcclusionQueryNV"),
+    def_glIsOcclusionQueryNV,
+  );
+  fn_glBeginOcclusionQueryNV = new Deno.UnsafeFnPointer(
+    proc("glBeginOcclusionQueryNV"),
+    def_glBeginOcclusionQueryNV,
+  );
+  fn_glEndOcclusionQueryNV = new Deno.UnsafeFnPointer(
+    proc("glEndOcclusionQueryNV"),
+    def_glEndOcclusionQueryNV,
+  );
+  fn_glGetOcclusionQueryivNV = new Deno.UnsafeFnPointer(
+    proc("glGetOcclusionQueryivNV"),
+    def_glGetOcclusionQueryivNV,
+  );
+  fn_glGetOcclusionQueryuivNV = new Deno.UnsafeFnPointer(
+    proc("glGetOcclusionQueryuivNV"),
+    def_glGetOcclusionQueryuivNV,
+  );
 }

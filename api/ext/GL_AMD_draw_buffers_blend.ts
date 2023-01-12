@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glBlendFuncIndexedAMD = {
   result: "void",
 } as const;
 
-let fn_glBlendFuncIndexedAMD!: Deno.UnsafeFnPointer<typeof def_glBlendFuncIndexedAMD>;
+let fn_glBlendFuncIndexedAMD!: Deno.UnsafeFnPointer<
+  typeof def_glBlendFuncIndexedAMD
+>;
 
 export function BlendFuncIndexedAMD(
   buf: GLuint,
@@ -85,7 +95,9 @@ export const def_glBlendFuncSeparateIndexedAMD = {
   result: "void",
 } as const;
 
-let fn_glBlendFuncSeparateIndexedAMD!: Deno.UnsafeFnPointer<typeof def_glBlendFuncSeparateIndexedAMD>;
+let fn_glBlendFuncSeparateIndexedAMD!: Deno.UnsafeFnPointer<
+  typeof def_glBlendFuncSeparateIndexedAMD
+>;
 
 export function BlendFuncSeparateIndexedAMD(
   buf: GLuint,
@@ -108,7 +120,9 @@ export const def_glBlendEquationIndexedAMD = {
   result: "void",
 } as const;
 
-let fn_glBlendEquationIndexedAMD!: Deno.UnsafeFnPointer<typeof def_glBlendEquationIndexedAMD>;
+let fn_glBlendEquationIndexedAMD!: Deno.UnsafeFnPointer<
+  typeof def_glBlendEquationIndexedAMD
+>;
 
 export function BlendEquationIndexedAMD(
   buf: GLuint,
@@ -125,7 +139,9 @@ export const def_glBlendEquationSeparateIndexedAMD = {
   result: "void",
 } as const;
 
-let fn_glBlendEquationSeparateIndexedAMD!: Deno.UnsafeFnPointer<typeof def_glBlendEquationSeparateIndexedAMD>;
+let fn_glBlendEquationSeparateIndexedAMD!: Deno.UnsafeFnPointer<
+  typeof def_glBlendEquationSeparateIndexedAMD
+>;
 
 export function BlendEquationSeparateIndexedAMD(
   buf: GLuint,
@@ -141,8 +157,20 @@ export function BlendEquationSeparateIndexedAMD(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBlendFuncIndexedAMD = new Deno.UnsafeFnPointer(proc("glBlendFuncIndexedAMD"), def_glBlendFuncIndexedAMD);
-  fn_glBlendFuncSeparateIndexedAMD = new Deno.UnsafeFnPointer(proc("glBlendFuncSeparateIndexedAMD"), def_glBlendFuncSeparateIndexedAMD);
-  fn_glBlendEquationIndexedAMD = new Deno.UnsafeFnPointer(proc("glBlendEquationIndexedAMD"), def_glBlendEquationIndexedAMD);
-  fn_glBlendEquationSeparateIndexedAMD = new Deno.UnsafeFnPointer(proc("glBlendEquationSeparateIndexedAMD"), def_glBlendEquationSeparateIndexedAMD);
+  fn_glBlendFuncIndexedAMD = new Deno.UnsafeFnPointer(
+    proc("glBlendFuncIndexedAMD"),
+    def_glBlendFuncIndexedAMD,
+  );
+  fn_glBlendFuncSeparateIndexedAMD = new Deno.UnsafeFnPointer(
+    proc("glBlendFuncSeparateIndexedAMD"),
+    def_glBlendFuncSeparateIndexedAMD,
+  );
+  fn_glBlendEquationIndexedAMD = new Deno.UnsafeFnPointer(
+    proc("glBlendEquationIndexedAMD"),
+    def_glBlendEquationIndexedAMD,
+  );
+  fn_glBlendEquationSeparateIndexedAMD = new Deno.UnsafeFnPointer(
+    proc("glBlendEquationSeparateIndexedAMD"),
+    def_glBlendEquationSeparateIndexedAMD,
+  );
 }

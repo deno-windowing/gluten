@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -101,7 +109,9 @@ export const def_glSamplePatternSGIS = {
   result: "void",
 } as const;
 
-let fn_glSamplePatternSGIS!: Deno.UnsafeFnPointer<typeof def_glSamplePatternSGIS>;
+let fn_glSamplePatternSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glSamplePatternSGIS
+>;
 
 export function SamplePatternSGIS(
   pattern: GLenum,
@@ -113,6 +123,12 @@ export function SamplePatternSGIS(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glSampleMaskSGIS = new Deno.UnsafeFnPointer(proc("glSampleMaskSGIS"), def_glSampleMaskSGIS);
-  fn_glSamplePatternSGIS = new Deno.UnsafeFnPointer(proc("glSamplePatternSGIS"), def_glSamplePatternSGIS);
+  fn_glSampleMaskSGIS = new Deno.UnsafeFnPointer(
+    proc("glSampleMaskSGIS"),
+    def_glSampleMaskSGIS,
+  );
+  fn_glSamplePatternSGIS = new Deno.UnsafeFnPointer(
+    proc("glSamplePatternSGIS"),
+    def_glSamplePatternSGIS,
+  );
 }

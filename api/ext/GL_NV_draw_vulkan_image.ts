@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -62,7 +70,19 @@ export type GLVULKANPROCNV = Buffer;
 /// Commands
 
 export const def_glDrawVkImageNV = {
-  parameters: ["u64", "u32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32"],
+  parameters: [
+    "u64",
+    "u32",
+    "f32",
+    "f32",
+    "f32",
+    "f32",
+    "f32",
+    "f32",
+    "f32",
+    "f32",
+    "f32",
+  ],
   result: "void",
 } as const;
 
@@ -116,7 +136,9 @@ export const def_glWaitVkSemaphoreNV = {
   result: "void",
 } as const;
 
-let fn_glWaitVkSemaphoreNV!: Deno.UnsafeFnPointer<typeof def_glWaitVkSemaphoreNV>;
+let fn_glWaitVkSemaphoreNV!: Deno.UnsafeFnPointer<
+  typeof def_glWaitVkSemaphoreNV
+>;
 
 export function WaitVkSemaphoreNV(
   vkSemaphore: GLuint64,
@@ -131,7 +153,9 @@ export const def_glSignalVkSemaphoreNV = {
   result: "void",
 } as const;
 
-let fn_glSignalVkSemaphoreNV!: Deno.UnsafeFnPointer<typeof def_glSignalVkSemaphoreNV>;
+let fn_glSignalVkSemaphoreNV!: Deno.UnsafeFnPointer<
+  typeof def_glSignalVkSemaphoreNV
+>;
 
 export function SignalVkSemaphoreNV(
   vkSemaphore: GLuint64,
@@ -158,9 +182,24 @@ export function SignalVkFenceNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDrawVkImageNV = new Deno.UnsafeFnPointer(proc("glDrawVkImageNV"), def_glDrawVkImageNV);
-  fn_glGetVkProcAddrNV = new Deno.UnsafeFnPointer(proc("glGetVkProcAddrNV"), def_glGetVkProcAddrNV);
-  fn_glWaitVkSemaphoreNV = new Deno.UnsafeFnPointer(proc("glWaitVkSemaphoreNV"), def_glWaitVkSemaphoreNV);
-  fn_glSignalVkSemaphoreNV = new Deno.UnsafeFnPointer(proc("glSignalVkSemaphoreNV"), def_glSignalVkSemaphoreNV);
-  fn_glSignalVkFenceNV = new Deno.UnsafeFnPointer(proc("glSignalVkFenceNV"), def_glSignalVkFenceNV);
+  fn_glDrawVkImageNV = new Deno.UnsafeFnPointer(
+    proc("glDrawVkImageNV"),
+    def_glDrawVkImageNV,
+  );
+  fn_glGetVkProcAddrNV = new Deno.UnsafeFnPointer(
+    proc("glGetVkProcAddrNV"),
+    def_glGetVkProcAddrNV,
+  );
+  fn_glWaitVkSemaphoreNV = new Deno.UnsafeFnPointer(
+    proc("glWaitVkSemaphoreNV"),
+    def_glWaitVkSemaphoreNV,
+  );
+  fn_glSignalVkSemaphoreNV = new Deno.UnsafeFnPointer(
+    proc("glSignalVkSemaphoreNV"),
+    def_glSignalVkSemaphoreNV,
+  );
+  fn_glSignalVkFenceNV = new Deno.UnsafeFnPointer(
+    proc("glSignalVkFenceNV"),
+    def_glSignalVkFenceNV,
+  );
 }

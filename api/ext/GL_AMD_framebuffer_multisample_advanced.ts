@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -74,7 +82,9 @@ export const def_glRenderbufferStorageMultisampleAdvancedAMD = {
   result: "void",
 } as const;
 
-let fn_glRenderbufferStorageMultisampleAdvancedAMD!: Deno.UnsafeFnPointer<typeof def_glRenderbufferStorageMultisampleAdvancedAMD>;
+let fn_glRenderbufferStorageMultisampleAdvancedAMD!: Deno.UnsafeFnPointer<
+  typeof def_glRenderbufferStorageMultisampleAdvancedAMD
+>;
 
 export function RenderbufferStorageMultisampleAdvancedAMD(
   target: GLenum,
@@ -99,7 +109,9 @@ export const def_glNamedRenderbufferStorageMultisampleAdvancedAMD = {
   result: "void",
 } as const;
 
-let fn_glNamedRenderbufferStorageMultisampleAdvancedAMD!: Deno.UnsafeFnPointer<typeof def_glNamedRenderbufferStorageMultisampleAdvancedAMD>;
+let fn_glNamedRenderbufferStorageMultisampleAdvancedAMD!: Deno.UnsafeFnPointer<
+  typeof def_glNamedRenderbufferStorageMultisampleAdvancedAMD
+>;
 
 export function NamedRenderbufferStorageMultisampleAdvancedAMD(
   renderbuffer: GLuint,
@@ -121,6 +133,13 @@ export function NamedRenderbufferStorageMultisampleAdvancedAMD(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glRenderbufferStorageMultisampleAdvancedAMD = new Deno.UnsafeFnPointer(proc("glRenderbufferStorageMultisampleAdvancedAMD"), def_glRenderbufferStorageMultisampleAdvancedAMD);
-  fn_glNamedRenderbufferStorageMultisampleAdvancedAMD = new Deno.UnsafeFnPointer(proc("glNamedRenderbufferStorageMultisampleAdvancedAMD"), def_glNamedRenderbufferStorageMultisampleAdvancedAMD);
+  fn_glRenderbufferStorageMultisampleAdvancedAMD = new Deno.UnsafeFnPointer(
+    proc("glRenderbufferStorageMultisampleAdvancedAMD"),
+    def_glRenderbufferStorageMultisampleAdvancedAMD,
+  );
+  fn_glNamedRenderbufferStorageMultisampleAdvancedAMD = new Deno
+    .UnsafeFnPointer(
+    proc("glNamedRenderbufferStorageMultisampleAdvancedAMD"),
+    def_glNamedRenderbufferStorageMultisampleAdvancedAMD,
+  );
 }

@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -75,7 +83,9 @@ export const def_glImportSemaphoreWin32HandleEXT = {
   result: "void",
 } as const;
 
-let fn_glImportSemaphoreWin32HandleEXT!: Deno.UnsafeFnPointer<typeof def_glImportSemaphoreWin32HandleEXT>;
+let fn_glImportSemaphoreWin32HandleEXT!: Deno.UnsafeFnPointer<
+  typeof def_glImportSemaphoreWin32HandleEXT
+>;
 
 export function ImportSemaphoreWin32HandleEXT(
   semaphore: GLuint,
@@ -94,7 +104,9 @@ export const def_glImportSemaphoreWin32NameEXT = {
   result: "void",
 } as const;
 
-let fn_glImportSemaphoreWin32NameEXT!: Deno.UnsafeFnPointer<typeof def_glImportSemaphoreWin32NameEXT>;
+let fn_glImportSemaphoreWin32NameEXT!: Deno.UnsafeFnPointer<
+  typeof def_glImportSemaphoreWin32NameEXT
+>;
 
 export function ImportSemaphoreWin32NameEXT(
   semaphore: GLuint,
@@ -110,6 +122,12 @@ export function ImportSemaphoreWin32NameEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glImportSemaphoreWin32HandleEXT = new Deno.UnsafeFnPointer(proc("glImportSemaphoreWin32HandleEXT"), def_glImportSemaphoreWin32HandleEXT);
-  fn_glImportSemaphoreWin32NameEXT = new Deno.UnsafeFnPointer(proc("glImportSemaphoreWin32NameEXT"), def_glImportSemaphoreWin32NameEXT);
+  fn_glImportSemaphoreWin32HandleEXT = new Deno.UnsafeFnPointer(
+    proc("glImportSemaphoreWin32HandleEXT"),
+    def_glImportSemaphoreWin32HandleEXT,
+  );
+  fn_glImportSemaphoreWin32NameEXT = new Deno.UnsafeFnPointer(
+    proc("glImportSemaphoreWin32NameEXT"),
+    def_glImportSemaphoreWin32NameEXT,
+  );
 }

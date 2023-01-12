@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -108,7 +116,9 @@ export const def_glTextureMaterialEXT = {
   result: "void",
 } as const;
 
-let fn_glTextureMaterialEXT!: Deno.UnsafeFnPointer<typeof def_glTextureMaterialEXT>;
+let fn_glTextureMaterialEXT!: Deno.UnsafeFnPointer<
+  typeof def_glTextureMaterialEXT
+>;
 
 export function TextureMaterialEXT(
   face: GLenum,
@@ -122,7 +132,16 @@ export function TextureMaterialEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glApplyTextureEXT = new Deno.UnsafeFnPointer(proc("glApplyTextureEXT"), def_glApplyTextureEXT);
-  fn_glTextureLightEXT = new Deno.UnsafeFnPointer(proc("glTextureLightEXT"), def_glTextureLightEXT);
-  fn_glTextureMaterialEXT = new Deno.UnsafeFnPointer(proc("glTextureMaterialEXT"), def_glTextureMaterialEXT);
+  fn_glApplyTextureEXT = new Deno.UnsafeFnPointer(
+    proc("glApplyTextureEXT"),
+    def_glApplyTextureEXT,
+  );
+  fn_glTextureLightEXT = new Deno.UnsafeFnPointer(
+    proc("glTextureLightEXT"),
+    def_glTextureLightEXT,
+  );
+  fn_glTextureMaterialEXT = new Deno.UnsafeFnPointer(
+    proc("glTextureMaterialEXT"),
+    def_glTextureMaterialEXT,
+  );
 }

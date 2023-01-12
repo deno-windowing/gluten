@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -75,7 +83,9 @@ export const def_glRenderbufferStorageMultisampleAPPLE = {
   result: "void",
 } as const;
 
-let fn_glRenderbufferStorageMultisampleAPPLE!: Deno.UnsafeFnPointer<typeof def_glRenderbufferStorageMultisampleAPPLE>;
+let fn_glRenderbufferStorageMultisampleAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glRenderbufferStorageMultisampleAPPLE
+>;
 
 export function RenderbufferStorageMultisampleAPPLE(
   target: GLenum,
@@ -98,7 +108,9 @@ export const def_glResolveMultisampleFramebufferAPPLE = {
   result: "void",
 } as const;
 
-let fn_glResolveMultisampleFramebufferAPPLE!: Deno.UnsafeFnPointer<typeof def_glResolveMultisampleFramebufferAPPLE>;
+let fn_glResolveMultisampleFramebufferAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glResolveMultisampleFramebufferAPPLE
+>;
 
 export function ResolveMultisampleFramebufferAPPLE(): void {
   fn_glResolveMultisampleFramebufferAPPLE.call();
@@ -106,6 +118,12 @@ export function ResolveMultisampleFramebufferAPPLE(): void {
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glRenderbufferStorageMultisampleAPPLE = new Deno.UnsafeFnPointer(proc("glRenderbufferStorageMultisampleAPPLE"), def_glRenderbufferStorageMultisampleAPPLE);
-  fn_glResolveMultisampleFramebufferAPPLE = new Deno.UnsafeFnPointer(proc("glResolveMultisampleFramebufferAPPLE"), def_glResolveMultisampleFramebufferAPPLE);
+  fn_glRenderbufferStorageMultisampleAPPLE = new Deno.UnsafeFnPointer(
+    proc("glRenderbufferStorageMultisampleAPPLE"),
+    def_glRenderbufferStorageMultisampleAPPLE,
+  );
+  fn_glResolveMultisampleFramebufferAPPLE = new Deno.UnsafeFnPointer(
+    proc("glResolveMultisampleFramebufferAPPLE"),
+    def_glResolveMultisampleFramebufferAPPLE,
+  );
 }

@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -87,7 +95,9 @@ export const def_glDeleteFencesAPPLE = {
   result: "void",
 } as const;
 
-let fn_glDeleteFencesAPPLE!: Deno.UnsafeFnPointer<typeof def_glDeleteFencesAPPLE>;
+let fn_glDeleteFencesAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glDeleteFencesAPPLE
+>;
 
 export function DeleteFencesAPPLE(
   n: GLsizei,
@@ -181,7 +191,9 @@ export const def_glFinishObjectAPPLE = {
   result: "void",
 } as const;
 
-let fn_glFinishObjectAPPLE!: Deno.UnsafeFnPointer<typeof def_glFinishObjectAPPLE>;
+let fn_glFinishObjectAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glFinishObjectAPPLE
+>;
 
 export function FinishObjectAPPLE(
   object: GLenum,
@@ -195,12 +207,36 @@ export function FinishObjectAPPLE(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGenFencesAPPLE = new Deno.UnsafeFnPointer(proc("glGenFencesAPPLE"), def_glGenFencesAPPLE);
-  fn_glDeleteFencesAPPLE = new Deno.UnsafeFnPointer(proc("glDeleteFencesAPPLE"), def_glDeleteFencesAPPLE);
-  fn_glSetFenceAPPLE = new Deno.UnsafeFnPointer(proc("glSetFenceAPPLE"), def_glSetFenceAPPLE);
-  fn_glIsFenceAPPLE = new Deno.UnsafeFnPointer(proc("glIsFenceAPPLE"), def_glIsFenceAPPLE);
-  fn_glTestFenceAPPLE = new Deno.UnsafeFnPointer(proc("glTestFenceAPPLE"), def_glTestFenceAPPLE);
-  fn_glFinishFenceAPPLE = new Deno.UnsafeFnPointer(proc("glFinishFenceAPPLE"), def_glFinishFenceAPPLE);
-  fn_glTestObjectAPPLE = new Deno.UnsafeFnPointer(proc("glTestObjectAPPLE"), def_glTestObjectAPPLE);
-  fn_glFinishObjectAPPLE = new Deno.UnsafeFnPointer(proc("glFinishObjectAPPLE"), def_glFinishObjectAPPLE);
+  fn_glGenFencesAPPLE = new Deno.UnsafeFnPointer(
+    proc("glGenFencesAPPLE"),
+    def_glGenFencesAPPLE,
+  );
+  fn_glDeleteFencesAPPLE = new Deno.UnsafeFnPointer(
+    proc("glDeleteFencesAPPLE"),
+    def_glDeleteFencesAPPLE,
+  );
+  fn_glSetFenceAPPLE = new Deno.UnsafeFnPointer(
+    proc("glSetFenceAPPLE"),
+    def_glSetFenceAPPLE,
+  );
+  fn_glIsFenceAPPLE = new Deno.UnsafeFnPointer(
+    proc("glIsFenceAPPLE"),
+    def_glIsFenceAPPLE,
+  );
+  fn_glTestFenceAPPLE = new Deno.UnsafeFnPointer(
+    proc("glTestFenceAPPLE"),
+    def_glTestFenceAPPLE,
+  );
+  fn_glFinishFenceAPPLE = new Deno.UnsafeFnPointer(
+    proc("glFinishFenceAPPLE"),
+    def_glFinishFenceAPPLE,
+  );
+  fn_glTestObjectAPPLE = new Deno.UnsafeFnPointer(
+    proc("glTestObjectAPPLE"),
+    def_glTestObjectAPPLE,
+  );
+  fn_glFinishObjectAPPLE = new Deno.UnsafeFnPointer(
+    proc("glFinishObjectAPPLE"),
+    def_glFinishObjectAPPLE,
+  );
 }

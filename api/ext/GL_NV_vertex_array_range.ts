@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -73,7 +81,9 @@ export const def_glFlushVertexArrayRangeNV = {
   result: "void",
 } as const;
 
-let fn_glFlushVertexArrayRangeNV!: Deno.UnsafeFnPointer<typeof def_glFlushVertexArrayRangeNV>;
+let fn_glFlushVertexArrayRangeNV!: Deno.UnsafeFnPointer<
+  typeof def_glFlushVertexArrayRangeNV
+>;
 
 export function FlushVertexArrayRangeNV(): void {
   fn_glFlushVertexArrayRangeNV.call();
@@ -84,7 +94,9 @@ export const def_glVertexArrayRangeNV = {
   result: "void",
 } as const;
 
-let fn_glVertexArrayRangeNV!: Deno.UnsafeFnPointer<typeof def_glVertexArrayRangeNV>;
+let fn_glVertexArrayRangeNV!: Deno.UnsafeFnPointer<
+  typeof def_glVertexArrayRangeNV
+>;
 
 export function VertexArrayRangeNV(
   length: GLsizei,
@@ -98,6 +110,12 @@ export function VertexArrayRangeNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFlushVertexArrayRangeNV = new Deno.UnsafeFnPointer(proc("glFlushVertexArrayRangeNV"), def_glFlushVertexArrayRangeNV);
-  fn_glVertexArrayRangeNV = new Deno.UnsafeFnPointer(proc("glVertexArrayRangeNV"), def_glVertexArrayRangeNV);
+  fn_glFlushVertexArrayRangeNV = new Deno.UnsafeFnPointer(
+    proc("glFlushVertexArrayRangeNV"),
+    def_glFlushVertexArrayRangeNV,
+  );
+  fn_glVertexArrayRangeNV = new Deno.UnsafeFnPointer(
+    proc("glVertexArrayRangeNV"),
+    def_glVertexArrayRangeNV,
+  );
 }

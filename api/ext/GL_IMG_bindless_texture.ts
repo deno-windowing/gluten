@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glGetTextureHandleIMG = {
   result: "u64",
 } as const;
 
-let fn_glGetTextureHandleIMG!: Deno.UnsafeFnPointer<typeof def_glGetTextureHandleIMG>;
+let fn_glGetTextureHandleIMG!: Deno.UnsafeFnPointer<
+  typeof def_glGetTextureHandleIMG
+>;
 
 export function GetTextureHandleIMG(
   texture: GLuint,
@@ -81,7 +91,9 @@ export const def_glGetTextureSamplerHandleIMG = {
   result: "u64",
 } as const;
 
-let fn_glGetTextureSamplerHandleIMG!: Deno.UnsafeFnPointer<typeof def_glGetTextureSamplerHandleIMG>;
+let fn_glGetTextureSamplerHandleIMG!: Deno.UnsafeFnPointer<
+  typeof def_glGetTextureSamplerHandleIMG
+>;
 
 export function GetTextureSamplerHandleIMG(
   texture: GLuint,
@@ -98,7 +110,9 @@ export const def_glUniformHandleui64IMG = {
   result: "void",
 } as const;
 
-let fn_glUniformHandleui64IMG!: Deno.UnsafeFnPointer<typeof def_glUniformHandleui64IMG>;
+let fn_glUniformHandleui64IMG!: Deno.UnsafeFnPointer<
+  typeof def_glUniformHandleui64IMG
+>;
 
 export function UniformHandleui64IMG(
   location: GLint,
@@ -115,7 +129,9 @@ export const def_glUniformHandleui64vIMG = {
   result: "void",
 } as const;
 
-let fn_glUniformHandleui64vIMG!: Deno.UnsafeFnPointer<typeof def_glUniformHandleui64vIMG>;
+let fn_glUniformHandleui64vIMG!: Deno.UnsafeFnPointer<
+  typeof def_glUniformHandleui64vIMG
+>;
 
 export function UniformHandleui64vIMG(
   location: GLint,
@@ -134,7 +150,9 @@ export const def_glProgramUniformHandleui64IMG = {
   result: "void",
 } as const;
 
-let fn_glProgramUniformHandleui64IMG!: Deno.UnsafeFnPointer<typeof def_glProgramUniformHandleui64IMG>;
+let fn_glProgramUniformHandleui64IMG!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniformHandleui64IMG
+>;
 
 export function ProgramUniformHandleui64IMG(
   program: GLuint,
@@ -153,7 +171,9 @@ export const def_glProgramUniformHandleui64vIMG = {
   result: "void",
 } as const;
 
-let fn_glProgramUniformHandleui64vIMG!: Deno.UnsafeFnPointer<typeof def_glProgramUniformHandleui64vIMG>;
+let fn_glProgramUniformHandleui64vIMG!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniformHandleui64vIMG
+>;
 
 export function ProgramUniformHandleui64vIMG(
   program: GLuint,
@@ -171,10 +191,28 @@ export function ProgramUniformHandleui64vIMG(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetTextureHandleIMG = new Deno.UnsafeFnPointer(proc("glGetTextureHandleIMG"), def_glGetTextureHandleIMG);
-  fn_glGetTextureSamplerHandleIMG = new Deno.UnsafeFnPointer(proc("glGetTextureSamplerHandleIMG"), def_glGetTextureSamplerHandleIMG);
-  fn_glUniformHandleui64IMG = new Deno.UnsafeFnPointer(proc("glUniformHandleui64IMG"), def_glUniformHandleui64IMG);
-  fn_glUniformHandleui64vIMG = new Deno.UnsafeFnPointer(proc("glUniformHandleui64vIMG"), def_glUniformHandleui64vIMG);
-  fn_glProgramUniformHandleui64IMG = new Deno.UnsafeFnPointer(proc("glProgramUniformHandleui64IMG"), def_glProgramUniformHandleui64IMG);
-  fn_glProgramUniformHandleui64vIMG = new Deno.UnsafeFnPointer(proc("glProgramUniformHandleui64vIMG"), def_glProgramUniformHandleui64vIMG);
+  fn_glGetTextureHandleIMG = new Deno.UnsafeFnPointer(
+    proc("glGetTextureHandleIMG"),
+    def_glGetTextureHandleIMG,
+  );
+  fn_glGetTextureSamplerHandleIMG = new Deno.UnsafeFnPointer(
+    proc("glGetTextureSamplerHandleIMG"),
+    def_glGetTextureSamplerHandleIMG,
+  );
+  fn_glUniformHandleui64IMG = new Deno.UnsafeFnPointer(
+    proc("glUniformHandleui64IMG"),
+    def_glUniformHandleui64IMG,
+  );
+  fn_glUniformHandleui64vIMG = new Deno.UnsafeFnPointer(
+    proc("glUniformHandleui64vIMG"),
+    def_glUniformHandleui64vIMG,
+  );
+  fn_glProgramUniformHandleui64IMG = new Deno.UnsafeFnPointer(
+    proc("glProgramUniformHandleui64IMG"),
+    def_glProgramUniformHandleui64IMG,
+  );
+  fn_glProgramUniformHandleui64vIMG = new Deno.UnsafeFnPointer(
+    proc("glProgramUniformHandleui64vIMG"),
+    def_glProgramUniformHandleui64vIMG,
+  );
 }

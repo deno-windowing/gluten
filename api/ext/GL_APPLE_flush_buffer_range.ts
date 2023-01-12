@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -70,7 +78,9 @@ export const def_glBufferParameteriAPPLE = {
   result: "void",
 } as const;
 
-let fn_glBufferParameteriAPPLE!: Deno.UnsafeFnPointer<typeof def_glBufferParameteriAPPLE>;
+let fn_glBufferParameteriAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glBufferParameteriAPPLE
+>;
 
 export function BufferParameteriAPPLE(
   target: GLenum,
@@ -89,7 +99,9 @@ export const def_glFlushMappedBufferRangeAPPLE = {
   result: "void",
 } as const;
 
-let fn_glFlushMappedBufferRangeAPPLE!: Deno.UnsafeFnPointer<typeof def_glFlushMappedBufferRangeAPPLE>;
+let fn_glFlushMappedBufferRangeAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glFlushMappedBufferRangeAPPLE
+>;
 
 export function FlushMappedBufferRangeAPPLE(
   target: GLenum,
@@ -105,6 +117,12 @@ export function FlushMappedBufferRangeAPPLE(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBufferParameteriAPPLE = new Deno.UnsafeFnPointer(proc("glBufferParameteriAPPLE"), def_glBufferParameteriAPPLE);
-  fn_glFlushMappedBufferRangeAPPLE = new Deno.UnsafeFnPointer(proc("glFlushMappedBufferRangeAPPLE"), def_glFlushMappedBufferRangeAPPLE);
+  fn_glBufferParameteriAPPLE = new Deno.UnsafeFnPointer(
+    proc("glBufferParameteriAPPLE"),
+    def_glBufferParameteriAPPLE,
+  );
+  fn_glFlushMappedBufferRangeAPPLE = new Deno.UnsafeFnPointer(
+    proc("glFlushMappedBufferRangeAPPLE"),
+    def_glFlushMappedBufferRangeAPPLE,
+  );
 }

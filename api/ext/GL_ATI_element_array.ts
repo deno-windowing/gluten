@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -71,7 +79,9 @@ export const def_glElementPointerATI = {
   result: "void",
 } as const;
 
-let fn_glElementPointerATI!: Deno.UnsafeFnPointer<typeof def_glElementPointerATI>;
+let fn_glElementPointerATI!: Deno.UnsafeFnPointer<
+  typeof def_glElementPointerATI
+>;
 
 export function ElementPointerATI(
   type: GLenum,
@@ -88,7 +98,9 @@ export const def_glDrawElementArrayATI = {
   result: "void",
 } as const;
 
-let fn_glDrawElementArrayATI!: Deno.UnsafeFnPointer<typeof def_glDrawElementArrayATI>;
+let fn_glDrawElementArrayATI!: Deno.UnsafeFnPointer<
+  typeof def_glDrawElementArrayATI
+>;
 
 export function DrawElementArrayATI(
   mode: GLenum,
@@ -105,7 +117,9 @@ export const def_glDrawRangeElementArrayATI = {
   result: "void",
 } as const;
 
-let fn_glDrawRangeElementArrayATI!: Deno.UnsafeFnPointer<typeof def_glDrawRangeElementArrayATI>;
+let fn_glDrawRangeElementArrayATI!: Deno.UnsafeFnPointer<
+  typeof def_glDrawRangeElementArrayATI
+>;
 
 export function DrawRangeElementArrayATI(
   mode: GLenum,
@@ -123,7 +137,16 @@ export function DrawRangeElementArrayATI(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glElementPointerATI = new Deno.UnsafeFnPointer(proc("glElementPointerATI"), def_glElementPointerATI);
-  fn_glDrawElementArrayATI = new Deno.UnsafeFnPointer(proc("glDrawElementArrayATI"), def_glDrawElementArrayATI);
-  fn_glDrawRangeElementArrayATI = new Deno.UnsafeFnPointer(proc("glDrawRangeElementArrayATI"), def_glDrawRangeElementArrayATI);
+  fn_glElementPointerATI = new Deno.UnsafeFnPointer(
+    proc("glElementPointerATI"),
+    def_glElementPointerATI,
+  );
+  fn_glDrawElementArrayATI = new Deno.UnsafeFnPointer(
+    proc("glDrawElementArrayATI"),
+    def_glDrawElementArrayATI,
+  );
+  fn_glDrawRangeElementArrayATI = new Deno.UnsafeFnPointer(
+    proc("glDrawRangeElementArrayATI"),
+    def_glDrawRangeElementArrayATI,
+  );
 }

@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -75,7 +83,9 @@ export const def_glVertexArrayRangeAPPLE = {
   result: "void",
 } as const;
 
-let fn_glVertexArrayRangeAPPLE!: Deno.UnsafeFnPointer<typeof def_glVertexArrayRangeAPPLE>;
+let fn_glVertexArrayRangeAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glVertexArrayRangeAPPLE
+>;
 
 export function VertexArrayRangeAPPLE(
   length: GLsizei,
@@ -92,7 +102,9 @@ export const def_glFlushVertexArrayRangeAPPLE = {
   result: "void",
 } as const;
 
-let fn_glFlushVertexArrayRangeAPPLE!: Deno.UnsafeFnPointer<typeof def_glFlushVertexArrayRangeAPPLE>;
+let fn_glFlushVertexArrayRangeAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glFlushVertexArrayRangeAPPLE
+>;
 
 export function FlushVertexArrayRangeAPPLE(
   length: GLsizei,
@@ -109,7 +121,9 @@ export const def_glVertexArrayParameteriAPPLE = {
   result: "void",
 } as const;
 
-let fn_glVertexArrayParameteriAPPLE!: Deno.UnsafeFnPointer<typeof def_glVertexArrayParameteriAPPLE>;
+let fn_glVertexArrayParameteriAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glVertexArrayParameteriAPPLE
+>;
 
 export function VertexArrayParameteriAPPLE(
   pname: GLenum,
@@ -123,7 +137,16 @@ export function VertexArrayParameteriAPPLE(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glVertexArrayRangeAPPLE = new Deno.UnsafeFnPointer(proc("glVertexArrayRangeAPPLE"), def_glVertexArrayRangeAPPLE);
-  fn_glFlushVertexArrayRangeAPPLE = new Deno.UnsafeFnPointer(proc("glFlushVertexArrayRangeAPPLE"), def_glFlushVertexArrayRangeAPPLE);
-  fn_glVertexArrayParameteriAPPLE = new Deno.UnsafeFnPointer(proc("glVertexArrayParameteriAPPLE"), def_glVertexArrayParameteriAPPLE);
+  fn_glVertexArrayRangeAPPLE = new Deno.UnsafeFnPointer(
+    proc("glVertexArrayRangeAPPLE"),
+    def_glVertexArrayRangeAPPLE,
+  );
+  fn_glFlushVertexArrayRangeAPPLE = new Deno.UnsafeFnPointer(
+    proc("glFlushVertexArrayRangeAPPLE"),
+    def_glFlushVertexArrayRangeAPPLE,
+  );
+  fn_glVertexArrayParameteriAPPLE = new Deno.UnsafeFnPointer(
+    proc("glVertexArrayParameteriAPPLE"),
+    def_glVertexArrayParameteriAPPLE,
+  );
 }

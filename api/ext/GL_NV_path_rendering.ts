@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -325,7 +333,9 @@ export const def_glPathSubCommandsNV = {
   result: "void",
 } as const;
 
-let fn_glPathSubCommandsNV!: Deno.UnsafeFnPointer<typeof def_glPathSubCommandsNV>;
+let fn_glPathSubCommandsNV!: Deno.UnsafeFnPointer<
+  typeof def_glPathSubCommandsNV
+>;
 
 export function PathSubCommandsNV(
   path: GLuint,
@@ -394,7 +404,18 @@ export function PathStringNV(
 }
 
 export const def_glPathGlyphsNV = {
-  parameters: ["u32", "u32", "buffer", "u32", "i32", "u32", "buffer", "u32", "u32", "f32"],
+  parameters: [
+    "u32",
+    "u32",
+    "buffer",
+    "u32",
+    "i32",
+    "u32",
+    "buffer",
+    "u32",
+    "u32",
+    "f32",
+  ],
   result: "void",
 } as const;
 
@@ -427,7 +448,17 @@ export function PathGlyphsNV(
 }
 
 export const def_glPathGlyphRangeNV = {
-  parameters: ["u32", "u32", "buffer", "u32", "u32", "i32", "u32", "u32", "f32"],
+  parameters: [
+    "u32",
+    "u32",
+    "buffer",
+    "u32",
+    "u32",
+    "i32",
+    "u32",
+    "u32",
+    "f32",
+  ],
   result: "void",
 } as const;
 
@@ -500,7 +531,9 @@ export const def_glInterpolatePathsNV = {
   result: "void",
 } as const;
 
-let fn_glInterpolatePathsNV!: Deno.UnsafeFnPointer<typeof def_glInterpolatePathsNV>;
+let fn_glInterpolatePathsNV!: Deno.UnsafeFnPointer<
+  typeof def_glInterpolatePathsNV
+>;
 
 export function InterpolatePathsNV(
   resultPath: GLuint,
@@ -542,7 +575,9 @@ export const def_glPathParameterivNV = {
   result: "void",
 } as const;
 
-let fn_glPathParameterivNV!: Deno.UnsafeFnPointer<typeof def_glPathParameterivNV>;
+let fn_glPathParameterivNV!: Deno.UnsafeFnPointer<
+  typeof def_glPathParameterivNV
+>;
 
 export function PathParameterivNV(
   path: GLuint,
@@ -580,7 +615,9 @@ export const def_glPathParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glPathParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glPathParameterfvNV>;
+let fn_glPathParameterfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glPathParameterfvNV
+>;
 
 export function PathParameterfvNV(
   path: GLuint,
@@ -637,7 +674,9 @@ export const def_glPathStencilFuncNV = {
   result: "void",
 } as const;
 
-let fn_glPathStencilFuncNV!: Deno.UnsafeFnPointer<typeof def_glPathStencilFuncNV>;
+let fn_glPathStencilFuncNV!: Deno.UnsafeFnPointer<
+  typeof def_glPathStencilFuncNV
+>;
 
 export function PathStencilFuncNV(
   func: GLenum,
@@ -656,7 +695,9 @@ export const def_glPathStencilDepthOffsetNV = {
   result: "void",
 } as const;
 
-let fn_glPathStencilDepthOffsetNV!: Deno.UnsafeFnPointer<typeof def_glPathStencilDepthOffsetNV>;
+let fn_glPathStencilDepthOffsetNV!: Deno.UnsafeFnPointer<
+  typeof def_glPathStencilDepthOffsetNV
+>;
 
 export function PathStencilDepthOffsetNV(
   factor: GLfloat,
@@ -673,7 +714,9 @@ export const def_glStencilFillPathNV = {
   result: "void",
 } as const;
 
-let fn_glStencilFillPathNV!: Deno.UnsafeFnPointer<typeof def_glStencilFillPathNV>;
+let fn_glStencilFillPathNV!: Deno.UnsafeFnPointer<
+  typeof def_glStencilFillPathNV
+>;
 
 export function StencilFillPathNV(
   path: GLuint,
@@ -692,7 +735,9 @@ export const def_glStencilStrokePathNV = {
   result: "void",
 } as const;
 
-let fn_glStencilStrokePathNV!: Deno.UnsafeFnPointer<typeof def_glStencilStrokePathNV>;
+let fn_glStencilStrokePathNV!: Deno.UnsafeFnPointer<
+  typeof def_glStencilStrokePathNV
+>;
 
 export function StencilStrokePathNV(
   path: GLuint,
@@ -711,7 +756,9 @@ export const def_glStencilFillPathInstancedNV = {
   result: "void",
 } as const;
 
-let fn_glStencilFillPathInstancedNV!: Deno.UnsafeFnPointer<typeof def_glStencilFillPathInstancedNV>;
+let fn_glStencilFillPathInstancedNV!: Deno.UnsafeFnPointer<
+  typeof def_glStencilFillPathInstancedNV
+>;
 
 export function StencilFillPathInstancedNV(
   numPaths: GLsizei,
@@ -740,7 +787,9 @@ export const def_glStencilStrokePathInstancedNV = {
   result: "void",
 } as const;
 
-let fn_glStencilStrokePathInstancedNV!: Deno.UnsafeFnPointer<typeof def_glStencilStrokePathInstancedNV>;
+let fn_glStencilStrokePathInstancedNV!: Deno.UnsafeFnPointer<
+  typeof def_glStencilStrokePathInstancedNV
+>;
 
 export function StencilStrokePathInstancedNV(
   numPaths: GLsizei,
@@ -769,7 +818,9 @@ export const def_glPathCoverDepthFuncNV = {
   result: "void",
 } as const;
 
-let fn_glPathCoverDepthFuncNV!: Deno.UnsafeFnPointer<typeof def_glPathCoverDepthFuncNV>;
+let fn_glPathCoverDepthFuncNV!: Deno.UnsafeFnPointer<
+  typeof def_glPathCoverDepthFuncNV
+>;
 
 export function PathCoverDepthFuncNV(
   func: GLenum,
@@ -801,7 +852,9 @@ export const def_glCoverStrokePathNV = {
   result: "void",
 } as const;
 
-let fn_glCoverStrokePathNV!: Deno.UnsafeFnPointer<typeof def_glCoverStrokePathNV>;
+let fn_glCoverStrokePathNV!: Deno.UnsafeFnPointer<
+  typeof def_glCoverStrokePathNV
+>;
 
 export function CoverStrokePathNV(
   path: GLuint,
@@ -818,7 +871,9 @@ export const def_glCoverFillPathInstancedNV = {
   result: "void",
 } as const;
 
-let fn_glCoverFillPathInstancedNV!: Deno.UnsafeFnPointer<typeof def_glCoverFillPathInstancedNV>;
+let fn_glCoverFillPathInstancedNV!: Deno.UnsafeFnPointer<
+  typeof def_glCoverFillPathInstancedNV
+>;
 
 export function CoverFillPathInstancedNV(
   numPaths: GLsizei,
@@ -845,7 +900,9 @@ export const def_glCoverStrokePathInstancedNV = {
   result: "void",
 } as const;
 
-let fn_glCoverStrokePathInstancedNV!: Deno.UnsafeFnPointer<typeof def_glCoverStrokePathInstancedNV>;
+let fn_glCoverStrokePathInstancedNV!: Deno.UnsafeFnPointer<
+  typeof def_glCoverStrokePathInstancedNV
+>;
 
 export function CoverStrokePathInstancedNV(
   numPaths: GLsizei,
@@ -872,7 +929,9 @@ export const def_glGetPathParameterivNV = {
   result: "void",
 } as const;
 
-let fn_glGetPathParameterivNV!: Deno.UnsafeFnPointer<typeof def_glGetPathParameterivNV>;
+let fn_glGetPathParameterivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetPathParameterivNV
+>;
 
 export function GetPathParameterivNV(
   path: GLuint,
@@ -891,7 +950,9 @@ export const def_glGetPathParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glGetPathParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glGetPathParameterfvNV>;
+let fn_glGetPathParameterfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetPathParameterfvNV
+>;
 
 export function GetPathParameterfvNV(
   path: GLuint,
@@ -910,7 +971,9 @@ export const def_glGetPathCommandsNV = {
   result: "void",
 } as const;
 
-let fn_glGetPathCommandsNV!: Deno.UnsafeFnPointer<typeof def_glGetPathCommandsNV>;
+let fn_glGetPathCommandsNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetPathCommandsNV
+>;
 
 export function GetPathCommandsNV(
   path: GLuint,
@@ -944,7 +1007,9 @@ export const def_glGetPathDashArrayNV = {
   result: "void",
 } as const;
 
-let fn_glGetPathDashArrayNV!: Deno.UnsafeFnPointer<typeof def_glGetPathDashArrayNV>;
+let fn_glGetPathDashArrayNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetPathDashArrayNV
+>;
 
 export function GetPathDashArrayNV(
   path: GLuint,
@@ -988,7 +1053,9 @@ export const def_glGetPathMetricRangeNV = {
   result: "void",
 } as const;
 
-let fn_glGetPathMetricRangeNV!: Deno.UnsafeFnPointer<typeof def_glGetPathMetricRangeNV>;
+let fn_glGetPathMetricRangeNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetPathMetricRangeNV
+>;
 
 export function GetPathMetricRangeNV(
   metricQueryMask: GLbitfield,
@@ -1007,7 +1074,17 @@ export function GetPathMetricRangeNV(
 }
 
 export const def_glGetPathSpacingNV = {
-  parameters: ["u32", "i32", "u32", "buffer", "u32", "f32", "f32", "u32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "u32",
+    "buffer",
+    "u32",
+    "f32",
+    "f32",
+    "u32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
@@ -1042,7 +1119,9 @@ export const def_glIsPointInFillPathNV = {
   result: "u8",
 } as const;
 
-let fn_glIsPointInFillPathNV!: Deno.UnsafeFnPointer<typeof def_glIsPointInFillPathNV>;
+let fn_glIsPointInFillPathNV!: Deno.UnsafeFnPointer<
+  typeof def_glIsPointInFillPathNV
+>;
 
 export function IsPointInFillPathNV(
   path: GLuint,
@@ -1063,7 +1142,9 @@ export const def_glIsPointInStrokePathNV = {
   result: "u8",
 } as const;
 
-let fn_glIsPointInStrokePathNV!: Deno.UnsafeFnPointer<typeof def_glIsPointInStrokePathNV>;
+let fn_glIsPointInStrokePathNV!: Deno.UnsafeFnPointer<
+  typeof def_glIsPointInStrokePathNV
+>;
 
 export function IsPointInStrokePathNV(
   path: GLuint,
@@ -1097,7 +1178,16 @@ export function GetPathLengthNV(
 }
 
 export const def_glPointAlongPathNV = {
-  parameters: ["u32", "i32", "i32", "f32", "buffer", "buffer", "buffer", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "i32",
+    "f32",
+    "buffer",
+    "buffer",
+    "buffer",
+    "buffer",
+  ],
   result: "u8",
 } as const;
 
@@ -1164,7 +1254,9 @@ export const def_glMatrixLoadTranspose3x3fNV = {
   result: "void",
 } as const;
 
-let fn_glMatrixLoadTranspose3x3fNV!: Deno.UnsafeFnPointer<typeof def_glMatrixLoadTranspose3x3fNV>;
+let fn_glMatrixLoadTranspose3x3fNV!: Deno.UnsafeFnPointer<
+  typeof def_glMatrixLoadTranspose3x3fNV
+>;
 
 export function MatrixLoadTranspose3x3fNV(
   matrixMode: GLenum,
@@ -1215,7 +1307,9 @@ export const def_glMatrixMultTranspose3x3fNV = {
   result: "void",
 } as const;
 
-let fn_glMatrixMultTranspose3x3fNV!: Deno.UnsafeFnPointer<typeof def_glMatrixMultTranspose3x3fNV>;
+let fn_glMatrixMultTranspose3x3fNV!: Deno.UnsafeFnPointer<
+  typeof def_glMatrixMultTranspose3x3fNV
+>;
 
 export function MatrixMultTranspose3x3fNV(
   matrixMode: GLenum,
@@ -1232,7 +1326,9 @@ export const def_glStencilThenCoverFillPathNV = {
   result: "void",
 } as const;
 
-let fn_glStencilThenCoverFillPathNV!: Deno.UnsafeFnPointer<typeof def_glStencilThenCoverFillPathNV>;
+let fn_glStencilThenCoverFillPathNV!: Deno.UnsafeFnPointer<
+  typeof def_glStencilThenCoverFillPathNV
+>;
 
 export function StencilThenCoverFillPathNV(
   path: GLuint,
@@ -1253,7 +1349,9 @@ export const def_glStencilThenCoverStrokePathNV = {
   result: "void",
 } as const;
 
-let fn_glStencilThenCoverStrokePathNV!: Deno.UnsafeFnPointer<typeof def_glStencilThenCoverStrokePathNV>;
+let fn_glStencilThenCoverStrokePathNV!: Deno.UnsafeFnPointer<
+  typeof def_glStencilThenCoverStrokePathNV
+>;
 
 export function StencilThenCoverStrokePathNV(
   path: GLuint,
@@ -1270,11 +1368,23 @@ export function StencilThenCoverStrokePathNV(
 }
 
 export const def_glStencilThenCoverFillPathInstancedNV = {
-  parameters: ["i32", "u32", "buffer", "u32", "u32", "u32", "u32", "u32", "buffer"],
+  parameters: [
+    "i32",
+    "u32",
+    "buffer",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
-let fn_glStencilThenCoverFillPathInstancedNV!: Deno.UnsafeFnPointer<typeof def_glStencilThenCoverFillPathInstancedNV>;
+let fn_glStencilThenCoverFillPathInstancedNV!: Deno.UnsafeFnPointer<
+  typeof def_glStencilThenCoverFillPathInstancedNV
+>;
 
 export function StencilThenCoverFillPathInstancedNV(
   numPaths: GLsizei,
@@ -1301,11 +1411,23 @@ export function StencilThenCoverFillPathInstancedNV(
 }
 
 export const def_glStencilThenCoverStrokePathInstancedNV = {
-  parameters: ["i32", "u32", "buffer", "u32", "i32", "u32", "u32", "u32", "buffer"],
+  parameters: [
+    "i32",
+    "u32",
+    "buffer",
+    "u32",
+    "i32",
+    "u32",
+    "u32",
+    "u32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
-let fn_glStencilThenCoverStrokePathInstancedNV!: Deno.UnsafeFnPointer<typeof def_glStencilThenCoverStrokePathInstancedNV>;
+let fn_glStencilThenCoverStrokePathInstancedNV!: Deno.UnsafeFnPointer<
+  typeof def_glStencilThenCoverStrokePathInstancedNV
+>;
 
 export function StencilThenCoverStrokePathInstancedNV(
   numPaths: GLsizei,
@@ -1336,7 +1458,9 @@ export const def_glPathGlyphIndexRangeNV = {
   result: "u32",
 } as const;
 
-let fn_glPathGlyphIndexRangeNV!: Deno.UnsafeFnPointer<typeof def_glPathGlyphIndexRangeNV>;
+let fn_glPathGlyphIndexRangeNV!: Deno.UnsafeFnPointer<
+  typeof def_glPathGlyphIndexRangeNV
+>;
 
 export function PathGlyphIndexRangeNV(
   fontTarget: GLenum,
@@ -1361,7 +1485,9 @@ export const def_glPathGlyphIndexArrayNV = {
   result: "u32",
 } as const;
 
-let fn_glPathGlyphIndexArrayNV!: Deno.UnsafeFnPointer<typeof def_glPathGlyphIndexArrayNV>;
+let fn_glPathGlyphIndexArrayNV!: Deno.UnsafeFnPointer<
+  typeof def_glPathGlyphIndexArrayNV
+>;
 
 export function PathGlyphIndexArrayNV(
   firstPathName: GLuint,
@@ -1386,11 +1512,23 @@ export function PathGlyphIndexArrayNV(
 }
 
 export const def_glPathMemoryGlyphIndexArrayNV = {
-  parameters: ["u32", "u32", "isize", "buffer", "i32", "u32", "i32", "u32", "f32"],
+  parameters: [
+    "u32",
+    "u32",
+    "isize",
+    "buffer",
+    "i32",
+    "u32",
+    "i32",
+    "u32",
+    "f32",
+  ],
   result: "u32",
 } as const;
 
-let fn_glPathMemoryGlyphIndexArrayNV!: Deno.UnsafeFnPointer<typeof def_glPathMemoryGlyphIndexArrayNV>;
+let fn_glPathMemoryGlyphIndexArrayNV!: Deno.UnsafeFnPointer<
+  typeof def_glPathMemoryGlyphIndexArrayNV
+>;
 
 export function PathMemoryGlyphIndexArrayNV(
   firstPathName: GLuint,
@@ -1421,7 +1559,9 @@ export const def_glProgramPathFragmentInputGenNV = {
   result: "void",
 } as const;
 
-let fn_glProgramPathFragmentInputGenNV!: Deno.UnsafeFnPointer<typeof def_glProgramPathFragmentInputGenNV>;
+let fn_glProgramPathFragmentInputGenNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramPathFragmentInputGenNV
+>;
 
 export function ProgramPathFragmentInputGenNV(
   program: GLuint,
@@ -1444,7 +1584,9 @@ export const def_glGetProgramResourcefvNV = {
   result: "void",
 } as const;
 
-let fn_glGetProgramResourcefvNV!: Deno.UnsafeFnPointer<typeof def_glGetProgramResourcefvNV>;
+let fn_glGetProgramResourcefvNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetProgramResourcefvNV
+>;
 
 export function GetProgramResourcefvNV(
   program: GLuint,
@@ -1530,7 +1672,9 @@ export const def_glGetPathColorGenivNV = {
   result: "void",
 } as const;
 
-let fn_glGetPathColorGenivNV!: Deno.UnsafeFnPointer<typeof def_glGetPathColorGenivNV>;
+let fn_glGetPathColorGenivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetPathColorGenivNV
+>;
 
 export function GetPathColorGenivNV(
   color: GLenum,
@@ -1549,7 +1693,9 @@ export const def_glGetPathColorGenfvNV = {
   result: "void",
 } as const;
 
-let fn_glGetPathColorGenfvNV!: Deno.UnsafeFnPointer<typeof def_glGetPathColorGenfvNV>;
+let fn_glGetPathColorGenfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetPathColorGenfvNV
+>;
 
 export function GetPathColorGenfvNV(
   color: GLenum,
@@ -1568,7 +1714,9 @@ export const def_glGetPathTexGenivNV = {
   result: "void",
 } as const;
 
-let fn_glGetPathTexGenivNV!: Deno.UnsafeFnPointer<typeof def_glGetPathTexGenivNV>;
+let fn_glGetPathTexGenivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetPathTexGenivNV
+>;
 
 export function GetPathTexGenivNV(
   texCoordSet: GLenum,
@@ -1587,7 +1735,9 @@ export const def_glGetPathTexGenfvNV = {
   result: "void",
 } as const;
 
-let fn_glGetPathTexGenfvNV!: Deno.UnsafeFnPointer<typeof def_glGetPathTexGenfvNV>;
+let fn_glGetPathTexGenfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetPathTexGenfvNV
+>;
 
 export function GetPathTexGenfvNV(
   texCoordSet: GLenum,
@@ -1633,7 +1783,9 @@ export const def_glMatrixLoadIdentityEXT = {
   result: "void",
 } as const;
 
-let fn_glMatrixLoadIdentityEXT!: Deno.UnsafeFnPointer<typeof def_glMatrixLoadIdentityEXT>;
+let fn_glMatrixLoadIdentityEXT!: Deno.UnsafeFnPointer<
+  typeof def_glMatrixLoadIdentityEXT
+>;
 
 export function MatrixLoadIdentityEXT(
   mode: GLenum,
@@ -1648,7 +1800,9 @@ export const def_glMatrixLoadTransposefEXT = {
   result: "void",
 } as const;
 
-let fn_glMatrixLoadTransposefEXT!: Deno.UnsafeFnPointer<typeof def_glMatrixLoadTransposefEXT>;
+let fn_glMatrixLoadTransposefEXT!: Deno.UnsafeFnPointer<
+  typeof def_glMatrixLoadTransposefEXT
+>;
 
 export function MatrixLoadTransposefEXT(
   mode: GLenum,
@@ -1665,7 +1819,9 @@ export const def_glMatrixLoadTransposedEXT = {
   result: "void",
 } as const;
 
-let fn_glMatrixLoadTransposedEXT!: Deno.UnsafeFnPointer<typeof def_glMatrixLoadTransposedEXT>;
+let fn_glMatrixLoadTransposedEXT!: Deno.UnsafeFnPointer<
+  typeof def_glMatrixLoadTransposedEXT
+>;
 
 export function MatrixLoadTransposedEXT(
   mode: GLenum,
@@ -1716,7 +1872,9 @@ export const def_glMatrixMultTransposefEXT = {
   result: "void",
 } as const;
 
-let fn_glMatrixMultTransposefEXT!: Deno.UnsafeFnPointer<typeof def_glMatrixMultTransposefEXT>;
+let fn_glMatrixMultTransposefEXT!: Deno.UnsafeFnPointer<
+  typeof def_glMatrixMultTransposefEXT
+>;
 
 export function MatrixMultTransposefEXT(
   mode: GLenum,
@@ -1733,7 +1891,9 @@ export const def_glMatrixMultTransposedEXT = {
   result: "void",
 } as const;
 
-let fn_glMatrixMultTransposedEXT!: Deno.UnsafeFnPointer<typeof def_glMatrixMultTransposedEXT>;
+let fn_glMatrixMultTransposedEXT!: Deno.UnsafeFnPointer<
+  typeof def_glMatrixMultTransposedEXT
+>;
 
 export function MatrixMultTransposedEXT(
   mode: GLenum,
@@ -1929,7 +2089,9 @@ export const def_glMatrixTranslatefEXT = {
   result: "void",
 } as const;
 
-let fn_glMatrixTranslatefEXT!: Deno.UnsafeFnPointer<typeof def_glMatrixTranslatefEXT>;
+let fn_glMatrixTranslatefEXT!: Deno.UnsafeFnPointer<
+  typeof def_glMatrixTranslatefEXT
+>;
 
 export function MatrixTranslatefEXT(
   mode: GLenum,
@@ -1950,7 +2112,9 @@ export const def_glMatrixTranslatedEXT = {
   result: "void",
 } as const;
 
-let fn_glMatrixTranslatedEXT!: Deno.UnsafeFnPointer<typeof def_glMatrixTranslatedEXT>;
+let fn_glMatrixTranslatedEXT!: Deno.UnsafeFnPointer<
+  typeof def_glMatrixTranslatedEXT
+>;
 
 export function MatrixTranslatedEXT(
   mode: GLenum,
@@ -1968,87 +2132,333 @@ export function MatrixTranslatedEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGenPathsNV = new Deno.UnsafeFnPointer(proc("glGenPathsNV"), def_glGenPathsNV);
-  fn_glDeletePathsNV = new Deno.UnsafeFnPointer(proc("glDeletePathsNV"), def_glDeletePathsNV);
+  fn_glGenPathsNV = new Deno.UnsafeFnPointer(
+    proc("glGenPathsNV"),
+    def_glGenPathsNV,
+  );
+  fn_glDeletePathsNV = new Deno.UnsafeFnPointer(
+    proc("glDeletePathsNV"),
+    def_glDeletePathsNV,
+  );
   fn_glIsPathNV = new Deno.UnsafeFnPointer(proc("glIsPathNV"), def_glIsPathNV);
-  fn_glPathCommandsNV = new Deno.UnsafeFnPointer(proc("glPathCommandsNV"), def_glPathCommandsNV);
-  fn_glPathCoordsNV = new Deno.UnsafeFnPointer(proc("glPathCoordsNV"), def_glPathCoordsNV);
-  fn_glPathSubCommandsNV = new Deno.UnsafeFnPointer(proc("glPathSubCommandsNV"), def_glPathSubCommandsNV);
-  fn_glPathSubCoordsNV = new Deno.UnsafeFnPointer(proc("glPathSubCoordsNV"), def_glPathSubCoordsNV);
-  fn_glPathStringNV = new Deno.UnsafeFnPointer(proc("glPathStringNV"), def_glPathStringNV);
-  fn_glPathGlyphsNV = new Deno.UnsafeFnPointer(proc("glPathGlyphsNV"), def_glPathGlyphsNV);
-  fn_glPathGlyphRangeNV = new Deno.UnsafeFnPointer(proc("glPathGlyphRangeNV"), def_glPathGlyphRangeNV);
-  fn_glWeightPathsNV = new Deno.UnsafeFnPointer(proc("glWeightPathsNV"), def_glWeightPathsNV);
-  fn_glCopyPathNV = new Deno.UnsafeFnPointer(proc("glCopyPathNV"), def_glCopyPathNV);
-  fn_glInterpolatePathsNV = new Deno.UnsafeFnPointer(proc("glInterpolatePathsNV"), def_glInterpolatePathsNV);
-  fn_glTransformPathNV = new Deno.UnsafeFnPointer(proc("glTransformPathNV"), def_glTransformPathNV);
-  fn_glPathParameterivNV = new Deno.UnsafeFnPointer(proc("glPathParameterivNV"), def_glPathParameterivNV);
-  fn_glPathParameteriNV = new Deno.UnsafeFnPointer(proc("glPathParameteriNV"), def_glPathParameteriNV);
-  fn_glPathParameterfvNV = new Deno.UnsafeFnPointer(proc("glPathParameterfvNV"), def_glPathParameterfvNV);
-  fn_glPathParameterfNV = new Deno.UnsafeFnPointer(proc("glPathParameterfNV"), def_glPathParameterfNV);
-  fn_glPathDashArrayNV = new Deno.UnsafeFnPointer(proc("glPathDashArrayNV"), def_glPathDashArrayNV);
-  fn_glPathStencilFuncNV = new Deno.UnsafeFnPointer(proc("glPathStencilFuncNV"), def_glPathStencilFuncNV);
-  fn_glPathStencilDepthOffsetNV = new Deno.UnsafeFnPointer(proc("glPathStencilDepthOffsetNV"), def_glPathStencilDepthOffsetNV);
-  fn_glStencilFillPathNV = new Deno.UnsafeFnPointer(proc("glStencilFillPathNV"), def_glStencilFillPathNV);
-  fn_glStencilStrokePathNV = new Deno.UnsafeFnPointer(proc("glStencilStrokePathNV"), def_glStencilStrokePathNV);
-  fn_glStencilFillPathInstancedNV = new Deno.UnsafeFnPointer(proc("glStencilFillPathInstancedNV"), def_glStencilFillPathInstancedNV);
-  fn_glStencilStrokePathInstancedNV = new Deno.UnsafeFnPointer(proc("glStencilStrokePathInstancedNV"), def_glStencilStrokePathInstancedNV);
-  fn_glPathCoverDepthFuncNV = new Deno.UnsafeFnPointer(proc("glPathCoverDepthFuncNV"), def_glPathCoverDepthFuncNV);
-  fn_glCoverFillPathNV = new Deno.UnsafeFnPointer(proc("glCoverFillPathNV"), def_glCoverFillPathNV);
-  fn_glCoverStrokePathNV = new Deno.UnsafeFnPointer(proc("glCoverStrokePathNV"), def_glCoverStrokePathNV);
-  fn_glCoverFillPathInstancedNV = new Deno.UnsafeFnPointer(proc("glCoverFillPathInstancedNV"), def_glCoverFillPathInstancedNV);
-  fn_glCoverStrokePathInstancedNV = new Deno.UnsafeFnPointer(proc("glCoverStrokePathInstancedNV"), def_glCoverStrokePathInstancedNV);
-  fn_glGetPathParameterivNV = new Deno.UnsafeFnPointer(proc("glGetPathParameterivNV"), def_glGetPathParameterivNV);
-  fn_glGetPathParameterfvNV = new Deno.UnsafeFnPointer(proc("glGetPathParameterfvNV"), def_glGetPathParameterfvNV);
-  fn_glGetPathCommandsNV = new Deno.UnsafeFnPointer(proc("glGetPathCommandsNV"), def_glGetPathCommandsNV);
-  fn_glGetPathCoordsNV = new Deno.UnsafeFnPointer(proc("glGetPathCoordsNV"), def_glGetPathCoordsNV);
-  fn_glGetPathDashArrayNV = new Deno.UnsafeFnPointer(proc("glGetPathDashArrayNV"), def_glGetPathDashArrayNV);
-  fn_glGetPathMetricsNV = new Deno.UnsafeFnPointer(proc("glGetPathMetricsNV"), def_glGetPathMetricsNV);
-  fn_glGetPathMetricRangeNV = new Deno.UnsafeFnPointer(proc("glGetPathMetricRangeNV"), def_glGetPathMetricRangeNV);
-  fn_glGetPathSpacingNV = new Deno.UnsafeFnPointer(proc("glGetPathSpacingNV"), def_glGetPathSpacingNV);
-  fn_glIsPointInFillPathNV = new Deno.UnsafeFnPointer(proc("glIsPointInFillPathNV"), def_glIsPointInFillPathNV);
-  fn_glIsPointInStrokePathNV = new Deno.UnsafeFnPointer(proc("glIsPointInStrokePathNV"), def_glIsPointInStrokePathNV);
-  fn_glGetPathLengthNV = new Deno.UnsafeFnPointer(proc("glGetPathLengthNV"), def_glGetPathLengthNV);
-  fn_glPointAlongPathNV = new Deno.UnsafeFnPointer(proc("glPointAlongPathNV"), def_glPointAlongPathNV);
-  fn_glMatrixLoad3x2fNV = new Deno.UnsafeFnPointer(proc("glMatrixLoad3x2fNV"), def_glMatrixLoad3x2fNV);
-  fn_glMatrixLoad3x3fNV = new Deno.UnsafeFnPointer(proc("glMatrixLoad3x3fNV"), def_glMatrixLoad3x3fNV);
-  fn_glMatrixLoadTranspose3x3fNV = new Deno.UnsafeFnPointer(proc("glMatrixLoadTranspose3x3fNV"), def_glMatrixLoadTranspose3x3fNV);
-  fn_glMatrixMult3x2fNV = new Deno.UnsafeFnPointer(proc("glMatrixMult3x2fNV"), def_glMatrixMult3x2fNV);
-  fn_glMatrixMult3x3fNV = new Deno.UnsafeFnPointer(proc("glMatrixMult3x3fNV"), def_glMatrixMult3x3fNV);
-  fn_glMatrixMultTranspose3x3fNV = new Deno.UnsafeFnPointer(proc("glMatrixMultTranspose3x3fNV"), def_glMatrixMultTranspose3x3fNV);
-  fn_glStencilThenCoverFillPathNV = new Deno.UnsafeFnPointer(proc("glStencilThenCoverFillPathNV"), def_glStencilThenCoverFillPathNV);
-  fn_glStencilThenCoverStrokePathNV = new Deno.UnsafeFnPointer(proc("glStencilThenCoverStrokePathNV"), def_glStencilThenCoverStrokePathNV);
-  fn_glStencilThenCoverFillPathInstancedNV = new Deno.UnsafeFnPointer(proc("glStencilThenCoverFillPathInstancedNV"), def_glStencilThenCoverFillPathInstancedNV);
-  fn_glStencilThenCoverStrokePathInstancedNV = new Deno.UnsafeFnPointer(proc("glStencilThenCoverStrokePathInstancedNV"), def_glStencilThenCoverStrokePathInstancedNV);
-  fn_glPathGlyphIndexRangeNV = new Deno.UnsafeFnPointer(proc("glPathGlyphIndexRangeNV"), def_glPathGlyphIndexRangeNV);
-  fn_glPathGlyphIndexArrayNV = new Deno.UnsafeFnPointer(proc("glPathGlyphIndexArrayNV"), def_glPathGlyphIndexArrayNV);
-  fn_glPathMemoryGlyphIndexArrayNV = new Deno.UnsafeFnPointer(proc("glPathMemoryGlyphIndexArrayNV"), def_glPathMemoryGlyphIndexArrayNV);
-  fn_glProgramPathFragmentInputGenNV = new Deno.UnsafeFnPointer(proc("glProgramPathFragmentInputGenNV"), def_glProgramPathFragmentInputGenNV);
-  fn_glGetProgramResourcefvNV = new Deno.UnsafeFnPointer(proc("glGetProgramResourcefvNV"), def_glGetProgramResourcefvNV);
-  fn_glPathColorGenNV = new Deno.UnsafeFnPointer(proc("glPathColorGenNV"), def_glPathColorGenNV);
-  fn_glPathTexGenNV = new Deno.UnsafeFnPointer(proc("glPathTexGenNV"), def_glPathTexGenNV);
-  fn_glPathFogGenNV = new Deno.UnsafeFnPointer(proc("glPathFogGenNV"), def_glPathFogGenNV);
-  fn_glGetPathColorGenivNV = new Deno.UnsafeFnPointer(proc("glGetPathColorGenivNV"), def_glGetPathColorGenivNV);
-  fn_glGetPathColorGenfvNV = new Deno.UnsafeFnPointer(proc("glGetPathColorGenfvNV"), def_glGetPathColorGenfvNV);
-  fn_glGetPathTexGenivNV = new Deno.UnsafeFnPointer(proc("glGetPathTexGenivNV"), def_glGetPathTexGenivNV);
-  fn_glGetPathTexGenfvNV = new Deno.UnsafeFnPointer(proc("glGetPathTexGenfvNV"), def_glGetPathTexGenfvNV);
-  fn_glMatrixFrustumEXT = new Deno.UnsafeFnPointer(proc("glMatrixFrustumEXT"), def_glMatrixFrustumEXT);
-  fn_glMatrixLoadIdentityEXT = new Deno.UnsafeFnPointer(proc("glMatrixLoadIdentityEXT"), def_glMatrixLoadIdentityEXT);
-  fn_glMatrixLoadTransposefEXT = new Deno.UnsafeFnPointer(proc("glMatrixLoadTransposefEXT"), def_glMatrixLoadTransposefEXT);
-  fn_glMatrixLoadTransposedEXT = new Deno.UnsafeFnPointer(proc("glMatrixLoadTransposedEXT"), def_glMatrixLoadTransposedEXT);
-  fn_glMatrixLoadfEXT = new Deno.UnsafeFnPointer(proc("glMatrixLoadfEXT"), def_glMatrixLoadfEXT);
-  fn_glMatrixLoaddEXT = new Deno.UnsafeFnPointer(proc("glMatrixLoaddEXT"), def_glMatrixLoaddEXT);
-  fn_glMatrixMultTransposefEXT = new Deno.UnsafeFnPointer(proc("glMatrixMultTransposefEXT"), def_glMatrixMultTransposefEXT);
-  fn_glMatrixMultTransposedEXT = new Deno.UnsafeFnPointer(proc("glMatrixMultTransposedEXT"), def_glMatrixMultTransposedEXT);
-  fn_glMatrixMultfEXT = new Deno.UnsafeFnPointer(proc("glMatrixMultfEXT"), def_glMatrixMultfEXT);
-  fn_glMatrixMultdEXT = new Deno.UnsafeFnPointer(proc("glMatrixMultdEXT"), def_glMatrixMultdEXT);
-  fn_glMatrixOrthoEXT = new Deno.UnsafeFnPointer(proc("glMatrixOrthoEXT"), def_glMatrixOrthoEXT);
-  fn_glMatrixPopEXT = new Deno.UnsafeFnPointer(proc("glMatrixPopEXT"), def_glMatrixPopEXT);
-  fn_glMatrixPushEXT = new Deno.UnsafeFnPointer(proc("glMatrixPushEXT"), def_glMatrixPushEXT);
-  fn_glMatrixRotatefEXT = new Deno.UnsafeFnPointer(proc("glMatrixRotatefEXT"), def_glMatrixRotatefEXT);
-  fn_glMatrixRotatedEXT = new Deno.UnsafeFnPointer(proc("glMatrixRotatedEXT"), def_glMatrixRotatedEXT);
-  fn_glMatrixScalefEXT = new Deno.UnsafeFnPointer(proc("glMatrixScalefEXT"), def_glMatrixScalefEXT);
-  fn_glMatrixScaledEXT = new Deno.UnsafeFnPointer(proc("glMatrixScaledEXT"), def_glMatrixScaledEXT);
-  fn_glMatrixTranslatefEXT = new Deno.UnsafeFnPointer(proc("glMatrixTranslatefEXT"), def_glMatrixTranslatefEXT);
-  fn_glMatrixTranslatedEXT = new Deno.UnsafeFnPointer(proc("glMatrixTranslatedEXT"), def_glMatrixTranslatedEXT);
+  fn_glPathCommandsNV = new Deno.UnsafeFnPointer(
+    proc("glPathCommandsNV"),
+    def_glPathCommandsNV,
+  );
+  fn_glPathCoordsNV = new Deno.UnsafeFnPointer(
+    proc("glPathCoordsNV"),
+    def_glPathCoordsNV,
+  );
+  fn_glPathSubCommandsNV = new Deno.UnsafeFnPointer(
+    proc("glPathSubCommandsNV"),
+    def_glPathSubCommandsNV,
+  );
+  fn_glPathSubCoordsNV = new Deno.UnsafeFnPointer(
+    proc("glPathSubCoordsNV"),
+    def_glPathSubCoordsNV,
+  );
+  fn_glPathStringNV = new Deno.UnsafeFnPointer(
+    proc("glPathStringNV"),
+    def_glPathStringNV,
+  );
+  fn_glPathGlyphsNV = new Deno.UnsafeFnPointer(
+    proc("glPathGlyphsNV"),
+    def_glPathGlyphsNV,
+  );
+  fn_glPathGlyphRangeNV = new Deno.UnsafeFnPointer(
+    proc("glPathGlyphRangeNV"),
+    def_glPathGlyphRangeNV,
+  );
+  fn_glWeightPathsNV = new Deno.UnsafeFnPointer(
+    proc("glWeightPathsNV"),
+    def_glWeightPathsNV,
+  );
+  fn_glCopyPathNV = new Deno.UnsafeFnPointer(
+    proc("glCopyPathNV"),
+    def_glCopyPathNV,
+  );
+  fn_glInterpolatePathsNV = new Deno.UnsafeFnPointer(
+    proc("glInterpolatePathsNV"),
+    def_glInterpolatePathsNV,
+  );
+  fn_glTransformPathNV = new Deno.UnsafeFnPointer(
+    proc("glTransformPathNV"),
+    def_glTransformPathNV,
+  );
+  fn_glPathParameterivNV = new Deno.UnsafeFnPointer(
+    proc("glPathParameterivNV"),
+    def_glPathParameterivNV,
+  );
+  fn_glPathParameteriNV = new Deno.UnsafeFnPointer(
+    proc("glPathParameteriNV"),
+    def_glPathParameteriNV,
+  );
+  fn_glPathParameterfvNV = new Deno.UnsafeFnPointer(
+    proc("glPathParameterfvNV"),
+    def_glPathParameterfvNV,
+  );
+  fn_glPathParameterfNV = new Deno.UnsafeFnPointer(
+    proc("glPathParameterfNV"),
+    def_glPathParameterfNV,
+  );
+  fn_glPathDashArrayNV = new Deno.UnsafeFnPointer(
+    proc("glPathDashArrayNV"),
+    def_glPathDashArrayNV,
+  );
+  fn_glPathStencilFuncNV = new Deno.UnsafeFnPointer(
+    proc("glPathStencilFuncNV"),
+    def_glPathStencilFuncNV,
+  );
+  fn_glPathStencilDepthOffsetNV = new Deno.UnsafeFnPointer(
+    proc("glPathStencilDepthOffsetNV"),
+    def_glPathStencilDepthOffsetNV,
+  );
+  fn_glStencilFillPathNV = new Deno.UnsafeFnPointer(
+    proc("glStencilFillPathNV"),
+    def_glStencilFillPathNV,
+  );
+  fn_glStencilStrokePathNV = new Deno.UnsafeFnPointer(
+    proc("glStencilStrokePathNV"),
+    def_glStencilStrokePathNV,
+  );
+  fn_glStencilFillPathInstancedNV = new Deno.UnsafeFnPointer(
+    proc("glStencilFillPathInstancedNV"),
+    def_glStencilFillPathInstancedNV,
+  );
+  fn_glStencilStrokePathInstancedNV = new Deno.UnsafeFnPointer(
+    proc("glStencilStrokePathInstancedNV"),
+    def_glStencilStrokePathInstancedNV,
+  );
+  fn_glPathCoverDepthFuncNV = new Deno.UnsafeFnPointer(
+    proc("glPathCoverDepthFuncNV"),
+    def_glPathCoverDepthFuncNV,
+  );
+  fn_glCoverFillPathNV = new Deno.UnsafeFnPointer(
+    proc("glCoverFillPathNV"),
+    def_glCoverFillPathNV,
+  );
+  fn_glCoverStrokePathNV = new Deno.UnsafeFnPointer(
+    proc("glCoverStrokePathNV"),
+    def_glCoverStrokePathNV,
+  );
+  fn_glCoverFillPathInstancedNV = new Deno.UnsafeFnPointer(
+    proc("glCoverFillPathInstancedNV"),
+    def_glCoverFillPathInstancedNV,
+  );
+  fn_glCoverStrokePathInstancedNV = new Deno.UnsafeFnPointer(
+    proc("glCoverStrokePathInstancedNV"),
+    def_glCoverStrokePathInstancedNV,
+  );
+  fn_glGetPathParameterivNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathParameterivNV"),
+    def_glGetPathParameterivNV,
+  );
+  fn_glGetPathParameterfvNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathParameterfvNV"),
+    def_glGetPathParameterfvNV,
+  );
+  fn_glGetPathCommandsNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathCommandsNV"),
+    def_glGetPathCommandsNV,
+  );
+  fn_glGetPathCoordsNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathCoordsNV"),
+    def_glGetPathCoordsNV,
+  );
+  fn_glGetPathDashArrayNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathDashArrayNV"),
+    def_glGetPathDashArrayNV,
+  );
+  fn_glGetPathMetricsNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathMetricsNV"),
+    def_glGetPathMetricsNV,
+  );
+  fn_glGetPathMetricRangeNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathMetricRangeNV"),
+    def_glGetPathMetricRangeNV,
+  );
+  fn_glGetPathSpacingNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathSpacingNV"),
+    def_glGetPathSpacingNV,
+  );
+  fn_glIsPointInFillPathNV = new Deno.UnsafeFnPointer(
+    proc("glIsPointInFillPathNV"),
+    def_glIsPointInFillPathNV,
+  );
+  fn_glIsPointInStrokePathNV = new Deno.UnsafeFnPointer(
+    proc("glIsPointInStrokePathNV"),
+    def_glIsPointInStrokePathNV,
+  );
+  fn_glGetPathLengthNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathLengthNV"),
+    def_glGetPathLengthNV,
+  );
+  fn_glPointAlongPathNV = new Deno.UnsafeFnPointer(
+    proc("glPointAlongPathNV"),
+    def_glPointAlongPathNV,
+  );
+  fn_glMatrixLoad3x2fNV = new Deno.UnsafeFnPointer(
+    proc("glMatrixLoad3x2fNV"),
+    def_glMatrixLoad3x2fNV,
+  );
+  fn_glMatrixLoad3x3fNV = new Deno.UnsafeFnPointer(
+    proc("glMatrixLoad3x3fNV"),
+    def_glMatrixLoad3x3fNV,
+  );
+  fn_glMatrixLoadTranspose3x3fNV = new Deno.UnsafeFnPointer(
+    proc("glMatrixLoadTranspose3x3fNV"),
+    def_glMatrixLoadTranspose3x3fNV,
+  );
+  fn_glMatrixMult3x2fNV = new Deno.UnsafeFnPointer(
+    proc("glMatrixMult3x2fNV"),
+    def_glMatrixMult3x2fNV,
+  );
+  fn_glMatrixMult3x3fNV = new Deno.UnsafeFnPointer(
+    proc("glMatrixMult3x3fNV"),
+    def_glMatrixMult3x3fNV,
+  );
+  fn_glMatrixMultTranspose3x3fNV = new Deno.UnsafeFnPointer(
+    proc("glMatrixMultTranspose3x3fNV"),
+    def_glMatrixMultTranspose3x3fNV,
+  );
+  fn_glStencilThenCoverFillPathNV = new Deno.UnsafeFnPointer(
+    proc("glStencilThenCoverFillPathNV"),
+    def_glStencilThenCoverFillPathNV,
+  );
+  fn_glStencilThenCoverStrokePathNV = new Deno.UnsafeFnPointer(
+    proc("glStencilThenCoverStrokePathNV"),
+    def_glStencilThenCoverStrokePathNV,
+  );
+  fn_glStencilThenCoverFillPathInstancedNV = new Deno.UnsafeFnPointer(
+    proc("glStencilThenCoverFillPathInstancedNV"),
+    def_glStencilThenCoverFillPathInstancedNV,
+  );
+  fn_glStencilThenCoverStrokePathInstancedNV = new Deno.UnsafeFnPointer(
+    proc("glStencilThenCoverStrokePathInstancedNV"),
+    def_glStencilThenCoverStrokePathInstancedNV,
+  );
+  fn_glPathGlyphIndexRangeNV = new Deno.UnsafeFnPointer(
+    proc("glPathGlyphIndexRangeNV"),
+    def_glPathGlyphIndexRangeNV,
+  );
+  fn_glPathGlyphIndexArrayNV = new Deno.UnsafeFnPointer(
+    proc("glPathGlyphIndexArrayNV"),
+    def_glPathGlyphIndexArrayNV,
+  );
+  fn_glPathMemoryGlyphIndexArrayNV = new Deno.UnsafeFnPointer(
+    proc("glPathMemoryGlyphIndexArrayNV"),
+    def_glPathMemoryGlyphIndexArrayNV,
+  );
+  fn_glProgramPathFragmentInputGenNV = new Deno.UnsafeFnPointer(
+    proc("glProgramPathFragmentInputGenNV"),
+    def_glProgramPathFragmentInputGenNV,
+  );
+  fn_glGetProgramResourcefvNV = new Deno.UnsafeFnPointer(
+    proc("glGetProgramResourcefvNV"),
+    def_glGetProgramResourcefvNV,
+  );
+  fn_glPathColorGenNV = new Deno.UnsafeFnPointer(
+    proc("glPathColorGenNV"),
+    def_glPathColorGenNV,
+  );
+  fn_glPathTexGenNV = new Deno.UnsafeFnPointer(
+    proc("glPathTexGenNV"),
+    def_glPathTexGenNV,
+  );
+  fn_glPathFogGenNV = new Deno.UnsafeFnPointer(
+    proc("glPathFogGenNV"),
+    def_glPathFogGenNV,
+  );
+  fn_glGetPathColorGenivNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathColorGenivNV"),
+    def_glGetPathColorGenivNV,
+  );
+  fn_glGetPathColorGenfvNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathColorGenfvNV"),
+    def_glGetPathColorGenfvNV,
+  );
+  fn_glGetPathTexGenivNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathTexGenivNV"),
+    def_glGetPathTexGenivNV,
+  );
+  fn_glGetPathTexGenfvNV = new Deno.UnsafeFnPointer(
+    proc("glGetPathTexGenfvNV"),
+    def_glGetPathTexGenfvNV,
+  );
+  fn_glMatrixFrustumEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixFrustumEXT"),
+    def_glMatrixFrustumEXT,
+  );
+  fn_glMatrixLoadIdentityEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixLoadIdentityEXT"),
+    def_glMatrixLoadIdentityEXT,
+  );
+  fn_glMatrixLoadTransposefEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixLoadTransposefEXT"),
+    def_glMatrixLoadTransposefEXT,
+  );
+  fn_glMatrixLoadTransposedEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixLoadTransposedEXT"),
+    def_glMatrixLoadTransposedEXT,
+  );
+  fn_glMatrixLoadfEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixLoadfEXT"),
+    def_glMatrixLoadfEXT,
+  );
+  fn_glMatrixLoaddEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixLoaddEXT"),
+    def_glMatrixLoaddEXT,
+  );
+  fn_glMatrixMultTransposefEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixMultTransposefEXT"),
+    def_glMatrixMultTransposefEXT,
+  );
+  fn_glMatrixMultTransposedEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixMultTransposedEXT"),
+    def_glMatrixMultTransposedEXT,
+  );
+  fn_glMatrixMultfEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixMultfEXT"),
+    def_glMatrixMultfEXT,
+  );
+  fn_glMatrixMultdEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixMultdEXT"),
+    def_glMatrixMultdEXT,
+  );
+  fn_glMatrixOrthoEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixOrthoEXT"),
+    def_glMatrixOrthoEXT,
+  );
+  fn_glMatrixPopEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixPopEXT"),
+    def_glMatrixPopEXT,
+  );
+  fn_glMatrixPushEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixPushEXT"),
+    def_glMatrixPushEXT,
+  );
+  fn_glMatrixRotatefEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixRotatefEXT"),
+    def_glMatrixRotatefEXT,
+  );
+  fn_glMatrixRotatedEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixRotatedEXT"),
+    def_glMatrixRotatedEXT,
+  );
+  fn_glMatrixScalefEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixScalefEXT"),
+    def_glMatrixScalefEXT,
+  );
+  fn_glMatrixScaledEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixScaledEXT"),
+    def_glMatrixScaledEXT,
+  );
+  fn_glMatrixTranslatefEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixTranslatefEXT"),
+    def_glMatrixTranslatefEXT,
+  );
+  fn_glMatrixTranslatedEXT = new Deno.UnsafeFnPointer(
+    proc("glMatrixTranslatedEXT"),
+    def_glMatrixTranslatedEXT,
+  );
 }

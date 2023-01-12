@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -118,7 +126,16 @@ export function DepthBoundsdNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDepthRangedNV = new Deno.UnsafeFnPointer(proc("glDepthRangedNV"), def_glDepthRangedNV);
-  fn_glClearDepthdNV = new Deno.UnsafeFnPointer(proc("glClearDepthdNV"), def_glClearDepthdNV);
-  fn_glDepthBoundsdNV = new Deno.UnsafeFnPointer(proc("glDepthBoundsdNV"), def_glDepthBoundsdNV);
+  fn_glDepthRangedNV = new Deno.UnsafeFnPointer(
+    proc("glDepthRangedNV"),
+    def_glDepthRangedNV,
+  );
+  fn_glClearDepthdNV = new Deno.UnsafeFnPointer(
+    proc("glClearDepthdNV"),
+    def_glClearDepthdNV,
+  );
+  fn_glDepthBoundsdNV = new Deno.UnsafeFnPointer(
+    proc("glDepthBoundsdNV"),
+    def_glDepthBoundsdNV,
+  );
 }

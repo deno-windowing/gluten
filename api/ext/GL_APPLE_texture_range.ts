@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -74,7 +82,9 @@ export const def_glTextureRangeAPPLE = {
   result: "void",
 } as const;
 
-let fn_glTextureRangeAPPLE!: Deno.UnsafeFnPointer<typeof def_glTextureRangeAPPLE>;
+let fn_glTextureRangeAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glTextureRangeAPPLE
+>;
 
 export function TextureRangeAPPLE(
   target: GLenum,
@@ -93,7 +103,9 @@ export const def_glGetTexParameterPointervAPPLE = {
   result: "void",
 } as const;
 
-let fn_glGetTexParameterPointervAPPLE!: Deno.UnsafeFnPointer<typeof def_glGetTexParameterPointervAPPLE>;
+let fn_glGetTexParameterPointervAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glGetTexParameterPointervAPPLE
+>;
 
 export function GetTexParameterPointervAPPLE(
   target: GLenum,
@@ -109,6 +121,12 @@ export function GetTexParameterPointervAPPLE(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTextureRangeAPPLE = new Deno.UnsafeFnPointer(proc("glTextureRangeAPPLE"), def_glTextureRangeAPPLE);
-  fn_glGetTexParameterPointervAPPLE = new Deno.UnsafeFnPointer(proc("glGetTexParameterPointervAPPLE"), def_glGetTexParameterPointervAPPLE);
+  fn_glTextureRangeAPPLE = new Deno.UnsafeFnPointer(
+    proc("glTextureRangeAPPLE"),
+    def_glTextureRangeAPPLE,
+  );
+  fn_glGetTexParameterPointervAPPLE = new Deno.UnsafeFnPointer(
+    proc("glGetTexParameterPointervAPPLE"),
+    def_glGetTexParameterPointervAPPLE,
+  );
 }

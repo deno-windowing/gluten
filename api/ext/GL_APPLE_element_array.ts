@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -71,7 +79,9 @@ export const def_glElementPointerAPPLE = {
   result: "void",
 } as const;
 
-let fn_glElementPointerAPPLE!: Deno.UnsafeFnPointer<typeof def_glElementPointerAPPLE>;
+let fn_glElementPointerAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glElementPointerAPPLE
+>;
 
 export function ElementPointerAPPLE(
   type: GLenum,
@@ -88,7 +98,9 @@ export const def_glDrawElementArrayAPPLE = {
   result: "void",
 } as const;
 
-let fn_glDrawElementArrayAPPLE!: Deno.UnsafeFnPointer<typeof def_glDrawElementArrayAPPLE>;
+let fn_glDrawElementArrayAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glDrawElementArrayAPPLE
+>;
 
 export function DrawElementArrayAPPLE(
   mode: GLenum,
@@ -107,7 +119,9 @@ export const def_glDrawRangeElementArrayAPPLE = {
   result: "void",
 } as const;
 
-let fn_glDrawRangeElementArrayAPPLE!: Deno.UnsafeFnPointer<typeof def_glDrawRangeElementArrayAPPLE>;
+let fn_glDrawRangeElementArrayAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glDrawRangeElementArrayAPPLE
+>;
 
 export function DrawRangeElementArrayAPPLE(
   mode: GLenum,
@@ -130,7 +144,9 @@ export const def_glMultiDrawElementArrayAPPLE = {
   result: "void",
 } as const;
 
-let fn_glMultiDrawElementArrayAPPLE!: Deno.UnsafeFnPointer<typeof def_glMultiDrawElementArrayAPPLE>;
+let fn_glMultiDrawElementArrayAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glMultiDrawElementArrayAPPLE
+>;
 
 export function MultiDrawElementArrayAPPLE(
   mode: GLenum,
@@ -151,7 +167,9 @@ export const def_glMultiDrawRangeElementArrayAPPLE = {
   result: "void",
 } as const;
 
-let fn_glMultiDrawRangeElementArrayAPPLE!: Deno.UnsafeFnPointer<typeof def_glMultiDrawRangeElementArrayAPPLE>;
+let fn_glMultiDrawRangeElementArrayAPPLE!: Deno.UnsafeFnPointer<
+  typeof def_glMultiDrawRangeElementArrayAPPLE
+>;
 
 export function MultiDrawRangeElementArrayAPPLE(
   mode: GLenum,
@@ -173,9 +191,24 @@ export function MultiDrawRangeElementArrayAPPLE(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glElementPointerAPPLE = new Deno.UnsafeFnPointer(proc("glElementPointerAPPLE"), def_glElementPointerAPPLE);
-  fn_glDrawElementArrayAPPLE = new Deno.UnsafeFnPointer(proc("glDrawElementArrayAPPLE"), def_glDrawElementArrayAPPLE);
-  fn_glDrawRangeElementArrayAPPLE = new Deno.UnsafeFnPointer(proc("glDrawRangeElementArrayAPPLE"), def_glDrawRangeElementArrayAPPLE);
-  fn_glMultiDrawElementArrayAPPLE = new Deno.UnsafeFnPointer(proc("glMultiDrawElementArrayAPPLE"), def_glMultiDrawElementArrayAPPLE);
-  fn_glMultiDrawRangeElementArrayAPPLE = new Deno.UnsafeFnPointer(proc("glMultiDrawRangeElementArrayAPPLE"), def_glMultiDrawRangeElementArrayAPPLE);
+  fn_glElementPointerAPPLE = new Deno.UnsafeFnPointer(
+    proc("glElementPointerAPPLE"),
+    def_glElementPointerAPPLE,
+  );
+  fn_glDrawElementArrayAPPLE = new Deno.UnsafeFnPointer(
+    proc("glDrawElementArrayAPPLE"),
+    def_glDrawElementArrayAPPLE,
+  );
+  fn_glDrawRangeElementArrayAPPLE = new Deno.UnsafeFnPointer(
+    proc("glDrawRangeElementArrayAPPLE"),
+    def_glDrawRangeElementArrayAPPLE,
+  );
+  fn_glMultiDrawElementArrayAPPLE = new Deno.UnsafeFnPointer(
+    proc("glMultiDrawElementArrayAPPLE"),
+    def_glMultiDrawElementArrayAPPLE,
+  );
+  fn_glMultiDrawRangeElementArrayAPPLE = new Deno.UnsafeFnPointer(
+    proc("glMultiDrawRangeElementArrayAPPLE"),
+    def_glMultiDrawRangeElementArrayAPPLE,
+  );
 }

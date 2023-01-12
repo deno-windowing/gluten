@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -70,7 +78,9 @@ export const def_glDrawTransformFeedbackStream = {
   result: "void",
 } as const;
 
-let fn_glDrawTransformFeedbackStream!: Deno.UnsafeFnPointer<typeof def_glDrawTransformFeedbackStream>;
+let fn_glDrawTransformFeedbackStream!: Deno.UnsafeFnPointer<
+  typeof def_glDrawTransformFeedbackStream
+>;
 
 export function DrawTransformFeedbackStream(
   mode: GLenum,
@@ -89,7 +99,9 @@ export const def_glBeginQueryIndexed = {
   result: "void",
 } as const;
 
-let fn_glBeginQueryIndexed!: Deno.UnsafeFnPointer<typeof def_glBeginQueryIndexed>;
+let fn_glBeginQueryIndexed!: Deno.UnsafeFnPointer<
+  typeof def_glBeginQueryIndexed
+>;
 
 export function BeginQueryIndexed(
   target: GLenum,
@@ -125,7 +137,9 @@ export const def_glGetQueryIndexediv = {
   result: "void",
 } as const;
 
-let fn_glGetQueryIndexediv!: Deno.UnsafeFnPointer<typeof def_glGetQueryIndexediv>;
+let fn_glGetQueryIndexediv!: Deno.UnsafeFnPointer<
+  typeof def_glGetQueryIndexediv
+>;
 
 export function GetQueryIndexediv(
   target: GLenum,
@@ -143,8 +157,20 @@ export function GetQueryIndexediv(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDrawTransformFeedbackStream = new Deno.UnsafeFnPointer(proc("glDrawTransformFeedbackStream"), def_glDrawTransformFeedbackStream);
-  fn_glBeginQueryIndexed = new Deno.UnsafeFnPointer(proc("glBeginQueryIndexed"), def_glBeginQueryIndexed);
-  fn_glEndQueryIndexed = new Deno.UnsafeFnPointer(proc("glEndQueryIndexed"), def_glEndQueryIndexed);
-  fn_glGetQueryIndexediv = new Deno.UnsafeFnPointer(proc("glGetQueryIndexediv"), def_glGetQueryIndexediv);
+  fn_glDrawTransformFeedbackStream = new Deno.UnsafeFnPointer(
+    proc("glDrawTransformFeedbackStream"),
+    def_glDrawTransformFeedbackStream,
+  );
+  fn_glBeginQueryIndexed = new Deno.UnsafeFnPointer(
+    proc("glBeginQueryIndexed"),
+    def_glBeginQueryIndexed,
+  );
+  fn_glEndQueryIndexed = new Deno.UnsafeFnPointer(
+    proc("glEndQueryIndexed"),
+    def_glEndQueryIndexed,
+  );
+  fn_glGetQueryIndexediv = new Deno.UnsafeFnPointer(
+    proc("glGetQueryIndexediv"),
+    def_glGetQueryIndexediv,
+  );
 }

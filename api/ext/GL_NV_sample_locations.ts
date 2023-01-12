@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -76,7 +84,9 @@ export const def_glFramebufferSampleLocationsfvNV = {
   result: "void",
 } as const;
 
-let fn_glFramebufferSampleLocationsfvNV!: Deno.UnsafeFnPointer<typeof def_glFramebufferSampleLocationsfvNV>;
+let fn_glFramebufferSampleLocationsfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferSampleLocationsfvNV
+>;
 
 export function FramebufferSampleLocationsfvNV(
   target: GLenum,
@@ -97,7 +107,9 @@ export const def_glNamedFramebufferSampleLocationsfvNV = {
   result: "void",
 } as const;
 
-let fn_glNamedFramebufferSampleLocationsfvNV!: Deno.UnsafeFnPointer<typeof def_glNamedFramebufferSampleLocationsfvNV>;
+let fn_glNamedFramebufferSampleLocationsfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glNamedFramebufferSampleLocationsfvNV
+>;
 
 export function NamedFramebufferSampleLocationsfvNV(
   framebuffer: GLuint,
@@ -118,7 +130,9 @@ export const def_glResolveDepthValuesNV = {
   result: "void",
 } as const;
 
-let fn_glResolveDepthValuesNV!: Deno.UnsafeFnPointer<typeof def_glResolveDepthValuesNV>;
+let fn_glResolveDepthValuesNV!: Deno.UnsafeFnPointer<
+  typeof def_glResolveDepthValuesNV
+>;
 
 export function ResolveDepthValuesNV(): void {
   fn_glResolveDepthValuesNV.call();
@@ -126,7 +140,16 @@ export function ResolveDepthValuesNV(): void {
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFramebufferSampleLocationsfvNV = new Deno.UnsafeFnPointer(proc("glFramebufferSampleLocationsfvNV"), def_glFramebufferSampleLocationsfvNV);
-  fn_glNamedFramebufferSampleLocationsfvNV = new Deno.UnsafeFnPointer(proc("glNamedFramebufferSampleLocationsfvNV"), def_glNamedFramebufferSampleLocationsfvNV);
-  fn_glResolveDepthValuesNV = new Deno.UnsafeFnPointer(proc("glResolveDepthValuesNV"), def_glResolveDepthValuesNV);
+  fn_glFramebufferSampleLocationsfvNV = new Deno.UnsafeFnPointer(
+    proc("glFramebufferSampleLocationsfvNV"),
+    def_glFramebufferSampleLocationsfvNV,
+  );
+  fn_glNamedFramebufferSampleLocationsfvNV = new Deno.UnsafeFnPointer(
+    proc("glNamedFramebufferSampleLocationsfvNV"),
+    def_glNamedFramebufferSampleLocationsfvNV,
+  );
+  fn_glResolveDepthValuesNV = new Deno.UnsafeFnPointer(
+    proc("glResolveDepthValuesNV"),
+    def_glResolveDepthValuesNV,
+  );
 }

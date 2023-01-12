@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glFrameTerminatorGREMEDY = {
   result: "void",
 } as const;
 
-let fn_glFrameTerminatorGREMEDY!: Deno.UnsafeFnPointer<typeof def_glFrameTerminatorGREMEDY>;
+let fn_glFrameTerminatorGREMEDY!: Deno.UnsafeFnPointer<
+  typeof def_glFrameTerminatorGREMEDY
+>;
 
 export function FrameTerminatorGREMEDY(): void {
   fn_glFrameTerminatorGREMEDY.call();
@@ -74,5 +84,8 @@ export function FrameTerminatorGREMEDY(): void {
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFrameTerminatorGREMEDY = new Deno.UnsafeFnPointer(proc("glFrameTerminatorGREMEDY"), def_glFrameTerminatorGREMEDY);
+  fn_glFrameTerminatorGREMEDY = new Deno.UnsafeFnPointer(
+    proc("glFrameTerminatorGREMEDY"),
+    def_glFrameTerminatorGREMEDY,
+  );
 }

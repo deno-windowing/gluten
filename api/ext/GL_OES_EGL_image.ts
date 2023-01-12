@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glEGLImageTargetTexture2DOES = {
   result: "void",
 } as const;
 
-let fn_glEGLImageTargetTexture2DOES!: Deno.UnsafeFnPointer<typeof def_glEGLImageTargetTexture2DOES>;
+let fn_glEGLImageTargetTexture2DOES!: Deno.UnsafeFnPointer<
+  typeof def_glEGLImageTargetTexture2DOES
+>;
 
 export function EGLImageTargetTexture2DOES(
   target: GLenum,
@@ -83,7 +93,9 @@ export const def_glEGLImageTargetRenderbufferStorageOES = {
   result: "void",
 } as const;
 
-let fn_glEGLImageTargetRenderbufferStorageOES!: Deno.UnsafeFnPointer<typeof def_glEGLImageTargetRenderbufferStorageOES>;
+let fn_glEGLImageTargetRenderbufferStorageOES!: Deno.UnsafeFnPointer<
+  typeof def_glEGLImageTargetRenderbufferStorageOES
+>;
 
 export function EGLImageTargetRenderbufferStorageOES(
   target: GLenum,
@@ -97,6 +109,12 @@ export function EGLImageTargetRenderbufferStorageOES(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glEGLImageTargetTexture2DOES = new Deno.UnsafeFnPointer(proc("glEGLImageTargetTexture2DOES"), def_glEGLImageTargetTexture2DOES);
-  fn_glEGLImageTargetRenderbufferStorageOES = new Deno.UnsafeFnPointer(proc("glEGLImageTargetRenderbufferStorageOES"), def_glEGLImageTargetRenderbufferStorageOES);
+  fn_glEGLImageTargetTexture2DOES = new Deno.UnsafeFnPointer(
+    proc("glEGLImageTargetTexture2DOES"),
+    def_glEGLImageTargetTexture2DOES,
+  );
+  fn_glEGLImageTargetRenderbufferStorageOES = new Deno.UnsafeFnPointer(
+    proc("glEGLImageTargetRenderbufferStorageOES"),
+    def_glEGLImageTargetRenderbufferStorageOES,
+  );
 }

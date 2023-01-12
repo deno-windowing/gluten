@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -116,7 +124,9 @@ export const def_glProgramParameteri = {
   result: "void",
 } as const;
 
-let fn_glProgramParameteri!: Deno.UnsafeFnPointer<typeof def_glProgramParameteri>;
+let fn_glProgramParameteri!: Deno.UnsafeFnPointer<
+  typeof def_glProgramParameteri
+>;
 
 export function ProgramParameteri(
   program: GLuint,
@@ -132,7 +142,16 @@ export function ProgramParameteri(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetProgramBinary = new Deno.UnsafeFnPointer(proc("glGetProgramBinary"), def_glGetProgramBinary);
-  fn_glProgramBinary = new Deno.UnsafeFnPointer(proc("glProgramBinary"), def_glProgramBinary);
-  fn_glProgramParameteri = new Deno.UnsafeFnPointer(proc("glProgramParameteri"), def_glProgramParameteri);
+  fn_glGetProgramBinary = new Deno.UnsafeFnPointer(
+    proc("glGetProgramBinary"),
+    def_glGetProgramBinary,
+  );
+  fn_glProgramBinary = new Deno.UnsafeFnPointer(
+    proc("glProgramBinary"),
+    def_glProgramBinary,
+  );
+  fn_glProgramParameteri = new Deno.UnsafeFnPointer(
+    proc("glProgramParameteri"),
+    def_glProgramParameteri,
+  );
 }

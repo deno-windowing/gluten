@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -74,7 +82,19 @@ export const TEXTURE_4D_BINDING_SGIS = 0x814f;
 /// Commands
 
 export const def_glTexImage4DSGIS = {
-  parameters: ["u32", "i32", "u32", "i32", "i32", "i32", "i32", "i32", "u32", "u32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
@@ -109,11 +129,27 @@ export function TexImage4DSGIS(
 }
 
 export const def_glTexSubImage4DSGIS = {
-  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "u32", "u32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
-let fn_glTexSubImage4DSGIS!: Deno.UnsafeFnPointer<typeof def_glTexSubImage4DSGIS>;
+let fn_glTexSubImage4DSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glTexSubImage4DSGIS
+>;
 
 export function TexSubImage4DSGIS(
   target: GLenum,
@@ -149,6 +185,12 @@ export function TexSubImage4DSGIS(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexImage4DSGIS = new Deno.UnsafeFnPointer(proc("glTexImage4DSGIS"), def_glTexImage4DSGIS);
-  fn_glTexSubImage4DSGIS = new Deno.UnsafeFnPointer(proc("glTexSubImage4DSGIS"), def_glTexSubImage4DSGIS);
+  fn_glTexImage4DSGIS = new Deno.UnsafeFnPointer(
+    proc("glTexImage4DSGIS"),
+    def_glTexImage4DSGIS,
+  );
+  fn_glTexSubImage4DSGIS = new Deno.UnsafeFnPointer(
+    proc("glTexSubImage4DSGIS"),
+    def_glTexSubImage4DSGIS,
+  );
 }

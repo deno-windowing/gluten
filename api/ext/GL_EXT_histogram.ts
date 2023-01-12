@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -105,7 +113,9 @@ export const def_glGetHistogramParameterfvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetHistogramParameterfvEXT!: Deno.UnsafeFnPointer<typeof def_glGetHistogramParameterfvEXT>;
+let fn_glGetHistogramParameterfvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetHistogramParameterfvEXT
+>;
 
 export function GetHistogramParameterfvEXT(
   target: GLenum,
@@ -124,7 +134,9 @@ export const def_glGetHistogramParameterivEXT = {
   result: "void",
 } as const;
 
-let fn_glGetHistogramParameterivEXT!: Deno.UnsafeFnPointer<typeof def_glGetHistogramParameterivEXT>;
+let fn_glGetHistogramParameterivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetHistogramParameterivEXT
+>;
 
 export function GetHistogramParameterivEXT(
   target: GLenum,
@@ -166,7 +178,9 @@ export const def_glGetMinmaxParameterfvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetMinmaxParameterfvEXT!: Deno.UnsafeFnPointer<typeof def_glGetMinmaxParameterfvEXT>;
+let fn_glGetMinmaxParameterfvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetMinmaxParameterfvEXT
+>;
 
 export function GetMinmaxParameterfvEXT(
   target: GLenum,
@@ -185,7 +199,9 @@ export const def_glGetMinmaxParameterivEXT = {
   result: "void",
 } as const;
 
-let fn_glGetMinmaxParameterivEXT!: Deno.UnsafeFnPointer<typeof def_glGetMinmaxParameterivEXT>;
+let fn_glGetMinmaxParameterivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetMinmaxParameterivEXT
+>;
 
 export function GetMinmaxParameterivEXT(
   target: GLenum,
@@ -244,7 +260,9 @@ export const def_glResetHistogramEXT = {
   result: "void",
 } as const;
 
-let fn_glResetHistogramEXT!: Deno.UnsafeFnPointer<typeof def_glResetHistogramEXT>;
+let fn_glResetHistogramEXT!: Deno.UnsafeFnPointer<
+  typeof def_glResetHistogramEXT
+>;
 
 export function ResetHistogramEXT(
   target: GLenum,
@@ -271,14 +289,44 @@ export function ResetMinmaxEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetHistogramEXT = new Deno.UnsafeFnPointer(proc("glGetHistogramEXT"), def_glGetHistogramEXT);
-  fn_glGetHistogramParameterfvEXT = new Deno.UnsafeFnPointer(proc("glGetHistogramParameterfvEXT"), def_glGetHistogramParameterfvEXT);
-  fn_glGetHistogramParameterivEXT = new Deno.UnsafeFnPointer(proc("glGetHistogramParameterivEXT"), def_glGetHistogramParameterivEXT);
-  fn_glGetMinmaxEXT = new Deno.UnsafeFnPointer(proc("glGetMinmaxEXT"), def_glGetMinmaxEXT);
-  fn_glGetMinmaxParameterfvEXT = new Deno.UnsafeFnPointer(proc("glGetMinmaxParameterfvEXT"), def_glGetMinmaxParameterfvEXT);
-  fn_glGetMinmaxParameterivEXT = new Deno.UnsafeFnPointer(proc("glGetMinmaxParameterivEXT"), def_glGetMinmaxParameterivEXT);
-  fn_glHistogramEXT = new Deno.UnsafeFnPointer(proc("glHistogramEXT"), def_glHistogramEXT);
-  fn_glMinmaxEXT = new Deno.UnsafeFnPointer(proc("glMinmaxEXT"), def_glMinmaxEXT);
-  fn_glResetHistogramEXT = new Deno.UnsafeFnPointer(proc("glResetHistogramEXT"), def_glResetHistogramEXT);
-  fn_glResetMinmaxEXT = new Deno.UnsafeFnPointer(proc("glResetMinmaxEXT"), def_glResetMinmaxEXT);
+  fn_glGetHistogramEXT = new Deno.UnsafeFnPointer(
+    proc("glGetHistogramEXT"),
+    def_glGetHistogramEXT,
+  );
+  fn_glGetHistogramParameterfvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetHistogramParameterfvEXT"),
+    def_glGetHistogramParameterfvEXT,
+  );
+  fn_glGetHistogramParameterivEXT = new Deno.UnsafeFnPointer(
+    proc("glGetHistogramParameterivEXT"),
+    def_glGetHistogramParameterivEXT,
+  );
+  fn_glGetMinmaxEXT = new Deno.UnsafeFnPointer(
+    proc("glGetMinmaxEXT"),
+    def_glGetMinmaxEXT,
+  );
+  fn_glGetMinmaxParameterfvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetMinmaxParameterfvEXT"),
+    def_glGetMinmaxParameterfvEXT,
+  );
+  fn_glGetMinmaxParameterivEXT = new Deno.UnsafeFnPointer(
+    proc("glGetMinmaxParameterivEXT"),
+    def_glGetMinmaxParameterivEXT,
+  );
+  fn_glHistogramEXT = new Deno.UnsafeFnPointer(
+    proc("glHistogramEXT"),
+    def_glHistogramEXT,
+  );
+  fn_glMinmaxEXT = new Deno.UnsafeFnPointer(
+    proc("glMinmaxEXT"),
+    def_glMinmaxEXT,
+  );
+  fn_glResetHistogramEXT = new Deno.UnsafeFnPointer(
+    proc("glResetHistogramEXT"),
+    def_glResetHistogramEXT,
+  );
+  fn_glResetMinmaxEXT = new Deno.UnsafeFnPointer(
+    proc("glResetMinmaxEXT"),
+    def_glResetMinmaxEXT,
+  );
 }

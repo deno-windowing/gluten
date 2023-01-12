@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -249,13 +257,40 @@ export function GetTexGenxvOES(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexGenfOES = new Deno.UnsafeFnPointer(proc("glTexGenfOES"), def_glTexGenfOES);
-  fn_glTexGenfvOES = new Deno.UnsafeFnPointer(proc("glTexGenfvOES"), def_glTexGenfvOES);
-  fn_glTexGeniOES = new Deno.UnsafeFnPointer(proc("glTexGeniOES"), def_glTexGeniOES);
-  fn_glTexGenivOES = new Deno.UnsafeFnPointer(proc("glTexGenivOES"), def_glTexGenivOES);
-  fn_glTexGenxOES = new Deno.UnsafeFnPointer(proc("glTexGenxOES"), def_glTexGenxOES);
-  fn_glTexGenxvOES = new Deno.UnsafeFnPointer(proc("glTexGenxvOES"), def_glTexGenxvOES);
-  fn_glGetTexGenfvOES = new Deno.UnsafeFnPointer(proc("glGetTexGenfvOES"), def_glGetTexGenfvOES);
-  fn_glGetTexGenivOES = new Deno.UnsafeFnPointer(proc("glGetTexGenivOES"), def_glGetTexGenivOES);
-  fn_glGetTexGenxvOES = new Deno.UnsafeFnPointer(proc("glGetTexGenxvOES"), def_glGetTexGenxvOES);
+  fn_glTexGenfOES = new Deno.UnsafeFnPointer(
+    proc("glTexGenfOES"),
+    def_glTexGenfOES,
+  );
+  fn_glTexGenfvOES = new Deno.UnsafeFnPointer(
+    proc("glTexGenfvOES"),
+    def_glTexGenfvOES,
+  );
+  fn_glTexGeniOES = new Deno.UnsafeFnPointer(
+    proc("glTexGeniOES"),
+    def_glTexGeniOES,
+  );
+  fn_glTexGenivOES = new Deno.UnsafeFnPointer(
+    proc("glTexGenivOES"),
+    def_glTexGenivOES,
+  );
+  fn_glTexGenxOES = new Deno.UnsafeFnPointer(
+    proc("glTexGenxOES"),
+    def_glTexGenxOES,
+  );
+  fn_glTexGenxvOES = new Deno.UnsafeFnPointer(
+    proc("glTexGenxvOES"),
+    def_glTexGenxvOES,
+  );
+  fn_glGetTexGenfvOES = new Deno.UnsafeFnPointer(
+    proc("glGetTexGenfvOES"),
+    def_glGetTexGenfvOES,
+  );
+  fn_glGetTexGenivOES = new Deno.UnsafeFnPointer(
+    proc("glGetTexGenivOES"),
+    def_glGetTexGenivOES,
+  );
+  fn_glGetTexGenxvOES = new Deno.UnsafeFnPointer(
+    proc("glGetTexGenxvOES"),
+    def_glGetTexGenxvOES,
+  );
 }

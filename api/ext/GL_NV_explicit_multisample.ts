@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -78,7 +86,9 @@ export const def_glGetMultisamplefvNV = {
   result: "void",
 } as const;
 
-let fn_glGetMultisamplefvNV!: Deno.UnsafeFnPointer<typeof def_glGetMultisamplefvNV>;
+let fn_glGetMultisamplefvNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetMultisamplefvNV
+>;
 
 export function GetMultisamplefvNV(
   pname: GLenum,
@@ -97,7 +107,9 @@ export const def_glSampleMaskIndexedNV = {
   result: "void",
 } as const;
 
-let fn_glSampleMaskIndexedNV!: Deno.UnsafeFnPointer<typeof def_glSampleMaskIndexedNV>;
+let fn_glSampleMaskIndexedNV!: Deno.UnsafeFnPointer<
+  typeof def_glSampleMaskIndexedNV
+>;
 
 export function SampleMaskIndexedNV(
   index: GLuint,
@@ -114,7 +126,9 @@ export const def_glTexRenderbufferNV = {
   result: "void",
 } as const;
 
-let fn_glTexRenderbufferNV!: Deno.UnsafeFnPointer<typeof def_glTexRenderbufferNV>;
+let fn_glTexRenderbufferNV!: Deno.UnsafeFnPointer<
+  typeof def_glTexRenderbufferNV
+>;
 
 export function TexRenderbufferNV(
   target: GLenum,
@@ -128,7 +142,16 @@ export function TexRenderbufferNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetMultisamplefvNV = new Deno.UnsafeFnPointer(proc("glGetMultisamplefvNV"), def_glGetMultisamplefvNV);
-  fn_glSampleMaskIndexedNV = new Deno.UnsafeFnPointer(proc("glSampleMaskIndexedNV"), def_glSampleMaskIndexedNV);
-  fn_glTexRenderbufferNV = new Deno.UnsafeFnPointer(proc("glTexRenderbufferNV"), def_glTexRenderbufferNV);
+  fn_glGetMultisamplefvNV = new Deno.UnsafeFnPointer(
+    proc("glGetMultisamplefvNV"),
+    def_glGetMultisamplefvNV,
+  );
+  fn_glSampleMaskIndexedNV = new Deno.UnsafeFnPointer(
+    proc("glSampleMaskIndexedNV"),
+    def_glSampleMaskIndexedNV,
+  );
+  fn_glTexRenderbufferNV = new Deno.UnsafeFnPointer(
+    proc("glTexRenderbufferNV"),
+    def_glTexRenderbufferNV,
+  );
 }

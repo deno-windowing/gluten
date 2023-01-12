@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -94,7 +102,9 @@ export const def_glDeleteNamedStringARB = {
   result: "void",
 } as const;
 
-let fn_glDeleteNamedStringARB!: Deno.UnsafeFnPointer<typeof def_glDeleteNamedStringARB>;
+let fn_glDeleteNamedStringARB!: Deno.UnsafeFnPointer<
+  typeof def_glDeleteNamedStringARB
+>;
 
 export function DeleteNamedStringARB(
   namelen: GLint,
@@ -111,7 +121,9 @@ export const def_glCompileShaderIncludeARB = {
   result: "void",
 } as const;
 
-let fn_glCompileShaderIncludeARB!: Deno.UnsafeFnPointer<typeof def_glCompileShaderIncludeARB>;
+let fn_glCompileShaderIncludeARB!: Deno.UnsafeFnPointer<
+  typeof def_glCompileShaderIncludeARB
+>;
 
 export function CompileShaderIncludeARB(
   shader: GLuint,
@@ -149,7 +161,9 @@ export const def_glGetNamedStringARB = {
   result: "void",
 } as const;
 
-let fn_glGetNamedStringARB!: Deno.UnsafeFnPointer<typeof def_glGetNamedStringARB>;
+let fn_glGetNamedStringARB!: Deno.UnsafeFnPointer<
+  typeof def_glGetNamedStringARB
+>;
 
 export function GetNamedStringARB(
   namelen: GLint,
@@ -172,7 +186,9 @@ export const def_glGetNamedStringivARB = {
   result: "void",
 } as const;
 
-let fn_glGetNamedStringivARB!: Deno.UnsafeFnPointer<typeof def_glGetNamedStringivARB>;
+let fn_glGetNamedStringivARB!: Deno.UnsafeFnPointer<
+  typeof def_glGetNamedStringivARB
+>;
 
 export function GetNamedStringivARB(
   namelen: GLint,
@@ -190,10 +206,28 @@ export function GetNamedStringivARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glNamedStringARB = new Deno.UnsafeFnPointer(proc("glNamedStringARB"), def_glNamedStringARB);
-  fn_glDeleteNamedStringARB = new Deno.UnsafeFnPointer(proc("glDeleteNamedStringARB"), def_glDeleteNamedStringARB);
-  fn_glCompileShaderIncludeARB = new Deno.UnsafeFnPointer(proc("glCompileShaderIncludeARB"), def_glCompileShaderIncludeARB);
-  fn_glIsNamedStringARB = new Deno.UnsafeFnPointer(proc("glIsNamedStringARB"), def_glIsNamedStringARB);
-  fn_glGetNamedStringARB = new Deno.UnsafeFnPointer(proc("glGetNamedStringARB"), def_glGetNamedStringARB);
-  fn_glGetNamedStringivARB = new Deno.UnsafeFnPointer(proc("glGetNamedStringivARB"), def_glGetNamedStringivARB);
+  fn_glNamedStringARB = new Deno.UnsafeFnPointer(
+    proc("glNamedStringARB"),
+    def_glNamedStringARB,
+  );
+  fn_glDeleteNamedStringARB = new Deno.UnsafeFnPointer(
+    proc("glDeleteNamedStringARB"),
+    def_glDeleteNamedStringARB,
+  );
+  fn_glCompileShaderIncludeARB = new Deno.UnsafeFnPointer(
+    proc("glCompileShaderIncludeARB"),
+    def_glCompileShaderIncludeARB,
+  );
+  fn_glIsNamedStringARB = new Deno.UnsafeFnPointer(
+    proc("glIsNamedStringARB"),
+    def_glIsNamedStringARB,
+  );
+  fn_glGetNamedStringARB = new Deno.UnsafeFnPointer(
+    proc("glGetNamedStringARB"),
+    def_glGetNamedStringARB,
+  );
+  fn_glGetNamedStringivARB = new Deno.UnsafeFnPointer(
+    proc("glGetNamedStringivARB"),
+    def_glGetNamedStringivARB,
+  );
 }

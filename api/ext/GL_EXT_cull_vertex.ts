@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -71,7 +79,9 @@ export const def_glCullParameterdvEXT = {
   result: "void",
 } as const;
 
-let fn_glCullParameterdvEXT!: Deno.UnsafeFnPointer<typeof def_glCullParameterdvEXT>;
+let fn_glCullParameterdvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glCullParameterdvEXT
+>;
 
 export function CullParameterdvEXT(
   pname: GLenum,
@@ -88,7 +98,9 @@ export const def_glCullParameterfvEXT = {
   result: "void",
 } as const;
 
-let fn_glCullParameterfvEXT!: Deno.UnsafeFnPointer<typeof def_glCullParameterfvEXT>;
+let fn_glCullParameterfvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glCullParameterfvEXT
+>;
 
 export function CullParameterfvEXT(
   pname: GLenum,
@@ -102,6 +114,12 @@ export function CullParameterfvEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glCullParameterdvEXT = new Deno.UnsafeFnPointer(proc("glCullParameterdvEXT"), def_glCullParameterdvEXT);
-  fn_glCullParameterfvEXT = new Deno.UnsafeFnPointer(proc("glCullParameterfvEXT"), def_glCullParameterfvEXT);
+  fn_glCullParameterdvEXT = new Deno.UnsafeFnPointer(
+    proc("glCullParameterdvEXT"),
+    def_glCullParameterdvEXT,
+  );
+  fn_glCullParameterfvEXT = new Deno.UnsafeFnPointer(
+    proc("glCullParameterfvEXT"),
+    def_glCullParameterfvEXT,
+  );
 }

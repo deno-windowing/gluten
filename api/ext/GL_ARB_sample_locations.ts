@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -76,7 +84,9 @@ export const def_glFramebufferSampleLocationsfvARB = {
   result: "void",
 } as const;
 
-let fn_glFramebufferSampleLocationsfvARB!: Deno.UnsafeFnPointer<typeof def_glFramebufferSampleLocationsfvARB>;
+let fn_glFramebufferSampleLocationsfvARB!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferSampleLocationsfvARB
+>;
 
 export function FramebufferSampleLocationsfvARB(
   target: GLenum,
@@ -97,7 +107,9 @@ export const def_glNamedFramebufferSampleLocationsfvARB = {
   result: "void",
 } as const;
 
-let fn_glNamedFramebufferSampleLocationsfvARB!: Deno.UnsafeFnPointer<typeof def_glNamedFramebufferSampleLocationsfvARB>;
+let fn_glNamedFramebufferSampleLocationsfvARB!: Deno.UnsafeFnPointer<
+  typeof def_glNamedFramebufferSampleLocationsfvARB
+>;
 
 export function NamedFramebufferSampleLocationsfvARB(
   framebuffer: GLuint,
@@ -118,7 +130,9 @@ export const def_glEvaluateDepthValuesARB = {
   result: "void",
 } as const;
 
-let fn_glEvaluateDepthValuesARB!: Deno.UnsafeFnPointer<typeof def_glEvaluateDepthValuesARB>;
+let fn_glEvaluateDepthValuesARB!: Deno.UnsafeFnPointer<
+  typeof def_glEvaluateDepthValuesARB
+>;
 
 export function EvaluateDepthValuesARB(): void {
   fn_glEvaluateDepthValuesARB.call();
@@ -126,7 +140,16 @@ export function EvaluateDepthValuesARB(): void {
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFramebufferSampleLocationsfvARB = new Deno.UnsafeFnPointer(proc("glFramebufferSampleLocationsfvARB"), def_glFramebufferSampleLocationsfvARB);
-  fn_glNamedFramebufferSampleLocationsfvARB = new Deno.UnsafeFnPointer(proc("glNamedFramebufferSampleLocationsfvARB"), def_glNamedFramebufferSampleLocationsfvARB);
-  fn_glEvaluateDepthValuesARB = new Deno.UnsafeFnPointer(proc("glEvaluateDepthValuesARB"), def_glEvaluateDepthValuesARB);
+  fn_glFramebufferSampleLocationsfvARB = new Deno.UnsafeFnPointer(
+    proc("glFramebufferSampleLocationsfvARB"),
+    def_glFramebufferSampleLocationsfvARB,
+  );
+  fn_glNamedFramebufferSampleLocationsfvARB = new Deno.UnsafeFnPointer(
+    proc("glNamedFramebufferSampleLocationsfvARB"),
+    def_glNamedFramebufferSampleLocationsfvARB,
+  );
+  fn_glEvaluateDepthValuesARB = new Deno.UnsafeFnPointer(
+    proc("glEvaluateDepthValuesARB"),
+    def_glEvaluateDepthValuesARB,
+  );
 }

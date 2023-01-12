@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -100,7 +108,9 @@ export const def_glVDPAURegisterVideoSurfaceNV = {
   result: "buffer",
 } as const;
 
-let fn_glVDPAURegisterVideoSurfaceNV!: Deno.UnsafeFnPointer<typeof def_glVDPAURegisterVideoSurfaceNV>;
+let fn_glVDPAURegisterVideoSurfaceNV!: Deno.UnsafeFnPointer<
+  typeof def_glVDPAURegisterVideoSurfaceNV
+>;
 
 export function VDPAURegisterVideoSurfaceNV(
   vdpSurface: Buffer,
@@ -121,7 +131,9 @@ export const def_glVDPAURegisterOutputSurfaceNV = {
   result: "buffer",
 } as const;
 
-let fn_glVDPAURegisterOutputSurfaceNV!: Deno.UnsafeFnPointer<typeof def_glVDPAURegisterOutputSurfaceNV>;
+let fn_glVDPAURegisterOutputSurfaceNV!: Deno.UnsafeFnPointer<
+  typeof def_glVDPAURegisterOutputSurfaceNV
+>;
 
 export function VDPAURegisterOutputSurfaceNV(
   vdpSurface: Buffer,
@@ -157,7 +169,9 @@ export const def_glVDPAUUnregisterSurfaceNV = {
   result: "void",
 } as const;
 
-let fn_glVDPAUUnregisterSurfaceNV!: Deno.UnsafeFnPointer<typeof def_glVDPAUUnregisterSurfaceNV>;
+let fn_glVDPAUUnregisterSurfaceNV!: Deno.UnsafeFnPointer<
+  typeof def_glVDPAUUnregisterSurfaceNV
+>;
 
 export function VDPAUUnregisterSurfaceNV(
   surface: GLvdpauSurfaceNV,
@@ -172,7 +186,9 @@ export const def_glVDPAUGetSurfaceivNV = {
   result: "void",
 } as const;
 
-let fn_glVDPAUGetSurfaceivNV!: Deno.UnsafeFnPointer<typeof def_glVDPAUGetSurfaceivNV>;
+let fn_glVDPAUGetSurfaceivNV!: Deno.UnsafeFnPointer<
+  typeof def_glVDPAUGetSurfaceivNV
+>;
 
 export function VDPAUGetSurfaceivNV(
   surface: GLvdpauSurfaceNV,
@@ -195,7 +211,9 @@ export const def_glVDPAUSurfaceAccessNV = {
   result: "void",
 } as const;
 
-let fn_glVDPAUSurfaceAccessNV!: Deno.UnsafeFnPointer<typeof def_glVDPAUSurfaceAccessNV>;
+let fn_glVDPAUSurfaceAccessNV!: Deno.UnsafeFnPointer<
+  typeof def_glVDPAUSurfaceAccessNV
+>;
 
 export function VDPAUSurfaceAccessNV(
   surface: GLvdpauSurfaceNV,
@@ -212,7 +230,9 @@ export const def_glVDPAUMapSurfacesNV = {
   result: "void",
 } as const;
 
-let fn_glVDPAUMapSurfacesNV!: Deno.UnsafeFnPointer<typeof def_glVDPAUMapSurfacesNV>;
+let fn_glVDPAUMapSurfacesNV!: Deno.UnsafeFnPointer<
+  typeof def_glVDPAUMapSurfacesNV
+>;
 
 export function VDPAUMapSurfacesNV(
   numSurfaces: GLsizei,
@@ -229,7 +249,9 @@ export const def_glVDPAUUnmapSurfacesNV = {
   result: "void",
 } as const;
 
-let fn_glVDPAUUnmapSurfacesNV!: Deno.UnsafeFnPointer<typeof def_glVDPAUUnmapSurfacesNV>;
+let fn_glVDPAUUnmapSurfacesNV!: Deno.UnsafeFnPointer<
+  typeof def_glVDPAUUnmapSurfacesNV
+>;
 
 export function VDPAUUnmapSurfacesNV(
   numSurface: GLsizei,
@@ -243,14 +265,44 @@ export function VDPAUUnmapSurfacesNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glVDPAUInitNV = new Deno.UnsafeFnPointer(proc("glVDPAUInitNV"), def_glVDPAUInitNV);
-  fn_glVDPAUFiniNV = new Deno.UnsafeFnPointer(proc("glVDPAUFiniNV"), def_glVDPAUFiniNV);
-  fn_glVDPAURegisterVideoSurfaceNV = new Deno.UnsafeFnPointer(proc("glVDPAURegisterVideoSurfaceNV"), def_glVDPAURegisterVideoSurfaceNV);
-  fn_glVDPAURegisterOutputSurfaceNV = new Deno.UnsafeFnPointer(proc("glVDPAURegisterOutputSurfaceNV"), def_glVDPAURegisterOutputSurfaceNV);
-  fn_glVDPAUIsSurfaceNV = new Deno.UnsafeFnPointer(proc("glVDPAUIsSurfaceNV"), def_glVDPAUIsSurfaceNV);
-  fn_glVDPAUUnregisterSurfaceNV = new Deno.UnsafeFnPointer(proc("glVDPAUUnregisterSurfaceNV"), def_glVDPAUUnregisterSurfaceNV);
-  fn_glVDPAUGetSurfaceivNV = new Deno.UnsafeFnPointer(proc("glVDPAUGetSurfaceivNV"), def_glVDPAUGetSurfaceivNV);
-  fn_glVDPAUSurfaceAccessNV = new Deno.UnsafeFnPointer(proc("glVDPAUSurfaceAccessNV"), def_glVDPAUSurfaceAccessNV);
-  fn_glVDPAUMapSurfacesNV = new Deno.UnsafeFnPointer(proc("glVDPAUMapSurfacesNV"), def_glVDPAUMapSurfacesNV);
-  fn_glVDPAUUnmapSurfacesNV = new Deno.UnsafeFnPointer(proc("glVDPAUUnmapSurfacesNV"), def_glVDPAUUnmapSurfacesNV);
+  fn_glVDPAUInitNV = new Deno.UnsafeFnPointer(
+    proc("glVDPAUInitNV"),
+    def_glVDPAUInitNV,
+  );
+  fn_glVDPAUFiniNV = new Deno.UnsafeFnPointer(
+    proc("glVDPAUFiniNV"),
+    def_glVDPAUFiniNV,
+  );
+  fn_glVDPAURegisterVideoSurfaceNV = new Deno.UnsafeFnPointer(
+    proc("glVDPAURegisterVideoSurfaceNV"),
+    def_glVDPAURegisterVideoSurfaceNV,
+  );
+  fn_glVDPAURegisterOutputSurfaceNV = new Deno.UnsafeFnPointer(
+    proc("glVDPAURegisterOutputSurfaceNV"),
+    def_glVDPAURegisterOutputSurfaceNV,
+  );
+  fn_glVDPAUIsSurfaceNV = new Deno.UnsafeFnPointer(
+    proc("glVDPAUIsSurfaceNV"),
+    def_glVDPAUIsSurfaceNV,
+  );
+  fn_glVDPAUUnregisterSurfaceNV = new Deno.UnsafeFnPointer(
+    proc("glVDPAUUnregisterSurfaceNV"),
+    def_glVDPAUUnregisterSurfaceNV,
+  );
+  fn_glVDPAUGetSurfaceivNV = new Deno.UnsafeFnPointer(
+    proc("glVDPAUGetSurfaceivNV"),
+    def_glVDPAUGetSurfaceivNV,
+  );
+  fn_glVDPAUSurfaceAccessNV = new Deno.UnsafeFnPointer(
+    proc("glVDPAUSurfaceAccessNV"),
+    def_glVDPAUSurfaceAccessNV,
+  );
+  fn_glVDPAUMapSurfacesNV = new Deno.UnsafeFnPointer(
+    proc("glVDPAUMapSurfacesNV"),
+    def_glVDPAUMapSurfacesNV,
+  );
+  fn_glVDPAUUnmapSurfacesNV = new Deno.UnsafeFnPointer(
+    proc("glVDPAUUnmapSurfacesNV"),
+    def_glVDPAUUnmapSurfacesNV,
+  );
 }

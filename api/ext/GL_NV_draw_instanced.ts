@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glDrawArraysInstancedNV = {
   result: "void",
 } as const;
 
-let fn_glDrawArraysInstancedNV!: Deno.UnsafeFnPointer<typeof def_glDrawArraysInstancedNV>;
+let fn_glDrawArraysInstancedNV!: Deno.UnsafeFnPointer<
+  typeof def_glDrawArraysInstancedNV
+>;
 
 export function DrawArraysInstancedNV(
   mode: GLenum,
@@ -87,7 +97,9 @@ export const def_glDrawElementsInstancedNV = {
   result: "void",
 } as const;
 
-let fn_glDrawElementsInstancedNV!: Deno.UnsafeFnPointer<typeof def_glDrawElementsInstancedNV>;
+let fn_glDrawElementsInstancedNV!: Deno.UnsafeFnPointer<
+  typeof def_glDrawElementsInstancedNV
+>;
 
 export function DrawElementsInstancedNV(
   mode: GLenum,
@@ -107,6 +119,12 @@ export function DrawElementsInstancedNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDrawArraysInstancedNV = new Deno.UnsafeFnPointer(proc("glDrawArraysInstancedNV"), def_glDrawArraysInstancedNV);
-  fn_glDrawElementsInstancedNV = new Deno.UnsafeFnPointer(proc("glDrawElementsInstancedNV"), def_glDrawElementsInstancedNV);
+  fn_glDrawArraysInstancedNV = new Deno.UnsafeFnPointer(
+    proc("glDrawArraysInstancedNV"),
+    def_glDrawArraysInstancedNV,
+  );
+  fn_glDrawElementsInstancedNV = new Deno.UnsafeFnPointer(
+    proc("glDrawElementsInstancedNV"),
+    def_glDrawElementsInstancedNV,
+  );
 }

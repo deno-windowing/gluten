@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -121,7 +129,9 @@ export const def_glGetColorTableParameterivEXT = {
   result: "void",
 } as const;
 
-let fn_glGetColorTableParameterivEXT!: Deno.UnsafeFnPointer<typeof def_glGetColorTableParameterivEXT>;
+let fn_glGetColorTableParameterivEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetColorTableParameterivEXT
+>;
 
 export function GetColorTableParameterivEXT(
   target: GLenum,
@@ -140,7 +150,9 @@ export const def_glGetColorTableParameterfvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetColorTableParameterfvEXT!: Deno.UnsafeFnPointer<typeof def_glGetColorTableParameterfvEXT>;
+let fn_glGetColorTableParameterfvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetColorTableParameterfvEXT
+>;
 
 export function GetColorTableParameterfvEXT(
   target: GLenum,
@@ -156,8 +168,20 @@ export function GetColorTableParameterfvEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glColorTableEXT = new Deno.UnsafeFnPointer(proc("glColorTableEXT"), def_glColorTableEXT);
-  fn_glGetColorTableEXT = new Deno.UnsafeFnPointer(proc("glGetColorTableEXT"), def_glGetColorTableEXT);
-  fn_glGetColorTableParameterivEXT = new Deno.UnsafeFnPointer(proc("glGetColorTableParameterivEXT"), def_glGetColorTableParameterivEXT);
-  fn_glGetColorTableParameterfvEXT = new Deno.UnsafeFnPointer(proc("glGetColorTableParameterfvEXT"), def_glGetColorTableParameterfvEXT);
+  fn_glColorTableEXT = new Deno.UnsafeFnPointer(
+    proc("glColorTableEXT"),
+    def_glColorTableEXT,
+  );
+  fn_glGetColorTableEXT = new Deno.UnsafeFnPointer(
+    proc("glGetColorTableEXT"),
+    def_glGetColorTableEXT,
+  );
+  fn_glGetColorTableParameterivEXT = new Deno.UnsafeFnPointer(
+    proc("glGetColorTableParameterivEXT"),
+    def_glGetColorTableParameterivEXT,
+  );
+  fn_glGetColorTableParameterfvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetColorTableParameterfvEXT"),
+    def_glGetColorTableParameterfvEXT,
+  );
 }

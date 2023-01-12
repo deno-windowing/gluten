@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glTagSampleBufferSGIX = {
   result: "void",
 } as const;
 
-let fn_glTagSampleBufferSGIX!: Deno.UnsafeFnPointer<typeof def_glTagSampleBufferSGIX>;
+let fn_glTagSampleBufferSGIX!: Deno.UnsafeFnPointer<
+  typeof def_glTagSampleBufferSGIX
+>;
 
 export function TagSampleBufferSGIX(): void {
   fn_glTagSampleBufferSGIX.call();
@@ -74,5 +84,8 @@ export function TagSampleBufferSGIX(): void {
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTagSampleBufferSGIX = new Deno.UnsafeFnPointer(proc("glTagSampleBufferSGIX"), def_glTagSampleBufferSGIX);
+  fn_glTagSampleBufferSGIX = new Deno.UnsafeFnPointer(
+    proc("glTagSampleBufferSGIX"),
+    def_glTagSampleBufferSGIX,
+  );
 }

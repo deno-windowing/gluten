@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -72,7 +80,9 @@ export const def_glFramebufferTexture2DDownsampleIMG = {
   result: "void",
 } as const;
 
-let fn_glFramebufferTexture2DDownsampleIMG!: Deno.UnsafeFnPointer<typeof def_glFramebufferTexture2DDownsampleIMG>;
+let fn_glFramebufferTexture2DDownsampleIMG!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferTexture2DDownsampleIMG
+>;
 
 export function FramebufferTexture2DDownsampleIMG(
   target: GLenum,
@@ -99,7 +109,9 @@ export const def_glFramebufferTextureLayerDownsampleIMG = {
   result: "void",
 } as const;
 
-let fn_glFramebufferTextureLayerDownsampleIMG!: Deno.UnsafeFnPointer<typeof def_glFramebufferTextureLayerDownsampleIMG>;
+let fn_glFramebufferTextureLayerDownsampleIMG!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferTextureLayerDownsampleIMG
+>;
 
 export function FramebufferTextureLayerDownsampleIMG(
   target: GLenum,
@@ -123,6 +135,12 @@ export function FramebufferTextureLayerDownsampleIMG(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFramebufferTexture2DDownsampleIMG = new Deno.UnsafeFnPointer(proc("glFramebufferTexture2DDownsampleIMG"), def_glFramebufferTexture2DDownsampleIMG);
-  fn_glFramebufferTextureLayerDownsampleIMG = new Deno.UnsafeFnPointer(proc("glFramebufferTextureLayerDownsampleIMG"), def_glFramebufferTextureLayerDownsampleIMG);
+  fn_glFramebufferTexture2DDownsampleIMG = new Deno.UnsafeFnPointer(
+    proc("glFramebufferTexture2DDownsampleIMG"),
+    def_glFramebufferTexture2DDownsampleIMG,
+  );
+  fn_glFramebufferTextureLayerDownsampleIMG = new Deno.UnsafeFnPointer(
+    proc("glFramebufferTextureLayerDownsampleIMG"),
+    def_glFramebufferTextureLayerDownsampleIMG,
+  );
 }

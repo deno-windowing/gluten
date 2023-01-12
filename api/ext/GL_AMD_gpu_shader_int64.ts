@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -427,7 +435,9 @@ export const def_glGetUniformui64vNV = {
   result: "void",
 } as const;
 
-let fn_glGetUniformui64vNV!: Deno.UnsafeFnPointer<typeof def_glGetUniformui64vNV>;
+let fn_glGetUniformui64vNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetUniformui64vNV
+>;
 
 export function GetUniformui64vNV(
   program: GLuint,
@@ -446,7 +456,9 @@ export const def_glProgramUniform1i64NV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform1i64NV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform1i64NV>;
+let fn_glProgramUniform1i64NV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform1i64NV
+>;
 
 export function ProgramUniform1i64NV(
   program: GLuint,
@@ -465,7 +477,9 @@ export const def_glProgramUniform2i64NV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform2i64NV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform2i64NV>;
+let fn_glProgramUniform2i64NV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform2i64NV
+>;
 
 export function ProgramUniform2i64NV(
   program: GLuint,
@@ -486,7 +500,9 @@ export const def_glProgramUniform3i64NV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform3i64NV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform3i64NV>;
+let fn_glProgramUniform3i64NV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform3i64NV
+>;
 
 export function ProgramUniform3i64NV(
   program: GLuint,
@@ -509,7 +525,9 @@ export const def_glProgramUniform4i64NV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform4i64NV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform4i64NV>;
+let fn_glProgramUniform4i64NV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform4i64NV
+>;
 
 export function ProgramUniform4i64NV(
   program: GLuint,
@@ -534,7 +552,9 @@ export const def_glProgramUniform1i64vNV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform1i64vNV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform1i64vNV>;
+let fn_glProgramUniform1i64vNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform1i64vNV
+>;
 
 export function ProgramUniform1i64vNV(
   program: GLuint,
@@ -555,7 +575,9 @@ export const def_glProgramUniform2i64vNV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform2i64vNV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform2i64vNV>;
+let fn_glProgramUniform2i64vNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform2i64vNV
+>;
 
 export function ProgramUniform2i64vNV(
   program: GLuint,
@@ -576,7 +598,9 @@ export const def_glProgramUniform3i64vNV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform3i64vNV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform3i64vNV>;
+let fn_glProgramUniform3i64vNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform3i64vNV
+>;
 
 export function ProgramUniform3i64vNV(
   program: GLuint,
@@ -597,7 +621,9 @@ export const def_glProgramUniform4i64vNV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform4i64vNV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform4i64vNV>;
+let fn_glProgramUniform4i64vNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform4i64vNV
+>;
 
 export function ProgramUniform4i64vNV(
   program: GLuint,
@@ -618,7 +644,9 @@ export const def_glProgramUniform1ui64NV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform1ui64NV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform1ui64NV>;
+let fn_glProgramUniform1ui64NV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform1ui64NV
+>;
 
 export function ProgramUniform1ui64NV(
   program: GLuint,
@@ -637,7 +665,9 @@ export const def_glProgramUniform2ui64NV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform2ui64NV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform2ui64NV>;
+let fn_glProgramUniform2ui64NV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform2ui64NV
+>;
 
 export function ProgramUniform2ui64NV(
   program: GLuint,
@@ -658,7 +688,9 @@ export const def_glProgramUniform3ui64NV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform3ui64NV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform3ui64NV>;
+let fn_glProgramUniform3ui64NV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform3ui64NV
+>;
 
 export function ProgramUniform3ui64NV(
   program: GLuint,
@@ -681,7 +713,9 @@ export const def_glProgramUniform4ui64NV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform4ui64NV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform4ui64NV>;
+let fn_glProgramUniform4ui64NV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform4ui64NV
+>;
 
 export function ProgramUniform4ui64NV(
   program: GLuint,
@@ -706,7 +740,9 @@ export const def_glProgramUniform1ui64vNV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform1ui64vNV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform1ui64vNV>;
+let fn_glProgramUniform1ui64vNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform1ui64vNV
+>;
 
 export function ProgramUniform1ui64vNV(
   program: GLuint,
@@ -727,7 +763,9 @@ export const def_glProgramUniform2ui64vNV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform2ui64vNV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform2ui64vNV>;
+let fn_glProgramUniform2ui64vNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform2ui64vNV
+>;
 
 export function ProgramUniform2ui64vNV(
   program: GLuint,
@@ -748,7 +786,9 @@ export const def_glProgramUniform3ui64vNV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform3ui64vNV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform3ui64vNV>;
+let fn_glProgramUniform3ui64vNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform3ui64vNV
+>;
 
 export function ProgramUniform3ui64vNV(
   program: GLuint,
@@ -769,7 +809,9 @@ export const def_glProgramUniform4ui64vNV = {
   result: "void",
 } as const;
 
-let fn_glProgramUniform4ui64vNV!: Deno.UnsafeFnPointer<typeof def_glProgramUniform4ui64vNV>;
+let fn_glProgramUniform4ui64vNV!: Deno.UnsafeFnPointer<
+  typeof def_glProgramUniform4ui64vNV
+>;
 
 export function ProgramUniform4ui64vNV(
   program: GLuint,
@@ -787,38 +829,140 @@ export function ProgramUniform4ui64vNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glUniform1i64NV = new Deno.UnsafeFnPointer(proc("glUniform1i64NV"), def_glUniform1i64NV);
-  fn_glUniform2i64NV = new Deno.UnsafeFnPointer(proc("glUniform2i64NV"), def_glUniform2i64NV);
-  fn_glUniform3i64NV = new Deno.UnsafeFnPointer(proc("glUniform3i64NV"), def_glUniform3i64NV);
-  fn_glUniform4i64NV = new Deno.UnsafeFnPointer(proc("glUniform4i64NV"), def_glUniform4i64NV);
-  fn_glUniform1i64vNV = new Deno.UnsafeFnPointer(proc("glUniform1i64vNV"), def_glUniform1i64vNV);
-  fn_glUniform2i64vNV = new Deno.UnsafeFnPointer(proc("glUniform2i64vNV"), def_glUniform2i64vNV);
-  fn_glUniform3i64vNV = new Deno.UnsafeFnPointer(proc("glUniform3i64vNV"), def_glUniform3i64vNV);
-  fn_glUniform4i64vNV = new Deno.UnsafeFnPointer(proc("glUniform4i64vNV"), def_glUniform4i64vNV);
-  fn_glUniform1ui64NV = new Deno.UnsafeFnPointer(proc("glUniform1ui64NV"), def_glUniform1ui64NV);
-  fn_glUniform2ui64NV = new Deno.UnsafeFnPointer(proc("glUniform2ui64NV"), def_glUniform2ui64NV);
-  fn_glUniform3ui64NV = new Deno.UnsafeFnPointer(proc("glUniform3ui64NV"), def_glUniform3ui64NV);
-  fn_glUniform4ui64NV = new Deno.UnsafeFnPointer(proc("glUniform4ui64NV"), def_glUniform4ui64NV);
-  fn_glUniform1ui64vNV = new Deno.UnsafeFnPointer(proc("glUniform1ui64vNV"), def_glUniform1ui64vNV);
-  fn_glUniform2ui64vNV = new Deno.UnsafeFnPointer(proc("glUniform2ui64vNV"), def_glUniform2ui64vNV);
-  fn_glUniform3ui64vNV = new Deno.UnsafeFnPointer(proc("glUniform3ui64vNV"), def_glUniform3ui64vNV);
-  fn_glUniform4ui64vNV = new Deno.UnsafeFnPointer(proc("glUniform4ui64vNV"), def_glUniform4ui64vNV);
-  fn_glGetUniformi64vNV = new Deno.UnsafeFnPointer(proc("glGetUniformi64vNV"), def_glGetUniformi64vNV);
-  fn_glGetUniformui64vNV = new Deno.UnsafeFnPointer(proc("glGetUniformui64vNV"), def_glGetUniformui64vNV);
-  fn_glProgramUniform1i64NV = new Deno.UnsafeFnPointer(proc("glProgramUniform1i64NV"), def_glProgramUniform1i64NV);
-  fn_glProgramUniform2i64NV = new Deno.UnsafeFnPointer(proc("glProgramUniform2i64NV"), def_glProgramUniform2i64NV);
-  fn_glProgramUniform3i64NV = new Deno.UnsafeFnPointer(proc("glProgramUniform3i64NV"), def_glProgramUniform3i64NV);
-  fn_glProgramUniform4i64NV = new Deno.UnsafeFnPointer(proc("glProgramUniform4i64NV"), def_glProgramUniform4i64NV);
-  fn_glProgramUniform1i64vNV = new Deno.UnsafeFnPointer(proc("glProgramUniform1i64vNV"), def_glProgramUniform1i64vNV);
-  fn_glProgramUniform2i64vNV = new Deno.UnsafeFnPointer(proc("glProgramUniform2i64vNV"), def_glProgramUniform2i64vNV);
-  fn_glProgramUniform3i64vNV = new Deno.UnsafeFnPointer(proc("glProgramUniform3i64vNV"), def_glProgramUniform3i64vNV);
-  fn_glProgramUniform4i64vNV = new Deno.UnsafeFnPointer(proc("glProgramUniform4i64vNV"), def_glProgramUniform4i64vNV);
-  fn_glProgramUniform1ui64NV = new Deno.UnsafeFnPointer(proc("glProgramUniform1ui64NV"), def_glProgramUniform1ui64NV);
-  fn_glProgramUniform2ui64NV = new Deno.UnsafeFnPointer(proc("glProgramUniform2ui64NV"), def_glProgramUniform2ui64NV);
-  fn_glProgramUniform3ui64NV = new Deno.UnsafeFnPointer(proc("glProgramUniform3ui64NV"), def_glProgramUniform3ui64NV);
-  fn_glProgramUniform4ui64NV = new Deno.UnsafeFnPointer(proc("glProgramUniform4ui64NV"), def_glProgramUniform4ui64NV);
-  fn_glProgramUniform1ui64vNV = new Deno.UnsafeFnPointer(proc("glProgramUniform1ui64vNV"), def_glProgramUniform1ui64vNV);
-  fn_glProgramUniform2ui64vNV = new Deno.UnsafeFnPointer(proc("glProgramUniform2ui64vNV"), def_glProgramUniform2ui64vNV);
-  fn_glProgramUniform3ui64vNV = new Deno.UnsafeFnPointer(proc("glProgramUniform3ui64vNV"), def_glProgramUniform3ui64vNV);
-  fn_glProgramUniform4ui64vNV = new Deno.UnsafeFnPointer(proc("glProgramUniform4ui64vNV"), def_glProgramUniform4ui64vNV);
+  fn_glUniform1i64NV = new Deno.UnsafeFnPointer(
+    proc("glUniform1i64NV"),
+    def_glUniform1i64NV,
+  );
+  fn_glUniform2i64NV = new Deno.UnsafeFnPointer(
+    proc("glUniform2i64NV"),
+    def_glUniform2i64NV,
+  );
+  fn_glUniform3i64NV = new Deno.UnsafeFnPointer(
+    proc("glUniform3i64NV"),
+    def_glUniform3i64NV,
+  );
+  fn_glUniform4i64NV = new Deno.UnsafeFnPointer(
+    proc("glUniform4i64NV"),
+    def_glUniform4i64NV,
+  );
+  fn_glUniform1i64vNV = new Deno.UnsafeFnPointer(
+    proc("glUniform1i64vNV"),
+    def_glUniform1i64vNV,
+  );
+  fn_glUniform2i64vNV = new Deno.UnsafeFnPointer(
+    proc("glUniform2i64vNV"),
+    def_glUniform2i64vNV,
+  );
+  fn_glUniform3i64vNV = new Deno.UnsafeFnPointer(
+    proc("glUniform3i64vNV"),
+    def_glUniform3i64vNV,
+  );
+  fn_glUniform4i64vNV = new Deno.UnsafeFnPointer(
+    proc("glUniform4i64vNV"),
+    def_glUniform4i64vNV,
+  );
+  fn_glUniform1ui64NV = new Deno.UnsafeFnPointer(
+    proc("glUniform1ui64NV"),
+    def_glUniform1ui64NV,
+  );
+  fn_glUniform2ui64NV = new Deno.UnsafeFnPointer(
+    proc("glUniform2ui64NV"),
+    def_glUniform2ui64NV,
+  );
+  fn_glUniform3ui64NV = new Deno.UnsafeFnPointer(
+    proc("glUniform3ui64NV"),
+    def_glUniform3ui64NV,
+  );
+  fn_glUniform4ui64NV = new Deno.UnsafeFnPointer(
+    proc("glUniform4ui64NV"),
+    def_glUniform4ui64NV,
+  );
+  fn_glUniform1ui64vNV = new Deno.UnsafeFnPointer(
+    proc("glUniform1ui64vNV"),
+    def_glUniform1ui64vNV,
+  );
+  fn_glUniform2ui64vNV = new Deno.UnsafeFnPointer(
+    proc("glUniform2ui64vNV"),
+    def_glUniform2ui64vNV,
+  );
+  fn_glUniform3ui64vNV = new Deno.UnsafeFnPointer(
+    proc("glUniform3ui64vNV"),
+    def_glUniform3ui64vNV,
+  );
+  fn_glUniform4ui64vNV = new Deno.UnsafeFnPointer(
+    proc("glUniform4ui64vNV"),
+    def_glUniform4ui64vNV,
+  );
+  fn_glGetUniformi64vNV = new Deno.UnsafeFnPointer(
+    proc("glGetUniformi64vNV"),
+    def_glGetUniformi64vNV,
+  );
+  fn_glGetUniformui64vNV = new Deno.UnsafeFnPointer(
+    proc("glGetUniformui64vNV"),
+    def_glGetUniformui64vNV,
+  );
+  fn_glProgramUniform1i64NV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform1i64NV"),
+    def_glProgramUniform1i64NV,
+  );
+  fn_glProgramUniform2i64NV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform2i64NV"),
+    def_glProgramUniform2i64NV,
+  );
+  fn_glProgramUniform3i64NV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform3i64NV"),
+    def_glProgramUniform3i64NV,
+  );
+  fn_glProgramUniform4i64NV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform4i64NV"),
+    def_glProgramUniform4i64NV,
+  );
+  fn_glProgramUniform1i64vNV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform1i64vNV"),
+    def_glProgramUniform1i64vNV,
+  );
+  fn_glProgramUniform2i64vNV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform2i64vNV"),
+    def_glProgramUniform2i64vNV,
+  );
+  fn_glProgramUniform3i64vNV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform3i64vNV"),
+    def_glProgramUniform3i64vNV,
+  );
+  fn_glProgramUniform4i64vNV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform4i64vNV"),
+    def_glProgramUniform4i64vNV,
+  );
+  fn_glProgramUniform1ui64NV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform1ui64NV"),
+    def_glProgramUniform1ui64NV,
+  );
+  fn_glProgramUniform2ui64NV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform2ui64NV"),
+    def_glProgramUniform2ui64NV,
+  );
+  fn_glProgramUniform3ui64NV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform3ui64NV"),
+    def_glProgramUniform3ui64NV,
+  );
+  fn_glProgramUniform4ui64NV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform4ui64NV"),
+    def_glProgramUniform4ui64NV,
+  );
+  fn_glProgramUniform1ui64vNV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform1ui64vNV"),
+    def_glProgramUniform1ui64vNV,
+  );
+  fn_glProgramUniform2ui64vNV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform2ui64vNV"),
+    def_glProgramUniform2ui64vNV,
+  );
+  fn_glProgramUniform3ui64vNV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform3ui64vNV"),
+    def_glProgramUniform3ui64vNV,
+  );
+  fn_glProgramUniform4ui64vNV = new Deno.UnsafeFnPointer(
+    proc("glProgramUniform4ui64vNV"),
+    def_glProgramUniform4ui64vNV,
+  );
 }

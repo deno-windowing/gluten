@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glDrawTransformFeedbackInstanced = {
   result: "void",
 } as const;
 
-let fn_glDrawTransformFeedbackInstanced!: Deno.UnsafeFnPointer<typeof def_glDrawTransformFeedbackInstanced>;
+let fn_glDrawTransformFeedbackInstanced!: Deno.UnsafeFnPointer<
+  typeof def_glDrawTransformFeedbackInstanced
+>;
 
 export function DrawTransformFeedbackInstanced(
   mode: GLenum,
@@ -85,7 +95,9 @@ export const def_glDrawTransformFeedbackStreamInstanced = {
   result: "void",
 } as const;
 
-let fn_glDrawTransformFeedbackStreamInstanced!: Deno.UnsafeFnPointer<typeof def_glDrawTransformFeedbackStreamInstanced>;
+let fn_glDrawTransformFeedbackStreamInstanced!: Deno.UnsafeFnPointer<
+  typeof def_glDrawTransformFeedbackStreamInstanced
+>;
 
 export function DrawTransformFeedbackStreamInstanced(
   mode: GLenum,
@@ -103,6 +115,12 @@ export function DrawTransformFeedbackStreamInstanced(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDrawTransformFeedbackInstanced = new Deno.UnsafeFnPointer(proc("glDrawTransformFeedbackInstanced"), def_glDrawTransformFeedbackInstanced);
-  fn_glDrawTransformFeedbackStreamInstanced = new Deno.UnsafeFnPointer(proc("glDrawTransformFeedbackStreamInstanced"), def_glDrawTransformFeedbackStreamInstanced);
+  fn_glDrawTransformFeedbackInstanced = new Deno.UnsafeFnPointer(
+    proc("glDrawTransformFeedbackInstanced"),
+    def_glDrawTransformFeedbackInstanced,
+  );
+  fn_glDrawTransformFeedbackStreamInstanced = new Deno.UnsafeFnPointer(
+    proc("glDrawTransformFeedbackStreamInstanced"),
+    def_glDrawTransformFeedbackStreamInstanced,
+  );
 }

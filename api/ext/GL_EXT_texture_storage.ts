@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -160,7 +168,9 @@ export const def_glTextureStorage1DEXT = {
   result: "void",
 } as const;
 
-let fn_glTextureStorage1DEXT!: Deno.UnsafeFnPointer<typeof def_glTextureStorage1DEXT>;
+let fn_glTextureStorage1DEXT!: Deno.UnsafeFnPointer<
+  typeof def_glTextureStorage1DEXT
+>;
 
 export function TextureStorage1DEXT(
   texture: GLuint,
@@ -183,7 +193,9 @@ export const def_glTextureStorage2DEXT = {
   result: "void",
 } as const;
 
-let fn_glTextureStorage2DEXT!: Deno.UnsafeFnPointer<typeof def_glTextureStorage2DEXT>;
+let fn_glTextureStorage2DEXT!: Deno.UnsafeFnPointer<
+  typeof def_glTextureStorage2DEXT
+>;
 
 export function TextureStorage2DEXT(
   texture: GLuint,
@@ -208,7 +220,9 @@ export const def_glTextureStorage3DEXT = {
   result: "void",
 } as const;
 
-let fn_glTextureStorage3DEXT!: Deno.UnsafeFnPointer<typeof def_glTextureStorage3DEXT>;
+let fn_glTextureStorage3DEXT!: Deno.UnsafeFnPointer<
+  typeof def_glTextureStorage3DEXT
+>;
 
 export function TextureStorage3DEXT(
   texture: GLuint,
@@ -232,10 +246,28 @@ export function TextureStorage3DEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexStorage1DEXT = new Deno.UnsafeFnPointer(proc("glTexStorage1DEXT"), def_glTexStorage1DEXT);
-  fn_glTexStorage2DEXT = new Deno.UnsafeFnPointer(proc("glTexStorage2DEXT"), def_glTexStorage2DEXT);
-  fn_glTexStorage3DEXT = new Deno.UnsafeFnPointer(proc("glTexStorage3DEXT"), def_glTexStorage3DEXT);
-  fn_glTextureStorage1DEXT = new Deno.UnsafeFnPointer(proc("glTextureStorage1DEXT"), def_glTextureStorage1DEXT);
-  fn_glTextureStorage2DEXT = new Deno.UnsafeFnPointer(proc("glTextureStorage2DEXT"), def_glTextureStorage2DEXT);
-  fn_glTextureStorage3DEXT = new Deno.UnsafeFnPointer(proc("glTextureStorage3DEXT"), def_glTextureStorage3DEXT);
+  fn_glTexStorage1DEXT = new Deno.UnsafeFnPointer(
+    proc("glTexStorage1DEXT"),
+    def_glTexStorage1DEXT,
+  );
+  fn_glTexStorage2DEXT = new Deno.UnsafeFnPointer(
+    proc("glTexStorage2DEXT"),
+    def_glTexStorage2DEXT,
+  );
+  fn_glTexStorage3DEXT = new Deno.UnsafeFnPointer(
+    proc("glTexStorage3DEXT"),
+    def_glTexStorage3DEXT,
+  );
+  fn_glTextureStorage1DEXT = new Deno.UnsafeFnPointer(
+    proc("glTextureStorage1DEXT"),
+    def_glTextureStorage1DEXT,
+  );
+  fn_glTextureStorage2DEXT = new Deno.UnsafeFnPointer(
+    proc("glTextureStorage2DEXT"),
+    def_glTextureStorage2DEXT,
+  );
+  fn_glTextureStorage3DEXT = new Deno.UnsafeFnPointer(
+    proc("glTextureStorage3DEXT"),
+    def_glTextureStorage3DEXT,
+  );
 }

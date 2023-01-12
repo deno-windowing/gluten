@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glMultiDrawArraysEXT = {
   result: "void",
 } as const;
 
-let fn_glMultiDrawArraysEXT!: Deno.UnsafeFnPointer<typeof def_glMultiDrawArraysEXT>;
+let fn_glMultiDrawArraysEXT!: Deno.UnsafeFnPointer<
+  typeof def_glMultiDrawArraysEXT
+>;
 
 export function MultiDrawArraysEXT(
   mode: GLenum,
@@ -87,7 +97,9 @@ export const def_glMultiDrawElementsEXT = {
   result: "void",
 } as const;
 
-let fn_glMultiDrawElementsEXT!: Deno.UnsafeFnPointer<typeof def_glMultiDrawElementsEXT>;
+let fn_glMultiDrawElementsEXT!: Deno.UnsafeFnPointer<
+  typeof def_glMultiDrawElementsEXT
+>;
 
 export function MultiDrawElementsEXT(
   mode: GLenum,
@@ -107,6 +119,12 @@ export function MultiDrawElementsEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glMultiDrawArraysEXT = new Deno.UnsafeFnPointer(proc("glMultiDrawArraysEXT"), def_glMultiDrawArraysEXT);
-  fn_glMultiDrawElementsEXT = new Deno.UnsafeFnPointer(proc("glMultiDrawElementsEXT"), def_glMultiDrawElementsEXT);
+  fn_glMultiDrawArraysEXT = new Deno.UnsafeFnPointer(
+    proc("glMultiDrawArraysEXT"),
+    def_glMultiDrawArraysEXT,
+  );
+  fn_glMultiDrawElementsEXT = new Deno.UnsafeFnPointer(
+    proc("glMultiDrawElementsEXT"),
+    def_glMultiDrawElementsEXT,
+  );
 }

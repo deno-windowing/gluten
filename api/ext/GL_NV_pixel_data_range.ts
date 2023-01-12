@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -93,7 +101,9 @@ export const def_glFlushPixelDataRangeNV = {
   result: "void",
 } as const;
 
-let fn_glFlushPixelDataRangeNV!: Deno.UnsafeFnPointer<typeof def_glFlushPixelDataRangeNV>;
+let fn_glFlushPixelDataRangeNV!: Deno.UnsafeFnPointer<
+  typeof def_glFlushPixelDataRangeNV
+>;
 
 export function FlushPixelDataRangeNV(
   target: GLenum,
@@ -105,6 +115,12 @@ export function FlushPixelDataRangeNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glPixelDataRangeNV = new Deno.UnsafeFnPointer(proc("glPixelDataRangeNV"), def_glPixelDataRangeNV);
-  fn_glFlushPixelDataRangeNV = new Deno.UnsafeFnPointer(proc("glFlushPixelDataRangeNV"), def_glFlushPixelDataRangeNV);
+  fn_glPixelDataRangeNV = new Deno.UnsafeFnPointer(
+    proc("glPixelDataRangeNV"),
+    def_glPixelDataRangeNV,
+  );
+  fn_glFlushPixelDataRangeNV = new Deno.UnsafeFnPointer(
+    proc("glFlushPixelDataRangeNV"),
+    def_glFlushPixelDataRangeNV,
+  );
 }

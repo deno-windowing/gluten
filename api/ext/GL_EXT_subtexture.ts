@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -89,7 +97,17 @@ export function TexSubImage1DEXT(
 }
 
 export const def_glTexSubImage2DEXT = {
-  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "u32", "u32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
@@ -121,6 +139,12 @@ export function TexSubImage2DEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexSubImage1DEXT = new Deno.UnsafeFnPointer(proc("glTexSubImage1DEXT"), def_glTexSubImage1DEXT);
-  fn_glTexSubImage2DEXT = new Deno.UnsafeFnPointer(proc("glTexSubImage2DEXT"), def_glTexSubImage2DEXT);
+  fn_glTexSubImage1DEXT = new Deno.UnsafeFnPointer(
+    proc("glTexSubImage1DEXT"),
+    def_glTexSubImage1DEXT,
+  );
+  fn_glTexSubImage2DEXT = new Deno.UnsafeFnPointer(
+    proc("glTexSubImage2DEXT"),
+    def_glTexSubImage2DEXT,
+  );
 }

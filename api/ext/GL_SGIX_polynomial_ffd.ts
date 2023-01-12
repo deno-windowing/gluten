@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -70,11 +78,28 @@ export const MAX_DEFORMATION_ORDER_SGIX = 0x8197;
 /// Commands
 
 export const def_glDeformationMap3dSGIX = {
-  parameters: ["u32", "f64", "f64", "i32", "i32", "f64", "f64", "i32", "i32", "f64", "f64", "i32", "i32", "buffer"],
+  parameters: [
+    "u32",
+    "f64",
+    "f64",
+    "i32",
+    "i32",
+    "f64",
+    "f64",
+    "i32",
+    "i32",
+    "f64",
+    "f64",
+    "i32",
+    "i32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
-let fn_glDeformationMap3dSGIX!: Deno.UnsafeFnPointer<typeof def_glDeformationMap3dSGIX>;
+let fn_glDeformationMap3dSGIX!: Deno.UnsafeFnPointer<
+  typeof def_glDeformationMap3dSGIX
+>;
 
 export function DeformationMap3dSGIX(
   target: GLenum,
@@ -111,11 +136,28 @@ export function DeformationMap3dSGIX(
 }
 
 export const def_glDeformationMap3fSGIX = {
-  parameters: ["u32", "f32", "f32", "i32", "i32", "f32", "f32", "i32", "i32", "f32", "f32", "i32", "i32", "buffer"],
+  parameters: [
+    "u32",
+    "f32",
+    "f32",
+    "i32",
+    "i32",
+    "f32",
+    "f32",
+    "i32",
+    "i32",
+    "f32",
+    "f32",
+    "i32",
+    "i32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
-let fn_glDeformationMap3fSGIX!: Deno.UnsafeFnPointer<typeof def_glDeformationMap3fSGIX>;
+let fn_glDeformationMap3fSGIX!: Deno.UnsafeFnPointer<
+  typeof def_glDeformationMap3fSGIX
+>;
 
 export function DeformationMap3fSGIX(
   target: GLenum,
@@ -171,7 +213,9 @@ export const def_glLoadIdentityDeformationMapSGIX = {
   result: "void",
 } as const;
 
-let fn_glLoadIdentityDeformationMapSGIX!: Deno.UnsafeFnPointer<typeof def_glLoadIdentityDeformationMapSGIX>;
+let fn_glLoadIdentityDeformationMapSGIX!: Deno.UnsafeFnPointer<
+  typeof def_glLoadIdentityDeformationMapSGIX
+>;
 
 export function LoadIdentityDeformationMapSGIX(
   mask: GLbitfield,
@@ -183,8 +227,20 @@ export function LoadIdentityDeformationMapSGIX(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDeformationMap3dSGIX = new Deno.UnsafeFnPointer(proc("glDeformationMap3dSGIX"), def_glDeformationMap3dSGIX);
-  fn_glDeformationMap3fSGIX = new Deno.UnsafeFnPointer(proc("glDeformationMap3fSGIX"), def_glDeformationMap3fSGIX);
-  fn_glDeformSGIX = new Deno.UnsafeFnPointer(proc("glDeformSGIX"), def_glDeformSGIX);
-  fn_glLoadIdentityDeformationMapSGIX = new Deno.UnsafeFnPointer(proc("glLoadIdentityDeformationMapSGIX"), def_glLoadIdentityDeformationMapSGIX);
+  fn_glDeformationMap3dSGIX = new Deno.UnsafeFnPointer(
+    proc("glDeformationMap3dSGIX"),
+    def_glDeformationMap3dSGIX,
+  );
+  fn_glDeformationMap3fSGIX = new Deno.UnsafeFnPointer(
+    proc("glDeformationMap3fSGIX"),
+    def_glDeformationMap3fSGIX,
+  );
+  fn_glDeformSGIX = new Deno.UnsafeFnPointer(
+    proc("glDeformSGIX"),
+    def_glDeformSGIX,
+  );
+  fn_glLoadIdentityDeformationMapSGIX = new Deno.UnsafeFnPointer(
+    proc("glLoadIdentityDeformationMapSGIX"),
+    def_glLoadIdentityDeformationMapSGIX,
+  );
 }

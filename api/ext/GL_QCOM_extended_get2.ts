@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -66,7 +74,9 @@ export const def_glExtGetShadersQCOM = {
   result: "void",
 } as const;
 
-let fn_glExtGetShadersQCOM!: Deno.UnsafeFnPointer<typeof def_glExtGetShadersQCOM>;
+let fn_glExtGetShadersQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtGetShadersQCOM
+>;
 
 export function ExtGetShadersQCOM(
   shaders: Buffer,
@@ -85,7 +95,9 @@ export const def_glExtGetProgramsQCOM = {
   result: "void",
 } as const;
 
-let fn_glExtGetProgramsQCOM!: Deno.UnsafeFnPointer<typeof def_glExtGetProgramsQCOM>;
+let fn_glExtGetProgramsQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtGetProgramsQCOM
+>;
 
 export function ExtGetProgramsQCOM(
   programs: Buffer,
@@ -104,7 +116,9 @@ export const def_glExtIsProgramBinaryQCOM = {
   result: "u8",
 } as const;
 
-let fn_glExtIsProgramBinaryQCOM!: Deno.UnsafeFnPointer<typeof def_glExtIsProgramBinaryQCOM>;
+let fn_glExtIsProgramBinaryQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtIsProgramBinaryQCOM
+>;
 
 export function ExtIsProgramBinaryQCOM(
   program: GLuint,
@@ -119,7 +133,9 @@ export const def_glExtGetProgramBinarySourceQCOM = {
   result: "void",
 } as const;
 
-let fn_glExtGetProgramBinarySourceQCOM!: Deno.UnsafeFnPointer<typeof def_glExtGetProgramBinarySourceQCOM>;
+let fn_glExtGetProgramBinarySourceQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtGetProgramBinarySourceQCOM
+>;
 
 export function ExtGetProgramBinarySourceQCOM(
   program: GLuint,
@@ -137,8 +153,20 @@ export function ExtGetProgramBinarySourceQCOM(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glExtGetShadersQCOM = new Deno.UnsafeFnPointer(proc("glExtGetShadersQCOM"), def_glExtGetShadersQCOM);
-  fn_glExtGetProgramsQCOM = new Deno.UnsafeFnPointer(proc("glExtGetProgramsQCOM"), def_glExtGetProgramsQCOM);
-  fn_glExtIsProgramBinaryQCOM = new Deno.UnsafeFnPointer(proc("glExtIsProgramBinaryQCOM"), def_glExtIsProgramBinaryQCOM);
-  fn_glExtGetProgramBinarySourceQCOM = new Deno.UnsafeFnPointer(proc("glExtGetProgramBinarySourceQCOM"), def_glExtGetProgramBinarySourceQCOM);
+  fn_glExtGetShadersQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtGetShadersQCOM"),
+    def_glExtGetShadersQCOM,
+  );
+  fn_glExtGetProgramsQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtGetProgramsQCOM"),
+    def_glExtGetProgramsQCOM,
+  );
+  fn_glExtIsProgramBinaryQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtIsProgramBinaryQCOM"),
+    def_glExtIsProgramBinaryQCOM,
+  );
+  fn_glExtGetProgramBinarySourceQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtGetProgramBinarySourceQCOM"),
+    def_glExtGetProgramBinarySourceQCOM,
+  );
 }

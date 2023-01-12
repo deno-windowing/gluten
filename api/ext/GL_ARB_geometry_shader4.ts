@@ -1,7 +1,15 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -88,7 +96,9 @@ export const def_glProgramParameteriARB = {
   result: "void",
 } as const;
 
-let fn_glProgramParameteriARB!: Deno.UnsafeFnPointer<typeof def_glProgramParameteriARB>;
+let fn_glProgramParameteriARB!: Deno.UnsafeFnPointer<
+  typeof def_glProgramParameteriARB
+>;
 
 export function ProgramParameteriARB(
   program: GLuint,
@@ -107,7 +117,9 @@ export const def_glFramebufferTextureARB = {
   result: "void",
 } as const;
 
-let fn_glFramebufferTextureARB!: Deno.UnsafeFnPointer<typeof def_glFramebufferTextureARB>;
+let fn_glFramebufferTextureARB!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferTextureARB
+>;
 
 export function FramebufferTextureARB(
   target: GLenum,
@@ -128,7 +140,9 @@ export const def_glFramebufferTextureLayerARB = {
   result: "void",
 } as const;
 
-let fn_glFramebufferTextureLayerARB!: Deno.UnsafeFnPointer<typeof def_glFramebufferTextureLayerARB>;
+let fn_glFramebufferTextureLayerARB!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferTextureLayerARB
+>;
 
 export function FramebufferTextureLayerARB(
   target: GLenum,
@@ -151,7 +165,9 @@ export const def_glFramebufferTextureFaceARB = {
   result: "void",
 } as const;
 
-let fn_glFramebufferTextureFaceARB!: Deno.UnsafeFnPointer<typeof def_glFramebufferTextureFaceARB>;
+let fn_glFramebufferTextureFaceARB!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferTextureFaceARB
+>;
 
 export function FramebufferTextureFaceARB(
   target: GLenum,
@@ -171,8 +187,20 @@ export function FramebufferTextureFaceARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glProgramParameteriARB = new Deno.UnsafeFnPointer(proc("glProgramParameteriARB"), def_glProgramParameteriARB);
-  fn_glFramebufferTextureARB = new Deno.UnsafeFnPointer(proc("glFramebufferTextureARB"), def_glFramebufferTextureARB);
-  fn_glFramebufferTextureLayerARB = new Deno.UnsafeFnPointer(proc("glFramebufferTextureLayerARB"), def_glFramebufferTextureLayerARB);
-  fn_glFramebufferTextureFaceARB = new Deno.UnsafeFnPointer(proc("glFramebufferTextureFaceARB"), def_glFramebufferTextureFaceARB);
+  fn_glProgramParameteriARB = new Deno.UnsafeFnPointer(
+    proc("glProgramParameteriARB"),
+    def_glProgramParameteriARB,
+  );
+  fn_glFramebufferTextureARB = new Deno.UnsafeFnPointer(
+    proc("glFramebufferTextureARB"),
+    def_glFramebufferTextureARB,
+  );
+  fn_glFramebufferTextureLayerARB = new Deno.UnsafeFnPointer(
+    proc("glFramebufferTextureLayerARB"),
+    def_glFramebufferTextureLayerARB,
+  );
+  fn_glFramebufferTextureFaceARB = new Deno.UnsafeFnPointer(
+    proc("glFramebufferTextureFaceARB"),
+    def_glFramebufferTextureFaceARB,
+  );
 }
