@@ -1,5 +1,0 @@
-{
-  "imports": {
-    "three": "https://raw.githubusercontent.com/mrdoob/three.js/master/build/three.module.js"
-  }
-}

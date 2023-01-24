@@ -1,3 +1,4 @@
+//@deno-types="npm:babylonjs"
 import "https://deno.land/x/xhr@0.1.0/mod.ts";
 import { WebGLCanvas } from "../src/webgl/mod.ts";
 import "https://preview.babylonjs.com/ammo.js";
@@ -10,34 +11,37 @@ import "https://preview.babylonjs.com/proceduralTexturesLibrary/babylonjs.proced
 import "https://preview.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js";
 import "https://preview.babylonjs.com/loaders/babylonjs.loaders.js";
 import "https://preview.babylonjs.com/serializers/babylonjs.serializers.min.js";
+import { CreateWindowOptions } from "../src/webgl/deps.ts";
 
 BABYLON.SceneLoader.ShowLoadingScreen = false;
 
-export const canvas = new WebGLCanvas({
-  title: "Babylon.js",
-  width: 800,
-  height: 600,
-  // maximized: true,
-});
+export abstract class World {
+  canvas: WebGLCanvas;
+  engine: BABYLON.Engine;
+  constructor(
+    settings: CreateWindowOptions = {},
+    engineSettings: BABYLON.EngineOptions = {},
+    antialias = true,
+  ) {
+    this.canvas = new WebGLCanvas(settings);
+    this.engine = new BABYLON.Engine(this.canvas, antialias, engineSettings);
+    addEventListener("resize", () => {
+      this.engine.resize();
+    });
 
-export const engine = new BABYLON.Engine(canvas, true, {
-  preserveDrawingBuffer: true,
-  stencil: true,
-});
+    addEventListener("close", () => {
+      this.engine.stopRenderLoop();
+    });
+  }
 
-addEventListener("resize", () => {
-  engine.resize();
-});
+  abstract createScene(): BABYLON.Scene;
+}
 
-addEventListener("close", () => {
-  engine.stopRenderLoop();
-});
-
-export function runScene(createScene) {
+export function init<T extends World>(app: T) {
+  const world = app;
   try {
-    const scene = createScene();
-
-    engine.runRenderLoop(() => {
+    const scene = world.createScene();
+    world.engine.runRenderLoop(() => {
       try {
         scene.render();
       } catch (e) {
@@ -45,7 +49,7 @@ export function runScene(createScene) {
       }
     });
 
-    return canvas.run();
+    return world.canvas.run();
   } catch (e) {
     console.log(e);
   }

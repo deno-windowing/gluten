@@ -1,10 +1,11 @@
+// deno-lint-ignore-file no-explicit-any
 // Copied from https://github.com/mrdoob/three.js/blob/master/examples/webgl_interactive_cubes_gpu.html
 // Copyright © 2010-2021 three.js authors
 
 import { WebGLCanvas } from "../src/webgl/mod.ts";
-import * as THREE from "https://raw.githubusercontent.com/mrdoob/three.js/master/build/three.module.js";
-import * as BufferGeometryUtils from "https://raw.githubusercontent.com/mrdoob/three.js/master/examples/jsm/utils/BufferGeometryUtils.js";
-import { TrackballControls } from "https://raw.githubusercontent.com/mrdoob/three.js/master/examples/jsm/controls/TrackballControls.js";
+import * as THREE from "npm:three";
+import * as BufferGeometryUtils from "npm:three/examples/jsm/utils/BufferGeometryUtils.js";
+import { TrackballControls } from "npm:three/examples/jsm/controls/TrackballControls.js";
 
 const canvas = new WebGLCanvas({
   title: "THREE.js Interactive Example",
@@ -29,11 +30,11 @@ Object.defineProperties(window, {
   },
 });
 
-let camera, controls, scene, renderer;
-let pickingTexture, pickingScene;
-let highlightBox;
+let camera: any, controls: any, scene: any, renderer: any;
+let pickingTexture: any, pickingScene: any;
+let highlightBox: any;
 
-const pickingData = [];
+const pickingData: any[] = [];
 
 const pointer = new THREE.Vector2();
 const offset = new THREE.Vector3(10, 10, 10);
@@ -41,7 +42,7 @@ const offset = new THREE.Vector3(10, 10, 10);
 init();
 animate();
 
-function applyVertexColors(geometry, color) {
+function applyVertexColors(geometry: any, color: any) {
   const position = geometry.attributes.position;
   const colors = [];
 
@@ -59,7 +60,8 @@ function init() {
   try {
     camera = new THREE.PerspectiveCamera(
       70,
-      window.innerWidth / window.innerHeight,
+      canvas.window.framebufferSize.width /
+        canvas.window.framebufferSize.height,
       1,
       10000,
     );
@@ -156,8 +158,10 @@ function init() {
     scene.add(highlightBox);
 
     renderer = new THREE.WebGLRenderer({ antialias: true, canvas });
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(
+      canvas.window.framebufferSize.width,
+      canvas.window.framebufferSize.height,
+    );
 
     controls = new TrackballControls(camera, renderer.domElement);
     controls.rotateSpeed = 1.0;
@@ -176,7 +180,7 @@ function init() {
   }
 }
 
-function onMouseMove(e) {
+function onMouseMove(e: any) {
   pointer.x = e.clientX;
   pointer.y = e.clientY;
 }
@@ -190,12 +194,11 @@ function pick() {
   // render the picking scene off-screen
 
   // set the view offset to represent just a single pixel under the mouse
-
   camera.setViewOffset(
     renderer.domElement.width,
     renderer.domElement.height,
-    pointer.x * window.devicePixelRatio | 0,
-    pointer.y * window.devicePixelRatio | 0,
+    pointer.x * (window as any).devicePixelRatio | 0,
+    pointer.y * (window as any).devicePixelRatio | 0,
     1,
     1,
   );
@@ -236,8 +239,12 @@ function pick() {
 }
 
 addEventListener("resize", () => {
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  camera.aspect = window.innerWidth / window.innerHeight;
+  renderer.setSize(
+    canvas.window.framebufferSize.width,
+    canvas.window.framebufferSize.height,
+  );
+  camera.aspect = canvas.window.framebufferSize.width /
+    canvas.window.framebufferSize.height;
   camera.updateProjectionMatrix();
 });
 

@@ -23,7 +23,7 @@ callback ([DWM](https://github.com/deno-windowing/dwm) handles both).
 
 ```ts
 // GLES2 3.2 API
-import * as gl from "https://deno.land/x/gluten@0.1.0/api/gles23.2.ts";
+import * as gl from "https://deno.land/x/gluten@0.1.1/api/gles23.2.ts";
 
 // Initialize function pointers
 gl.load(yourGetProcAddress);
@@ -44,6 +44,11 @@ along with `--allow-ffi`.
 ```sh
 deno run --unstable --allow-ffi <file>
 ```
+
+Extensions:
+
+- [Babylon](https://www.babylonjs.com/) (Use
+  `ext/babylon.ts` for an easy to use wrapper)
 
 ## Maintainers
 
