@@ -2,7 +2,12 @@
 
 import { DwmWindow, getProcAddress } from "./deps.ts";
 import * as gl from "../../api/gles22.ts";
-import { _uniformLocation, glObjectName } from "./object.ts";
+import {
+  _uniformLocation,
+  glObjectName,
+  WebGLActiveInfo,
+  WebGLShaderPrecisionFormat,
+} from "./object.ts";
 import { cstr } from "./utils.ts";
 
 export interface WebGLContextAttributes {
@@ -370,14 +375,19 @@ export class WebGLRenderingContext {
     gl.BufferData(target, size, new Uint8Array(size), usage);
   }
 
-  #bufferData2(target: number, data: ArrayBufferView, usage: number) {
-    gl.BufferData(target, data.byteLength, new Uint8Array(data.buffer), usage);
+  #bufferData2(target: number, data: BufferSource, usage: number) {
+    gl.BufferData(
+      target,
+      data.byteLength,
+      data instanceof ArrayBuffer ? data : new Uint8Array(data.buffer),
+      usage,
+    );
   }
 
   /**
    * Initializes and creates the buffer object's data store.
    */
-  bufferData(target: number, data: ArrayBufferView | number, usage: number) {
+  bufferData(target: number, data: BufferSource | number, usage: number) {
     if (typeof data === "number") {
       this.#bufferData1(target, data, usage);
     } else {
@@ -643,11 +653,11 @@ export class WebGLRenderingContext {
     const range = new Int32Array(2);
     const precision = new Int32Array(1);
     gl.GetShaderPrecisionFormat(shaderType, precisionType, range, precision);
-    return {
-      rangeMin: range[0],
-      rangeMax: range[1],
-      precision,
-    };
+    return new WebGLShaderPrecisionFormat(
+      range[0],
+      range[1],
+      precision[0],
+    );
   }
 
   getProgramInfoLog(program: WebGLProgram) {
@@ -743,6 +753,7 @@ export class WebGLRenderingContext {
   /**
    * Sets the specified {@link WebGLProgram} as part of the current rendering state.
    */
+  /// @ts-ignore-error
   useProgram(program: WebGLProgram | null) {
     gl.UseProgram(program?.[glObjectName] ?? 0);
   }
@@ -774,11 +785,11 @@ export class WebGLRenderingContext {
       type,
       name,
     );
-    return {
-      name: new TextDecoder().decode(name.subarray(0, length[0])),
-      size: size[0],
-      type: type[0],
-    };
+    return new WebGLActiveInfo(
+      size[0],
+      type[0],
+      new TextDecoder().decode(name.subarray(0, length[0])),
+    );
   }
 
   getActiveUniform(program: WebGLProgram, index: number) {
@@ -795,11 +806,11 @@ export class WebGLRenderingContext {
       type,
       name,
     );
-    return {
-      name: new TextDecoder().decode(name.subarray(0, length[0])),
-      size: size[0],
-      type: type[0],
-    };
+    return new WebGLActiveInfo(
+      size[0],
+      type[0],
+      new TextDecoder().decode(name.subarray(0, length[0])),
+    );
   }
 
   /**

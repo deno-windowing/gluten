@@ -71,6 +71,50 @@ export class WebGLUniformLocation {
   }
 }
 
+export class WebGLActiveInfo {
+  #size: number;
+  #type: number;
+  #name: string;
+
+  constructor(size: number, type: number, name: string) {
+    this.#size = size;
+    this.#type = type;
+    this.#name = name;
+  }
+
+  get size() {
+    return this.#size;
+  }
+  get type() {
+    return this.#type;
+  }
+  get name() {
+    return this.#name;
+  }
+}
+
+export class WebGLShaderPrecisionFormat {
+  #rangeMin: number;
+  #rangeMax: number;
+  #precision: number;
+
+  constructor(rangeMin: number, rangeMax: number, precision: number) {
+    this.#rangeMin = rangeMin;
+    this.#rangeMax = rangeMax;
+    this.#precision = precision;
+  }
+
+  get rangeMin() {
+    return this.#rangeMin;
+  }
+  get rangeMax() {
+    return this.#rangeMax;
+  }
+  get precision() {
+    return this.#precision;
+  }
+}
+
 Object.assign(globalThis, {
   WebGLBuffer,
   WebGLShader,
@@ -82,6 +126,8 @@ Object.assign(globalThis, {
 });
 
 const WebGLUniformLocationAlias = WebGLUniformLocation;
+const WebGLActiveInfoAlias = WebGLActiveInfo;
+const WebGLShaderPrecisionFormatAlias = WebGLShaderPrecisionFormat;
 
 declare global {
   class WebGLBuffer extends WebGLObject {}
@@ -91,4 +137,6 @@ declare global {
   class WebGLFramebuffer extends WebGLObject {}
   class WebGLRenderbuffer extends WebGLObject {}
   class WebGLUniformLocation extends WebGLUniformLocationAlias {}
+  class WebGLActiveInfo extends WebGLActiveInfoAlias {}
+  class WebGLShaderPrecisionFormat extends WebGLShaderPrecisionFormatAlias {}
 }
