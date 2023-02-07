@@ -58,7 +58,7 @@ function init() {
   gl.shaderSource(fragShader, fragShaderSource);
   gl.compileShader(fragShader);
   checkShaderCompile(fragShader, "fragment");
-  
+
   shaderProg = gl.createProgram();
   gl.attachShader(shaderProg, vertShader);
   gl.attachShader(shaderProg, fragShader);
