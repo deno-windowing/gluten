@@ -17,6 +17,15 @@ addEventListener("resize", (event) => {
 
 let vertBuffer: WebGLBuffer, shaderProg: WebGLShader, shaderVertPosAttr: number;
 
+export async function loadImageArray(src: string) {
+    const image = new Image();
+    await new Promise(resolve => {
+        image.onload = resolve;
+        image.src = src;
+    });
+    return image.rawData;
+}
+
 function checkShaderCompile(shader: WebGLShader, type: number) {
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
         const errmes = type === gl.VERTEX_SHADER ? 'vertex' : 'fragment' + " shader compile failed: " +
@@ -39,15 +48,6 @@ function initProgram(vertexShader: WebGLShader, fragmentShader: WebGLShader) {
     gl.attachShader(program, fragmentShader);
     gl.linkProgram(program);
     return program;
-}
-
-async function loadImage(src: string) {
-    const image = new Image();
-    await new Promise(resolve => {
-        image.onload = resolve;
-        image.src = src;
-    });
-    return image;
 }
 
 function init() {
@@ -95,16 +95,13 @@ function init() {
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-    
+
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 2, 2, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([
         255, 255, 0, 255,
         255, 0, 0, 255,
         0, 255, 0, 255,
         0, 0, 255, 255,
     ]));
-    loadImage("https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Red_Circle(small).svg/2048px-Red_Circle(small).svg.png").then(image => {
-        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image);
-    });
     gl.useProgram(shaderProg);
 }
 
@@ -124,7 +121,18 @@ function frame() {
     requestAnimationFrame(frame);
 }
 
+const imageWorker = new Worker(new URL('./worker.ts', import.meta.url).href, { type: 'module' });
+imageWorker.onmessage = (msg: MessageEvent<ArrayBufferView>) => {
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 2048, 2048, 0, gl.RGBA, gl.UNSIGNED_BYTE, msg.data);
+};
+
+// loadImageArray("https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Red_Circle(small).svg/2048px-Red_Circle(small).svg.png")
+// .then(array => {
+//     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 2048, 2048, 0, gl.RGBA, gl.UNSIGNED_BYTE, array);
+// });
+
 init();
 requestAnimationFrame(frame);
+
 
 await window.run();
