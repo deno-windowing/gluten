@@ -546,16 +546,34 @@ export class WebGLRenderingContext {
     target: number,
     level: number,
     internalformat: number,
+    format: number,
+    type: number,
+    pixels: Image,
+  ): void;
+  texImage2D(
+    target: number,
+    level: number,
+    internalformat: number,
     width: number,
     height: number,
     border: number,
     format: number,
     type: number,
     pixels: ArrayBufferView | null,
+  ): void;
+  texImage2D(
+    target: number,
+    level: number,
+    internalformat: number,
+    width: number,
+    height: number,
+    border: number | Image,
+    format?: number,
+    type?: number,
+    pixels?: ArrayBufferView | null,
   ) {
     if (arguments.length === 6) {
-      // deno-lint-ignore no-explicit-any
-      const img = border as any;
+      const img = border as unknown as Image;
       gl.TexImage2D(
         target,
         level,
@@ -574,9 +592,9 @@ export class WebGLRenderingContext {
         internalformat,
         width,
         height,
-        border,
-        format,
-        type,
+        border as number,
+        format!,
+        type!,
         pixels?.buffer ? Deno.UnsafePointer.of(pixels.buffer) : 0,
       );
     }
@@ -818,6 +836,14 @@ export class WebGLRenderingContext {
    */
   getAttribLocation(program: WebGLProgram, name: string) {
     return gl.GetAttribLocation(program[glObjectName], cstr(name));
+  }
+
+  getUniform(program: WebGLProgram, name: string) {
+    // const params = new ArrayBuffer();
+    // gl.GetUniform(program[glObjectName], cstr(name));
+    // return params;
+    console.log("STUB: getUniform:", program[glObjectName], name);
+    return null;
   }
 
   getUniformLocation(program: WebGLProgram, name: string) {
