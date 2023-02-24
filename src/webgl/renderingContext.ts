@@ -367,11 +367,21 @@ export class WebGLRenderingContext {
   }
 
   #bufferData1(target: number, size: number, usage: number) {
-    gl.BufferData(target, size, new Uint8Array(size), usage);
+    gl.BufferData(
+      target,
+      Deno.UnsafePointer.create(size),
+      new Uint8Array(size),
+      usage,
+    );
   }
 
   #bufferData2(target: number, data: ArrayBufferView, usage: number) {
-    gl.BufferData(target, data.byteLength, new Uint8Array(data.buffer), usage);
+    gl.BufferData(
+      target,
+      Deno.UnsafePointer.create(data.byteLength),
+      new Uint8Array(data.buffer),
+      usage,
+    );
   }
 
   /**
@@ -567,7 +577,7 @@ export class WebGLRenderingContext {
         border,
         format,
         type,
-        pixels?.buffer ? Deno.UnsafePointer.of(pixels.buffer) : 0,
+        pixels?.buffer ? Deno.UnsafePointer.of(pixels.buffer) : null,
       );
     }
   }
@@ -734,7 +744,9 @@ export class WebGLRenderingContext {
       shader[glObjectName],
       1,
       new Uint8Array(
-        new BigUint64Array([BigInt(Deno.UnsafePointer.of(buf))]).buffer,
+        new BigUint64Array([
+          BigInt(Deno.UnsafePointer.value(Deno.UnsafePointer.of(buf))),
+        ]).buffer,
       ),
       new Uint32Array([buf.byteLength]),
     );
@@ -911,7 +923,7 @@ export class WebGLRenderingContext {
       type,
       Number(normalized),
       stride,
-      offset,
+      Deno.UnsafePointer.create(offset),
     );
   }
 
@@ -932,7 +944,7 @@ export class WebGLRenderingContext {
   }
 
   drawElements(mode: number, count: number, type: number, offset: number) {
-    gl.DrawElements(mode, count, type, offset);
+    gl.DrawElements(mode, count, type, Deno.UnsafePointer.create(offset));
   }
 
   finish() {

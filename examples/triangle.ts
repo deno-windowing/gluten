@@ -23,7 +23,11 @@ function loadShader(type: number, src: string) {
     1,
     new Uint8Array(
       new BigUint64Array([
-        BigInt(Deno.UnsafePointer.of(new TextEncoder().encode(src))),
+        BigInt(
+          Deno.UnsafePointer.value(
+            Deno.UnsafePointer.of(new TextEncoder().encode(src)),
+          ),
+        ),
       ]).buffer,
     ),
     new Int32Array([src.length]),
