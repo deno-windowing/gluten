@@ -47,8 +47,8 @@ deno run --unstable --allow-ffi <file>
 
 Extensions:
 
-- [Babylon](https://www.babylonjs.com/) (Use
-  `ext/babylon.ts` for an easy to use wrapper)
+- [Babylon](https://www.babylonjs.com/) (Use `ext/babylon.ts` for an easy to use
+  wrapper)
 
 ## Maintainers
 

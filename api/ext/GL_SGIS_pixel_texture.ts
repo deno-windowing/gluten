@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -72,7 +86,9 @@ export const def_glPixelTexGenParameteriSGIS = {
   result: "void",
 } as const;
 
-let fn_glPixelTexGenParameteriSGIS!: Deno.UnsafeFnPointer<typeof def_glPixelTexGenParameteriSGIS>;
+let fn_glPixelTexGenParameteriSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glPixelTexGenParameteriSGIS
+>;
 
 export function PixelTexGenParameteriSGIS(
   pname: GLenum,
@@ -89,7 +105,9 @@ export const def_glPixelTexGenParameterivSGIS = {
   result: "void",
 } as const;
 
-let fn_glPixelTexGenParameterivSGIS!: Deno.UnsafeFnPointer<typeof def_glPixelTexGenParameterivSGIS>;
+let fn_glPixelTexGenParameterivSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glPixelTexGenParameterivSGIS
+>;
 
 export function PixelTexGenParameterivSGIS(
   pname: GLenum,
@@ -106,7 +124,9 @@ export const def_glPixelTexGenParameterfSGIS = {
   result: "void",
 } as const;
 
-let fn_glPixelTexGenParameterfSGIS!: Deno.UnsafeFnPointer<typeof def_glPixelTexGenParameterfSGIS>;
+let fn_glPixelTexGenParameterfSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glPixelTexGenParameterfSGIS
+>;
 
 export function PixelTexGenParameterfSGIS(
   pname: GLenum,
@@ -123,7 +143,9 @@ export const def_glPixelTexGenParameterfvSGIS = {
   result: "void",
 } as const;
 
-let fn_glPixelTexGenParameterfvSGIS!: Deno.UnsafeFnPointer<typeof def_glPixelTexGenParameterfvSGIS>;
+let fn_glPixelTexGenParameterfvSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glPixelTexGenParameterfvSGIS
+>;
 
 export function PixelTexGenParameterfvSGIS(
   pname: GLenum,
@@ -140,7 +162,9 @@ export const def_glGetPixelTexGenParameterivSGIS = {
   result: "void",
 } as const;
 
-let fn_glGetPixelTexGenParameterivSGIS!: Deno.UnsafeFnPointer<typeof def_glGetPixelTexGenParameterivSGIS>;
+let fn_glGetPixelTexGenParameterivSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glGetPixelTexGenParameterivSGIS
+>;
 
 export function GetPixelTexGenParameterivSGIS(
   pname: GLenum,
@@ -157,7 +181,9 @@ export const def_glGetPixelTexGenParameterfvSGIS = {
   result: "void",
 } as const;
 
-let fn_glGetPixelTexGenParameterfvSGIS!: Deno.UnsafeFnPointer<typeof def_glGetPixelTexGenParameterfvSGIS>;
+let fn_glGetPixelTexGenParameterfvSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glGetPixelTexGenParameterfvSGIS
+>;
 
 export function GetPixelTexGenParameterfvSGIS(
   pname: GLenum,
@@ -171,10 +197,28 @@ export function GetPixelTexGenParameterfvSGIS(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glPixelTexGenParameteriSGIS = new Deno.UnsafeFnPointer(proc("glPixelTexGenParameteriSGIS")!, def_glPixelTexGenParameteriSGIS);
-  fn_glPixelTexGenParameterivSGIS = new Deno.UnsafeFnPointer(proc("glPixelTexGenParameterivSGIS")!, def_glPixelTexGenParameterivSGIS);
-  fn_glPixelTexGenParameterfSGIS = new Deno.UnsafeFnPointer(proc("glPixelTexGenParameterfSGIS")!, def_glPixelTexGenParameterfSGIS);
-  fn_glPixelTexGenParameterfvSGIS = new Deno.UnsafeFnPointer(proc("glPixelTexGenParameterfvSGIS")!, def_glPixelTexGenParameterfvSGIS);
-  fn_glGetPixelTexGenParameterivSGIS = new Deno.UnsafeFnPointer(proc("glGetPixelTexGenParameterivSGIS")!, def_glGetPixelTexGenParameterivSGIS);
-  fn_glGetPixelTexGenParameterfvSGIS = new Deno.UnsafeFnPointer(proc("glGetPixelTexGenParameterfvSGIS")!, def_glGetPixelTexGenParameterfvSGIS);
+  fn_glPixelTexGenParameteriSGIS = new Deno.UnsafeFnPointer(
+    proc("glPixelTexGenParameteriSGIS")!,
+    def_glPixelTexGenParameteriSGIS,
+  );
+  fn_glPixelTexGenParameterivSGIS = new Deno.UnsafeFnPointer(
+    proc("glPixelTexGenParameterivSGIS")!,
+    def_glPixelTexGenParameterivSGIS,
+  );
+  fn_glPixelTexGenParameterfSGIS = new Deno.UnsafeFnPointer(
+    proc("glPixelTexGenParameterfSGIS")!,
+    def_glPixelTexGenParameterfSGIS,
+  );
+  fn_glPixelTexGenParameterfvSGIS = new Deno.UnsafeFnPointer(
+    proc("glPixelTexGenParameterfvSGIS")!,
+    def_glPixelTexGenParameterfvSGIS,
+  );
+  fn_glGetPixelTexGenParameterivSGIS = new Deno.UnsafeFnPointer(
+    proc("glGetPixelTexGenParameterivSGIS")!,
+    def_glGetPixelTexGenParameterivSGIS,
+  );
+  fn_glGetPixelTexGenParameterfvSGIS = new Deno.UnsafeFnPointer(
+    proc("glGetPixelTexGenParameterfvSGIS")!,
+    def_glGetPixelTexGenParameterfvSGIS,
+  );
 }

@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -66,7 +80,9 @@ export const def_glMapObjectBufferATI = {
   result: "buffer",
 } as const;
 
-let fn_glMapObjectBufferATI!: Deno.UnsafeFnPointer<typeof def_glMapObjectBufferATI>;
+let fn_glMapObjectBufferATI!: Deno.UnsafeFnPointer<
+  typeof def_glMapObjectBufferATI
+>;
 
 export function MapObjectBufferATI(
   buffer: GLuint,
@@ -81,7 +97,9 @@ export const def_glUnmapObjectBufferATI = {
   result: "void",
 } as const;
 
-let fn_glUnmapObjectBufferATI!: Deno.UnsafeFnPointer<typeof def_glUnmapObjectBufferATI>;
+let fn_glUnmapObjectBufferATI!: Deno.UnsafeFnPointer<
+  typeof def_glUnmapObjectBufferATI
+>;
 
 export function UnmapObjectBufferATI(
   buffer: GLuint,
@@ -93,6 +111,12 @@ export function UnmapObjectBufferATI(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glMapObjectBufferATI = new Deno.UnsafeFnPointer(proc("glMapObjectBufferATI")!, def_glMapObjectBufferATI);
-  fn_glUnmapObjectBufferATI = new Deno.UnsafeFnPointer(proc("glUnmapObjectBufferATI")!, def_glUnmapObjectBufferATI);
+  fn_glMapObjectBufferATI = new Deno.UnsafeFnPointer(
+    proc("glMapObjectBufferATI")!,
+    def_glMapObjectBufferATI,
+  );
+  fn_glUnmapObjectBufferATI = new Deno.UnsafeFnPointer(
+    proc("glUnmapObjectBufferATI")!,
+    def_glUnmapObjectBufferATI,
+  );
 }

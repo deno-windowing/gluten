@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -101,7 +115,9 @@ export const def_glGetUniformIndices = {
   result: "void",
 } as const;
 
-let fn_glGetUniformIndices!: Deno.UnsafeFnPointer<typeof def_glGetUniformIndices>;
+let fn_glGetUniformIndices!: Deno.UnsafeFnPointer<
+  typeof def_glGetUniformIndices
+>;
 
 export function GetUniformIndices(
   program: GLuint,
@@ -122,7 +138,9 @@ export const def_glGetActiveUniformsiv = {
   result: "void",
 } as const;
 
-let fn_glGetActiveUniformsiv!: Deno.UnsafeFnPointer<typeof def_glGetActiveUniformsiv>;
+let fn_glGetActiveUniformsiv!: Deno.UnsafeFnPointer<
+  typeof def_glGetActiveUniformsiv
+>;
 
 export function GetActiveUniformsiv(
   program: GLuint,
@@ -145,7 +163,9 @@ export const def_glGetActiveUniformName = {
   result: "void",
 } as const;
 
-let fn_glGetActiveUniformName!: Deno.UnsafeFnPointer<typeof def_glGetActiveUniformName>;
+let fn_glGetActiveUniformName!: Deno.UnsafeFnPointer<
+  typeof def_glGetActiveUniformName
+>;
 
 export function GetActiveUniformName(
   program: GLuint,
@@ -168,7 +188,9 @@ export const def_glGetUniformBlockIndex = {
   result: "u32",
 } as const;
 
-let fn_glGetUniformBlockIndex!: Deno.UnsafeFnPointer<typeof def_glGetUniformBlockIndex>;
+let fn_glGetUniformBlockIndex!: Deno.UnsafeFnPointer<
+  typeof def_glGetUniformBlockIndex
+>;
 
 export function GetUniformBlockIndex(
   program: GLuint,
@@ -185,7 +207,9 @@ export const def_glGetActiveUniformBlockiv = {
   result: "void",
 } as const;
 
-let fn_glGetActiveUniformBlockiv!: Deno.UnsafeFnPointer<typeof def_glGetActiveUniformBlockiv>;
+let fn_glGetActiveUniformBlockiv!: Deno.UnsafeFnPointer<
+  typeof def_glGetActiveUniformBlockiv
+>;
 
 export function GetActiveUniformBlockiv(
   program: GLuint,
@@ -206,7 +230,9 @@ export const def_glGetActiveUniformBlockName = {
   result: "void",
 } as const;
 
-let fn_glGetActiveUniformBlockName!: Deno.UnsafeFnPointer<typeof def_glGetActiveUniformBlockName>;
+let fn_glGetActiveUniformBlockName!: Deno.UnsafeFnPointer<
+  typeof def_glGetActiveUniformBlockName
+>;
 
 export function GetActiveUniformBlockName(
   program: GLuint,
@@ -229,7 +255,9 @@ export const def_glUniformBlockBinding = {
   result: "void",
 } as const;
 
-let fn_glUniformBlockBinding!: Deno.UnsafeFnPointer<typeof def_glUniformBlockBinding>;
+let fn_glUniformBlockBinding!: Deno.UnsafeFnPointer<
+  typeof def_glUniformBlockBinding
+>;
 
 export function UniformBlockBinding(
   program: GLuint,
@@ -306,14 +334,44 @@ export function GetIntegeri_v(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetUniformIndices = new Deno.UnsafeFnPointer(proc("glGetUniformIndices")!, def_glGetUniformIndices);
-  fn_glGetActiveUniformsiv = new Deno.UnsafeFnPointer(proc("glGetActiveUniformsiv")!, def_glGetActiveUniformsiv);
-  fn_glGetActiveUniformName = new Deno.UnsafeFnPointer(proc("glGetActiveUniformName")!, def_glGetActiveUniformName);
-  fn_glGetUniformBlockIndex = new Deno.UnsafeFnPointer(proc("glGetUniformBlockIndex")!, def_glGetUniformBlockIndex);
-  fn_glGetActiveUniformBlockiv = new Deno.UnsafeFnPointer(proc("glGetActiveUniformBlockiv")!, def_glGetActiveUniformBlockiv);
-  fn_glGetActiveUniformBlockName = new Deno.UnsafeFnPointer(proc("glGetActiveUniformBlockName")!, def_glGetActiveUniformBlockName);
-  fn_glUniformBlockBinding = new Deno.UnsafeFnPointer(proc("glUniformBlockBinding")!, def_glUniformBlockBinding);
-  fn_glBindBufferRange = new Deno.UnsafeFnPointer(proc("glBindBufferRange")!, def_glBindBufferRange);
-  fn_glBindBufferBase = new Deno.UnsafeFnPointer(proc("glBindBufferBase")!, def_glBindBufferBase);
-  fn_glGetIntegeri_v = new Deno.UnsafeFnPointer(proc("glGetIntegeri_v")!, def_glGetIntegeri_v);
+  fn_glGetUniformIndices = new Deno.UnsafeFnPointer(
+    proc("glGetUniformIndices")!,
+    def_glGetUniformIndices,
+  );
+  fn_glGetActiveUniformsiv = new Deno.UnsafeFnPointer(
+    proc("glGetActiveUniformsiv")!,
+    def_glGetActiveUniformsiv,
+  );
+  fn_glGetActiveUniformName = new Deno.UnsafeFnPointer(
+    proc("glGetActiveUniformName")!,
+    def_glGetActiveUniformName,
+  );
+  fn_glGetUniformBlockIndex = new Deno.UnsafeFnPointer(
+    proc("glGetUniformBlockIndex")!,
+    def_glGetUniformBlockIndex,
+  );
+  fn_glGetActiveUniformBlockiv = new Deno.UnsafeFnPointer(
+    proc("glGetActiveUniformBlockiv")!,
+    def_glGetActiveUniformBlockiv,
+  );
+  fn_glGetActiveUniformBlockName = new Deno.UnsafeFnPointer(
+    proc("glGetActiveUniformBlockName")!,
+    def_glGetActiveUniformBlockName,
+  );
+  fn_glUniformBlockBinding = new Deno.UnsafeFnPointer(
+    proc("glUniformBlockBinding")!,
+    def_glUniformBlockBinding,
+  );
+  fn_glBindBufferRange = new Deno.UnsafeFnPointer(
+    proc("glBindBufferRange")!,
+    def_glBindBufferRange,
+  );
+  fn_glBindBufferBase = new Deno.UnsafeFnPointer(
+    proc("glBindBufferBase")!,
+    def_glBindBufferBase,
+  );
+  fn_glGetIntegeri_v = new Deno.UnsafeFnPointer(
+    proc("glGetIntegeri_v")!,
+    def_glGetIntegeri_v,
+  );
 }

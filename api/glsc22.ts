@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -460,7 +474,9 @@ export const def_glBlendEquationSeparate = {
   result: "void",
 } as const;
 
-let fn_glBlendEquationSeparate!: Deno.UnsafeFnPointer<typeof def_glBlendEquationSeparate>;
+let fn_glBlendEquationSeparate!: Deno.UnsafeFnPointer<
+  typeof def_glBlendEquationSeparate
+>;
 
 export function BlendEquationSeparate(
   modeRGB: GLenum,
@@ -494,7 +510,9 @@ export const def_glBlendFuncSeparate = {
   result: "void",
 } as const;
 
-let fn_glBlendFuncSeparate!: Deno.UnsafeFnPointer<typeof def_glBlendFuncSeparate>;
+let fn_glBlendFuncSeparate!: Deno.UnsafeFnPointer<
+  typeof def_glBlendFuncSeparate
+>;
 
 export function BlendFuncSeparate(
   sfactorRGB: GLenum,
@@ -557,7 +575,9 @@ export const def_glCheckFramebufferStatus = {
   result: "u32",
 } as const;
 
-let fn_glCheckFramebufferStatus!: Deno.UnsafeFnPointer<typeof def_glCheckFramebufferStatus>;
+let fn_glCheckFramebufferStatus!: Deno.UnsafeFnPointer<
+  typeof def_glCheckFramebufferStatus
+>;
 
 export function CheckFramebufferStatus(
   target: GLenum,
@@ -655,11 +675,23 @@ export function ColorMask(
 }
 
 export const def_glCompressedTexSubImage2D = {
-  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "u32", "i32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "i32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
-let fn_glCompressedTexSubImage2D!: Deno.UnsafeFnPointer<typeof def_glCompressedTexSubImage2D>;
+let fn_glCompressedTexSubImage2D!: Deno.UnsafeFnPointer<
+  typeof def_glCompressedTexSubImage2D
+>;
 
 export function CompressedTexSubImage2D(
   target: GLenum,
@@ -778,7 +810,9 @@ export const def_glDisableVertexAttribArray = {
   result: "void",
 } as const;
 
-let fn_glDisableVertexAttribArray!: Deno.UnsafeFnPointer<typeof def_glDisableVertexAttribArray>;
+let fn_glDisableVertexAttribArray!: Deno.UnsafeFnPointer<
+  typeof def_glDisableVertexAttribArray
+>;
 
 export function DisableVertexAttribArray(
   index: GLuint,
@@ -812,7 +846,9 @@ export const def_glDrawRangeElements = {
   result: "void",
 } as const;
 
-let fn_glDrawRangeElements!: Deno.UnsafeFnPointer<typeof def_glDrawRangeElements>;
+let fn_glDrawRangeElements!: Deno.UnsafeFnPointer<
+  typeof def_glDrawRangeElements
+>;
 
 export function DrawRangeElements(
   mode: GLenum,
@@ -852,7 +888,9 @@ export const def_glEnableVertexAttribArray = {
   result: "void",
 } as const;
 
-let fn_glEnableVertexAttribArray!: Deno.UnsafeFnPointer<typeof def_glEnableVertexAttribArray>;
+let fn_glEnableVertexAttribArray!: Deno.UnsafeFnPointer<
+  typeof def_glEnableVertexAttribArray
+>;
 
 export function EnableVertexAttribArray(
   index: GLuint,
@@ -889,7 +927,9 @@ export const def_glFramebufferRenderbuffer = {
   result: "void",
 } as const;
 
-let fn_glFramebufferRenderbuffer!: Deno.UnsafeFnPointer<typeof def_glFramebufferRenderbuffer>;
+let fn_glFramebufferRenderbuffer!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferRenderbuffer
+>;
 
 export function FramebufferRenderbuffer(
   target: GLenum,
@@ -910,7 +950,9 @@ export const def_glFramebufferTexture2D = {
   result: "void",
 } as const;
 
-let fn_glFramebufferTexture2D!: Deno.UnsafeFnPointer<typeof def_glFramebufferTexture2D>;
+let fn_glFramebufferTexture2D!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferTexture2D
+>;
 
 export function FramebufferTexture2D(
   target: GLenum,
@@ -1031,7 +1073,9 @@ export const def_glGetAttribLocation = {
   result: "i32",
 } as const;
 
-let fn_glGetAttribLocation!: Deno.UnsafeFnPointer<typeof def_glGetAttribLocation>;
+let fn_glGetAttribLocation!: Deno.UnsafeFnPointer<
+  typeof def_glGetAttribLocation
+>;
 
 export function GetAttribLocation(
   program: GLuint,
@@ -1065,7 +1109,9 @@ export const def_glGetBufferParameteriv = {
   result: "void",
 } as const;
 
-let fn_glGetBufferParameteriv!: Deno.UnsafeFnPointer<typeof def_glGetBufferParameteriv>;
+let fn_glGetBufferParameteriv!: Deno.UnsafeFnPointer<
+  typeof def_glGetBufferParameteriv
+>;
 
 export function GetBufferParameteriv(
   target: GLenum,
@@ -1112,7 +1158,9 @@ export const def_glGetFramebufferAttachmentParameteriv = {
   result: "void",
 } as const;
 
-let fn_glGetFramebufferAttachmentParameteriv!: Deno.UnsafeFnPointer<typeof def_glGetFramebufferAttachmentParameteriv>;
+let fn_glGetFramebufferAttachmentParameteriv!: Deno.UnsafeFnPointer<
+  typeof def_glGetFramebufferAttachmentParameteriv
+>;
 
 export function GetFramebufferAttachmentParameteriv(
   target: GLenum,
@@ -1133,7 +1181,9 @@ export const def_glGetGraphicsResetStatus = {
   result: "u32",
 } as const;
 
-let fn_glGetGraphicsResetStatus!: Deno.UnsafeFnPointer<typeof def_glGetGraphicsResetStatus>;
+let fn_glGetGraphicsResetStatus!: Deno.UnsafeFnPointer<
+  typeof def_glGetGraphicsResetStatus
+>;
 
 export function GetGraphicsResetStatus(): GLenum {
   return fn_glGetGraphicsResetStatus.call();
@@ -1180,7 +1230,9 @@ export const def_glGetRenderbufferParameteriv = {
   result: "void",
 } as const;
 
-let fn_glGetRenderbufferParameteriv!: Deno.UnsafeFnPointer<typeof def_glGetRenderbufferParameteriv>;
+let fn_glGetRenderbufferParameteriv!: Deno.UnsafeFnPointer<
+  typeof def_glGetRenderbufferParameteriv
+>;
 
 export function GetRenderbufferParameteriv(
   target: GLenum,
@@ -1214,7 +1266,9 @@ export const def_glGetTexParameterfv = {
   result: "void",
 } as const;
 
-let fn_glGetTexParameterfv!: Deno.UnsafeFnPointer<typeof def_glGetTexParameterfv>;
+let fn_glGetTexParameterfv!: Deno.UnsafeFnPointer<
+  typeof def_glGetTexParameterfv
+>;
 
 export function GetTexParameterfv(
   target: GLenum,
@@ -1233,7 +1287,9 @@ export const def_glGetTexParameteriv = {
   result: "void",
 } as const;
 
-let fn_glGetTexParameteriv!: Deno.UnsafeFnPointer<typeof def_glGetTexParameteriv>;
+let fn_glGetTexParameteriv!: Deno.UnsafeFnPointer<
+  typeof def_glGetTexParameteriv
+>;
 
 export function GetTexParameteriv(
   target: GLenum,
@@ -1294,7 +1350,9 @@ export const def_glGetUniformLocation = {
   result: "i32",
 } as const;
 
-let fn_glGetUniformLocation!: Deno.UnsafeFnPointer<typeof def_glGetUniformLocation>;
+let fn_glGetUniformLocation!: Deno.UnsafeFnPointer<
+  typeof def_glGetUniformLocation
+>;
 
 export function GetUniformLocation(
   program: GLuint,
@@ -1311,7 +1369,9 @@ export const def_glGetVertexAttribfv = {
   result: "void",
 } as const;
 
-let fn_glGetVertexAttribfv!: Deno.UnsafeFnPointer<typeof def_glGetVertexAttribfv>;
+let fn_glGetVertexAttribfv!: Deno.UnsafeFnPointer<
+  typeof def_glGetVertexAttribfv
+>;
 
 export function GetVertexAttribfv(
   index: GLuint,
@@ -1330,7 +1390,9 @@ export const def_glGetVertexAttribiv = {
   result: "void",
 } as const;
 
-let fn_glGetVertexAttribiv!: Deno.UnsafeFnPointer<typeof def_glGetVertexAttribiv>;
+let fn_glGetVertexAttribiv!: Deno.UnsafeFnPointer<
+  typeof def_glGetVertexAttribiv
+>;
 
 export function GetVertexAttribiv(
   index: GLuint,
@@ -1349,7 +1411,9 @@ export const def_glGetVertexAttribPointerv = {
   result: "void",
 } as const;
 
-let fn_glGetVertexAttribPointerv!: Deno.UnsafeFnPointer<typeof def_glGetVertexAttribPointerv>;
+let fn_glGetVertexAttribPointerv!: Deno.UnsafeFnPointer<
+  typeof def_glGetVertexAttribPointerv
+>;
 
 export function GetVertexAttribPointerv(
   index: GLuint,
@@ -1499,7 +1563,9 @@ export const def_glRenderbufferStorage = {
   result: "void",
 } as const;
 
-let fn_glRenderbufferStorage!: Deno.UnsafeFnPointer<typeof def_glRenderbufferStorage>;
+let fn_glRenderbufferStorage!: Deno.UnsafeFnPointer<
+  typeof def_glRenderbufferStorage
+>;
 
 export function RenderbufferStorage(
   target: GLenum,
@@ -1577,7 +1643,9 @@ export const def_glStencilFuncSeparate = {
   result: "void",
 } as const;
 
-let fn_glStencilFuncSeparate!: Deno.UnsafeFnPointer<typeof def_glStencilFuncSeparate>;
+let fn_glStencilFuncSeparate!: Deno.UnsafeFnPointer<
+  typeof def_glStencilFuncSeparate
+>;
 
 export function StencilFuncSeparate(
   face: GLenum,
@@ -1613,7 +1681,9 @@ export const def_glStencilMaskSeparate = {
   result: "void",
 } as const;
 
-let fn_glStencilMaskSeparate!: Deno.UnsafeFnPointer<typeof def_glStencilMaskSeparate>;
+let fn_glStencilMaskSeparate!: Deno.UnsafeFnPointer<
+  typeof def_glStencilMaskSeparate
+>;
 
 export function StencilMaskSeparate(
   face: GLenum,
@@ -1649,7 +1719,9 @@ export const def_glStencilOpSeparate = {
   result: "void",
 } as const;
 
-let fn_glStencilOpSeparate!: Deno.UnsafeFnPointer<typeof def_glStencilOpSeparate>;
+let fn_glStencilOpSeparate!: Deno.UnsafeFnPointer<
+  typeof def_glStencilOpSeparate
+>;
 
 export function StencilOpSeparate(
   face: GLenum,
@@ -1765,7 +1837,17 @@ export function TexParameteriv(
 }
 
 export const def_glTexSubImage2D = {
-  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "u32", "u32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
@@ -2338,7 +2420,9 @@ export const def_glVertexAttribPointer = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribPointer!: Deno.UnsafeFnPointer<typeof def_glVertexAttribPointer>;
+let fn_glVertexAttribPointer!: Deno.UnsafeFnPointer<
+  typeof def_glVertexAttribPointer
+>;
 
 export function VertexAttribPointer(
   index: GLuint,
@@ -2381,115 +2465,418 @@ export function Viewport(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glActiveTexture = new Deno.UnsafeFnPointer(proc("glActiveTexture")!, def_glActiveTexture);
-  fn_glBindBuffer = new Deno.UnsafeFnPointer(proc("glBindBuffer")!, def_glBindBuffer);
-  fn_glBindFramebuffer = new Deno.UnsafeFnPointer(proc("glBindFramebuffer")!, def_glBindFramebuffer);
-  fn_glBindRenderbuffer = new Deno.UnsafeFnPointer(proc("glBindRenderbuffer")!, def_glBindRenderbuffer);
-  fn_glBindTexture = new Deno.UnsafeFnPointer(proc("glBindTexture")!, def_glBindTexture);
-  fn_glBlendColor = new Deno.UnsafeFnPointer(proc("glBlendColor")!, def_glBlendColor);
-  fn_glBlendEquation = new Deno.UnsafeFnPointer(proc("glBlendEquation")!, def_glBlendEquation);
-  fn_glBlendEquationSeparate = new Deno.UnsafeFnPointer(proc("glBlendEquationSeparate")!, def_glBlendEquationSeparate);
-  fn_glBlendFunc = new Deno.UnsafeFnPointer(proc("glBlendFunc")!, def_glBlendFunc);
-  fn_glBlendFuncSeparate = new Deno.UnsafeFnPointer(proc("glBlendFuncSeparate")!, def_glBlendFuncSeparate);
-  fn_glBufferData = new Deno.UnsafeFnPointer(proc("glBufferData")!, def_glBufferData);
-  fn_glBufferSubData = new Deno.UnsafeFnPointer(proc("glBufferSubData")!, def_glBufferSubData);
-  fn_glCheckFramebufferStatus = new Deno.UnsafeFnPointer(proc("glCheckFramebufferStatus")!, def_glCheckFramebufferStatus);
+  fn_glActiveTexture = new Deno.UnsafeFnPointer(
+    proc("glActiveTexture")!,
+    def_glActiveTexture,
+  );
+  fn_glBindBuffer = new Deno.UnsafeFnPointer(
+    proc("glBindBuffer")!,
+    def_glBindBuffer,
+  );
+  fn_glBindFramebuffer = new Deno.UnsafeFnPointer(
+    proc("glBindFramebuffer")!,
+    def_glBindFramebuffer,
+  );
+  fn_glBindRenderbuffer = new Deno.UnsafeFnPointer(
+    proc("glBindRenderbuffer")!,
+    def_glBindRenderbuffer,
+  );
+  fn_glBindTexture = new Deno.UnsafeFnPointer(
+    proc("glBindTexture")!,
+    def_glBindTexture,
+  );
+  fn_glBlendColor = new Deno.UnsafeFnPointer(
+    proc("glBlendColor")!,
+    def_glBlendColor,
+  );
+  fn_glBlendEquation = new Deno.UnsafeFnPointer(
+    proc("glBlendEquation")!,
+    def_glBlendEquation,
+  );
+  fn_glBlendEquationSeparate = new Deno.UnsafeFnPointer(
+    proc("glBlendEquationSeparate")!,
+    def_glBlendEquationSeparate,
+  );
+  fn_glBlendFunc = new Deno.UnsafeFnPointer(
+    proc("glBlendFunc")!,
+    def_glBlendFunc,
+  );
+  fn_glBlendFuncSeparate = new Deno.UnsafeFnPointer(
+    proc("glBlendFuncSeparate")!,
+    def_glBlendFuncSeparate,
+  );
+  fn_glBufferData = new Deno.UnsafeFnPointer(
+    proc("glBufferData")!,
+    def_glBufferData,
+  );
+  fn_glBufferSubData = new Deno.UnsafeFnPointer(
+    proc("glBufferSubData")!,
+    def_glBufferSubData,
+  );
+  fn_glCheckFramebufferStatus = new Deno.UnsafeFnPointer(
+    proc("glCheckFramebufferStatus")!,
+    def_glCheckFramebufferStatus,
+  );
   fn_glClear = new Deno.UnsafeFnPointer(proc("glClear")!, def_glClear);
-  fn_glClearColor = new Deno.UnsafeFnPointer(proc("glClearColor")!, def_glClearColor);
-  fn_glClearDepthf = new Deno.UnsafeFnPointer(proc("glClearDepthf")!, def_glClearDepthf);
-  fn_glClearStencil = new Deno.UnsafeFnPointer(proc("glClearStencil")!, def_glClearStencil);
-  fn_glColorMask = new Deno.UnsafeFnPointer(proc("glColorMask")!, def_glColorMask);
-  fn_glCompressedTexSubImage2D = new Deno.UnsafeFnPointer(proc("glCompressedTexSubImage2D")!, def_glCompressedTexSubImage2D);
-  fn_glCreateProgram = new Deno.UnsafeFnPointer(proc("glCreateProgram")!, def_glCreateProgram);
+  fn_glClearColor = new Deno.UnsafeFnPointer(
+    proc("glClearColor")!,
+    def_glClearColor,
+  );
+  fn_glClearDepthf = new Deno.UnsafeFnPointer(
+    proc("glClearDepthf")!,
+    def_glClearDepthf,
+  );
+  fn_glClearStencil = new Deno.UnsafeFnPointer(
+    proc("glClearStencil")!,
+    def_glClearStencil,
+  );
+  fn_glColorMask = new Deno.UnsafeFnPointer(
+    proc("glColorMask")!,
+    def_glColorMask,
+  );
+  fn_glCompressedTexSubImage2D = new Deno.UnsafeFnPointer(
+    proc("glCompressedTexSubImage2D")!,
+    def_glCompressedTexSubImage2D,
+  );
+  fn_glCreateProgram = new Deno.UnsafeFnPointer(
+    proc("glCreateProgram")!,
+    def_glCreateProgram,
+  );
   fn_glCullFace = new Deno.UnsafeFnPointer(proc("glCullFace")!, def_glCullFace);
-  fn_glDepthFunc = new Deno.UnsafeFnPointer(proc("glDepthFunc")!, def_glDepthFunc);
-  fn_glDepthMask = new Deno.UnsafeFnPointer(proc("glDepthMask")!, def_glDepthMask);
-  fn_glDepthRangef = new Deno.UnsafeFnPointer(proc("glDepthRangef")!, def_glDepthRangef);
+  fn_glDepthFunc = new Deno.UnsafeFnPointer(
+    proc("glDepthFunc")!,
+    def_glDepthFunc,
+  );
+  fn_glDepthMask = new Deno.UnsafeFnPointer(
+    proc("glDepthMask")!,
+    def_glDepthMask,
+  );
+  fn_glDepthRangef = new Deno.UnsafeFnPointer(
+    proc("glDepthRangef")!,
+    def_glDepthRangef,
+  );
   fn_glDisable = new Deno.UnsafeFnPointer(proc("glDisable")!, def_glDisable);
-  fn_glDisableVertexAttribArray = new Deno.UnsafeFnPointer(proc("glDisableVertexAttribArray")!, def_glDisableVertexAttribArray);
-  fn_glDrawArrays = new Deno.UnsafeFnPointer(proc("glDrawArrays")!, def_glDrawArrays);
-  fn_glDrawRangeElements = new Deno.UnsafeFnPointer(proc("glDrawRangeElements")!, def_glDrawRangeElements);
+  fn_glDisableVertexAttribArray = new Deno.UnsafeFnPointer(
+    proc("glDisableVertexAttribArray")!,
+    def_glDisableVertexAttribArray,
+  );
+  fn_glDrawArrays = new Deno.UnsafeFnPointer(
+    proc("glDrawArrays")!,
+    def_glDrawArrays,
+  );
+  fn_glDrawRangeElements = new Deno.UnsafeFnPointer(
+    proc("glDrawRangeElements")!,
+    def_glDrawRangeElements,
+  );
   fn_glEnable = new Deno.UnsafeFnPointer(proc("glEnable")!, def_glEnable);
-  fn_glEnableVertexAttribArray = new Deno.UnsafeFnPointer(proc("glEnableVertexAttribArray")!, def_glEnableVertexAttribArray);
+  fn_glEnableVertexAttribArray = new Deno.UnsafeFnPointer(
+    proc("glEnableVertexAttribArray")!,
+    def_glEnableVertexAttribArray,
+  );
   fn_glFinish = new Deno.UnsafeFnPointer(proc("glFinish")!, def_glFinish);
   fn_glFlush = new Deno.UnsafeFnPointer(proc("glFlush")!, def_glFlush);
-  fn_glFramebufferRenderbuffer = new Deno.UnsafeFnPointer(proc("glFramebufferRenderbuffer")!, def_glFramebufferRenderbuffer);
-  fn_glFramebufferTexture2D = new Deno.UnsafeFnPointer(proc("glFramebufferTexture2D")!, def_glFramebufferTexture2D);
-  fn_glFrontFace = new Deno.UnsafeFnPointer(proc("glFrontFace")!, def_glFrontFace);
-  fn_glGenBuffers = new Deno.UnsafeFnPointer(proc("glGenBuffers")!, def_glGenBuffers);
-  fn_glGenerateMipmap = new Deno.UnsafeFnPointer(proc("glGenerateMipmap")!, def_glGenerateMipmap);
-  fn_glGenFramebuffers = new Deno.UnsafeFnPointer(proc("glGenFramebuffers")!, def_glGenFramebuffers);
-  fn_glGenRenderbuffers = new Deno.UnsafeFnPointer(proc("glGenRenderbuffers")!, def_glGenRenderbuffers);
-  fn_glGenTextures = new Deno.UnsafeFnPointer(proc("glGenTextures")!, def_glGenTextures);
-  fn_glGetAttribLocation = new Deno.UnsafeFnPointer(proc("glGetAttribLocation")!, def_glGetAttribLocation);
-  fn_glGetBooleanv = new Deno.UnsafeFnPointer(proc("glGetBooleanv")!, def_glGetBooleanv);
-  fn_glGetBufferParameteriv = new Deno.UnsafeFnPointer(proc("glGetBufferParameteriv")!, def_glGetBufferParameteriv);
+  fn_glFramebufferRenderbuffer = new Deno.UnsafeFnPointer(
+    proc("glFramebufferRenderbuffer")!,
+    def_glFramebufferRenderbuffer,
+  );
+  fn_glFramebufferTexture2D = new Deno.UnsafeFnPointer(
+    proc("glFramebufferTexture2D")!,
+    def_glFramebufferTexture2D,
+  );
+  fn_glFrontFace = new Deno.UnsafeFnPointer(
+    proc("glFrontFace")!,
+    def_glFrontFace,
+  );
+  fn_glGenBuffers = new Deno.UnsafeFnPointer(
+    proc("glGenBuffers")!,
+    def_glGenBuffers,
+  );
+  fn_glGenerateMipmap = new Deno.UnsafeFnPointer(
+    proc("glGenerateMipmap")!,
+    def_glGenerateMipmap,
+  );
+  fn_glGenFramebuffers = new Deno.UnsafeFnPointer(
+    proc("glGenFramebuffers")!,
+    def_glGenFramebuffers,
+  );
+  fn_glGenRenderbuffers = new Deno.UnsafeFnPointer(
+    proc("glGenRenderbuffers")!,
+    def_glGenRenderbuffers,
+  );
+  fn_glGenTextures = new Deno.UnsafeFnPointer(
+    proc("glGenTextures")!,
+    def_glGenTextures,
+  );
+  fn_glGetAttribLocation = new Deno.UnsafeFnPointer(
+    proc("glGetAttribLocation")!,
+    def_glGetAttribLocation,
+  );
+  fn_glGetBooleanv = new Deno.UnsafeFnPointer(
+    proc("glGetBooleanv")!,
+    def_glGetBooleanv,
+  );
+  fn_glGetBufferParameteriv = new Deno.UnsafeFnPointer(
+    proc("glGetBufferParameteriv")!,
+    def_glGetBufferParameteriv,
+  );
   fn_glGetError = new Deno.UnsafeFnPointer(proc("glGetError")!, def_glGetError);
-  fn_glGetFloatv = new Deno.UnsafeFnPointer(proc("glGetFloatv")!, def_glGetFloatv);
-  fn_glGetFramebufferAttachmentParameteriv = new Deno.UnsafeFnPointer(proc("glGetFramebufferAttachmentParameteriv")!, def_glGetFramebufferAttachmentParameteriv);
-  fn_glGetGraphicsResetStatus = new Deno.UnsafeFnPointer(proc("glGetGraphicsResetStatus")!, def_glGetGraphicsResetStatus);
-  fn_glGetIntegerv = new Deno.UnsafeFnPointer(proc("glGetIntegerv")!, def_glGetIntegerv);
-  fn_glGetProgramiv = new Deno.UnsafeFnPointer(proc("glGetProgramiv")!, def_glGetProgramiv);
-  fn_glGetRenderbufferParameteriv = new Deno.UnsafeFnPointer(proc("glGetRenderbufferParameteriv")!, def_glGetRenderbufferParameteriv);
-  fn_glGetString = new Deno.UnsafeFnPointer(proc("glGetString")!, def_glGetString);
-  fn_glGetTexParameterfv = new Deno.UnsafeFnPointer(proc("glGetTexParameterfv")!, def_glGetTexParameterfv);
-  fn_glGetTexParameteriv = new Deno.UnsafeFnPointer(proc("glGetTexParameteriv")!, def_glGetTexParameteriv);
-  fn_glGetnUniformfv = new Deno.UnsafeFnPointer(proc("glGetnUniformfv")!, def_glGetnUniformfv);
-  fn_glGetnUniformiv = new Deno.UnsafeFnPointer(proc("glGetnUniformiv")!, def_glGetnUniformiv);
-  fn_glGetUniformLocation = new Deno.UnsafeFnPointer(proc("glGetUniformLocation")!, def_glGetUniformLocation);
-  fn_glGetVertexAttribfv = new Deno.UnsafeFnPointer(proc("glGetVertexAttribfv")!, def_glGetVertexAttribfv);
-  fn_glGetVertexAttribiv = new Deno.UnsafeFnPointer(proc("glGetVertexAttribiv")!, def_glGetVertexAttribiv);
-  fn_glGetVertexAttribPointerv = new Deno.UnsafeFnPointer(proc("glGetVertexAttribPointerv")!, def_glGetVertexAttribPointerv);
+  fn_glGetFloatv = new Deno.UnsafeFnPointer(
+    proc("glGetFloatv")!,
+    def_glGetFloatv,
+  );
+  fn_glGetFramebufferAttachmentParameteriv = new Deno.UnsafeFnPointer(
+    proc("glGetFramebufferAttachmentParameteriv")!,
+    def_glGetFramebufferAttachmentParameteriv,
+  );
+  fn_glGetGraphicsResetStatus = new Deno.UnsafeFnPointer(
+    proc("glGetGraphicsResetStatus")!,
+    def_glGetGraphicsResetStatus,
+  );
+  fn_glGetIntegerv = new Deno.UnsafeFnPointer(
+    proc("glGetIntegerv")!,
+    def_glGetIntegerv,
+  );
+  fn_glGetProgramiv = new Deno.UnsafeFnPointer(
+    proc("glGetProgramiv")!,
+    def_glGetProgramiv,
+  );
+  fn_glGetRenderbufferParameteriv = new Deno.UnsafeFnPointer(
+    proc("glGetRenderbufferParameteriv")!,
+    def_glGetRenderbufferParameteriv,
+  );
+  fn_glGetString = new Deno.UnsafeFnPointer(
+    proc("glGetString")!,
+    def_glGetString,
+  );
+  fn_glGetTexParameterfv = new Deno.UnsafeFnPointer(
+    proc("glGetTexParameterfv")!,
+    def_glGetTexParameterfv,
+  );
+  fn_glGetTexParameteriv = new Deno.UnsafeFnPointer(
+    proc("glGetTexParameteriv")!,
+    def_glGetTexParameteriv,
+  );
+  fn_glGetnUniformfv = new Deno.UnsafeFnPointer(
+    proc("glGetnUniformfv")!,
+    def_glGetnUniformfv,
+  );
+  fn_glGetnUniformiv = new Deno.UnsafeFnPointer(
+    proc("glGetnUniformiv")!,
+    def_glGetnUniformiv,
+  );
+  fn_glGetUniformLocation = new Deno.UnsafeFnPointer(
+    proc("glGetUniformLocation")!,
+    def_glGetUniformLocation,
+  );
+  fn_glGetVertexAttribfv = new Deno.UnsafeFnPointer(
+    proc("glGetVertexAttribfv")!,
+    def_glGetVertexAttribfv,
+  );
+  fn_glGetVertexAttribiv = new Deno.UnsafeFnPointer(
+    proc("glGetVertexAttribiv")!,
+    def_glGetVertexAttribiv,
+  );
+  fn_glGetVertexAttribPointerv = new Deno.UnsafeFnPointer(
+    proc("glGetVertexAttribPointerv")!,
+    def_glGetVertexAttribPointerv,
+  );
   fn_glHint = new Deno.UnsafeFnPointer(proc("glHint")!, def_glHint);
-  fn_glIsEnabled = new Deno.UnsafeFnPointer(proc("glIsEnabled")!, def_glIsEnabled);
-  fn_glLineWidth = new Deno.UnsafeFnPointer(proc("glLineWidth")!, def_glLineWidth);
-  fn_glPixelStorei = new Deno.UnsafeFnPointer(proc("glPixelStorei")!, def_glPixelStorei);
-  fn_glPolygonOffset = new Deno.UnsafeFnPointer(proc("glPolygonOffset")!, def_glPolygonOffset);
-  fn_glProgramBinary = new Deno.UnsafeFnPointer(proc("glProgramBinary")!, def_glProgramBinary);
-  fn_glReadnPixels = new Deno.UnsafeFnPointer(proc("glReadnPixels")!, def_glReadnPixels);
-  fn_glRenderbufferStorage = new Deno.UnsafeFnPointer(proc("glRenderbufferStorage")!, def_glRenderbufferStorage);
-  fn_glSampleCoverage = new Deno.UnsafeFnPointer(proc("glSampleCoverage")!, def_glSampleCoverage);
+  fn_glIsEnabled = new Deno.UnsafeFnPointer(
+    proc("glIsEnabled")!,
+    def_glIsEnabled,
+  );
+  fn_glLineWidth = new Deno.UnsafeFnPointer(
+    proc("glLineWidth")!,
+    def_glLineWidth,
+  );
+  fn_glPixelStorei = new Deno.UnsafeFnPointer(
+    proc("glPixelStorei")!,
+    def_glPixelStorei,
+  );
+  fn_glPolygonOffset = new Deno.UnsafeFnPointer(
+    proc("glPolygonOffset")!,
+    def_glPolygonOffset,
+  );
+  fn_glProgramBinary = new Deno.UnsafeFnPointer(
+    proc("glProgramBinary")!,
+    def_glProgramBinary,
+  );
+  fn_glReadnPixels = new Deno.UnsafeFnPointer(
+    proc("glReadnPixels")!,
+    def_glReadnPixels,
+  );
+  fn_glRenderbufferStorage = new Deno.UnsafeFnPointer(
+    proc("glRenderbufferStorage")!,
+    def_glRenderbufferStorage,
+  );
+  fn_glSampleCoverage = new Deno.UnsafeFnPointer(
+    proc("glSampleCoverage")!,
+    def_glSampleCoverage,
+  );
   fn_glScissor = new Deno.UnsafeFnPointer(proc("glScissor")!, def_glScissor);
-  fn_glStencilFunc = new Deno.UnsafeFnPointer(proc("glStencilFunc")!, def_glStencilFunc);
-  fn_glStencilFuncSeparate = new Deno.UnsafeFnPointer(proc("glStencilFuncSeparate")!, def_glStencilFuncSeparate);
-  fn_glStencilMask = new Deno.UnsafeFnPointer(proc("glStencilMask")!, def_glStencilMask);
-  fn_glStencilMaskSeparate = new Deno.UnsafeFnPointer(proc("glStencilMaskSeparate")!, def_glStencilMaskSeparate);
-  fn_glStencilOp = new Deno.UnsafeFnPointer(proc("glStencilOp")!, def_glStencilOp);
-  fn_glStencilOpSeparate = new Deno.UnsafeFnPointer(proc("glStencilOpSeparate")!, def_glStencilOpSeparate);
-  fn_glTexStorage2D = new Deno.UnsafeFnPointer(proc("glTexStorage2D")!, def_glTexStorage2D);
-  fn_glTexParameterf = new Deno.UnsafeFnPointer(proc("glTexParameterf")!, def_glTexParameterf);
-  fn_glTexParameterfv = new Deno.UnsafeFnPointer(proc("glTexParameterfv")!, def_glTexParameterfv);
-  fn_glTexParameteri = new Deno.UnsafeFnPointer(proc("glTexParameteri")!, def_glTexParameteri);
-  fn_glTexParameteriv = new Deno.UnsafeFnPointer(proc("glTexParameteriv")!, def_glTexParameteriv);
-  fn_glTexSubImage2D = new Deno.UnsafeFnPointer(proc("glTexSubImage2D")!, def_glTexSubImage2D);
-  fn_glUniform1f = new Deno.UnsafeFnPointer(proc("glUniform1f")!, def_glUniform1f);
-  fn_glUniform1fv = new Deno.UnsafeFnPointer(proc("glUniform1fv")!, def_glUniform1fv);
-  fn_glUniform1i = new Deno.UnsafeFnPointer(proc("glUniform1i")!, def_glUniform1i);
-  fn_glUniform1iv = new Deno.UnsafeFnPointer(proc("glUniform1iv")!, def_glUniform1iv);
-  fn_glUniform2f = new Deno.UnsafeFnPointer(proc("glUniform2f")!, def_glUniform2f);
-  fn_glUniform2fv = new Deno.UnsafeFnPointer(proc("glUniform2fv")!, def_glUniform2fv);
-  fn_glUniform2i = new Deno.UnsafeFnPointer(proc("glUniform2i")!, def_glUniform2i);
-  fn_glUniform2iv = new Deno.UnsafeFnPointer(proc("glUniform2iv")!, def_glUniform2iv);
-  fn_glUniform3f = new Deno.UnsafeFnPointer(proc("glUniform3f")!, def_glUniform3f);
-  fn_glUniform3fv = new Deno.UnsafeFnPointer(proc("glUniform3fv")!, def_glUniform3fv);
-  fn_glUniform3i = new Deno.UnsafeFnPointer(proc("glUniform3i")!, def_glUniform3i);
-  fn_glUniform3iv = new Deno.UnsafeFnPointer(proc("glUniform3iv")!, def_glUniform3iv);
-  fn_glUniform4f = new Deno.UnsafeFnPointer(proc("glUniform4f")!, def_glUniform4f);
-  fn_glUniform4fv = new Deno.UnsafeFnPointer(proc("glUniform4fv")!, def_glUniform4fv);
-  fn_glUniform4i = new Deno.UnsafeFnPointer(proc("glUniform4i")!, def_glUniform4i);
-  fn_glUniform4iv = new Deno.UnsafeFnPointer(proc("glUniform4iv")!, def_glUniform4iv);
-  fn_glUniformMatrix2fv = new Deno.UnsafeFnPointer(proc("glUniformMatrix2fv")!, def_glUniformMatrix2fv);
-  fn_glUniformMatrix3fv = new Deno.UnsafeFnPointer(proc("glUniformMatrix3fv")!, def_glUniformMatrix3fv);
-  fn_glUniformMatrix4fv = new Deno.UnsafeFnPointer(proc("glUniformMatrix4fv")!, def_glUniformMatrix4fv);
-  fn_glUseProgram = new Deno.UnsafeFnPointer(proc("glUseProgram")!, def_glUseProgram);
-  fn_glVertexAttrib1f = new Deno.UnsafeFnPointer(proc("glVertexAttrib1f")!, def_glVertexAttrib1f);
-  fn_glVertexAttrib1fv = new Deno.UnsafeFnPointer(proc("glVertexAttrib1fv")!, def_glVertexAttrib1fv);
-  fn_glVertexAttrib2f = new Deno.UnsafeFnPointer(proc("glVertexAttrib2f")!, def_glVertexAttrib2f);
-  fn_glVertexAttrib2fv = new Deno.UnsafeFnPointer(proc("glVertexAttrib2fv")!, def_glVertexAttrib2fv);
-  fn_glVertexAttrib3f = new Deno.UnsafeFnPointer(proc("glVertexAttrib3f")!, def_glVertexAttrib3f);
-  fn_glVertexAttrib3fv = new Deno.UnsafeFnPointer(proc("glVertexAttrib3fv")!, def_glVertexAttrib3fv);
-  fn_glVertexAttrib4f = new Deno.UnsafeFnPointer(proc("glVertexAttrib4f")!, def_glVertexAttrib4f);
-  fn_glVertexAttrib4fv = new Deno.UnsafeFnPointer(proc("glVertexAttrib4fv")!, def_glVertexAttrib4fv);
-  fn_glVertexAttribPointer = new Deno.UnsafeFnPointer(proc("glVertexAttribPointer")!, def_glVertexAttribPointer);
+  fn_glStencilFunc = new Deno.UnsafeFnPointer(
+    proc("glStencilFunc")!,
+    def_glStencilFunc,
+  );
+  fn_glStencilFuncSeparate = new Deno.UnsafeFnPointer(
+    proc("glStencilFuncSeparate")!,
+    def_glStencilFuncSeparate,
+  );
+  fn_glStencilMask = new Deno.UnsafeFnPointer(
+    proc("glStencilMask")!,
+    def_glStencilMask,
+  );
+  fn_glStencilMaskSeparate = new Deno.UnsafeFnPointer(
+    proc("glStencilMaskSeparate")!,
+    def_glStencilMaskSeparate,
+  );
+  fn_glStencilOp = new Deno.UnsafeFnPointer(
+    proc("glStencilOp")!,
+    def_glStencilOp,
+  );
+  fn_glStencilOpSeparate = new Deno.UnsafeFnPointer(
+    proc("glStencilOpSeparate")!,
+    def_glStencilOpSeparate,
+  );
+  fn_glTexStorage2D = new Deno.UnsafeFnPointer(
+    proc("glTexStorage2D")!,
+    def_glTexStorage2D,
+  );
+  fn_glTexParameterf = new Deno.UnsafeFnPointer(
+    proc("glTexParameterf")!,
+    def_glTexParameterf,
+  );
+  fn_glTexParameterfv = new Deno.UnsafeFnPointer(
+    proc("glTexParameterfv")!,
+    def_glTexParameterfv,
+  );
+  fn_glTexParameteri = new Deno.UnsafeFnPointer(
+    proc("glTexParameteri")!,
+    def_glTexParameteri,
+  );
+  fn_glTexParameteriv = new Deno.UnsafeFnPointer(
+    proc("glTexParameteriv")!,
+    def_glTexParameteriv,
+  );
+  fn_glTexSubImage2D = new Deno.UnsafeFnPointer(
+    proc("glTexSubImage2D")!,
+    def_glTexSubImage2D,
+  );
+  fn_glUniform1f = new Deno.UnsafeFnPointer(
+    proc("glUniform1f")!,
+    def_glUniform1f,
+  );
+  fn_glUniform1fv = new Deno.UnsafeFnPointer(
+    proc("glUniform1fv")!,
+    def_glUniform1fv,
+  );
+  fn_glUniform1i = new Deno.UnsafeFnPointer(
+    proc("glUniform1i")!,
+    def_glUniform1i,
+  );
+  fn_glUniform1iv = new Deno.UnsafeFnPointer(
+    proc("glUniform1iv")!,
+    def_glUniform1iv,
+  );
+  fn_glUniform2f = new Deno.UnsafeFnPointer(
+    proc("glUniform2f")!,
+    def_glUniform2f,
+  );
+  fn_glUniform2fv = new Deno.UnsafeFnPointer(
+    proc("glUniform2fv")!,
+    def_glUniform2fv,
+  );
+  fn_glUniform2i = new Deno.UnsafeFnPointer(
+    proc("glUniform2i")!,
+    def_glUniform2i,
+  );
+  fn_glUniform2iv = new Deno.UnsafeFnPointer(
+    proc("glUniform2iv")!,
+    def_glUniform2iv,
+  );
+  fn_glUniform3f = new Deno.UnsafeFnPointer(
+    proc("glUniform3f")!,
+    def_glUniform3f,
+  );
+  fn_glUniform3fv = new Deno.UnsafeFnPointer(
+    proc("glUniform3fv")!,
+    def_glUniform3fv,
+  );
+  fn_glUniform3i = new Deno.UnsafeFnPointer(
+    proc("glUniform3i")!,
+    def_glUniform3i,
+  );
+  fn_glUniform3iv = new Deno.UnsafeFnPointer(
+    proc("glUniform3iv")!,
+    def_glUniform3iv,
+  );
+  fn_glUniform4f = new Deno.UnsafeFnPointer(
+    proc("glUniform4f")!,
+    def_glUniform4f,
+  );
+  fn_glUniform4fv = new Deno.UnsafeFnPointer(
+    proc("glUniform4fv")!,
+    def_glUniform4fv,
+  );
+  fn_glUniform4i = new Deno.UnsafeFnPointer(
+    proc("glUniform4i")!,
+    def_glUniform4i,
+  );
+  fn_glUniform4iv = new Deno.UnsafeFnPointer(
+    proc("glUniform4iv")!,
+    def_glUniform4iv,
+  );
+  fn_glUniformMatrix2fv = new Deno.UnsafeFnPointer(
+    proc("glUniformMatrix2fv")!,
+    def_glUniformMatrix2fv,
+  );
+  fn_glUniformMatrix3fv = new Deno.UnsafeFnPointer(
+    proc("glUniformMatrix3fv")!,
+    def_glUniformMatrix3fv,
+  );
+  fn_glUniformMatrix4fv = new Deno.UnsafeFnPointer(
+    proc("glUniformMatrix4fv")!,
+    def_glUniformMatrix4fv,
+  );
+  fn_glUseProgram = new Deno.UnsafeFnPointer(
+    proc("glUseProgram")!,
+    def_glUseProgram,
+  );
+  fn_glVertexAttrib1f = new Deno.UnsafeFnPointer(
+    proc("glVertexAttrib1f")!,
+    def_glVertexAttrib1f,
+  );
+  fn_glVertexAttrib1fv = new Deno.UnsafeFnPointer(
+    proc("glVertexAttrib1fv")!,
+    def_glVertexAttrib1fv,
+  );
+  fn_glVertexAttrib2f = new Deno.UnsafeFnPointer(
+    proc("glVertexAttrib2f")!,
+    def_glVertexAttrib2f,
+  );
+  fn_glVertexAttrib2fv = new Deno.UnsafeFnPointer(
+    proc("glVertexAttrib2fv")!,
+    def_glVertexAttrib2fv,
+  );
+  fn_glVertexAttrib3f = new Deno.UnsafeFnPointer(
+    proc("glVertexAttrib3f")!,
+    def_glVertexAttrib3f,
+  );
+  fn_glVertexAttrib3fv = new Deno.UnsafeFnPointer(
+    proc("glVertexAttrib3fv")!,
+    def_glVertexAttrib3fv,
+  );
+  fn_glVertexAttrib4f = new Deno.UnsafeFnPointer(
+    proc("glVertexAttrib4f")!,
+    def_glVertexAttrib4f,
+  );
+  fn_glVertexAttrib4fv = new Deno.UnsafeFnPointer(
+    proc("glVertexAttrib4fv")!,
+    def_glVertexAttrib4fv,
+  );
+  fn_glVertexAttribPointer = new Deno.UnsafeFnPointer(
+    proc("glVertexAttribPointer")!,
+    def_glVertexAttribPointer,
+  );
   fn_glViewport = new Deno.UnsafeFnPointer(proc("glViewport")!, def_glViewport);
 }

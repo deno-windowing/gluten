@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -72,7 +86,9 @@ export const def_glFramebufferSamplePositionsfvAMD = {
   result: "void",
 } as const;
 
-let fn_glFramebufferSamplePositionsfvAMD!: Deno.UnsafeFnPointer<typeof def_glFramebufferSamplePositionsfvAMD>;
+let fn_glFramebufferSamplePositionsfvAMD!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferSamplePositionsfvAMD
+>;
 
 export function FramebufferSamplePositionsfvAMD(
   target: GLenum,
@@ -93,7 +109,9 @@ export const def_glNamedFramebufferSamplePositionsfvAMD = {
   result: "void",
 } as const;
 
-let fn_glNamedFramebufferSamplePositionsfvAMD!: Deno.UnsafeFnPointer<typeof def_glNamedFramebufferSamplePositionsfvAMD>;
+let fn_glNamedFramebufferSamplePositionsfvAMD!: Deno.UnsafeFnPointer<
+  typeof def_glNamedFramebufferSamplePositionsfvAMD
+>;
 
 export function NamedFramebufferSamplePositionsfvAMD(
   framebuffer: GLuint,
@@ -114,7 +132,9 @@ export const def_glGetFramebufferParameterfvAMD = {
   result: "void",
 } as const;
 
-let fn_glGetFramebufferParameterfvAMD!: Deno.UnsafeFnPointer<typeof def_glGetFramebufferParameterfvAMD>;
+let fn_glGetFramebufferParameterfvAMD!: Deno.UnsafeFnPointer<
+  typeof def_glGetFramebufferParameterfvAMD
+>;
 
 export function GetFramebufferParameterfvAMD(
   target: GLenum,
@@ -139,7 +159,9 @@ export const def_glGetNamedFramebufferParameterfvAMD = {
   result: "void",
 } as const;
 
-let fn_glGetNamedFramebufferParameterfvAMD!: Deno.UnsafeFnPointer<typeof def_glGetNamedFramebufferParameterfvAMD>;
+let fn_glGetNamedFramebufferParameterfvAMD!: Deno.UnsafeFnPointer<
+  typeof def_glGetNamedFramebufferParameterfvAMD
+>;
 
 export function GetNamedFramebufferParameterfvAMD(
   framebuffer: GLuint,
@@ -161,8 +183,20 @@ export function GetNamedFramebufferParameterfvAMD(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFramebufferSamplePositionsfvAMD = new Deno.UnsafeFnPointer(proc("glFramebufferSamplePositionsfvAMD")!, def_glFramebufferSamplePositionsfvAMD);
-  fn_glNamedFramebufferSamplePositionsfvAMD = new Deno.UnsafeFnPointer(proc("glNamedFramebufferSamplePositionsfvAMD")!, def_glNamedFramebufferSamplePositionsfvAMD);
-  fn_glGetFramebufferParameterfvAMD = new Deno.UnsafeFnPointer(proc("glGetFramebufferParameterfvAMD")!, def_glGetFramebufferParameterfvAMD);
-  fn_glGetNamedFramebufferParameterfvAMD = new Deno.UnsafeFnPointer(proc("glGetNamedFramebufferParameterfvAMD")!, def_glGetNamedFramebufferParameterfvAMD);
+  fn_glFramebufferSamplePositionsfvAMD = new Deno.UnsafeFnPointer(
+    proc("glFramebufferSamplePositionsfvAMD")!,
+    def_glFramebufferSamplePositionsfvAMD,
+  );
+  fn_glNamedFramebufferSamplePositionsfvAMD = new Deno.UnsafeFnPointer(
+    proc("glNamedFramebufferSamplePositionsfvAMD")!,
+    def_glNamedFramebufferSamplePositionsfvAMD,
+  );
+  fn_glGetFramebufferParameterfvAMD = new Deno.UnsafeFnPointer(
+    proc("glGetFramebufferParameterfvAMD")!,
+    def_glGetFramebufferParameterfvAMD,
+  );
+  fn_glGetNamedFramebufferParameterfvAMD = new Deno.UnsafeFnPointer(
+    proc("glGetNamedFramebufferParameterfvAMD")!,
+    def_glGetNamedFramebufferParameterfvAMD,
+  );
 }

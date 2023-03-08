@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -114,7 +128,9 @@ export const def_glGenAsyncMarkersSGIX = {
   result: "u32",
 } as const;
 
-let fn_glGenAsyncMarkersSGIX!: Deno.UnsafeFnPointer<typeof def_glGenAsyncMarkersSGIX>;
+let fn_glGenAsyncMarkersSGIX!: Deno.UnsafeFnPointer<
+  typeof def_glGenAsyncMarkersSGIX
+>;
 
 export function GenAsyncMarkersSGIX(
   range: GLsizei,
@@ -129,7 +145,9 @@ export const def_glDeleteAsyncMarkersSGIX = {
   result: "void",
 } as const;
 
-let fn_glDeleteAsyncMarkersSGIX!: Deno.UnsafeFnPointer<typeof def_glDeleteAsyncMarkersSGIX>;
+let fn_glDeleteAsyncMarkersSGIX!: Deno.UnsafeFnPointer<
+  typeof def_glDeleteAsyncMarkersSGIX
+>;
 
 export function DeleteAsyncMarkersSGIX(
   marker: GLuint,
@@ -146,7 +164,9 @@ export const def_glIsAsyncMarkerSGIX = {
   result: "u8",
 } as const;
 
-let fn_glIsAsyncMarkerSGIX!: Deno.UnsafeFnPointer<typeof def_glIsAsyncMarkerSGIX>;
+let fn_glIsAsyncMarkerSGIX!: Deno.UnsafeFnPointer<
+  typeof def_glIsAsyncMarkerSGIX
+>;
 
 export function IsAsyncMarkerSGIX(
   marker: GLuint,
@@ -158,10 +178,28 @@ export function IsAsyncMarkerSGIX(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glAsyncMarkerSGIX = new Deno.UnsafeFnPointer(proc("glAsyncMarkerSGIX")!, def_glAsyncMarkerSGIX);
-  fn_glFinishAsyncSGIX = new Deno.UnsafeFnPointer(proc("glFinishAsyncSGIX")!, def_glFinishAsyncSGIX);
-  fn_glPollAsyncSGIX = new Deno.UnsafeFnPointer(proc("glPollAsyncSGIX")!, def_glPollAsyncSGIX);
-  fn_glGenAsyncMarkersSGIX = new Deno.UnsafeFnPointer(proc("glGenAsyncMarkersSGIX")!, def_glGenAsyncMarkersSGIX);
-  fn_glDeleteAsyncMarkersSGIX = new Deno.UnsafeFnPointer(proc("glDeleteAsyncMarkersSGIX")!, def_glDeleteAsyncMarkersSGIX);
-  fn_glIsAsyncMarkerSGIX = new Deno.UnsafeFnPointer(proc("glIsAsyncMarkerSGIX")!, def_glIsAsyncMarkerSGIX);
+  fn_glAsyncMarkerSGIX = new Deno.UnsafeFnPointer(
+    proc("glAsyncMarkerSGIX")!,
+    def_glAsyncMarkerSGIX,
+  );
+  fn_glFinishAsyncSGIX = new Deno.UnsafeFnPointer(
+    proc("glFinishAsyncSGIX")!,
+    def_glFinishAsyncSGIX,
+  );
+  fn_glPollAsyncSGIX = new Deno.UnsafeFnPointer(
+    proc("glPollAsyncSGIX")!,
+    def_glPollAsyncSGIX,
+  );
+  fn_glGenAsyncMarkersSGIX = new Deno.UnsafeFnPointer(
+    proc("glGenAsyncMarkersSGIX")!,
+    def_glGenAsyncMarkersSGIX,
+  );
+  fn_glDeleteAsyncMarkersSGIX = new Deno.UnsafeFnPointer(
+    proc("glDeleteAsyncMarkersSGIX")!,
+    def_glDeleteAsyncMarkersSGIX,
+  );
+  fn_glIsAsyncMarkerSGIX = new Deno.UnsafeFnPointer(
+    proc("glIsAsyncMarkerSGIX")!,
+    def_glIsAsyncMarkerSGIX,
+  );
 }

@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -97,7 +111,9 @@ export const def_glBeginVideoCaptureNV = {
   result: "void",
 } as const;
 
-let fn_glBeginVideoCaptureNV!: Deno.UnsafeFnPointer<typeof def_glBeginVideoCaptureNV>;
+let fn_glBeginVideoCaptureNV!: Deno.UnsafeFnPointer<
+  typeof def_glBeginVideoCaptureNV
+>;
 
 export function BeginVideoCaptureNV(
   video_capture_slot: GLuint,
@@ -112,7 +128,9 @@ export const def_glBindVideoCaptureStreamBufferNV = {
   result: "void",
 } as const;
 
-let fn_glBindVideoCaptureStreamBufferNV!: Deno.UnsafeFnPointer<typeof def_glBindVideoCaptureStreamBufferNV>;
+let fn_glBindVideoCaptureStreamBufferNV!: Deno.UnsafeFnPointer<
+  typeof def_glBindVideoCaptureStreamBufferNV
+>;
 
 export function BindVideoCaptureStreamBufferNV(
   video_capture_slot: GLuint,
@@ -133,7 +151,9 @@ export const def_glBindVideoCaptureStreamTextureNV = {
   result: "void",
 } as const;
 
-let fn_glBindVideoCaptureStreamTextureNV!: Deno.UnsafeFnPointer<typeof def_glBindVideoCaptureStreamTextureNV>;
+let fn_glBindVideoCaptureStreamTextureNV!: Deno.UnsafeFnPointer<
+  typeof def_glBindVideoCaptureStreamTextureNV
+>;
 
 export function BindVideoCaptureStreamTextureNV(
   video_capture_slot: GLuint,
@@ -156,7 +176,9 @@ export const def_glEndVideoCaptureNV = {
   result: "void",
 } as const;
 
-let fn_glEndVideoCaptureNV!: Deno.UnsafeFnPointer<typeof def_glEndVideoCaptureNV>;
+let fn_glEndVideoCaptureNV!: Deno.UnsafeFnPointer<
+  typeof def_glEndVideoCaptureNV
+>;
 
 export function EndVideoCaptureNV(
   video_capture_slot: GLuint,
@@ -171,7 +193,9 @@ export const def_glGetVideoCaptureivNV = {
   result: "void",
 } as const;
 
-let fn_glGetVideoCaptureivNV!: Deno.UnsafeFnPointer<typeof def_glGetVideoCaptureivNV>;
+let fn_glGetVideoCaptureivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetVideoCaptureivNV
+>;
 
 export function GetVideoCaptureivNV(
   video_capture_slot: GLuint,
@@ -190,7 +214,9 @@ export const def_glGetVideoCaptureStreamivNV = {
   result: "void",
 } as const;
 
-let fn_glGetVideoCaptureStreamivNV!: Deno.UnsafeFnPointer<typeof def_glGetVideoCaptureStreamivNV>;
+let fn_glGetVideoCaptureStreamivNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetVideoCaptureStreamivNV
+>;
 
 export function GetVideoCaptureStreamivNV(
   video_capture_slot: GLuint,
@@ -211,7 +237,9 @@ export const def_glGetVideoCaptureStreamfvNV = {
   result: "void",
 } as const;
 
-let fn_glGetVideoCaptureStreamfvNV!: Deno.UnsafeFnPointer<typeof def_glGetVideoCaptureStreamfvNV>;
+let fn_glGetVideoCaptureStreamfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetVideoCaptureStreamfvNV
+>;
 
 export function GetVideoCaptureStreamfvNV(
   video_capture_slot: GLuint,
@@ -232,7 +260,9 @@ export const def_glGetVideoCaptureStreamdvNV = {
   result: "void",
 } as const;
 
-let fn_glGetVideoCaptureStreamdvNV!: Deno.UnsafeFnPointer<typeof def_glGetVideoCaptureStreamdvNV>;
+let fn_glGetVideoCaptureStreamdvNV!: Deno.UnsafeFnPointer<
+  typeof def_glGetVideoCaptureStreamdvNV
+>;
 
 export function GetVideoCaptureStreamdvNV(
   video_capture_slot: GLuint,
@@ -272,7 +302,9 @@ export const def_glVideoCaptureStreamParameterivNV = {
   result: "void",
 } as const;
 
-let fn_glVideoCaptureStreamParameterivNV!: Deno.UnsafeFnPointer<typeof def_glVideoCaptureStreamParameterivNV>;
+let fn_glVideoCaptureStreamParameterivNV!: Deno.UnsafeFnPointer<
+  typeof def_glVideoCaptureStreamParameterivNV
+>;
 
 export function VideoCaptureStreamParameterivNV(
   video_capture_slot: GLuint,
@@ -293,7 +325,9 @@ export const def_glVideoCaptureStreamParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glVideoCaptureStreamParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glVideoCaptureStreamParameterfvNV>;
+let fn_glVideoCaptureStreamParameterfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glVideoCaptureStreamParameterfvNV
+>;
 
 export function VideoCaptureStreamParameterfvNV(
   video_capture_slot: GLuint,
@@ -314,7 +348,9 @@ export const def_glVideoCaptureStreamParameterdvNV = {
   result: "void",
 } as const;
 
-let fn_glVideoCaptureStreamParameterdvNV!: Deno.UnsafeFnPointer<typeof def_glVideoCaptureStreamParameterdvNV>;
+let fn_glVideoCaptureStreamParameterdvNV!: Deno.UnsafeFnPointer<
+  typeof def_glVideoCaptureStreamParameterdvNV
+>;
 
 export function VideoCaptureStreamParameterdvNV(
   video_capture_slot: GLuint,
@@ -332,16 +368,52 @@ export function VideoCaptureStreamParameterdvNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBeginVideoCaptureNV = new Deno.UnsafeFnPointer(proc("glBeginVideoCaptureNV")!, def_glBeginVideoCaptureNV);
-  fn_glBindVideoCaptureStreamBufferNV = new Deno.UnsafeFnPointer(proc("glBindVideoCaptureStreamBufferNV")!, def_glBindVideoCaptureStreamBufferNV);
-  fn_glBindVideoCaptureStreamTextureNV = new Deno.UnsafeFnPointer(proc("glBindVideoCaptureStreamTextureNV")!, def_glBindVideoCaptureStreamTextureNV);
-  fn_glEndVideoCaptureNV = new Deno.UnsafeFnPointer(proc("glEndVideoCaptureNV")!, def_glEndVideoCaptureNV);
-  fn_glGetVideoCaptureivNV = new Deno.UnsafeFnPointer(proc("glGetVideoCaptureivNV")!, def_glGetVideoCaptureivNV);
-  fn_glGetVideoCaptureStreamivNV = new Deno.UnsafeFnPointer(proc("glGetVideoCaptureStreamivNV")!, def_glGetVideoCaptureStreamivNV);
-  fn_glGetVideoCaptureStreamfvNV = new Deno.UnsafeFnPointer(proc("glGetVideoCaptureStreamfvNV")!, def_glGetVideoCaptureStreamfvNV);
-  fn_glGetVideoCaptureStreamdvNV = new Deno.UnsafeFnPointer(proc("glGetVideoCaptureStreamdvNV")!, def_glGetVideoCaptureStreamdvNV);
-  fn_glVideoCaptureNV = new Deno.UnsafeFnPointer(proc("glVideoCaptureNV")!, def_glVideoCaptureNV);
-  fn_glVideoCaptureStreamParameterivNV = new Deno.UnsafeFnPointer(proc("glVideoCaptureStreamParameterivNV")!, def_glVideoCaptureStreamParameterivNV);
-  fn_glVideoCaptureStreamParameterfvNV = new Deno.UnsafeFnPointer(proc("glVideoCaptureStreamParameterfvNV")!, def_glVideoCaptureStreamParameterfvNV);
-  fn_glVideoCaptureStreamParameterdvNV = new Deno.UnsafeFnPointer(proc("glVideoCaptureStreamParameterdvNV")!, def_glVideoCaptureStreamParameterdvNV);
+  fn_glBeginVideoCaptureNV = new Deno.UnsafeFnPointer(
+    proc("glBeginVideoCaptureNV")!,
+    def_glBeginVideoCaptureNV,
+  );
+  fn_glBindVideoCaptureStreamBufferNV = new Deno.UnsafeFnPointer(
+    proc("glBindVideoCaptureStreamBufferNV")!,
+    def_glBindVideoCaptureStreamBufferNV,
+  );
+  fn_glBindVideoCaptureStreamTextureNV = new Deno.UnsafeFnPointer(
+    proc("glBindVideoCaptureStreamTextureNV")!,
+    def_glBindVideoCaptureStreamTextureNV,
+  );
+  fn_glEndVideoCaptureNV = new Deno.UnsafeFnPointer(
+    proc("glEndVideoCaptureNV")!,
+    def_glEndVideoCaptureNV,
+  );
+  fn_glGetVideoCaptureivNV = new Deno.UnsafeFnPointer(
+    proc("glGetVideoCaptureivNV")!,
+    def_glGetVideoCaptureivNV,
+  );
+  fn_glGetVideoCaptureStreamivNV = new Deno.UnsafeFnPointer(
+    proc("glGetVideoCaptureStreamivNV")!,
+    def_glGetVideoCaptureStreamivNV,
+  );
+  fn_glGetVideoCaptureStreamfvNV = new Deno.UnsafeFnPointer(
+    proc("glGetVideoCaptureStreamfvNV")!,
+    def_glGetVideoCaptureStreamfvNV,
+  );
+  fn_glGetVideoCaptureStreamdvNV = new Deno.UnsafeFnPointer(
+    proc("glGetVideoCaptureStreamdvNV")!,
+    def_glGetVideoCaptureStreamdvNV,
+  );
+  fn_glVideoCaptureNV = new Deno.UnsafeFnPointer(
+    proc("glVideoCaptureNV")!,
+    def_glVideoCaptureNV,
+  );
+  fn_glVideoCaptureStreamParameterivNV = new Deno.UnsafeFnPointer(
+    proc("glVideoCaptureStreamParameterivNV")!,
+    def_glVideoCaptureStreamParameterivNV,
+  );
+  fn_glVideoCaptureStreamParameterfvNV = new Deno.UnsafeFnPointer(
+    proc("glVideoCaptureStreamParameterfvNV")!,
+    def_glVideoCaptureStreamParameterfvNV,
+  );
+  fn_glVideoCaptureStreamParameterdvNV = new Deno.UnsafeFnPointer(
+    proc("glVideoCaptureStreamParameterdvNV")!,
+    def_glVideoCaptureStreamParameterdvNV,
+  );
 }

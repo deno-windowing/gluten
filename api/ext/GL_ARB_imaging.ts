@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -204,7 +218,9 @@ export const def_glColorTableParameterfv = {
   result: "void",
 } as const;
 
-let fn_glColorTableParameterfv!: Deno.UnsafeFnPointer<typeof def_glColorTableParameterfv>;
+let fn_glColorTableParameterfv!: Deno.UnsafeFnPointer<
+  typeof def_glColorTableParameterfv
+>;
 
 export function ColorTableParameterfv(
   target: GLenum,
@@ -223,7 +239,9 @@ export const def_glColorTableParameteriv = {
   result: "void",
 } as const;
 
-let fn_glColorTableParameteriv!: Deno.UnsafeFnPointer<typeof def_glColorTableParameteriv>;
+let fn_glColorTableParameteriv!: Deno.UnsafeFnPointer<
+  typeof def_glColorTableParameteriv
+>;
 
 export function ColorTableParameteriv(
   target: GLenum,
@@ -286,7 +304,9 @@ export const def_glGetColorTableParameterfv = {
   result: "void",
 } as const;
 
-let fn_glGetColorTableParameterfv!: Deno.UnsafeFnPointer<typeof def_glGetColorTableParameterfv>;
+let fn_glGetColorTableParameterfv!: Deno.UnsafeFnPointer<
+  typeof def_glGetColorTableParameterfv
+>;
 
 export function GetColorTableParameterfv(
   target: GLenum,
@@ -305,7 +325,9 @@ export const def_glGetColorTableParameteriv = {
   result: "void",
 } as const;
 
-let fn_glGetColorTableParameteriv!: Deno.UnsafeFnPointer<typeof def_glGetColorTableParameteriv>;
+let fn_glGetColorTableParameteriv!: Deno.UnsafeFnPointer<
+  typeof def_glGetColorTableParameteriv
+>;
 
 export function GetColorTableParameteriv(
   target: GLenum,
@@ -349,7 +371,9 @@ export const def_glCopyColorSubTable = {
   result: "void",
 } as const;
 
-let fn_glCopyColorSubTable!: Deno.UnsafeFnPointer<typeof def_glCopyColorSubTable>;
+let fn_glCopyColorSubTable!: Deno.UnsafeFnPointer<
+  typeof def_glCopyColorSubTable
+>;
 
 export function CopyColorSubTable(
   target: GLenum,
@@ -372,7 +396,9 @@ export const def_glConvolutionFilter1D = {
   result: "void",
 } as const;
 
-let fn_glConvolutionFilter1D!: Deno.UnsafeFnPointer<typeof def_glConvolutionFilter1D>;
+let fn_glConvolutionFilter1D!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionFilter1D
+>;
 
 export function ConvolutionFilter1D(
   target: GLenum,
@@ -397,7 +423,9 @@ export const def_glConvolutionFilter2D = {
   result: "void",
 } as const;
 
-let fn_glConvolutionFilter2D!: Deno.UnsafeFnPointer<typeof def_glConvolutionFilter2D>;
+let fn_glConvolutionFilter2D!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionFilter2D
+>;
 
 export function ConvolutionFilter2D(
   target: GLenum,
@@ -424,7 +452,9 @@ export const def_glConvolutionParameterf = {
   result: "void",
 } as const;
 
-let fn_glConvolutionParameterf!: Deno.UnsafeFnPointer<typeof def_glConvolutionParameterf>;
+let fn_glConvolutionParameterf!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionParameterf
+>;
 
 export function ConvolutionParameterf(
   target: GLenum,
@@ -443,7 +473,9 @@ export const def_glConvolutionParameterfv = {
   result: "void",
 } as const;
 
-let fn_glConvolutionParameterfv!: Deno.UnsafeFnPointer<typeof def_glConvolutionParameterfv>;
+let fn_glConvolutionParameterfv!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionParameterfv
+>;
 
 export function ConvolutionParameterfv(
   target: GLenum,
@@ -462,7 +494,9 @@ export const def_glConvolutionParameteri = {
   result: "void",
 } as const;
 
-let fn_glConvolutionParameteri!: Deno.UnsafeFnPointer<typeof def_glConvolutionParameteri>;
+let fn_glConvolutionParameteri!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionParameteri
+>;
 
 export function ConvolutionParameteri(
   target: GLenum,
@@ -481,7 +515,9 @@ export const def_glConvolutionParameteriv = {
   result: "void",
 } as const;
 
-let fn_glConvolutionParameteriv!: Deno.UnsafeFnPointer<typeof def_glConvolutionParameteriv>;
+let fn_glConvolutionParameteriv!: Deno.UnsafeFnPointer<
+  typeof def_glConvolutionParameteriv
+>;
 
 export function ConvolutionParameteriv(
   target: GLenum,
@@ -500,7 +536,9 @@ export const def_glCopyConvolutionFilter1D = {
   result: "void",
 } as const;
 
-let fn_glCopyConvolutionFilter1D!: Deno.UnsafeFnPointer<typeof def_glCopyConvolutionFilter1D>;
+let fn_glCopyConvolutionFilter1D!: Deno.UnsafeFnPointer<
+  typeof def_glCopyConvolutionFilter1D
+>;
 
 export function CopyConvolutionFilter1D(
   target: GLenum,
@@ -523,7 +561,9 @@ export const def_glCopyConvolutionFilter2D = {
   result: "void",
 } as const;
 
-let fn_glCopyConvolutionFilter2D!: Deno.UnsafeFnPointer<typeof def_glCopyConvolutionFilter2D>;
+let fn_glCopyConvolutionFilter2D!: Deno.UnsafeFnPointer<
+  typeof def_glCopyConvolutionFilter2D
+>;
 
 export function CopyConvolutionFilter2D(
   target: GLenum,
@@ -548,7 +588,9 @@ export const def_glGetConvolutionFilter = {
   result: "void",
 } as const;
 
-let fn_glGetConvolutionFilter!: Deno.UnsafeFnPointer<typeof def_glGetConvolutionFilter>;
+let fn_glGetConvolutionFilter!: Deno.UnsafeFnPointer<
+  typeof def_glGetConvolutionFilter
+>;
 
 export function GetConvolutionFilter(
   target: GLenum,
@@ -569,7 +611,9 @@ export const def_glGetConvolutionParameterfv = {
   result: "void",
 } as const;
 
-let fn_glGetConvolutionParameterfv!: Deno.UnsafeFnPointer<typeof def_glGetConvolutionParameterfv>;
+let fn_glGetConvolutionParameterfv!: Deno.UnsafeFnPointer<
+  typeof def_glGetConvolutionParameterfv
+>;
 
 export function GetConvolutionParameterfv(
   target: GLenum,
@@ -588,7 +632,9 @@ export const def_glGetConvolutionParameteriv = {
   result: "void",
 } as const;
 
-let fn_glGetConvolutionParameteriv!: Deno.UnsafeFnPointer<typeof def_glGetConvolutionParameteriv>;
+let fn_glGetConvolutionParameteriv!: Deno.UnsafeFnPointer<
+  typeof def_glGetConvolutionParameteriv
+>;
 
 export function GetConvolutionParameteriv(
   target: GLenum,
@@ -607,7 +653,9 @@ export const def_glGetSeparableFilter = {
   result: "void",
 } as const;
 
-let fn_glGetSeparableFilter!: Deno.UnsafeFnPointer<typeof def_glGetSeparableFilter>;
+let fn_glGetSeparableFilter!: Deno.UnsafeFnPointer<
+  typeof def_glGetSeparableFilter
+>;
 
 export function GetSeparableFilter(
   target: GLenum,
@@ -632,7 +680,9 @@ export const def_glSeparableFilter2D = {
   result: "void",
 } as const;
 
-let fn_glSeparableFilter2D!: Deno.UnsafeFnPointer<typeof def_glSeparableFilter2D>;
+let fn_glSeparableFilter2D!: Deno.UnsafeFnPointer<
+  typeof def_glSeparableFilter2D
+>;
 
 export function SeparableFilter2D(
   target: GLenum,
@@ -684,7 +734,9 @@ export const def_glGetHistogramParameterfv = {
   result: "void",
 } as const;
 
-let fn_glGetHistogramParameterfv!: Deno.UnsafeFnPointer<typeof def_glGetHistogramParameterfv>;
+let fn_glGetHistogramParameterfv!: Deno.UnsafeFnPointer<
+  typeof def_glGetHistogramParameterfv
+>;
 
 export function GetHistogramParameterfv(
   target: GLenum,
@@ -703,7 +755,9 @@ export const def_glGetHistogramParameteriv = {
   result: "void",
 } as const;
 
-let fn_glGetHistogramParameteriv!: Deno.UnsafeFnPointer<typeof def_glGetHistogramParameteriv>;
+let fn_glGetHistogramParameteriv!: Deno.UnsafeFnPointer<
+  typeof def_glGetHistogramParameteriv
+>;
 
 export function GetHistogramParameteriv(
   target: GLenum,
@@ -745,7 +799,9 @@ export const def_glGetMinmaxParameterfv = {
   result: "void",
 } as const;
 
-let fn_glGetMinmaxParameterfv!: Deno.UnsafeFnPointer<typeof def_glGetMinmaxParameterfv>;
+let fn_glGetMinmaxParameterfv!: Deno.UnsafeFnPointer<
+  typeof def_glGetMinmaxParameterfv
+>;
 
 export function GetMinmaxParameterfv(
   target: GLenum,
@@ -764,7 +820,9 @@ export const def_glGetMinmaxParameteriv = {
   result: "void",
 } as const;
 
-let fn_glGetMinmaxParameteriv!: Deno.UnsafeFnPointer<typeof def_glGetMinmaxParameteriv>;
+let fn_glGetMinmaxParameteriv!: Deno.UnsafeFnPointer<
+  typeof def_glGetMinmaxParameteriv
+>;
 
 export function GetMinmaxParameteriv(
   target: GLenum,
@@ -850,38 +908,137 @@ export function ResetMinmax(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBlendColor = new Deno.UnsafeFnPointer(proc("glBlendColor")!, def_glBlendColor);
-  fn_glBlendEquation = new Deno.UnsafeFnPointer(proc("glBlendEquation")!, def_glBlendEquation);
-  fn_glColorTable = new Deno.UnsafeFnPointer(proc("glColorTable")!, def_glColorTable);
-  fn_glColorTableParameterfv = new Deno.UnsafeFnPointer(proc("glColorTableParameterfv")!, def_glColorTableParameterfv);
-  fn_glColorTableParameteriv = new Deno.UnsafeFnPointer(proc("glColorTableParameteriv")!, def_glColorTableParameteriv);
-  fn_glCopyColorTable = new Deno.UnsafeFnPointer(proc("glCopyColorTable")!, def_glCopyColorTable);
-  fn_glGetColorTable = new Deno.UnsafeFnPointer(proc("glGetColorTable")!, def_glGetColorTable);
-  fn_glGetColorTableParameterfv = new Deno.UnsafeFnPointer(proc("glGetColorTableParameterfv")!, def_glGetColorTableParameterfv);
-  fn_glGetColorTableParameteriv = new Deno.UnsafeFnPointer(proc("glGetColorTableParameteriv")!, def_glGetColorTableParameteriv);
-  fn_glColorSubTable = new Deno.UnsafeFnPointer(proc("glColorSubTable")!, def_glColorSubTable);
-  fn_glCopyColorSubTable = new Deno.UnsafeFnPointer(proc("glCopyColorSubTable")!, def_glCopyColorSubTable);
-  fn_glConvolutionFilter1D = new Deno.UnsafeFnPointer(proc("glConvolutionFilter1D")!, def_glConvolutionFilter1D);
-  fn_glConvolutionFilter2D = new Deno.UnsafeFnPointer(proc("glConvolutionFilter2D")!, def_glConvolutionFilter2D);
-  fn_glConvolutionParameterf = new Deno.UnsafeFnPointer(proc("glConvolutionParameterf")!, def_glConvolutionParameterf);
-  fn_glConvolutionParameterfv = new Deno.UnsafeFnPointer(proc("glConvolutionParameterfv")!, def_glConvolutionParameterfv);
-  fn_glConvolutionParameteri = new Deno.UnsafeFnPointer(proc("glConvolutionParameteri")!, def_glConvolutionParameteri);
-  fn_glConvolutionParameteriv = new Deno.UnsafeFnPointer(proc("glConvolutionParameteriv")!, def_glConvolutionParameteriv);
-  fn_glCopyConvolutionFilter1D = new Deno.UnsafeFnPointer(proc("glCopyConvolutionFilter1D")!, def_glCopyConvolutionFilter1D);
-  fn_glCopyConvolutionFilter2D = new Deno.UnsafeFnPointer(proc("glCopyConvolutionFilter2D")!, def_glCopyConvolutionFilter2D);
-  fn_glGetConvolutionFilter = new Deno.UnsafeFnPointer(proc("glGetConvolutionFilter")!, def_glGetConvolutionFilter);
-  fn_glGetConvolutionParameterfv = new Deno.UnsafeFnPointer(proc("glGetConvolutionParameterfv")!, def_glGetConvolutionParameterfv);
-  fn_glGetConvolutionParameteriv = new Deno.UnsafeFnPointer(proc("glGetConvolutionParameteriv")!, def_glGetConvolutionParameteriv);
-  fn_glGetSeparableFilter = new Deno.UnsafeFnPointer(proc("glGetSeparableFilter")!, def_glGetSeparableFilter);
-  fn_glSeparableFilter2D = new Deno.UnsafeFnPointer(proc("glSeparableFilter2D")!, def_glSeparableFilter2D);
-  fn_glGetHistogram = new Deno.UnsafeFnPointer(proc("glGetHistogram")!, def_glGetHistogram);
-  fn_glGetHistogramParameterfv = new Deno.UnsafeFnPointer(proc("glGetHistogramParameterfv")!, def_glGetHistogramParameterfv);
-  fn_glGetHistogramParameteriv = new Deno.UnsafeFnPointer(proc("glGetHistogramParameteriv")!, def_glGetHistogramParameteriv);
-  fn_glGetMinmax = new Deno.UnsafeFnPointer(proc("glGetMinmax")!, def_glGetMinmax);
-  fn_glGetMinmaxParameterfv = new Deno.UnsafeFnPointer(proc("glGetMinmaxParameterfv")!, def_glGetMinmaxParameterfv);
-  fn_glGetMinmaxParameteriv = new Deno.UnsafeFnPointer(proc("glGetMinmaxParameteriv")!, def_glGetMinmaxParameteriv);
-  fn_glHistogram = new Deno.UnsafeFnPointer(proc("glHistogram")!, def_glHistogram);
+  fn_glBlendColor = new Deno.UnsafeFnPointer(
+    proc("glBlendColor")!,
+    def_glBlendColor,
+  );
+  fn_glBlendEquation = new Deno.UnsafeFnPointer(
+    proc("glBlendEquation")!,
+    def_glBlendEquation,
+  );
+  fn_glColorTable = new Deno.UnsafeFnPointer(
+    proc("glColorTable")!,
+    def_glColorTable,
+  );
+  fn_glColorTableParameterfv = new Deno.UnsafeFnPointer(
+    proc("glColorTableParameterfv")!,
+    def_glColorTableParameterfv,
+  );
+  fn_glColorTableParameteriv = new Deno.UnsafeFnPointer(
+    proc("glColorTableParameteriv")!,
+    def_glColorTableParameteriv,
+  );
+  fn_glCopyColorTable = new Deno.UnsafeFnPointer(
+    proc("glCopyColorTable")!,
+    def_glCopyColorTable,
+  );
+  fn_glGetColorTable = new Deno.UnsafeFnPointer(
+    proc("glGetColorTable")!,
+    def_glGetColorTable,
+  );
+  fn_glGetColorTableParameterfv = new Deno.UnsafeFnPointer(
+    proc("glGetColorTableParameterfv")!,
+    def_glGetColorTableParameterfv,
+  );
+  fn_glGetColorTableParameteriv = new Deno.UnsafeFnPointer(
+    proc("glGetColorTableParameteriv")!,
+    def_glGetColorTableParameteriv,
+  );
+  fn_glColorSubTable = new Deno.UnsafeFnPointer(
+    proc("glColorSubTable")!,
+    def_glColorSubTable,
+  );
+  fn_glCopyColorSubTable = new Deno.UnsafeFnPointer(
+    proc("glCopyColorSubTable")!,
+    def_glCopyColorSubTable,
+  );
+  fn_glConvolutionFilter1D = new Deno.UnsafeFnPointer(
+    proc("glConvolutionFilter1D")!,
+    def_glConvolutionFilter1D,
+  );
+  fn_glConvolutionFilter2D = new Deno.UnsafeFnPointer(
+    proc("glConvolutionFilter2D")!,
+    def_glConvolutionFilter2D,
+  );
+  fn_glConvolutionParameterf = new Deno.UnsafeFnPointer(
+    proc("glConvolutionParameterf")!,
+    def_glConvolutionParameterf,
+  );
+  fn_glConvolutionParameterfv = new Deno.UnsafeFnPointer(
+    proc("glConvolutionParameterfv")!,
+    def_glConvolutionParameterfv,
+  );
+  fn_glConvolutionParameteri = new Deno.UnsafeFnPointer(
+    proc("glConvolutionParameteri")!,
+    def_glConvolutionParameteri,
+  );
+  fn_glConvolutionParameteriv = new Deno.UnsafeFnPointer(
+    proc("glConvolutionParameteriv")!,
+    def_glConvolutionParameteriv,
+  );
+  fn_glCopyConvolutionFilter1D = new Deno.UnsafeFnPointer(
+    proc("glCopyConvolutionFilter1D")!,
+    def_glCopyConvolutionFilter1D,
+  );
+  fn_glCopyConvolutionFilter2D = new Deno.UnsafeFnPointer(
+    proc("glCopyConvolutionFilter2D")!,
+    def_glCopyConvolutionFilter2D,
+  );
+  fn_glGetConvolutionFilter = new Deno.UnsafeFnPointer(
+    proc("glGetConvolutionFilter")!,
+    def_glGetConvolutionFilter,
+  );
+  fn_glGetConvolutionParameterfv = new Deno.UnsafeFnPointer(
+    proc("glGetConvolutionParameterfv")!,
+    def_glGetConvolutionParameterfv,
+  );
+  fn_glGetConvolutionParameteriv = new Deno.UnsafeFnPointer(
+    proc("glGetConvolutionParameteriv")!,
+    def_glGetConvolutionParameteriv,
+  );
+  fn_glGetSeparableFilter = new Deno.UnsafeFnPointer(
+    proc("glGetSeparableFilter")!,
+    def_glGetSeparableFilter,
+  );
+  fn_glSeparableFilter2D = new Deno.UnsafeFnPointer(
+    proc("glSeparableFilter2D")!,
+    def_glSeparableFilter2D,
+  );
+  fn_glGetHistogram = new Deno.UnsafeFnPointer(
+    proc("glGetHistogram")!,
+    def_glGetHistogram,
+  );
+  fn_glGetHistogramParameterfv = new Deno.UnsafeFnPointer(
+    proc("glGetHistogramParameterfv")!,
+    def_glGetHistogramParameterfv,
+  );
+  fn_glGetHistogramParameteriv = new Deno.UnsafeFnPointer(
+    proc("glGetHistogramParameteriv")!,
+    def_glGetHistogramParameteriv,
+  );
+  fn_glGetMinmax = new Deno.UnsafeFnPointer(
+    proc("glGetMinmax")!,
+    def_glGetMinmax,
+  );
+  fn_glGetMinmaxParameterfv = new Deno.UnsafeFnPointer(
+    proc("glGetMinmaxParameterfv")!,
+    def_glGetMinmaxParameterfv,
+  );
+  fn_glGetMinmaxParameteriv = new Deno.UnsafeFnPointer(
+    proc("glGetMinmaxParameteriv")!,
+    def_glGetMinmaxParameteriv,
+  );
+  fn_glHistogram = new Deno.UnsafeFnPointer(
+    proc("glHistogram")!,
+    def_glHistogram,
+  );
   fn_glMinmax = new Deno.UnsafeFnPointer(proc("glMinmax")!, def_glMinmax);
-  fn_glResetHistogram = new Deno.UnsafeFnPointer(proc("glResetHistogram")!, def_glResetHistogram);
-  fn_glResetMinmax = new Deno.UnsafeFnPointer(proc("glResetMinmax")!, def_glResetMinmax);
+  fn_glResetHistogram = new Deno.UnsafeFnPointer(
+    proc("glResetHistogram")!,
+    def_glResetHistogram,
+  );
+  fn_glResetMinmax = new Deno.UnsafeFnPointer(
+    proc("glResetMinmax")!,
+    def_glResetMinmax,
+  );
 }

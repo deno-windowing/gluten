@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -84,7 +98,9 @@ export const def_glCurrentPaletteMatrixOES = {
   result: "void",
 } as const;
 
-let fn_glCurrentPaletteMatrixOES!: Deno.UnsafeFnPointer<typeof def_glCurrentPaletteMatrixOES>;
+let fn_glCurrentPaletteMatrixOES!: Deno.UnsafeFnPointer<
+  typeof def_glCurrentPaletteMatrixOES
+>;
 
 export function CurrentPaletteMatrixOES(
   matrixpaletteindex: GLuint,
@@ -99,7 +115,9 @@ export const def_glLoadPaletteFromModelViewMatrixOES = {
   result: "void",
 } as const;
 
-let fn_glLoadPaletteFromModelViewMatrixOES!: Deno.UnsafeFnPointer<typeof def_glLoadPaletteFromModelViewMatrixOES>;
+let fn_glLoadPaletteFromModelViewMatrixOES!: Deno.UnsafeFnPointer<
+  typeof def_glLoadPaletteFromModelViewMatrixOES
+>;
 
 export function LoadPaletteFromModelViewMatrixOES(): void {
   fn_glLoadPaletteFromModelViewMatrixOES.call();
@@ -110,7 +128,9 @@ export const def_glMatrixIndexPointerOES = {
   result: "void",
 } as const;
 
-let fn_glMatrixIndexPointerOES!: Deno.UnsafeFnPointer<typeof def_glMatrixIndexPointerOES>;
+let fn_glMatrixIndexPointerOES!: Deno.UnsafeFnPointer<
+  typeof def_glMatrixIndexPointerOES
+>;
 
 export function MatrixIndexPointerOES(
   size: GLint,
@@ -149,8 +169,20 @@ export function WeightPointerOES(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glCurrentPaletteMatrixOES = new Deno.UnsafeFnPointer(proc("glCurrentPaletteMatrixOES")!, def_glCurrentPaletteMatrixOES);
-  fn_glLoadPaletteFromModelViewMatrixOES = new Deno.UnsafeFnPointer(proc("glLoadPaletteFromModelViewMatrixOES")!, def_glLoadPaletteFromModelViewMatrixOES);
-  fn_glMatrixIndexPointerOES = new Deno.UnsafeFnPointer(proc("glMatrixIndexPointerOES")!, def_glMatrixIndexPointerOES);
-  fn_glWeightPointerOES = new Deno.UnsafeFnPointer(proc("glWeightPointerOES")!, def_glWeightPointerOES);
+  fn_glCurrentPaletteMatrixOES = new Deno.UnsafeFnPointer(
+    proc("glCurrentPaletteMatrixOES")!,
+    def_glCurrentPaletteMatrixOES,
+  );
+  fn_glLoadPaletteFromModelViewMatrixOES = new Deno.UnsafeFnPointer(
+    proc("glLoadPaletteFromModelViewMatrixOES")!,
+    def_glLoadPaletteFromModelViewMatrixOES,
+  );
+  fn_glMatrixIndexPointerOES = new Deno.UnsafeFnPointer(
+    proc("glMatrixIndexPointerOES")!,
+    def_glMatrixIndexPointerOES,
+  );
+  fn_glWeightPointerOES = new Deno.UnsafeFnPointer(
+    proc("glWeightPointerOES")!,
+    def_glWeightPointerOES,
+  );
 }

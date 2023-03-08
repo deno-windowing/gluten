@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -69,7 +83,9 @@ export const def_glMultiTexCoord1bOES = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1bOES!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1bOES>;
+let fn_glMultiTexCoord1bOES!: Deno.UnsafeFnPointer<
+  typeof def_glMultiTexCoord1bOES
+>;
 
 export function MultiTexCoord1bOES(
   texture: GLenum,
@@ -86,7 +102,9 @@ export const def_glMultiTexCoord1bvOES = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1bvOES!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1bvOES>;
+let fn_glMultiTexCoord1bvOES!: Deno.UnsafeFnPointer<
+  typeof def_glMultiTexCoord1bvOES
+>;
 
 export function MultiTexCoord1bvOES(
   texture: GLenum,
@@ -103,7 +121,9 @@ export const def_glMultiTexCoord2bOES = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2bOES!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2bOES>;
+let fn_glMultiTexCoord2bOES!: Deno.UnsafeFnPointer<
+  typeof def_glMultiTexCoord2bOES
+>;
 
 export function MultiTexCoord2bOES(
   texture: GLenum,
@@ -122,7 +142,9 @@ export const def_glMultiTexCoord2bvOES = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2bvOES!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2bvOES>;
+let fn_glMultiTexCoord2bvOES!: Deno.UnsafeFnPointer<
+  typeof def_glMultiTexCoord2bvOES
+>;
 
 export function MultiTexCoord2bvOES(
   texture: GLenum,
@@ -139,7 +161,9 @@ export const def_glMultiTexCoord3bOES = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3bOES!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3bOES>;
+let fn_glMultiTexCoord3bOES!: Deno.UnsafeFnPointer<
+  typeof def_glMultiTexCoord3bOES
+>;
 
 export function MultiTexCoord3bOES(
   texture: GLenum,
@@ -160,7 +184,9 @@ export const def_glMultiTexCoord3bvOES = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3bvOES!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3bvOES>;
+let fn_glMultiTexCoord3bvOES!: Deno.UnsafeFnPointer<
+  typeof def_glMultiTexCoord3bvOES
+>;
 
 export function MultiTexCoord3bvOES(
   texture: GLenum,
@@ -177,7 +203,9 @@ export const def_glMultiTexCoord4bOES = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4bOES!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4bOES>;
+let fn_glMultiTexCoord4bOES!: Deno.UnsafeFnPointer<
+  typeof def_glMultiTexCoord4bOES
+>;
 
 export function MultiTexCoord4bOES(
   texture: GLenum,
@@ -200,7 +228,9 @@ export const def_glMultiTexCoord4bvOES = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4bvOES!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4bvOES>;
+let fn_glMultiTexCoord4bvOES!: Deno.UnsafeFnPointer<
+  typeof def_glMultiTexCoord4bvOES
+>;
 
 export function MultiTexCoord4bvOES(
   texture: GLenum,
@@ -448,26 +478,92 @@ export function Vertex4bvOES(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glMultiTexCoord1bOES = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1bOES")!, def_glMultiTexCoord1bOES);
-  fn_glMultiTexCoord1bvOES = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1bvOES")!, def_glMultiTexCoord1bvOES);
-  fn_glMultiTexCoord2bOES = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2bOES")!, def_glMultiTexCoord2bOES);
-  fn_glMultiTexCoord2bvOES = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2bvOES")!, def_glMultiTexCoord2bvOES);
-  fn_glMultiTexCoord3bOES = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3bOES")!, def_glMultiTexCoord3bOES);
-  fn_glMultiTexCoord3bvOES = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3bvOES")!, def_glMultiTexCoord3bvOES);
-  fn_glMultiTexCoord4bOES = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4bOES")!, def_glMultiTexCoord4bOES);
-  fn_glMultiTexCoord4bvOES = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4bvOES")!, def_glMultiTexCoord4bvOES);
-  fn_glTexCoord1bOES = new Deno.UnsafeFnPointer(proc("glTexCoord1bOES")!, def_glTexCoord1bOES);
-  fn_glTexCoord1bvOES = new Deno.UnsafeFnPointer(proc("glTexCoord1bvOES")!, def_glTexCoord1bvOES);
-  fn_glTexCoord2bOES = new Deno.UnsafeFnPointer(proc("glTexCoord2bOES")!, def_glTexCoord2bOES);
-  fn_glTexCoord2bvOES = new Deno.UnsafeFnPointer(proc("glTexCoord2bvOES")!, def_glTexCoord2bvOES);
-  fn_glTexCoord3bOES = new Deno.UnsafeFnPointer(proc("glTexCoord3bOES")!, def_glTexCoord3bOES);
-  fn_glTexCoord3bvOES = new Deno.UnsafeFnPointer(proc("glTexCoord3bvOES")!, def_glTexCoord3bvOES);
-  fn_glTexCoord4bOES = new Deno.UnsafeFnPointer(proc("glTexCoord4bOES")!, def_glTexCoord4bOES);
-  fn_glTexCoord4bvOES = new Deno.UnsafeFnPointer(proc("glTexCoord4bvOES")!, def_glTexCoord4bvOES);
-  fn_glVertex2bOES = new Deno.UnsafeFnPointer(proc("glVertex2bOES")!, def_glVertex2bOES);
-  fn_glVertex2bvOES = new Deno.UnsafeFnPointer(proc("glVertex2bvOES")!, def_glVertex2bvOES);
-  fn_glVertex3bOES = new Deno.UnsafeFnPointer(proc("glVertex3bOES")!, def_glVertex3bOES);
-  fn_glVertex3bvOES = new Deno.UnsafeFnPointer(proc("glVertex3bvOES")!, def_glVertex3bvOES);
-  fn_glVertex4bOES = new Deno.UnsafeFnPointer(proc("glVertex4bOES")!, def_glVertex4bOES);
-  fn_glVertex4bvOES = new Deno.UnsafeFnPointer(proc("glVertex4bvOES")!, def_glVertex4bvOES);
+  fn_glMultiTexCoord1bOES = new Deno.UnsafeFnPointer(
+    proc("glMultiTexCoord1bOES")!,
+    def_glMultiTexCoord1bOES,
+  );
+  fn_glMultiTexCoord1bvOES = new Deno.UnsafeFnPointer(
+    proc("glMultiTexCoord1bvOES")!,
+    def_glMultiTexCoord1bvOES,
+  );
+  fn_glMultiTexCoord2bOES = new Deno.UnsafeFnPointer(
+    proc("glMultiTexCoord2bOES")!,
+    def_glMultiTexCoord2bOES,
+  );
+  fn_glMultiTexCoord2bvOES = new Deno.UnsafeFnPointer(
+    proc("glMultiTexCoord2bvOES")!,
+    def_glMultiTexCoord2bvOES,
+  );
+  fn_glMultiTexCoord3bOES = new Deno.UnsafeFnPointer(
+    proc("glMultiTexCoord3bOES")!,
+    def_glMultiTexCoord3bOES,
+  );
+  fn_glMultiTexCoord3bvOES = new Deno.UnsafeFnPointer(
+    proc("glMultiTexCoord3bvOES")!,
+    def_glMultiTexCoord3bvOES,
+  );
+  fn_glMultiTexCoord4bOES = new Deno.UnsafeFnPointer(
+    proc("glMultiTexCoord4bOES")!,
+    def_glMultiTexCoord4bOES,
+  );
+  fn_glMultiTexCoord4bvOES = new Deno.UnsafeFnPointer(
+    proc("glMultiTexCoord4bvOES")!,
+    def_glMultiTexCoord4bvOES,
+  );
+  fn_glTexCoord1bOES = new Deno.UnsafeFnPointer(
+    proc("glTexCoord1bOES")!,
+    def_glTexCoord1bOES,
+  );
+  fn_glTexCoord1bvOES = new Deno.UnsafeFnPointer(
+    proc("glTexCoord1bvOES")!,
+    def_glTexCoord1bvOES,
+  );
+  fn_glTexCoord2bOES = new Deno.UnsafeFnPointer(
+    proc("glTexCoord2bOES")!,
+    def_glTexCoord2bOES,
+  );
+  fn_glTexCoord2bvOES = new Deno.UnsafeFnPointer(
+    proc("glTexCoord2bvOES")!,
+    def_glTexCoord2bvOES,
+  );
+  fn_glTexCoord3bOES = new Deno.UnsafeFnPointer(
+    proc("glTexCoord3bOES")!,
+    def_glTexCoord3bOES,
+  );
+  fn_glTexCoord3bvOES = new Deno.UnsafeFnPointer(
+    proc("glTexCoord3bvOES")!,
+    def_glTexCoord3bvOES,
+  );
+  fn_glTexCoord4bOES = new Deno.UnsafeFnPointer(
+    proc("glTexCoord4bOES")!,
+    def_glTexCoord4bOES,
+  );
+  fn_glTexCoord4bvOES = new Deno.UnsafeFnPointer(
+    proc("glTexCoord4bvOES")!,
+    def_glTexCoord4bvOES,
+  );
+  fn_glVertex2bOES = new Deno.UnsafeFnPointer(
+    proc("glVertex2bOES")!,
+    def_glVertex2bOES,
+  );
+  fn_glVertex2bvOES = new Deno.UnsafeFnPointer(
+    proc("glVertex2bvOES")!,
+    def_glVertex2bvOES,
+  );
+  fn_glVertex3bOES = new Deno.UnsafeFnPointer(
+    proc("glVertex3bOES")!,
+    def_glVertex3bOES,
+  );
+  fn_glVertex3bvOES = new Deno.UnsafeFnPointer(
+    proc("glVertex3bvOES")!,
+    def_glVertex3bvOES,
+  );
+  fn_glVertex4bOES = new Deno.UnsafeFnPointer(
+    proc("glVertex4bOES")!,
+    def_glVertex4bOES,
+  );
+  fn_glVertex4bvOES = new Deno.UnsafeFnPointer(
+    proc("glVertex4bvOES")!,
+    def_glVertex4bvOES,
+  );
 }

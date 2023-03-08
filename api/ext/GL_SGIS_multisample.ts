@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -101,7 +115,9 @@ export const def_glSamplePatternSGIS = {
   result: "void",
 } as const;
 
-let fn_glSamplePatternSGIS!: Deno.UnsafeFnPointer<typeof def_glSamplePatternSGIS>;
+let fn_glSamplePatternSGIS!: Deno.UnsafeFnPointer<
+  typeof def_glSamplePatternSGIS
+>;
 
 export function SamplePatternSGIS(
   pattern: GLenum,
@@ -113,6 +129,12 @@ export function SamplePatternSGIS(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glSampleMaskSGIS = new Deno.UnsafeFnPointer(proc("glSampleMaskSGIS")!, def_glSampleMaskSGIS);
-  fn_glSamplePatternSGIS = new Deno.UnsafeFnPointer(proc("glSamplePatternSGIS")!, def_glSamplePatternSGIS);
+  fn_glSampleMaskSGIS = new Deno.UnsafeFnPointer(
+    proc("glSampleMaskSGIS")!,
+    def_glSampleMaskSGIS,
+  );
+  fn_glSamplePatternSGIS = new Deno.UnsafeFnPointer(
+    proc("glSamplePatternSGIS")!,
+    def_glSamplePatternSGIS,
+  );
 }

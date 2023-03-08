@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -86,7 +100,9 @@ export const def_glGetGraphicsResetStatus = {
   result: "u32",
 } as const;
 
-let fn_glGetGraphicsResetStatus!: Deno.UnsafeFnPointer<typeof def_glGetGraphicsResetStatus>;
+let fn_glGetGraphicsResetStatus!: Deno.UnsafeFnPointer<
+  typeof def_glGetGraphicsResetStatus
+>;
 
 export function GetGraphicsResetStatus(): GLenum {
   return fn_glGetGraphicsResetStatus.call();
@@ -189,7 +205,9 @@ export const def_glGetGraphicsResetStatusKHR = {
   result: "u32",
 } as const;
 
-let fn_glGetGraphicsResetStatusKHR!: Deno.UnsafeFnPointer<typeof def_glGetGraphicsResetStatusKHR>;
+let fn_glGetGraphicsResetStatusKHR!: Deno.UnsafeFnPointer<
+  typeof def_glGetGraphicsResetStatusKHR
+>;
 
 export function GetGraphicsResetStatusKHR(): GLenum {
   return fn_glGetGraphicsResetStatusKHR.call();
@@ -271,7 +289,9 @@ export const def_glGetnUniformuivKHR = {
   result: "void",
 } as const;
 
-let fn_glGetnUniformuivKHR!: Deno.UnsafeFnPointer<typeof def_glGetnUniformuivKHR>;
+let fn_glGetnUniformuivKHR!: Deno.UnsafeFnPointer<
+  typeof def_glGetnUniformuivKHR
+>;
 
 export function GetnUniformuivKHR(
   program: GLuint,
@@ -289,14 +309,44 @@ export function GetnUniformuivKHR(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetGraphicsResetStatus = new Deno.UnsafeFnPointer(proc("glGetGraphicsResetStatus")!, def_glGetGraphicsResetStatus);
-  fn_glReadnPixels = new Deno.UnsafeFnPointer(proc("glReadnPixels")!, def_glReadnPixels);
-  fn_glGetnUniformfv = new Deno.UnsafeFnPointer(proc("glGetnUniformfv")!, def_glGetnUniformfv);
-  fn_glGetnUniformiv = new Deno.UnsafeFnPointer(proc("glGetnUniformiv")!, def_glGetnUniformiv);
-  fn_glGetnUniformuiv = new Deno.UnsafeFnPointer(proc("glGetnUniformuiv")!, def_glGetnUniformuiv);
-  fn_glGetGraphicsResetStatusKHR = new Deno.UnsafeFnPointer(proc("glGetGraphicsResetStatusKHR")!, def_glGetGraphicsResetStatusKHR);
-  fn_glReadnPixelsKHR = new Deno.UnsafeFnPointer(proc("glReadnPixelsKHR")!, def_glReadnPixelsKHR);
-  fn_glGetnUniformfvKHR = new Deno.UnsafeFnPointer(proc("glGetnUniformfvKHR")!, def_glGetnUniformfvKHR);
-  fn_glGetnUniformivKHR = new Deno.UnsafeFnPointer(proc("glGetnUniformivKHR")!, def_glGetnUniformivKHR);
-  fn_glGetnUniformuivKHR = new Deno.UnsafeFnPointer(proc("glGetnUniformuivKHR")!, def_glGetnUniformuivKHR);
+  fn_glGetGraphicsResetStatus = new Deno.UnsafeFnPointer(
+    proc("glGetGraphicsResetStatus")!,
+    def_glGetGraphicsResetStatus,
+  );
+  fn_glReadnPixels = new Deno.UnsafeFnPointer(
+    proc("glReadnPixels")!,
+    def_glReadnPixels,
+  );
+  fn_glGetnUniformfv = new Deno.UnsafeFnPointer(
+    proc("glGetnUniformfv")!,
+    def_glGetnUniformfv,
+  );
+  fn_glGetnUniformiv = new Deno.UnsafeFnPointer(
+    proc("glGetnUniformiv")!,
+    def_glGetnUniformiv,
+  );
+  fn_glGetnUniformuiv = new Deno.UnsafeFnPointer(
+    proc("glGetnUniformuiv")!,
+    def_glGetnUniformuiv,
+  );
+  fn_glGetGraphicsResetStatusKHR = new Deno.UnsafeFnPointer(
+    proc("glGetGraphicsResetStatusKHR")!,
+    def_glGetGraphicsResetStatusKHR,
+  );
+  fn_glReadnPixelsKHR = new Deno.UnsafeFnPointer(
+    proc("glReadnPixelsKHR")!,
+    def_glReadnPixelsKHR,
+  );
+  fn_glGetnUniformfvKHR = new Deno.UnsafeFnPointer(
+    proc("glGetnUniformfvKHR")!,
+    def_glGetnUniformfvKHR,
+  );
+  fn_glGetnUniformivKHR = new Deno.UnsafeFnPointer(
+    proc("glGetnUniformivKHR")!,
+    def_glGetnUniformivKHR,
+  );
+  fn_glGetnUniformuivKHR = new Deno.UnsafeFnPointer(
+    proc("glGetnUniformuivKHR")!,
+    def_glGetnUniformuivKHR,
+  );
 }

@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -66,7 +80,9 @@ export const def_glColorMaskIndexedEXT = {
   result: "void",
 } as const;
 
-let fn_glColorMaskIndexedEXT!: Deno.UnsafeFnPointer<typeof def_glColorMaskIndexedEXT>;
+let fn_glColorMaskIndexedEXT!: Deno.UnsafeFnPointer<
+  typeof def_glColorMaskIndexedEXT
+>;
 
 export function ColorMaskIndexedEXT(
   index: GLuint,
@@ -89,7 +105,9 @@ export const def_glGetBooleanIndexedvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetBooleanIndexedvEXT!: Deno.UnsafeFnPointer<typeof def_glGetBooleanIndexedvEXT>;
+let fn_glGetBooleanIndexedvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetBooleanIndexedvEXT
+>;
 
 export function GetBooleanIndexedvEXT(
   target: GLenum,
@@ -108,7 +126,9 @@ export const def_glGetIntegerIndexedvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetIntegerIndexedvEXT!: Deno.UnsafeFnPointer<typeof def_glGetIntegerIndexedvEXT>;
+let fn_glGetIntegerIndexedvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetIntegerIndexedvEXT
+>;
 
 export function GetIntegerIndexedvEXT(
   target: GLenum,
@@ -144,7 +164,9 @@ export const def_glDisableIndexedEXT = {
   result: "void",
 } as const;
 
-let fn_glDisableIndexedEXT!: Deno.UnsafeFnPointer<typeof def_glDisableIndexedEXT>;
+let fn_glDisableIndexedEXT!: Deno.UnsafeFnPointer<
+  typeof def_glDisableIndexedEXT
+>;
 
 export function DisableIndexedEXT(
   target: GLenum,
@@ -161,7 +183,9 @@ export const def_glIsEnabledIndexedEXT = {
   result: "u8",
 } as const;
 
-let fn_glIsEnabledIndexedEXT!: Deno.UnsafeFnPointer<typeof def_glIsEnabledIndexedEXT>;
+let fn_glIsEnabledIndexedEXT!: Deno.UnsafeFnPointer<
+  typeof def_glIsEnabledIndexedEXT
+>;
 
 export function IsEnabledIndexedEXT(
   target: GLenum,
@@ -175,10 +199,28 @@ export function IsEnabledIndexedEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glColorMaskIndexedEXT = new Deno.UnsafeFnPointer(proc("glColorMaskIndexedEXT")!, def_glColorMaskIndexedEXT);
-  fn_glGetBooleanIndexedvEXT = new Deno.UnsafeFnPointer(proc("glGetBooleanIndexedvEXT")!, def_glGetBooleanIndexedvEXT);
-  fn_glGetIntegerIndexedvEXT = new Deno.UnsafeFnPointer(proc("glGetIntegerIndexedvEXT")!, def_glGetIntegerIndexedvEXT);
-  fn_glEnableIndexedEXT = new Deno.UnsafeFnPointer(proc("glEnableIndexedEXT")!, def_glEnableIndexedEXT);
-  fn_glDisableIndexedEXT = new Deno.UnsafeFnPointer(proc("glDisableIndexedEXT")!, def_glDisableIndexedEXT);
-  fn_glIsEnabledIndexedEXT = new Deno.UnsafeFnPointer(proc("glIsEnabledIndexedEXT")!, def_glIsEnabledIndexedEXT);
+  fn_glColorMaskIndexedEXT = new Deno.UnsafeFnPointer(
+    proc("glColorMaskIndexedEXT")!,
+    def_glColorMaskIndexedEXT,
+  );
+  fn_glGetBooleanIndexedvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetBooleanIndexedvEXT")!,
+    def_glGetBooleanIndexedvEXT,
+  );
+  fn_glGetIntegerIndexedvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetIntegerIndexedvEXT")!,
+    def_glGetIntegerIndexedvEXT,
+  );
+  fn_glEnableIndexedEXT = new Deno.UnsafeFnPointer(
+    proc("glEnableIndexedEXT")!,
+    def_glEnableIndexedEXT,
+  );
+  fn_glDisableIndexedEXT = new Deno.UnsafeFnPointer(
+    proc("glDisableIndexedEXT")!,
+    def_glDisableIndexedEXT,
+  );
+  fn_glIsEnabledIndexedEXT = new Deno.UnsafeFnPointer(
+    proc("glIsEnabledIndexedEXT")!,
+    def_glIsEnabledIndexedEXT,
+  );
 }

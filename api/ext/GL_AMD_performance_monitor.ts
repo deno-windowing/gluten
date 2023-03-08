@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -75,7 +89,9 @@ export const def_glGetPerfMonitorGroupsAMD = {
   result: "void",
 } as const;
 
-let fn_glGetPerfMonitorGroupsAMD!: Deno.UnsafeFnPointer<typeof def_glGetPerfMonitorGroupsAMD>;
+let fn_glGetPerfMonitorGroupsAMD!: Deno.UnsafeFnPointer<
+  typeof def_glGetPerfMonitorGroupsAMD
+>;
 
 export function GetPerfMonitorGroupsAMD(
   numGroups: Buffer,
@@ -94,7 +110,9 @@ export const def_glGetPerfMonitorCountersAMD = {
   result: "void",
 } as const;
 
-let fn_glGetPerfMonitorCountersAMD!: Deno.UnsafeFnPointer<typeof def_glGetPerfMonitorCountersAMD>;
+let fn_glGetPerfMonitorCountersAMD!: Deno.UnsafeFnPointer<
+  typeof def_glGetPerfMonitorCountersAMD
+>;
 
 export function GetPerfMonitorCountersAMD(
   group: GLuint,
@@ -117,7 +135,9 @@ export const def_glGetPerfMonitorGroupStringAMD = {
   result: "void",
 } as const;
 
-let fn_glGetPerfMonitorGroupStringAMD!: Deno.UnsafeFnPointer<typeof def_glGetPerfMonitorGroupStringAMD>;
+let fn_glGetPerfMonitorGroupStringAMD!: Deno.UnsafeFnPointer<
+  typeof def_glGetPerfMonitorGroupStringAMD
+>;
 
 export function GetPerfMonitorGroupStringAMD(
   group: GLuint,
@@ -138,7 +158,9 @@ export const def_glGetPerfMonitorCounterStringAMD = {
   result: "void",
 } as const;
 
-let fn_glGetPerfMonitorCounterStringAMD!: Deno.UnsafeFnPointer<typeof def_glGetPerfMonitorCounterStringAMD>;
+let fn_glGetPerfMonitorCounterStringAMD!: Deno.UnsafeFnPointer<
+  typeof def_glGetPerfMonitorCounterStringAMD
+>;
 
 export function GetPerfMonitorCounterStringAMD(
   group: GLuint,
@@ -161,7 +183,9 @@ export const def_glGetPerfMonitorCounterInfoAMD = {
   result: "void",
 } as const;
 
-let fn_glGetPerfMonitorCounterInfoAMD!: Deno.UnsafeFnPointer<typeof def_glGetPerfMonitorCounterInfoAMD>;
+let fn_glGetPerfMonitorCounterInfoAMD!: Deno.UnsafeFnPointer<
+  typeof def_glGetPerfMonitorCounterInfoAMD
+>;
 
 export function GetPerfMonitorCounterInfoAMD(
   group: GLuint,
@@ -182,7 +206,9 @@ export const def_glGenPerfMonitorsAMD = {
   result: "void",
 } as const;
 
-let fn_glGenPerfMonitorsAMD!: Deno.UnsafeFnPointer<typeof def_glGenPerfMonitorsAMD>;
+let fn_glGenPerfMonitorsAMD!: Deno.UnsafeFnPointer<
+  typeof def_glGenPerfMonitorsAMD
+>;
 
 export function GenPerfMonitorsAMD(
   n: GLsizei,
@@ -199,7 +225,9 @@ export const def_glDeletePerfMonitorsAMD = {
   result: "void",
 } as const;
 
-let fn_glDeletePerfMonitorsAMD!: Deno.UnsafeFnPointer<typeof def_glDeletePerfMonitorsAMD>;
+let fn_glDeletePerfMonitorsAMD!: Deno.UnsafeFnPointer<
+  typeof def_glDeletePerfMonitorsAMD
+>;
 
 export function DeletePerfMonitorsAMD(
   n: GLsizei,
@@ -216,7 +244,9 @@ export const def_glSelectPerfMonitorCountersAMD = {
   result: "void",
 } as const;
 
-let fn_glSelectPerfMonitorCountersAMD!: Deno.UnsafeFnPointer<typeof def_glSelectPerfMonitorCountersAMD>;
+let fn_glSelectPerfMonitorCountersAMD!: Deno.UnsafeFnPointer<
+  typeof def_glSelectPerfMonitorCountersAMD
+>;
 
 export function SelectPerfMonitorCountersAMD(
   monitor: GLuint,
@@ -239,7 +269,9 @@ export const def_glBeginPerfMonitorAMD = {
   result: "void",
 } as const;
 
-let fn_glBeginPerfMonitorAMD!: Deno.UnsafeFnPointer<typeof def_glBeginPerfMonitorAMD>;
+let fn_glBeginPerfMonitorAMD!: Deno.UnsafeFnPointer<
+  typeof def_glBeginPerfMonitorAMD
+>;
 
 export function BeginPerfMonitorAMD(
   monitor: GLuint,
@@ -254,7 +286,9 @@ export const def_glEndPerfMonitorAMD = {
   result: "void",
 } as const;
 
-let fn_glEndPerfMonitorAMD!: Deno.UnsafeFnPointer<typeof def_glEndPerfMonitorAMD>;
+let fn_glEndPerfMonitorAMD!: Deno.UnsafeFnPointer<
+  typeof def_glEndPerfMonitorAMD
+>;
 
 export function EndPerfMonitorAMD(
   monitor: GLuint,
@@ -269,7 +303,9 @@ export const def_glGetPerfMonitorCounterDataAMD = {
   result: "void",
 } as const;
 
-let fn_glGetPerfMonitorCounterDataAMD!: Deno.UnsafeFnPointer<typeof def_glGetPerfMonitorCounterDataAMD>;
+let fn_glGetPerfMonitorCounterDataAMD!: Deno.UnsafeFnPointer<
+  typeof def_glGetPerfMonitorCounterDataAMD
+>;
 
 export function GetPerfMonitorCounterDataAMD(
   monitor: GLuint,
@@ -289,15 +325,48 @@ export function GetPerfMonitorCounterDataAMD(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetPerfMonitorGroupsAMD = new Deno.UnsafeFnPointer(proc("glGetPerfMonitorGroupsAMD")!, def_glGetPerfMonitorGroupsAMD);
-  fn_glGetPerfMonitorCountersAMD = new Deno.UnsafeFnPointer(proc("glGetPerfMonitorCountersAMD")!, def_glGetPerfMonitorCountersAMD);
-  fn_glGetPerfMonitorGroupStringAMD = new Deno.UnsafeFnPointer(proc("glGetPerfMonitorGroupStringAMD")!, def_glGetPerfMonitorGroupStringAMD);
-  fn_glGetPerfMonitorCounterStringAMD = new Deno.UnsafeFnPointer(proc("glGetPerfMonitorCounterStringAMD")!, def_glGetPerfMonitorCounterStringAMD);
-  fn_glGetPerfMonitorCounterInfoAMD = new Deno.UnsafeFnPointer(proc("glGetPerfMonitorCounterInfoAMD")!, def_glGetPerfMonitorCounterInfoAMD);
-  fn_glGenPerfMonitorsAMD = new Deno.UnsafeFnPointer(proc("glGenPerfMonitorsAMD")!, def_glGenPerfMonitorsAMD);
-  fn_glDeletePerfMonitorsAMD = new Deno.UnsafeFnPointer(proc("glDeletePerfMonitorsAMD")!, def_glDeletePerfMonitorsAMD);
-  fn_glSelectPerfMonitorCountersAMD = new Deno.UnsafeFnPointer(proc("glSelectPerfMonitorCountersAMD")!, def_glSelectPerfMonitorCountersAMD);
-  fn_glBeginPerfMonitorAMD = new Deno.UnsafeFnPointer(proc("glBeginPerfMonitorAMD")!, def_glBeginPerfMonitorAMD);
-  fn_glEndPerfMonitorAMD = new Deno.UnsafeFnPointer(proc("glEndPerfMonitorAMD")!, def_glEndPerfMonitorAMD);
-  fn_glGetPerfMonitorCounterDataAMD = new Deno.UnsafeFnPointer(proc("glGetPerfMonitorCounterDataAMD")!, def_glGetPerfMonitorCounterDataAMD);
+  fn_glGetPerfMonitorGroupsAMD = new Deno.UnsafeFnPointer(
+    proc("glGetPerfMonitorGroupsAMD")!,
+    def_glGetPerfMonitorGroupsAMD,
+  );
+  fn_glGetPerfMonitorCountersAMD = new Deno.UnsafeFnPointer(
+    proc("glGetPerfMonitorCountersAMD")!,
+    def_glGetPerfMonitorCountersAMD,
+  );
+  fn_glGetPerfMonitorGroupStringAMD = new Deno.UnsafeFnPointer(
+    proc("glGetPerfMonitorGroupStringAMD")!,
+    def_glGetPerfMonitorGroupStringAMD,
+  );
+  fn_glGetPerfMonitorCounterStringAMD = new Deno.UnsafeFnPointer(
+    proc("glGetPerfMonitorCounterStringAMD")!,
+    def_glGetPerfMonitorCounterStringAMD,
+  );
+  fn_glGetPerfMonitorCounterInfoAMD = new Deno.UnsafeFnPointer(
+    proc("glGetPerfMonitorCounterInfoAMD")!,
+    def_glGetPerfMonitorCounterInfoAMD,
+  );
+  fn_glGenPerfMonitorsAMD = new Deno.UnsafeFnPointer(
+    proc("glGenPerfMonitorsAMD")!,
+    def_glGenPerfMonitorsAMD,
+  );
+  fn_glDeletePerfMonitorsAMD = new Deno.UnsafeFnPointer(
+    proc("glDeletePerfMonitorsAMD")!,
+    def_glDeletePerfMonitorsAMD,
+  );
+  fn_glSelectPerfMonitorCountersAMD = new Deno.UnsafeFnPointer(
+    proc("glSelectPerfMonitorCountersAMD")!,
+    def_glSelectPerfMonitorCountersAMD,
+  );
+  fn_glBeginPerfMonitorAMD = new Deno.UnsafeFnPointer(
+    proc("glBeginPerfMonitorAMD")!,
+    def_glBeginPerfMonitorAMD,
+  );
+  fn_glEndPerfMonitorAMD = new Deno.UnsafeFnPointer(
+    proc("glEndPerfMonitorAMD")!,
+    def_glEndPerfMonitorAMD,
+  );
+  fn_glGetPerfMonitorCounterDataAMD = new Deno.UnsafeFnPointer(
+    proc("glGetPerfMonitorCounterDataAMD")!,
+    def_glGetPerfMonitorCounterDataAMD,
+  );
 }

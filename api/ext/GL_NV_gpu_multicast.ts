@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -88,7 +102,9 @@ export const def_glMulticastBufferSubDataNV = {
   result: "void",
 } as const;
 
-let fn_glMulticastBufferSubDataNV!: Deno.UnsafeFnPointer<typeof def_glMulticastBufferSubDataNV>;
+let fn_glMulticastBufferSubDataNV!: Deno.UnsafeFnPointer<
+  typeof def_glMulticastBufferSubDataNV
+>;
 
 export function MulticastBufferSubDataNV(
   gpuMask: GLbitfield,
@@ -111,7 +127,9 @@ export const def_glMulticastCopyBufferSubDataNV = {
   result: "void",
 } as const;
 
-let fn_glMulticastCopyBufferSubDataNV!: Deno.UnsafeFnPointer<typeof def_glMulticastCopyBufferSubDataNV>;
+let fn_glMulticastCopyBufferSubDataNV!: Deno.UnsafeFnPointer<
+  typeof def_glMulticastCopyBufferSubDataNV
+>;
 
 export function MulticastCopyBufferSubDataNV(
   readGpu: GLuint,
@@ -134,11 +152,31 @@ export function MulticastCopyBufferSubDataNV(
 }
 
 export const def_glMulticastCopyImageSubDataNV = {
-  parameters: ["u32", "u32", "u32", "u32", "i32", "i32", "i32", "i32", "u32", "u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32"],
+  parameters: [
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+  ],
   result: "void",
 } as const;
 
-let fn_glMulticastCopyImageSubDataNV!: Deno.UnsafeFnPointer<typeof def_glMulticastCopyImageSubDataNV>;
+let fn_glMulticastCopyImageSubDataNV!: Deno.UnsafeFnPointer<
+  typeof def_glMulticastCopyImageSubDataNV
+>;
 
 export function MulticastCopyImageSubDataNV(
   srcGpu: GLuint,
@@ -181,11 +219,26 @@ export function MulticastCopyImageSubDataNV(
 }
 
 export const def_glMulticastBlitFramebufferNV = {
-  parameters: ["u32", "u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "u32", "u32"],
+  parameters: [
+    "u32",
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+  ],
   result: "void",
 } as const;
 
-let fn_glMulticastBlitFramebufferNV!: Deno.UnsafeFnPointer<typeof def_glMulticastBlitFramebufferNV>;
+let fn_glMulticastBlitFramebufferNV!: Deno.UnsafeFnPointer<
+  typeof def_glMulticastBlitFramebufferNV
+>;
 
 export function MulticastBlitFramebufferNV(
   srcGpu: GLuint,
@@ -222,7 +275,9 @@ export const def_glMulticastFramebufferSampleLocationsfvNV = {
   result: "void",
 } as const;
 
-let fn_glMulticastFramebufferSampleLocationsfvNV!: Deno.UnsafeFnPointer<typeof def_glMulticastFramebufferSampleLocationsfvNV>;
+let fn_glMulticastFramebufferSampleLocationsfvNV!: Deno.UnsafeFnPointer<
+  typeof def_glMulticastFramebufferSampleLocationsfvNV
+>;
 
 export function MulticastFramebufferSampleLocationsfvNV(
   gpu: GLuint,
@@ -245,7 +300,9 @@ export const def_glMulticastBarrierNV = {
   result: "void",
 } as const;
 
-let fn_glMulticastBarrierNV!: Deno.UnsafeFnPointer<typeof def_glMulticastBarrierNV>;
+let fn_glMulticastBarrierNV!: Deno.UnsafeFnPointer<
+  typeof def_glMulticastBarrierNV
+>;
 
 export function MulticastBarrierNV(): void {
   fn_glMulticastBarrierNV.call();
@@ -256,7 +313,9 @@ export const def_glMulticastWaitSyncNV = {
   result: "void",
 } as const;
 
-let fn_glMulticastWaitSyncNV!: Deno.UnsafeFnPointer<typeof def_glMulticastWaitSyncNV>;
+let fn_glMulticastWaitSyncNV!: Deno.UnsafeFnPointer<
+  typeof def_glMulticastWaitSyncNV
+>;
 
 export function MulticastWaitSyncNV(
   signalGpu: GLuint,
@@ -273,7 +332,9 @@ export const def_glMulticastGetQueryObjectivNV = {
   result: "void",
 } as const;
 
-let fn_glMulticastGetQueryObjectivNV!: Deno.UnsafeFnPointer<typeof def_glMulticastGetQueryObjectivNV>;
+let fn_glMulticastGetQueryObjectivNV!: Deno.UnsafeFnPointer<
+  typeof def_glMulticastGetQueryObjectivNV
+>;
 
 export function MulticastGetQueryObjectivNV(
   gpu: GLuint,
@@ -294,7 +355,9 @@ export const def_glMulticastGetQueryObjectuivNV = {
   result: "void",
 } as const;
 
-let fn_glMulticastGetQueryObjectuivNV!: Deno.UnsafeFnPointer<typeof def_glMulticastGetQueryObjectuivNV>;
+let fn_glMulticastGetQueryObjectuivNV!: Deno.UnsafeFnPointer<
+  typeof def_glMulticastGetQueryObjectuivNV
+>;
 
 export function MulticastGetQueryObjectuivNV(
   gpu: GLuint,
@@ -315,7 +378,9 @@ export const def_glMulticastGetQueryObjecti64vNV = {
   result: "void",
 } as const;
 
-let fn_glMulticastGetQueryObjecti64vNV!: Deno.UnsafeFnPointer<typeof def_glMulticastGetQueryObjecti64vNV>;
+let fn_glMulticastGetQueryObjecti64vNV!: Deno.UnsafeFnPointer<
+  typeof def_glMulticastGetQueryObjecti64vNV
+>;
 
 export function MulticastGetQueryObjecti64vNV(
   gpu: GLuint,
@@ -336,7 +401,9 @@ export const def_glMulticastGetQueryObjectui64vNV = {
   result: "void",
 } as const;
 
-let fn_glMulticastGetQueryObjectui64vNV!: Deno.UnsafeFnPointer<typeof def_glMulticastGetQueryObjectui64vNV>;
+let fn_glMulticastGetQueryObjectui64vNV!: Deno.UnsafeFnPointer<
+  typeof def_glMulticastGetQueryObjectui64vNV
+>;
 
 export function MulticastGetQueryObjectui64vNV(
   gpu: GLuint,
@@ -354,16 +421,52 @@ export function MulticastGetQueryObjectui64vNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glRenderGpuMaskNV = new Deno.UnsafeFnPointer(proc("glRenderGpuMaskNV")!, def_glRenderGpuMaskNV);
-  fn_glMulticastBufferSubDataNV = new Deno.UnsafeFnPointer(proc("glMulticastBufferSubDataNV")!, def_glMulticastBufferSubDataNV);
-  fn_glMulticastCopyBufferSubDataNV = new Deno.UnsafeFnPointer(proc("glMulticastCopyBufferSubDataNV")!, def_glMulticastCopyBufferSubDataNV);
-  fn_glMulticastCopyImageSubDataNV = new Deno.UnsafeFnPointer(proc("glMulticastCopyImageSubDataNV")!, def_glMulticastCopyImageSubDataNV);
-  fn_glMulticastBlitFramebufferNV = new Deno.UnsafeFnPointer(proc("glMulticastBlitFramebufferNV")!, def_glMulticastBlitFramebufferNV);
-  fn_glMulticastFramebufferSampleLocationsfvNV = new Deno.UnsafeFnPointer(proc("glMulticastFramebufferSampleLocationsfvNV")!, def_glMulticastFramebufferSampleLocationsfvNV);
-  fn_glMulticastBarrierNV = new Deno.UnsafeFnPointer(proc("glMulticastBarrierNV")!, def_glMulticastBarrierNV);
-  fn_glMulticastWaitSyncNV = new Deno.UnsafeFnPointer(proc("glMulticastWaitSyncNV")!, def_glMulticastWaitSyncNV);
-  fn_glMulticastGetQueryObjectivNV = new Deno.UnsafeFnPointer(proc("glMulticastGetQueryObjectivNV")!, def_glMulticastGetQueryObjectivNV);
-  fn_glMulticastGetQueryObjectuivNV = new Deno.UnsafeFnPointer(proc("glMulticastGetQueryObjectuivNV")!, def_glMulticastGetQueryObjectuivNV);
-  fn_glMulticastGetQueryObjecti64vNV = new Deno.UnsafeFnPointer(proc("glMulticastGetQueryObjecti64vNV")!, def_glMulticastGetQueryObjecti64vNV);
-  fn_glMulticastGetQueryObjectui64vNV = new Deno.UnsafeFnPointer(proc("glMulticastGetQueryObjectui64vNV")!, def_glMulticastGetQueryObjectui64vNV);
+  fn_glRenderGpuMaskNV = new Deno.UnsafeFnPointer(
+    proc("glRenderGpuMaskNV")!,
+    def_glRenderGpuMaskNV,
+  );
+  fn_glMulticastBufferSubDataNV = new Deno.UnsafeFnPointer(
+    proc("glMulticastBufferSubDataNV")!,
+    def_glMulticastBufferSubDataNV,
+  );
+  fn_glMulticastCopyBufferSubDataNV = new Deno.UnsafeFnPointer(
+    proc("glMulticastCopyBufferSubDataNV")!,
+    def_glMulticastCopyBufferSubDataNV,
+  );
+  fn_glMulticastCopyImageSubDataNV = new Deno.UnsafeFnPointer(
+    proc("glMulticastCopyImageSubDataNV")!,
+    def_glMulticastCopyImageSubDataNV,
+  );
+  fn_glMulticastBlitFramebufferNV = new Deno.UnsafeFnPointer(
+    proc("glMulticastBlitFramebufferNV")!,
+    def_glMulticastBlitFramebufferNV,
+  );
+  fn_glMulticastFramebufferSampleLocationsfvNV = new Deno.UnsafeFnPointer(
+    proc("glMulticastFramebufferSampleLocationsfvNV")!,
+    def_glMulticastFramebufferSampleLocationsfvNV,
+  );
+  fn_glMulticastBarrierNV = new Deno.UnsafeFnPointer(
+    proc("glMulticastBarrierNV")!,
+    def_glMulticastBarrierNV,
+  );
+  fn_glMulticastWaitSyncNV = new Deno.UnsafeFnPointer(
+    proc("glMulticastWaitSyncNV")!,
+    def_glMulticastWaitSyncNV,
+  );
+  fn_glMulticastGetQueryObjectivNV = new Deno.UnsafeFnPointer(
+    proc("glMulticastGetQueryObjectivNV")!,
+    def_glMulticastGetQueryObjectivNV,
+  );
+  fn_glMulticastGetQueryObjectuivNV = new Deno.UnsafeFnPointer(
+    proc("glMulticastGetQueryObjectuivNV")!,
+    def_glMulticastGetQueryObjectuivNV,
+  );
+  fn_glMulticastGetQueryObjecti64vNV = new Deno.UnsafeFnPointer(
+    proc("glMulticastGetQueryObjecti64vNV")!,
+    def_glMulticastGetQueryObjecti64vNV,
+  );
+  fn_glMulticastGetQueryObjectui64vNV = new Deno.UnsafeFnPointer(
+    proc("glMulticastGetQueryObjectui64vNV")!,
+    def_glMulticastGetQueryObjectui64vNV,
+  );
 }
