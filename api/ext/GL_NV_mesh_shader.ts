@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -141,9 +133,7 @@ export const def_glDrawMeshTasksIndirectNV = {
   result: "void",
 } as const;
 
-let fn_glDrawMeshTasksIndirectNV!: Deno.UnsafeFnPointer<
-  typeof def_glDrawMeshTasksIndirectNV
->;
+let fn_glDrawMeshTasksIndirectNV!: Deno.UnsafeFnPointer<typeof def_glDrawMeshTasksIndirectNV>;
 
 export function DrawMeshTasksIndirectNV(
   indirect: GLintptr,
@@ -158,9 +148,7 @@ export const def_glMultiDrawMeshTasksIndirectNV = {
   result: "void",
 } as const;
 
-let fn_glMultiDrawMeshTasksIndirectNV!: Deno.UnsafeFnPointer<
-  typeof def_glMultiDrawMeshTasksIndirectNV
->;
+let fn_glMultiDrawMeshTasksIndirectNV!: Deno.UnsafeFnPointer<typeof def_glMultiDrawMeshTasksIndirectNV>;
 
 export function MultiDrawMeshTasksIndirectNV(
   indirect: GLintptr,
@@ -179,9 +167,7 @@ export const def_glMultiDrawMeshTasksIndirectCountNV = {
   result: "void",
 } as const;
 
-let fn_glMultiDrawMeshTasksIndirectCountNV!: Deno.UnsafeFnPointer<
-  typeof def_glMultiDrawMeshTasksIndirectCountNV
->;
+let fn_glMultiDrawMeshTasksIndirectCountNV!: Deno.UnsafeFnPointer<typeof def_glMultiDrawMeshTasksIndirectCountNV>;
 
 export function MultiDrawMeshTasksIndirectCountNV(
   indirect: GLintptr,
@@ -199,20 +185,8 @@ export function MultiDrawMeshTasksIndirectCountNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDrawMeshTasksNV = new Deno.UnsafeFnPointer(
-    proc("glDrawMeshTasksNV"),
-    def_glDrawMeshTasksNV,
-  );
-  fn_glDrawMeshTasksIndirectNV = new Deno.UnsafeFnPointer(
-    proc("glDrawMeshTasksIndirectNV"),
-    def_glDrawMeshTasksIndirectNV,
-  );
-  fn_glMultiDrawMeshTasksIndirectNV = new Deno.UnsafeFnPointer(
-    proc("glMultiDrawMeshTasksIndirectNV"),
-    def_glMultiDrawMeshTasksIndirectNV,
-  );
-  fn_glMultiDrawMeshTasksIndirectCountNV = new Deno.UnsafeFnPointer(
-    proc("glMultiDrawMeshTasksIndirectCountNV"),
-    def_glMultiDrawMeshTasksIndirectCountNV,
-  );
+  fn_glDrawMeshTasksNV = new Deno.UnsafeFnPointer(proc("glDrawMeshTasksNV")!, def_glDrawMeshTasksNV);
+  fn_glDrawMeshTasksIndirectNV = new Deno.UnsafeFnPointer(proc("glDrawMeshTasksIndirectNV")!, def_glDrawMeshTasksIndirectNV);
+  fn_glMultiDrawMeshTasksIndirectNV = new Deno.UnsafeFnPointer(proc("glMultiDrawMeshTasksIndirectNV")!, def_glMultiDrawMeshTasksIndirectNV);
+  fn_glMultiDrawMeshTasksIndirectCountNV = new Deno.UnsafeFnPointer(proc("glMultiDrawMeshTasksIndirectCountNV")!, def_glMultiDrawMeshTasksIndirectCountNV);
 }

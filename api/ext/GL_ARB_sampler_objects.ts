@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -143,9 +135,7 @@ export const def_glSamplerParameteri = {
   result: "void",
 } as const;
 
-let fn_glSamplerParameteri!: Deno.UnsafeFnPointer<
-  typeof def_glSamplerParameteri
->;
+let fn_glSamplerParameteri!: Deno.UnsafeFnPointer<typeof def_glSamplerParameteri>;
 
 export function SamplerParameteri(
   sampler: GLuint,
@@ -164,9 +154,7 @@ export const def_glSamplerParameteriv = {
   result: "void",
 } as const;
 
-let fn_glSamplerParameteriv!: Deno.UnsafeFnPointer<
-  typeof def_glSamplerParameteriv
->;
+let fn_glSamplerParameteriv!: Deno.UnsafeFnPointer<typeof def_glSamplerParameteriv>;
 
 export function SamplerParameteriv(
   sampler: GLuint,
@@ -185,9 +173,7 @@ export const def_glSamplerParameterf = {
   result: "void",
 } as const;
 
-let fn_glSamplerParameterf!: Deno.UnsafeFnPointer<
-  typeof def_glSamplerParameterf
->;
+let fn_glSamplerParameterf!: Deno.UnsafeFnPointer<typeof def_glSamplerParameterf>;
 
 export function SamplerParameterf(
   sampler: GLuint,
@@ -206,9 +192,7 @@ export const def_glSamplerParameterfv = {
   result: "void",
 } as const;
 
-let fn_glSamplerParameterfv!: Deno.UnsafeFnPointer<
-  typeof def_glSamplerParameterfv
->;
+let fn_glSamplerParameterfv!: Deno.UnsafeFnPointer<typeof def_glSamplerParameterfv>;
 
 export function SamplerParameterfv(
   sampler: GLuint,
@@ -227,9 +211,7 @@ export const def_glSamplerParameterIiv = {
   result: "void",
 } as const;
 
-let fn_glSamplerParameterIiv!: Deno.UnsafeFnPointer<
-  typeof def_glSamplerParameterIiv
->;
+let fn_glSamplerParameterIiv!: Deno.UnsafeFnPointer<typeof def_glSamplerParameterIiv>;
 
 export function SamplerParameterIiv(
   sampler: GLuint,
@@ -248,9 +230,7 @@ export const def_glSamplerParameterIuiv = {
   result: "void",
 } as const;
 
-let fn_glSamplerParameterIuiv!: Deno.UnsafeFnPointer<
-  typeof def_glSamplerParameterIuiv
->;
+let fn_glSamplerParameterIuiv!: Deno.UnsafeFnPointer<typeof def_glSamplerParameterIuiv>;
 
 export function SamplerParameterIuiv(
   sampler: GLuint,
@@ -269,9 +249,7 @@ export const def_glGetSamplerParameteriv = {
   result: "void",
 } as const;
 
-let fn_glGetSamplerParameteriv!: Deno.UnsafeFnPointer<
-  typeof def_glGetSamplerParameteriv
->;
+let fn_glGetSamplerParameteriv!: Deno.UnsafeFnPointer<typeof def_glGetSamplerParameteriv>;
 
 export function GetSamplerParameteriv(
   sampler: GLuint,
@@ -290,9 +268,7 @@ export const def_glGetSamplerParameterIiv = {
   result: "void",
 } as const;
 
-let fn_glGetSamplerParameterIiv!: Deno.UnsafeFnPointer<
-  typeof def_glGetSamplerParameterIiv
->;
+let fn_glGetSamplerParameterIiv!: Deno.UnsafeFnPointer<typeof def_glGetSamplerParameterIiv>;
 
 export function GetSamplerParameterIiv(
   sampler: GLuint,
@@ -311,9 +287,7 @@ export const def_glGetSamplerParameterfv = {
   result: "void",
 } as const;
 
-let fn_glGetSamplerParameterfv!: Deno.UnsafeFnPointer<
-  typeof def_glGetSamplerParameterfv
->;
+let fn_glGetSamplerParameterfv!: Deno.UnsafeFnPointer<typeof def_glGetSamplerParameterfv>;
 
 export function GetSamplerParameterfv(
   sampler: GLuint,
@@ -332,9 +306,7 @@ export const def_glGetSamplerParameterIuiv = {
   result: "void",
 } as const;
 
-let fn_glGetSamplerParameterIuiv!: Deno.UnsafeFnPointer<
-  typeof def_glGetSamplerParameterIuiv
->;
+let fn_glGetSamplerParameterIuiv!: Deno.UnsafeFnPointer<typeof def_glGetSamplerParameterIuiv>;
 
 export function GetSamplerParameterIuiv(
   sampler: GLuint,
@@ -350,60 +322,18 @@ export function GetSamplerParameterIuiv(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGenSamplers = new Deno.UnsafeFnPointer(
-    proc("glGenSamplers"),
-    def_glGenSamplers,
-  );
-  fn_glDeleteSamplers = new Deno.UnsafeFnPointer(
-    proc("glDeleteSamplers"),
-    def_glDeleteSamplers,
-  );
-  fn_glIsSampler = new Deno.UnsafeFnPointer(
-    proc("glIsSampler"),
-    def_glIsSampler,
-  );
-  fn_glBindSampler = new Deno.UnsafeFnPointer(
-    proc("glBindSampler"),
-    def_glBindSampler,
-  );
-  fn_glSamplerParameteri = new Deno.UnsafeFnPointer(
-    proc("glSamplerParameteri"),
-    def_glSamplerParameteri,
-  );
-  fn_glSamplerParameteriv = new Deno.UnsafeFnPointer(
-    proc("glSamplerParameteriv"),
-    def_glSamplerParameteriv,
-  );
-  fn_glSamplerParameterf = new Deno.UnsafeFnPointer(
-    proc("glSamplerParameterf"),
-    def_glSamplerParameterf,
-  );
-  fn_glSamplerParameterfv = new Deno.UnsafeFnPointer(
-    proc("glSamplerParameterfv"),
-    def_glSamplerParameterfv,
-  );
-  fn_glSamplerParameterIiv = new Deno.UnsafeFnPointer(
-    proc("glSamplerParameterIiv"),
-    def_glSamplerParameterIiv,
-  );
-  fn_glSamplerParameterIuiv = new Deno.UnsafeFnPointer(
-    proc("glSamplerParameterIuiv"),
-    def_glSamplerParameterIuiv,
-  );
-  fn_glGetSamplerParameteriv = new Deno.UnsafeFnPointer(
-    proc("glGetSamplerParameteriv"),
-    def_glGetSamplerParameteriv,
-  );
-  fn_glGetSamplerParameterIiv = new Deno.UnsafeFnPointer(
-    proc("glGetSamplerParameterIiv"),
-    def_glGetSamplerParameterIiv,
-  );
-  fn_glGetSamplerParameterfv = new Deno.UnsafeFnPointer(
-    proc("glGetSamplerParameterfv"),
-    def_glGetSamplerParameterfv,
-  );
-  fn_glGetSamplerParameterIuiv = new Deno.UnsafeFnPointer(
-    proc("glGetSamplerParameterIuiv"),
-    def_glGetSamplerParameterIuiv,
-  );
+  fn_glGenSamplers = new Deno.UnsafeFnPointer(proc("glGenSamplers")!, def_glGenSamplers);
+  fn_glDeleteSamplers = new Deno.UnsafeFnPointer(proc("glDeleteSamplers")!, def_glDeleteSamplers);
+  fn_glIsSampler = new Deno.UnsafeFnPointer(proc("glIsSampler")!, def_glIsSampler);
+  fn_glBindSampler = new Deno.UnsafeFnPointer(proc("glBindSampler")!, def_glBindSampler);
+  fn_glSamplerParameteri = new Deno.UnsafeFnPointer(proc("glSamplerParameteri")!, def_glSamplerParameteri);
+  fn_glSamplerParameteriv = new Deno.UnsafeFnPointer(proc("glSamplerParameteriv")!, def_glSamplerParameteriv);
+  fn_glSamplerParameterf = new Deno.UnsafeFnPointer(proc("glSamplerParameterf")!, def_glSamplerParameterf);
+  fn_glSamplerParameterfv = new Deno.UnsafeFnPointer(proc("glSamplerParameterfv")!, def_glSamplerParameterfv);
+  fn_glSamplerParameterIiv = new Deno.UnsafeFnPointer(proc("glSamplerParameterIiv")!, def_glSamplerParameterIiv);
+  fn_glSamplerParameterIuiv = new Deno.UnsafeFnPointer(proc("glSamplerParameterIuiv")!, def_glSamplerParameterIuiv);
+  fn_glGetSamplerParameteriv = new Deno.UnsafeFnPointer(proc("glGetSamplerParameteriv")!, def_glGetSamplerParameteriv);
+  fn_glGetSamplerParameterIiv = new Deno.UnsafeFnPointer(proc("glGetSamplerParameterIiv")!, def_glGetSamplerParameterIiv);
+  fn_glGetSamplerParameterfv = new Deno.UnsafeFnPointer(proc("glGetSamplerParameterfv")!, def_glGetSamplerParameterfv);
+  fn_glGetSamplerParameterIuiv = new Deno.UnsafeFnPointer(proc("glGetSamplerParameterIuiv")!, def_glGetSamplerParameterIuiv);
 }

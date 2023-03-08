@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -78,9 +70,7 @@ export const def_glTexParameterIivOES = {
   result: "void",
 } as const;
 
-let fn_glTexParameterIivOES!: Deno.UnsafeFnPointer<
-  typeof def_glTexParameterIivOES
->;
+let fn_glTexParameterIivOES!: Deno.UnsafeFnPointer<typeof def_glTexParameterIivOES>;
 
 export function TexParameterIivOES(
   target: GLenum,
@@ -99,9 +89,7 @@ export const def_glTexParameterIuivOES = {
   result: "void",
 } as const;
 
-let fn_glTexParameterIuivOES!: Deno.UnsafeFnPointer<
-  typeof def_glTexParameterIuivOES
->;
+let fn_glTexParameterIuivOES!: Deno.UnsafeFnPointer<typeof def_glTexParameterIuivOES>;
 
 export function TexParameterIuivOES(
   target: GLenum,
@@ -120,9 +108,7 @@ export const def_glGetTexParameterIivOES = {
   result: "void",
 } as const;
 
-let fn_glGetTexParameterIivOES!: Deno.UnsafeFnPointer<
-  typeof def_glGetTexParameterIivOES
->;
+let fn_glGetTexParameterIivOES!: Deno.UnsafeFnPointer<typeof def_glGetTexParameterIivOES>;
 
 export function GetTexParameterIivOES(
   target: GLenum,
@@ -141,9 +127,7 @@ export const def_glGetTexParameterIuivOES = {
   result: "void",
 } as const;
 
-let fn_glGetTexParameterIuivOES!: Deno.UnsafeFnPointer<
-  typeof def_glGetTexParameterIuivOES
->;
+let fn_glGetTexParameterIuivOES!: Deno.UnsafeFnPointer<typeof def_glGetTexParameterIuivOES>;
 
 export function GetTexParameterIuivOES(
   target: GLenum,
@@ -162,9 +146,7 @@ export const def_glSamplerParameterIivOES = {
   result: "void",
 } as const;
 
-let fn_glSamplerParameterIivOES!: Deno.UnsafeFnPointer<
-  typeof def_glSamplerParameterIivOES
->;
+let fn_glSamplerParameterIivOES!: Deno.UnsafeFnPointer<typeof def_glSamplerParameterIivOES>;
 
 export function SamplerParameterIivOES(
   sampler: GLuint,
@@ -183,9 +165,7 @@ export const def_glSamplerParameterIuivOES = {
   result: "void",
 } as const;
 
-let fn_glSamplerParameterIuivOES!: Deno.UnsafeFnPointer<
-  typeof def_glSamplerParameterIuivOES
->;
+let fn_glSamplerParameterIuivOES!: Deno.UnsafeFnPointer<typeof def_glSamplerParameterIuivOES>;
 
 export function SamplerParameterIuivOES(
   sampler: GLuint,
@@ -204,9 +184,7 @@ export const def_glGetSamplerParameterIivOES = {
   result: "void",
 } as const;
 
-let fn_glGetSamplerParameterIivOES!: Deno.UnsafeFnPointer<
-  typeof def_glGetSamplerParameterIivOES
->;
+let fn_glGetSamplerParameterIivOES!: Deno.UnsafeFnPointer<typeof def_glGetSamplerParameterIivOES>;
 
 export function GetSamplerParameterIivOES(
   sampler: GLuint,
@@ -225,9 +203,7 @@ export const def_glGetSamplerParameterIuivOES = {
   result: "void",
 } as const;
 
-let fn_glGetSamplerParameterIuivOES!: Deno.UnsafeFnPointer<
-  typeof def_glGetSamplerParameterIuivOES
->;
+let fn_glGetSamplerParameterIuivOES!: Deno.UnsafeFnPointer<typeof def_glGetSamplerParameterIuivOES>;
 
 export function GetSamplerParameterIuivOES(
   sampler: GLuint,
@@ -243,36 +219,12 @@ export function GetSamplerParameterIuivOES(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexParameterIivOES = new Deno.UnsafeFnPointer(
-    proc("glTexParameterIivOES"),
-    def_glTexParameterIivOES,
-  );
-  fn_glTexParameterIuivOES = new Deno.UnsafeFnPointer(
-    proc("glTexParameterIuivOES"),
-    def_glTexParameterIuivOES,
-  );
-  fn_glGetTexParameterIivOES = new Deno.UnsafeFnPointer(
-    proc("glGetTexParameterIivOES"),
-    def_glGetTexParameterIivOES,
-  );
-  fn_glGetTexParameterIuivOES = new Deno.UnsafeFnPointer(
-    proc("glGetTexParameterIuivOES"),
-    def_glGetTexParameterIuivOES,
-  );
-  fn_glSamplerParameterIivOES = new Deno.UnsafeFnPointer(
-    proc("glSamplerParameterIivOES"),
-    def_glSamplerParameterIivOES,
-  );
-  fn_glSamplerParameterIuivOES = new Deno.UnsafeFnPointer(
-    proc("glSamplerParameterIuivOES"),
-    def_glSamplerParameterIuivOES,
-  );
-  fn_glGetSamplerParameterIivOES = new Deno.UnsafeFnPointer(
-    proc("glGetSamplerParameterIivOES"),
-    def_glGetSamplerParameterIivOES,
-  );
-  fn_glGetSamplerParameterIuivOES = new Deno.UnsafeFnPointer(
-    proc("glGetSamplerParameterIuivOES"),
-    def_glGetSamplerParameterIuivOES,
-  );
+  fn_glTexParameterIivOES = new Deno.UnsafeFnPointer(proc("glTexParameterIivOES")!, def_glTexParameterIivOES);
+  fn_glTexParameterIuivOES = new Deno.UnsafeFnPointer(proc("glTexParameterIuivOES")!, def_glTexParameterIuivOES);
+  fn_glGetTexParameterIivOES = new Deno.UnsafeFnPointer(proc("glGetTexParameterIivOES")!, def_glGetTexParameterIivOES);
+  fn_glGetTexParameterIuivOES = new Deno.UnsafeFnPointer(proc("glGetTexParameterIuivOES")!, def_glGetTexParameterIuivOES);
+  fn_glSamplerParameterIivOES = new Deno.UnsafeFnPointer(proc("glSamplerParameterIivOES")!, def_glSamplerParameterIivOES);
+  fn_glSamplerParameterIuivOES = new Deno.UnsafeFnPointer(proc("glSamplerParameterIuivOES")!, def_glSamplerParameterIuivOES);
+  fn_glGetSamplerParameterIivOES = new Deno.UnsafeFnPointer(proc("glGetSamplerParameterIivOES")!, def_glGetSamplerParameterIivOES);
+  fn_glGetSamplerParameterIuivOES = new Deno.UnsafeFnPointer(proc("glGetSamplerParameterIuivOES")!, def_glGetSamplerParameterIuivOES);
 }

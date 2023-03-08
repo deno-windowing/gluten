@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -74,9 +66,7 @@ export const def_glGenQueryResourceTagNV = {
   result: "void",
 } as const;
 
-let fn_glGenQueryResourceTagNV!: Deno.UnsafeFnPointer<
-  typeof def_glGenQueryResourceTagNV
->;
+let fn_glGenQueryResourceTagNV!: Deno.UnsafeFnPointer<typeof def_glGenQueryResourceTagNV>;
 
 export function GenQueryResourceTagNV(
   n: GLsizei,
@@ -93,9 +83,7 @@ export const def_glDeleteQueryResourceTagNV = {
   result: "void",
 } as const;
 
-let fn_glDeleteQueryResourceTagNV!: Deno.UnsafeFnPointer<
-  typeof def_glDeleteQueryResourceTagNV
->;
+let fn_glDeleteQueryResourceTagNV!: Deno.UnsafeFnPointer<typeof def_glDeleteQueryResourceTagNV>;
 
 export function DeleteQueryResourceTagNV(
   n: GLsizei,
@@ -112,9 +100,7 @@ export const def_glQueryResourceTagNV = {
   result: "void",
 } as const;
 
-let fn_glQueryResourceTagNV!: Deno.UnsafeFnPointer<
-  typeof def_glQueryResourceTagNV
->;
+let fn_glQueryResourceTagNV!: Deno.UnsafeFnPointer<typeof def_glQueryResourceTagNV>;
 
 export function QueryResourceTagNV(
   tagId: GLint,
@@ -128,16 +114,7 @@ export function QueryResourceTagNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGenQueryResourceTagNV = new Deno.UnsafeFnPointer(
-    proc("glGenQueryResourceTagNV"),
-    def_glGenQueryResourceTagNV,
-  );
-  fn_glDeleteQueryResourceTagNV = new Deno.UnsafeFnPointer(
-    proc("glDeleteQueryResourceTagNV"),
-    def_glDeleteQueryResourceTagNV,
-  );
-  fn_glQueryResourceTagNV = new Deno.UnsafeFnPointer(
-    proc("glQueryResourceTagNV"),
-    def_glQueryResourceTagNV,
-  );
+  fn_glGenQueryResourceTagNV = new Deno.UnsafeFnPointer(proc("glGenQueryResourceTagNV")!, def_glGenQueryResourceTagNV);
+  fn_glDeleteQueryResourceTagNV = new Deno.UnsafeFnPointer(proc("glDeleteQueryResourceTagNV")!, def_glDeleteQueryResourceTagNV);
+  fn_glQueryResourceTagNV = new Deno.UnsafeFnPointer(proc("glQueryResourceTagNV")!, def_glQueryResourceTagNV);
 }

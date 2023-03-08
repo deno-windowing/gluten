@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -85,9 +77,7 @@ export const def_glPixelTransformParameteriEXT = {
   result: "void",
 } as const;
 
-let fn_glPixelTransformParameteriEXT!: Deno.UnsafeFnPointer<
-  typeof def_glPixelTransformParameteriEXT
->;
+let fn_glPixelTransformParameteriEXT!: Deno.UnsafeFnPointer<typeof def_glPixelTransformParameteriEXT>;
 
 export function PixelTransformParameteriEXT(
   target: GLenum,
@@ -106,9 +96,7 @@ export const def_glPixelTransformParameterfEXT = {
   result: "void",
 } as const;
 
-let fn_glPixelTransformParameterfEXT!: Deno.UnsafeFnPointer<
-  typeof def_glPixelTransformParameterfEXT
->;
+let fn_glPixelTransformParameterfEXT!: Deno.UnsafeFnPointer<typeof def_glPixelTransformParameterfEXT>;
 
 export function PixelTransformParameterfEXT(
   target: GLenum,
@@ -127,9 +115,7 @@ export const def_glPixelTransformParameterivEXT = {
   result: "void",
 } as const;
 
-let fn_glPixelTransformParameterivEXT!: Deno.UnsafeFnPointer<
-  typeof def_glPixelTransformParameterivEXT
->;
+let fn_glPixelTransformParameterivEXT!: Deno.UnsafeFnPointer<typeof def_glPixelTransformParameterivEXT>;
 
 export function PixelTransformParameterivEXT(
   target: GLenum,
@@ -148,9 +134,7 @@ export const def_glPixelTransformParameterfvEXT = {
   result: "void",
 } as const;
 
-let fn_glPixelTransformParameterfvEXT!: Deno.UnsafeFnPointer<
-  typeof def_glPixelTransformParameterfvEXT
->;
+let fn_glPixelTransformParameterfvEXT!: Deno.UnsafeFnPointer<typeof def_glPixelTransformParameterfvEXT>;
 
 export function PixelTransformParameterfvEXT(
   target: GLenum,
@@ -169,9 +153,7 @@ export const def_glGetPixelTransformParameterivEXT = {
   result: "void",
 } as const;
 
-let fn_glGetPixelTransformParameterivEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetPixelTransformParameterivEXT
->;
+let fn_glGetPixelTransformParameterivEXT!: Deno.UnsafeFnPointer<typeof def_glGetPixelTransformParameterivEXT>;
 
 export function GetPixelTransformParameterivEXT(
   target: GLenum,
@@ -190,9 +172,7 @@ export const def_glGetPixelTransformParameterfvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetPixelTransformParameterfvEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetPixelTransformParameterfvEXT
->;
+let fn_glGetPixelTransformParameterfvEXT!: Deno.UnsafeFnPointer<typeof def_glGetPixelTransformParameterfvEXT>;
 
 export function GetPixelTransformParameterfvEXT(
   target: GLenum,
@@ -208,28 +188,10 @@ export function GetPixelTransformParameterfvEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glPixelTransformParameteriEXT = new Deno.UnsafeFnPointer(
-    proc("glPixelTransformParameteriEXT"),
-    def_glPixelTransformParameteriEXT,
-  );
-  fn_glPixelTransformParameterfEXT = new Deno.UnsafeFnPointer(
-    proc("glPixelTransformParameterfEXT"),
-    def_glPixelTransformParameterfEXT,
-  );
-  fn_glPixelTransformParameterivEXT = new Deno.UnsafeFnPointer(
-    proc("glPixelTransformParameterivEXT"),
-    def_glPixelTransformParameterivEXT,
-  );
-  fn_glPixelTransformParameterfvEXT = new Deno.UnsafeFnPointer(
-    proc("glPixelTransformParameterfvEXT"),
-    def_glPixelTransformParameterfvEXT,
-  );
-  fn_glGetPixelTransformParameterivEXT = new Deno.UnsafeFnPointer(
-    proc("glGetPixelTransformParameterivEXT"),
-    def_glGetPixelTransformParameterivEXT,
-  );
-  fn_glGetPixelTransformParameterfvEXT = new Deno.UnsafeFnPointer(
-    proc("glGetPixelTransformParameterfvEXT"),
-    def_glGetPixelTransformParameterfvEXT,
-  );
+  fn_glPixelTransformParameteriEXT = new Deno.UnsafeFnPointer(proc("glPixelTransformParameteriEXT")!, def_glPixelTransformParameteriEXT);
+  fn_glPixelTransformParameterfEXT = new Deno.UnsafeFnPointer(proc("glPixelTransformParameterfEXT")!, def_glPixelTransformParameterfEXT);
+  fn_glPixelTransformParameterivEXT = new Deno.UnsafeFnPointer(proc("glPixelTransformParameterivEXT")!, def_glPixelTransformParameterivEXT);
+  fn_glPixelTransformParameterfvEXT = new Deno.UnsafeFnPointer(proc("glPixelTransformParameterfvEXT")!, def_glPixelTransformParameterfvEXT);
+  fn_glGetPixelTransformParameterivEXT = new Deno.UnsafeFnPointer(proc("glGetPixelTransformParameterivEXT")!, def_glGetPixelTransformParameterivEXT);
+  fn_glGetPixelTransformParameterfvEXT = new Deno.UnsafeFnPointer(proc("glGetPixelTransformParameterfvEXT")!, def_glGetPixelTransformParameterfvEXT);
 }

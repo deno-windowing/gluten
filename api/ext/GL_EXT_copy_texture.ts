@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -74,9 +66,7 @@ export const def_glCopyTexImage1DEXT = {
   result: "void",
 } as const;
 
-let fn_glCopyTexImage1DEXT!: Deno.UnsafeFnPointer<
-  typeof def_glCopyTexImage1DEXT
->;
+let fn_glCopyTexImage1DEXT!: Deno.UnsafeFnPointer<typeof def_glCopyTexImage1DEXT>;
 
 export function CopyTexImage1DEXT(
   target: GLenum,
@@ -103,9 +93,7 @@ export const def_glCopyTexImage2DEXT = {
   result: "void",
 } as const;
 
-let fn_glCopyTexImage2DEXT!: Deno.UnsafeFnPointer<
-  typeof def_glCopyTexImage2DEXT
->;
+let fn_glCopyTexImage2DEXT!: Deno.UnsafeFnPointer<typeof def_glCopyTexImage2DEXT>;
 
 export function CopyTexImage2DEXT(
   target: GLenum,
@@ -134,9 +122,7 @@ export const def_glCopyTexSubImage1DEXT = {
   result: "void",
 } as const;
 
-let fn_glCopyTexSubImage1DEXT!: Deno.UnsafeFnPointer<
-  typeof def_glCopyTexSubImage1DEXT
->;
+let fn_glCopyTexSubImage1DEXT!: Deno.UnsafeFnPointer<typeof def_glCopyTexSubImage1DEXT>;
 
 export function CopyTexSubImage1DEXT(
   target: GLenum,
@@ -161,9 +147,7 @@ export const def_glCopyTexSubImage2DEXT = {
   result: "void",
 } as const;
 
-let fn_glCopyTexSubImage2DEXT!: Deno.UnsafeFnPointer<
-  typeof def_glCopyTexSubImage2DEXT
->;
+let fn_glCopyTexSubImage2DEXT!: Deno.UnsafeFnPointer<typeof def_glCopyTexSubImage2DEXT>;
 
 export function CopyTexSubImage2DEXT(
   target: GLenum,
@@ -192,9 +176,7 @@ export const def_glCopyTexSubImage3DEXT = {
   result: "void",
 } as const;
 
-let fn_glCopyTexSubImage3DEXT!: Deno.UnsafeFnPointer<
-  typeof def_glCopyTexSubImage3DEXT
->;
+let fn_glCopyTexSubImage3DEXT!: Deno.UnsafeFnPointer<typeof def_glCopyTexSubImage3DEXT>;
 
 export function CopyTexSubImage3DEXT(
   target: GLenum,
@@ -222,24 +204,9 @@ export function CopyTexSubImage3DEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glCopyTexImage1DEXT = new Deno.UnsafeFnPointer(
-    proc("glCopyTexImage1DEXT"),
-    def_glCopyTexImage1DEXT,
-  );
-  fn_glCopyTexImage2DEXT = new Deno.UnsafeFnPointer(
-    proc("glCopyTexImage2DEXT"),
-    def_glCopyTexImage2DEXT,
-  );
-  fn_glCopyTexSubImage1DEXT = new Deno.UnsafeFnPointer(
-    proc("glCopyTexSubImage1DEXT"),
-    def_glCopyTexSubImage1DEXT,
-  );
-  fn_glCopyTexSubImage2DEXT = new Deno.UnsafeFnPointer(
-    proc("glCopyTexSubImage2DEXT"),
-    def_glCopyTexSubImage2DEXT,
-  );
-  fn_glCopyTexSubImage3DEXT = new Deno.UnsafeFnPointer(
-    proc("glCopyTexSubImage3DEXT"),
-    def_glCopyTexSubImage3DEXT,
-  );
+  fn_glCopyTexImage1DEXT = new Deno.UnsafeFnPointer(proc("glCopyTexImage1DEXT")!, def_glCopyTexImage1DEXT);
+  fn_glCopyTexImage2DEXT = new Deno.UnsafeFnPointer(proc("glCopyTexImage2DEXT")!, def_glCopyTexImage2DEXT);
+  fn_glCopyTexSubImage1DEXT = new Deno.UnsafeFnPointer(proc("glCopyTexSubImage1DEXT")!, def_glCopyTexSubImage1DEXT);
+  fn_glCopyTexSubImage2DEXT = new Deno.UnsafeFnPointer(proc("glCopyTexSubImage2DEXT")!, def_glCopyTexSubImage2DEXT);
+  fn_glCopyTexSubImage3DEXT = new Deno.UnsafeFnPointer(proc("glCopyTexSubImage3DEXT")!, def_glCopyTexSubImage3DEXT);
 }

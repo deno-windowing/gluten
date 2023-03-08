@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -215,9 +207,7 @@ export const def_glGetBufferSubDataARB = {
   result: "void",
 } as const;
 
-let fn_glGetBufferSubDataARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetBufferSubDataARB
->;
+let fn_glGetBufferSubDataARB!: Deno.UnsafeFnPointer<typeof def_glGetBufferSubDataARB>;
 
 export function GetBufferSubDataARB(
   target: GLenum,
@@ -270,9 +260,7 @@ export const def_glGetBufferParameterivARB = {
   result: "void",
 } as const;
 
-let fn_glGetBufferParameterivARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetBufferParameterivARB
->;
+let fn_glGetBufferParameterivARB!: Deno.UnsafeFnPointer<typeof def_glGetBufferParameterivARB>;
 
 export function GetBufferParameterivARB(
   target: GLenum,
@@ -291,9 +279,7 @@ export const def_glGetBufferPointervARB = {
   result: "void",
 } as const;
 
-let fn_glGetBufferPointervARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetBufferPointervARB
->;
+let fn_glGetBufferPointervARB!: Deno.UnsafeFnPointer<typeof def_glGetBufferPointervARB>;
 
 export function GetBufferPointervARB(
   target: GLenum,
@@ -309,48 +295,15 @@ export function GetBufferPointervARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBindBufferARB = new Deno.UnsafeFnPointer(
-    proc("glBindBufferARB"),
-    def_glBindBufferARB,
-  );
-  fn_glDeleteBuffersARB = new Deno.UnsafeFnPointer(
-    proc("glDeleteBuffersARB"),
-    def_glDeleteBuffersARB,
-  );
-  fn_glGenBuffersARB = new Deno.UnsafeFnPointer(
-    proc("glGenBuffersARB"),
-    def_glGenBuffersARB,
-  );
-  fn_glIsBufferARB = new Deno.UnsafeFnPointer(
-    proc("glIsBufferARB"),
-    def_glIsBufferARB,
-  );
-  fn_glBufferDataARB = new Deno.UnsafeFnPointer(
-    proc("glBufferDataARB"),
-    def_glBufferDataARB,
-  );
-  fn_glBufferSubDataARB = new Deno.UnsafeFnPointer(
-    proc("glBufferSubDataARB"),
-    def_glBufferSubDataARB,
-  );
-  fn_glGetBufferSubDataARB = new Deno.UnsafeFnPointer(
-    proc("glGetBufferSubDataARB"),
-    def_glGetBufferSubDataARB,
-  );
-  fn_glMapBufferARB = new Deno.UnsafeFnPointer(
-    proc("glMapBufferARB"),
-    def_glMapBufferARB,
-  );
-  fn_glUnmapBufferARB = new Deno.UnsafeFnPointer(
-    proc("glUnmapBufferARB"),
-    def_glUnmapBufferARB,
-  );
-  fn_glGetBufferParameterivARB = new Deno.UnsafeFnPointer(
-    proc("glGetBufferParameterivARB"),
-    def_glGetBufferParameterivARB,
-  );
-  fn_glGetBufferPointervARB = new Deno.UnsafeFnPointer(
-    proc("glGetBufferPointervARB"),
-    def_glGetBufferPointervARB,
-  );
+  fn_glBindBufferARB = new Deno.UnsafeFnPointer(proc("glBindBufferARB")!, def_glBindBufferARB);
+  fn_glDeleteBuffersARB = new Deno.UnsafeFnPointer(proc("glDeleteBuffersARB")!, def_glDeleteBuffersARB);
+  fn_glGenBuffersARB = new Deno.UnsafeFnPointer(proc("glGenBuffersARB")!, def_glGenBuffersARB);
+  fn_glIsBufferARB = new Deno.UnsafeFnPointer(proc("glIsBufferARB")!, def_glIsBufferARB);
+  fn_glBufferDataARB = new Deno.UnsafeFnPointer(proc("glBufferDataARB")!, def_glBufferDataARB);
+  fn_glBufferSubDataARB = new Deno.UnsafeFnPointer(proc("glBufferSubDataARB")!, def_glBufferSubDataARB);
+  fn_glGetBufferSubDataARB = new Deno.UnsafeFnPointer(proc("glGetBufferSubDataARB")!, def_glGetBufferSubDataARB);
+  fn_glMapBufferARB = new Deno.UnsafeFnPointer(proc("glMapBufferARB")!, def_glMapBufferARB);
+  fn_glUnmapBufferARB = new Deno.UnsafeFnPointer(proc("glUnmapBufferARB")!, def_glUnmapBufferARB);
+  fn_glGetBufferParameterivARB = new Deno.UnsafeFnPointer(proc("glGetBufferParameterivARB")!, def_glGetBufferParameterivARB);
+  fn_glGetBufferPointervARB = new Deno.UnsafeFnPointer(proc("glGetBufferPointervARB")!, def_glGetBufferPointervARB);
 }

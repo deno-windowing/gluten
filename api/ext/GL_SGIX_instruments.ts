@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -78,9 +70,7 @@ export const def_glGetInstrumentsSGIX = {
   result: "i32",
 } as const;
 
-let fn_glGetInstrumentsSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glGetInstrumentsSGIX
->;
+let fn_glGetInstrumentsSGIX!: Deno.UnsafeFnPointer<typeof def_glGetInstrumentsSGIX>;
 
 export function GetInstrumentsSGIX(): GLint {
   return fn_glGetInstrumentsSGIX.call();
@@ -91,9 +81,7 @@ export const def_glInstrumentsBufferSGIX = {
   result: "void",
 } as const;
 
-let fn_glInstrumentsBufferSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glInstrumentsBufferSGIX
->;
+let fn_glInstrumentsBufferSGIX!: Deno.UnsafeFnPointer<typeof def_glInstrumentsBufferSGIX>;
 
 export function InstrumentsBufferSGIX(
   size: GLsizei,
@@ -110,9 +98,7 @@ export const def_glPollInstrumentsSGIX = {
   result: "i32",
 } as const;
 
-let fn_glPollInstrumentsSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glPollInstrumentsSGIX
->;
+let fn_glPollInstrumentsSGIX!: Deno.UnsafeFnPointer<typeof def_glPollInstrumentsSGIX>;
 
 export function PollInstrumentsSGIX(
   marker_p: Buffer,
@@ -127,9 +113,7 @@ export const def_glReadInstrumentsSGIX = {
   result: "void",
 } as const;
 
-let fn_glReadInstrumentsSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glReadInstrumentsSGIX
->;
+let fn_glReadInstrumentsSGIX!: Deno.UnsafeFnPointer<typeof def_glReadInstrumentsSGIX>;
 
 export function ReadInstrumentsSGIX(
   marker: GLint,
@@ -144,9 +128,7 @@ export const def_glStartInstrumentsSGIX = {
   result: "void",
 } as const;
 
-let fn_glStartInstrumentsSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glStartInstrumentsSGIX
->;
+let fn_glStartInstrumentsSGIX!: Deno.UnsafeFnPointer<typeof def_glStartInstrumentsSGIX>;
 
 export function StartInstrumentsSGIX(): void {
   fn_glStartInstrumentsSGIX.call();
@@ -157,9 +139,7 @@ export const def_glStopInstrumentsSGIX = {
   result: "void",
 } as const;
 
-let fn_glStopInstrumentsSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glStopInstrumentsSGIX
->;
+let fn_glStopInstrumentsSGIX!: Deno.UnsafeFnPointer<typeof def_glStopInstrumentsSGIX>;
 
 export function StopInstrumentsSGIX(
   marker: GLint,
@@ -171,28 +151,10 @@ export function StopInstrumentsSGIX(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetInstrumentsSGIX = new Deno.UnsafeFnPointer(
-    proc("glGetInstrumentsSGIX"),
-    def_glGetInstrumentsSGIX,
-  );
-  fn_glInstrumentsBufferSGIX = new Deno.UnsafeFnPointer(
-    proc("glInstrumentsBufferSGIX"),
-    def_glInstrumentsBufferSGIX,
-  );
-  fn_glPollInstrumentsSGIX = new Deno.UnsafeFnPointer(
-    proc("glPollInstrumentsSGIX"),
-    def_glPollInstrumentsSGIX,
-  );
-  fn_glReadInstrumentsSGIX = new Deno.UnsafeFnPointer(
-    proc("glReadInstrumentsSGIX"),
-    def_glReadInstrumentsSGIX,
-  );
-  fn_glStartInstrumentsSGIX = new Deno.UnsafeFnPointer(
-    proc("glStartInstrumentsSGIX"),
-    def_glStartInstrumentsSGIX,
-  );
-  fn_glStopInstrumentsSGIX = new Deno.UnsafeFnPointer(
-    proc("glStopInstrumentsSGIX"),
-    def_glStopInstrumentsSGIX,
-  );
+  fn_glGetInstrumentsSGIX = new Deno.UnsafeFnPointer(proc("glGetInstrumentsSGIX")!, def_glGetInstrumentsSGIX);
+  fn_glInstrumentsBufferSGIX = new Deno.UnsafeFnPointer(proc("glInstrumentsBufferSGIX")!, def_glInstrumentsBufferSGIX);
+  fn_glPollInstrumentsSGIX = new Deno.UnsafeFnPointer(proc("glPollInstrumentsSGIX")!, def_glPollInstrumentsSGIX);
+  fn_glReadInstrumentsSGIX = new Deno.UnsafeFnPointer(proc("glReadInstrumentsSGIX")!, def_glReadInstrumentsSGIX);
+  fn_glStartInstrumentsSGIX = new Deno.UnsafeFnPointer(proc("glStartInstrumentsSGIX")!, def_glStartInstrumentsSGIX);
+  fn_glStopInstrumentsSGIX = new Deno.UnsafeFnPointer(proc("glStopInstrumentsSGIX")!, def_glStopInstrumentsSGIX);
 }

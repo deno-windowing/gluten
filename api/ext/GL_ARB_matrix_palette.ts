@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -86,9 +78,7 @@ export const def_glCurrentPaletteMatrixARB = {
   result: "void",
 } as const;
 
-let fn_glCurrentPaletteMatrixARB!: Deno.UnsafeFnPointer<
-  typeof def_glCurrentPaletteMatrixARB
->;
+let fn_glCurrentPaletteMatrixARB!: Deno.UnsafeFnPointer<typeof def_glCurrentPaletteMatrixARB>;
 
 export function CurrentPaletteMatrixARB(
   index: GLint,
@@ -103,9 +93,7 @@ export const def_glMatrixIndexubvARB = {
   result: "void",
 } as const;
 
-let fn_glMatrixIndexubvARB!: Deno.UnsafeFnPointer<
-  typeof def_glMatrixIndexubvARB
->;
+let fn_glMatrixIndexubvARB!: Deno.UnsafeFnPointer<typeof def_glMatrixIndexubvARB>;
 
 export function MatrixIndexubvARB(
   size: GLint,
@@ -122,9 +110,7 @@ export const def_glMatrixIndexusvARB = {
   result: "void",
 } as const;
 
-let fn_glMatrixIndexusvARB!: Deno.UnsafeFnPointer<
-  typeof def_glMatrixIndexusvARB
->;
+let fn_glMatrixIndexusvARB!: Deno.UnsafeFnPointer<typeof def_glMatrixIndexusvARB>;
 
 export function MatrixIndexusvARB(
   size: GLint,
@@ -141,9 +127,7 @@ export const def_glMatrixIndexuivARB = {
   result: "void",
 } as const;
 
-let fn_glMatrixIndexuivARB!: Deno.UnsafeFnPointer<
-  typeof def_glMatrixIndexuivARB
->;
+let fn_glMatrixIndexuivARB!: Deno.UnsafeFnPointer<typeof def_glMatrixIndexuivARB>;
 
 export function MatrixIndexuivARB(
   size: GLint,
@@ -160,9 +144,7 @@ export const def_glMatrixIndexPointerARB = {
   result: "void",
 } as const;
 
-let fn_glMatrixIndexPointerARB!: Deno.UnsafeFnPointer<
-  typeof def_glMatrixIndexPointerARB
->;
+let fn_glMatrixIndexPointerARB!: Deno.UnsafeFnPointer<typeof def_glMatrixIndexPointerARB>;
 
 export function MatrixIndexPointerARB(
   size: GLint,
@@ -180,24 +162,9 @@ export function MatrixIndexPointerARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glCurrentPaletteMatrixARB = new Deno.UnsafeFnPointer(
-    proc("glCurrentPaletteMatrixARB"),
-    def_glCurrentPaletteMatrixARB,
-  );
-  fn_glMatrixIndexubvARB = new Deno.UnsafeFnPointer(
-    proc("glMatrixIndexubvARB"),
-    def_glMatrixIndexubvARB,
-  );
-  fn_glMatrixIndexusvARB = new Deno.UnsafeFnPointer(
-    proc("glMatrixIndexusvARB"),
-    def_glMatrixIndexusvARB,
-  );
-  fn_glMatrixIndexuivARB = new Deno.UnsafeFnPointer(
-    proc("glMatrixIndexuivARB"),
-    def_glMatrixIndexuivARB,
-  );
-  fn_glMatrixIndexPointerARB = new Deno.UnsafeFnPointer(
-    proc("glMatrixIndexPointerARB"),
-    def_glMatrixIndexPointerARB,
-  );
+  fn_glCurrentPaletteMatrixARB = new Deno.UnsafeFnPointer(proc("glCurrentPaletteMatrixARB")!, def_glCurrentPaletteMatrixARB);
+  fn_glMatrixIndexubvARB = new Deno.UnsafeFnPointer(proc("glMatrixIndexubvARB")!, def_glMatrixIndexubvARB);
+  fn_glMatrixIndexusvARB = new Deno.UnsafeFnPointer(proc("glMatrixIndexusvARB")!, def_glMatrixIndexusvARB);
+  fn_glMatrixIndexuivARB = new Deno.UnsafeFnPointer(proc("glMatrixIndexuivARB")!, def_glMatrixIndexuivARB);
+  fn_glMatrixIndexPointerARB = new Deno.UnsafeFnPointer(proc("glMatrixIndexPointerARB")!, def_glMatrixIndexPointerARB);
 }

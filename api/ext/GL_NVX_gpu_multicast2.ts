@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -92,9 +84,7 @@ export const def_glMulticastViewportArrayvNVX = {
   result: "void",
 } as const;
 
-let fn_glMulticastViewportArrayvNVX!: Deno.UnsafeFnPointer<
-  typeof def_glMulticastViewportArrayvNVX
->;
+let fn_glMulticastViewportArrayvNVX!: Deno.UnsafeFnPointer<typeof def_glMulticastViewportArrayvNVX>;
 
 export function MulticastViewportArrayvNVX(
   gpu: GLuint,
@@ -115,9 +105,7 @@ export const def_glMulticastViewportPositionWScaleNVX = {
   result: "void",
 } as const;
 
-let fn_glMulticastViewportPositionWScaleNVX!: Deno.UnsafeFnPointer<
-  typeof def_glMulticastViewportPositionWScaleNVX
->;
+let fn_glMulticastViewportPositionWScaleNVX!: Deno.UnsafeFnPointer<typeof def_glMulticastViewportPositionWScaleNVX>;
 
 export function MulticastViewportPositionWScaleNVX(
   gpu: GLuint,
@@ -138,9 +126,7 @@ export const def_glMulticastScissorArrayvNVX = {
   result: "void",
 } as const;
 
-let fn_glMulticastScissorArrayvNVX!: Deno.UnsafeFnPointer<
-  typeof def_glMulticastScissorArrayvNVX
->;
+let fn_glMulticastScissorArrayvNVX!: Deno.UnsafeFnPointer<typeof def_glMulticastScissorArrayvNVX>;
 
 export function MulticastScissorArrayvNVX(
   gpu: GLuint,
@@ -157,27 +143,11 @@ export function MulticastScissorArrayvNVX(
 }
 
 export const def_glAsyncCopyBufferSubDataNVX = {
-  parameters: [
-    "i32",
-    "buffer",
-    "buffer",
-    "u32",
-    "u32",
-    "u32",
-    "u32",
-    "buffer",
-    "buffer",
-    "isize",
-    "i32",
-    "buffer",
-    "buffer",
-  ],
+  parameters: ["i32", "buffer", "buffer", "u32", "u32", "u32", "u32", "buffer", "buffer", "isize", "i32", "buffer", "buffer"],
   result: "u32",
 } as const;
 
-let fn_glAsyncCopyBufferSubDataNVX!: Deno.UnsafeFnPointer<
-  typeof def_glAsyncCopyBufferSubDataNVX
->;
+let fn_glAsyncCopyBufferSubDataNVX!: Deno.UnsafeFnPointer<typeof def_glAsyncCopyBufferSubDataNVX>;
 
 export function AsyncCopyBufferSubDataNVX(
   waitSemaphoreCount: GLsizei,
@@ -204,7 +174,7 @@ export function AsyncCopyBufferSubDataNVX(
     writeBuffer,
     bufferToFFI(readOffset),
     bufferToFFI(writeOffset),
-    size,
+    Deno.UnsafePointer.value(size),
     signalSemaphoreCount,
     bufferToFFI(signalSemaphoreArray),
     bufferToFFI(signalValueArray),
@@ -212,37 +182,11 @@ export function AsyncCopyBufferSubDataNVX(
 }
 
 export const def_glAsyncCopyImageSubDataNVX = {
-  parameters: [
-    "i32",
-    "buffer",
-    "buffer",
-    "u32",
-    "u32",
-    "u32",
-    "u32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "u32",
-    "u32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "buffer",
-    "buffer",
-  ],
+  parameters: ["i32", "buffer", "buffer", "u32", "u32", "u32", "u32", "i32", "i32", "i32", "i32", "u32", "u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "buffer", "buffer"],
   result: "u32",
 } as const;
 
-let fn_glAsyncCopyImageSubDataNVX!: Deno.UnsafeFnPointer<
-  typeof def_glAsyncCopyImageSubDataNVX
->;
+let fn_glAsyncCopyImageSubDataNVX!: Deno.UnsafeFnPointer<typeof def_glAsyncCopyImageSubDataNVX>;
 
 export function AsyncCopyImageSubDataNVX(
   waitSemaphoreCount: GLsizei,
@@ -298,28 +242,10 @@ export function AsyncCopyImageSubDataNVX(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glUploadGpuMaskNVX = new Deno.UnsafeFnPointer(
-    proc("glUploadGpuMaskNVX"),
-    def_glUploadGpuMaskNVX,
-  );
-  fn_glMulticastViewportArrayvNVX = new Deno.UnsafeFnPointer(
-    proc("glMulticastViewportArrayvNVX"),
-    def_glMulticastViewportArrayvNVX,
-  );
-  fn_glMulticastViewportPositionWScaleNVX = new Deno.UnsafeFnPointer(
-    proc("glMulticastViewportPositionWScaleNVX"),
-    def_glMulticastViewportPositionWScaleNVX,
-  );
-  fn_glMulticastScissorArrayvNVX = new Deno.UnsafeFnPointer(
-    proc("glMulticastScissorArrayvNVX"),
-    def_glMulticastScissorArrayvNVX,
-  );
-  fn_glAsyncCopyBufferSubDataNVX = new Deno.UnsafeFnPointer(
-    proc("glAsyncCopyBufferSubDataNVX"),
-    def_glAsyncCopyBufferSubDataNVX,
-  );
-  fn_glAsyncCopyImageSubDataNVX = new Deno.UnsafeFnPointer(
-    proc("glAsyncCopyImageSubDataNVX"),
-    def_glAsyncCopyImageSubDataNVX,
-  );
+  fn_glUploadGpuMaskNVX = new Deno.UnsafeFnPointer(proc("glUploadGpuMaskNVX")!, def_glUploadGpuMaskNVX);
+  fn_glMulticastViewportArrayvNVX = new Deno.UnsafeFnPointer(proc("glMulticastViewportArrayvNVX")!, def_glMulticastViewportArrayvNVX);
+  fn_glMulticastViewportPositionWScaleNVX = new Deno.UnsafeFnPointer(proc("glMulticastViewportPositionWScaleNVX")!, def_glMulticastViewportPositionWScaleNVX);
+  fn_glMulticastScissorArrayvNVX = new Deno.UnsafeFnPointer(proc("glMulticastScissorArrayvNVX")!, def_glMulticastScissorArrayvNVX);
+  fn_glAsyncCopyBufferSubDataNVX = new Deno.UnsafeFnPointer(proc("glAsyncCopyBufferSubDataNVX")!, def_glAsyncCopyBufferSubDataNVX);
+  fn_glAsyncCopyImageSubDataNVX = new Deno.UnsafeFnPointer(proc("glAsyncCopyImageSubDataNVX")!, def_glAsyncCopyImageSubDataNVX);
 }

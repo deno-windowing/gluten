@@ -2,17 +2,17 @@
 
 /// Util
 export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -158,7 +158,7 @@ export function BindBufferRangeNV(
     index,
     buffer,
     bufferToFFI(offset),
-    size,
+    Deno.UnsafePointer.value(size),
   );
 }
 
@@ -328,16 +328,16 @@ export function TransformFeedbackStreamAttribsNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBeginTransformFeedbackNV = new Deno.UnsafeFnPointer(proc("glBeginTransformFeedbackNV"), def_glBeginTransformFeedbackNV);
-  fn_glEndTransformFeedbackNV = new Deno.UnsafeFnPointer(proc("glEndTransformFeedbackNV"), def_glEndTransformFeedbackNV);
-  fn_glTransformFeedbackAttribsNV = new Deno.UnsafeFnPointer(proc("glTransformFeedbackAttribsNV"), def_glTransformFeedbackAttribsNV);
-  fn_glBindBufferRangeNV = new Deno.UnsafeFnPointer(proc("glBindBufferRangeNV"), def_glBindBufferRangeNV);
-  fn_glBindBufferOffsetNV = new Deno.UnsafeFnPointer(proc("glBindBufferOffsetNV"), def_glBindBufferOffsetNV);
-  fn_glBindBufferBaseNV = new Deno.UnsafeFnPointer(proc("glBindBufferBaseNV"), def_glBindBufferBaseNV);
-  fn_glTransformFeedbackVaryingsNV = new Deno.UnsafeFnPointer(proc("glTransformFeedbackVaryingsNV"), def_glTransformFeedbackVaryingsNV);
-  fn_glActiveVaryingNV = new Deno.UnsafeFnPointer(proc("glActiveVaryingNV"), def_glActiveVaryingNV);
-  fn_glGetVaryingLocationNV = new Deno.UnsafeFnPointer(proc("glGetVaryingLocationNV"), def_glGetVaryingLocationNV);
-  fn_glGetActiveVaryingNV = new Deno.UnsafeFnPointer(proc("glGetActiveVaryingNV"), def_glGetActiveVaryingNV);
-  fn_glGetTransformFeedbackVaryingNV = new Deno.UnsafeFnPointer(proc("glGetTransformFeedbackVaryingNV"), def_glGetTransformFeedbackVaryingNV);
-  fn_glTransformFeedbackStreamAttribsNV = new Deno.UnsafeFnPointer(proc("glTransformFeedbackStreamAttribsNV"), def_glTransformFeedbackStreamAttribsNV);
+  fn_glBeginTransformFeedbackNV = new Deno.UnsafeFnPointer(proc("glBeginTransformFeedbackNV")!, def_glBeginTransformFeedbackNV);
+  fn_glEndTransformFeedbackNV = new Deno.UnsafeFnPointer(proc("glEndTransformFeedbackNV")!, def_glEndTransformFeedbackNV);
+  fn_glTransformFeedbackAttribsNV = new Deno.UnsafeFnPointer(proc("glTransformFeedbackAttribsNV")!, def_glTransformFeedbackAttribsNV);
+  fn_glBindBufferRangeNV = new Deno.UnsafeFnPointer(proc("glBindBufferRangeNV")!, def_glBindBufferRangeNV);
+  fn_glBindBufferOffsetNV = new Deno.UnsafeFnPointer(proc("glBindBufferOffsetNV")!, def_glBindBufferOffsetNV);
+  fn_glBindBufferBaseNV = new Deno.UnsafeFnPointer(proc("glBindBufferBaseNV")!, def_glBindBufferBaseNV);
+  fn_glTransformFeedbackVaryingsNV = new Deno.UnsafeFnPointer(proc("glTransformFeedbackVaryingsNV")!, def_glTransformFeedbackVaryingsNV);
+  fn_glActiveVaryingNV = new Deno.UnsafeFnPointer(proc("glActiveVaryingNV")!, def_glActiveVaryingNV);
+  fn_glGetVaryingLocationNV = new Deno.UnsafeFnPointer(proc("glGetVaryingLocationNV")!, def_glGetVaryingLocationNV);
+  fn_glGetActiveVaryingNV = new Deno.UnsafeFnPointer(proc("glGetActiveVaryingNV")!, def_glGetActiveVaryingNV);
+  fn_glGetTransformFeedbackVaryingNV = new Deno.UnsafeFnPointer(proc("glGetTransformFeedbackVaryingNV")!, def_glGetTransformFeedbackVaryingNV);
+  fn_glTransformFeedbackStreamAttribsNV = new Deno.UnsafeFnPointer(proc("glTransformFeedbackStreamAttribsNV")!, def_glTransformFeedbackStreamAttribsNV);
 }

@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -74,9 +66,7 @@ export const def_glBlendEquationiARB = {
   result: "void",
 } as const;
 
-let fn_glBlendEquationiARB!: Deno.UnsafeFnPointer<
-  typeof def_glBlendEquationiARB
->;
+let fn_glBlendEquationiARB!: Deno.UnsafeFnPointer<typeof def_glBlendEquationiARB>;
 
 export function BlendEquationiARB(
   buf: GLuint,
@@ -93,9 +83,7 @@ export const def_glBlendEquationSeparateiARB = {
   result: "void",
 } as const;
 
-let fn_glBlendEquationSeparateiARB!: Deno.UnsafeFnPointer<
-  typeof def_glBlendEquationSeparateiARB
->;
+let fn_glBlendEquationSeparateiARB!: Deno.UnsafeFnPointer<typeof def_glBlendEquationSeparateiARB>;
 
 export function BlendEquationSeparateiARB(
   buf: GLuint,
@@ -133,9 +121,7 @@ export const def_glBlendFuncSeparateiARB = {
   result: "void",
 } as const;
 
-let fn_glBlendFuncSeparateiARB!: Deno.UnsafeFnPointer<
-  typeof def_glBlendFuncSeparateiARB
->;
+let fn_glBlendFuncSeparateiARB!: Deno.UnsafeFnPointer<typeof def_glBlendFuncSeparateiARB>;
 
 export function BlendFuncSeparateiARB(
   buf: GLuint,
@@ -155,20 +141,8 @@ export function BlendFuncSeparateiARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBlendEquationiARB = new Deno.UnsafeFnPointer(
-    proc("glBlendEquationiARB"),
-    def_glBlendEquationiARB,
-  );
-  fn_glBlendEquationSeparateiARB = new Deno.UnsafeFnPointer(
-    proc("glBlendEquationSeparateiARB"),
-    def_glBlendEquationSeparateiARB,
-  );
-  fn_glBlendFunciARB = new Deno.UnsafeFnPointer(
-    proc("glBlendFunciARB"),
-    def_glBlendFunciARB,
-  );
-  fn_glBlendFuncSeparateiARB = new Deno.UnsafeFnPointer(
-    proc("glBlendFuncSeparateiARB"),
-    def_glBlendFuncSeparateiARB,
-  );
+  fn_glBlendEquationiARB = new Deno.UnsafeFnPointer(proc("glBlendEquationiARB")!, def_glBlendEquationiARB);
+  fn_glBlendEquationSeparateiARB = new Deno.UnsafeFnPointer(proc("glBlendEquationSeparateiARB")!, def_glBlendEquationSeparateiARB);
+  fn_glBlendFunciARB = new Deno.UnsafeFnPointer(proc("glBlendFunciARB")!, def_glBlendFunciARB);
+  fn_glBlendFuncSeparateiARB = new Deno.UnsafeFnPointer(proc("glBlendFuncSeparateiARB")!, def_glBlendFuncSeparateiARB);
 }

@@ -129,26 +129,30 @@ export function emitRequire(req: RequireOrRemove) {
     `export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;`,
   );
   emit(
+    `const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;`,
+  );
+  emit(
     `export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;`,
   );
   newline();
   emit("export function bufferToFFI(buf: Buffer): Uint8Array | null {");
   block(() => {
     emit("if (buf === null) return null;");
-    emit(`else if (typeof buf === "number" || typeof buf === "bigint") {`);
-    block(() => {
-      emit("if (buf === 0 || buf === 0n) return null;");
-      emit(
-        "return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));",
-      );
-    });
-    emit(`} else if (buf instanceof ArrayBuffer) {`);
+    emit(`if (buf instanceof ArrayBuffer) {`);
     block(() => {
       emit(`return new Uint8Array(buf);`);
     });
+    emit(`} else if (isTypedArray(buf)) {`);
+    block(() => {
+      emit(
+        "return new Uint8Array((buf as TypedArray).buffer);",
+      );
+    });
     emit(`} else {`);
     block(() => {
-      emit(`return new Uint8Array(buf.buffer);`);
+      emit(
+        `return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));`,
+      );
     });
     emit(`}`);
   });
@@ -204,7 +208,7 @@ export function emitRequire(req: RequireOrRemove) {
           throw new Error(`Command ${name} not found`);
         }
         emit(
-          `fn_${cmd.name} = new Deno.UnsafeFnPointer(proc("${cmd.name}"), def_${cmd.name});`,
+          `fn_${cmd.name} = new Deno.UnsafeFnPointer(proc("${cmd.name}")!, def_${cmd.name});`,
         );
       }
     });
@@ -251,7 +255,11 @@ export function emitCommand(cmd: Command) {
         for (const p of cmd.params) {
           emit(
             `${
-              toFFIType(p.type) === "buffer" ? `bufferToFFI(${p.name})` : p.name
+              toFFIType(p.type) === "buffer"
+                ? `bufferToFFI(${p.name})`
+                : p.type === "GLsizeiptr" || p.type === "GLuint64"
+                ? `Deno.UnsafePointer.value(${p.name})`
+                : p.name
             },`,
           );
         }

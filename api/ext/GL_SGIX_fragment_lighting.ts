@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -96,9 +88,7 @@ export const def_glFragmentColorMaterialSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentColorMaterialSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentColorMaterialSGIX
->;
+let fn_glFragmentColorMaterialSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentColorMaterialSGIX>;
 
 export function FragmentColorMaterialSGIX(
   face: GLenum,
@@ -115,9 +105,7 @@ export const def_glFragmentLightfSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentLightfSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentLightfSGIX
->;
+let fn_glFragmentLightfSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentLightfSGIX>;
 
 export function FragmentLightfSGIX(
   light: GLenum,
@@ -136,9 +124,7 @@ export const def_glFragmentLightfvSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentLightfvSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentLightfvSGIX
->;
+let fn_glFragmentLightfvSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentLightfvSGIX>;
 
 export function FragmentLightfvSGIX(
   light: GLenum,
@@ -157,9 +143,7 @@ export const def_glFragmentLightiSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentLightiSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentLightiSGIX
->;
+let fn_glFragmentLightiSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentLightiSGIX>;
 
 export function FragmentLightiSGIX(
   light: GLenum,
@@ -178,9 +162,7 @@ export const def_glFragmentLightivSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentLightivSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentLightivSGIX
->;
+let fn_glFragmentLightivSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentLightivSGIX>;
 
 export function FragmentLightivSGIX(
   light: GLenum,
@@ -199,9 +181,7 @@ export const def_glFragmentLightModelfSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentLightModelfSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentLightModelfSGIX
->;
+let fn_glFragmentLightModelfSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentLightModelfSGIX>;
 
 export function FragmentLightModelfSGIX(
   pname: GLenum,
@@ -218,9 +198,7 @@ export const def_glFragmentLightModelfvSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentLightModelfvSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentLightModelfvSGIX
->;
+let fn_glFragmentLightModelfvSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentLightModelfvSGIX>;
 
 export function FragmentLightModelfvSGIX(
   pname: GLenum,
@@ -237,9 +215,7 @@ export const def_glFragmentLightModeliSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentLightModeliSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentLightModeliSGIX
->;
+let fn_glFragmentLightModeliSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentLightModeliSGIX>;
 
 export function FragmentLightModeliSGIX(
   pname: GLenum,
@@ -256,9 +232,7 @@ export const def_glFragmentLightModelivSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentLightModelivSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentLightModelivSGIX
->;
+let fn_glFragmentLightModelivSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentLightModelivSGIX>;
 
 export function FragmentLightModelivSGIX(
   pname: GLenum,
@@ -275,9 +249,7 @@ export const def_glFragmentMaterialfSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentMaterialfSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentMaterialfSGIX
->;
+let fn_glFragmentMaterialfSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentMaterialfSGIX>;
 
 export function FragmentMaterialfSGIX(
   face: GLenum,
@@ -296,9 +268,7 @@ export const def_glFragmentMaterialfvSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentMaterialfvSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentMaterialfvSGIX
->;
+let fn_glFragmentMaterialfvSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentMaterialfvSGIX>;
 
 export function FragmentMaterialfvSGIX(
   face: GLenum,
@@ -317,9 +287,7 @@ export const def_glFragmentMaterialiSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentMaterialiSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentMaterialiSGIX
->;
+let fn_glFragmentMaterialiSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentMaterialiSGIX>;
 
 export function FragmentMaterialiSGIX(
   face: GLenum,
@@ -338,9 +306,7 @@ export const def_glFragmentMaterialivSGIX = {
   result: "void",
 } as const;
 
-let fn_glFragmentMaterialivSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glFragmentMaterialivSGIX
->;
+let fn_glFragmentMaterialivSGIX!: Deno.UnsafeFnPointer<typeof def_glFragmentMaterialivSGIX>;
 
 export function FragmentMaterialivSGIX(
   face: GLenum,
@@ -359,9 +325,7 @@ export const def_glGetFragmentLightfvSGIX = {
   result: "void",
 } as const;
 
-let fn_glGetFragmentLightfvSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glGetFragmentLightfvSGIX
->;
+let fn_glGetFragmentLightfvSGIX!: Deno.UnsafeFnPointer<typeof def_glGetFragmentLightfvSGIX>;
 
 export function GetFragmentLightfvSGIX(
   light: GLenum,
@@ -380,9 +344,7 @@ export const def_glGetFragmentLightivSGIX = {
   result: "void",
 } as const;
 
-let fn_glGetFragmentLightivSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glGetFragmentLightivSGIX
->;
+let fn_glGetFragmentLightivSGIX!: Deno.UnsafeFnPointer<typeof def_glGetFragmentLightivSGIX>;
 
 export function GetFragmentLightivSGIX(
   light: GLenum,
@@ -401,9 +363,7 @@ export const def_glGetFragmentMaterialfvSGIX = {
   result: "void",
 } as const;
 
-let fn_glGetFragmentMaterialfvSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glGetFragmentMaterialfvSGIX
->;
+let fn_glGetFragmentMaterialfvSGIX!: Deno.UnsafeFnPointer<typeof def_glGetFragmentMaterialfvSGIX>;
 
 export function GetFragmentMaterialfvSGIX(
   face: GLenum,
@@ -422,9 +382,7 @@ export const def_glGetFragmentMaterialivSGIX = {
   result: "void",
 } as const;
 
-let fn_glGetFragmentMaterialivSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glGetFragmentMaterialivSGIX
->;
+let fn_glGetFragmentMaterialivSGIX!: Deno.UnsafeFnPointer<typeof def_glGetFragmentMaterialivSGIX>;
 
 export function GetFragmentMaterialivSGIX(
   face: GLenum,
@@ -457,76 +415,22 @@ export function LightEnviSGIX(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFragmentColorMaterialSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentColorMaterialSGIX"),
-    def_glFragmentColorMaterialSGIX,
-  );
-  fn_glFragmentLightfSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentLightfSGIX"),
-    def_glFragmentLightfSGIX,
-  );
-  fn_glFragmentLightfvSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentLightfvSGIX"),
-    def_glFragmentLightfvSGIX,
-  );
-  fn_glFragmentLightiSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentLightiSGIX"),
-    def_glFragmentLightiSGIX,
-  );
-  fn_glFragmentLightivSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentLightivSGIX"),
-    def_glFragmentLightivSGIX,
-  );
-  fn_glFragmentLightModelfSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentLightModelfSGIX"),
-    def_glFragmentLightModelfSGIX,
-  );
-  fn_glFragmentLightModelfvSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentLightModelfvSGIX"),
-    def_glFragmentLightModelfvSGIX,
-  );
-  fn_glFragmentLightModeliSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentLightModeliSGIX"),
-    def_glFragmentLightModeliSGIX,
-  );
-  fn_glFragmentLightModelivSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentLightModelivSGIX"),
-    def_glFragmentLightModelivSGIX,
-  );
-  fn_glFragmentMaterialfSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentMaterialfSGIX"),
-    def_glFragmentMaterialfSGIX,
-  );
-  fn_glFragmentMaterialfvSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentMaterialfvSGIX"),
-    def_glFragmentMaterialfvSGIX,
-  );
-  fn_glFragmentMaterialiSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentMaterialiSGIX"),
-    def_glFragmentMaterialiSGIX,
-  );
-  fn_glFragmentMaterialivSGIX = new Deno.UnsafeFnPointer(
-    proc("glFragmentMaterialivSGIX"),
-    def_glFragmentMaterialivSGIX,
-  );
-  fn_glGetFragmentLightfvSGIX = new Deno.UnsafeFnPointer(
-    proc("glGetFragmentLightfvSGIX"),
-    def_glGetFragmentLightfvSGIX,
-  );
-  fn_glGetFragmentLightivSGIX = new Deno.UnsafeFnPointer(
-    proc("glGetFragmentLightivSGIX"),
-    def_glGetFragmentLightivSGIX,
-  );
-  fn_glGetFragmentMaterialfvSGIX = new Deno.UnsafeFnPointer(
-    proc("glGetFragmentMaterialfvSGIX"),
-    def_glGetFragmentMaterialfvSGIX,
-  );
-  fn_glGetFragmentMaterialivSGIX = new Deno.UnsafeFnPointer(
-    proc("glGetFragmentMaterialivSGIX"),
-    def_glGetFragmentMaterialivSGIX,
-  );
-  fn_glLightEnviSGIX = new Deno.UnsafeFnPointer(
-    proc("glLightEnviSGIX"),
-    def_glLightEnviSGIX,
-  );
+  fn_glFragmentColorMaterialSGIX = new Deno.UnsafeFnPointer(proc("glFragmentColorMaterialSGIX")!, def_glFragmentColorMaterialSGIX);
+  fn_glFragmentLightfSGIX = new Deno.UnsafeFnPointer(proc("glFragmentLightfSGIX")!, def_glFragmentLightfSGIX);
+  fn_glFragmentLightfvSGIX = new Deno.UnsafeFnPointer(proc("glFragmentLightfvSGIX")!, def_glFragmentLightfvSGIX);
+  fn_glFragmentLightiSGIX = new Deno.UnsafeFnPointer(proc("glFragmentLightiSGIX")!, def_glFragmentLightiSGIX);
+  fn_glFragmentLightivSGIX = new Deno.UnsafeFnPointer(proc("glFragmentLightivSGIX")!, def_glFragmentLightivSGIX);
+  fn_glFragmentLightModelfSGIX = new Deno.UnsafeFnPointer(proc("glFragmentLightModelfSGIX")!, def_glFragmentLightModelfSGIX);
+  fn_glFragmentLightModelfvSGIX = new Deno.UnsafeFnPointer(proc("glFragmentLightModelfvSGIX")!, def_glFragmentLightModelfvSGIX);
+  fn_glFragmentLightModeliSGIX = new Deno.UnsafeFnPointer(proc("glFragmentLightModeliSGIX")!, def_glFragmentLightModeliSGIX);
+  fn_glFragmentLightModelivSGIX = new Deno.UnsafeFnPointer(proc("glFragmentLightModelivSGIX")!, def_glFragmentLightModelivSGIX);
+  fn_glFragmentMaterialfSGIX = new Deno.UnsafeFnPointer(proc("glFragmentMaterialfSGIX")!, def_glFragmentMaterialfSGIX);
+  fn_glFragmentMaterialfvSGIX = new Deno.UnsafeFnPointer(proc("glFragmentMaterialfvSGIX")!, def_glFragmentMaterialfvSGIX);
+  fn_glFragmentMaterialiSGIX = new Deno.UnsafeFnPointer(proc("glFragmentMaterialiSGIX")!, def_glFragmentMaterialiSGIX);
+  fn_glFragmentMaterialivSGIX = new Deno.UnsafeFnPointer(proc("glFragmentMaterialivSGIX")!, def_glFragmentMaterialivSGIX);
+  fn_glGetFragmentLightfvSGIX = new Deno.UnsafeFnPointer(proc("glGetFragmentLightfvSGIX")!, def_glGetFragmentLightfvSGIX);
+  fn_glGetFragmentLightivSGIX = new Deno.UnsafeFnPointer(proc("glGetFragmentLightivSGIX")!, def_glGetFragmentLightivSGIX);
+  fn_glGetFragmentMaterialfvSGIX = new Deno.UnsafeFnPointer(proc("glGetFragmentMaterialfvSGIX")!, def_glGetFragmentMaterialfvSGIX);
+  fn_glGetFragmentMaterialivSGIX = new Deno.UnsafeFnPointer(proc("glGetFragmentMaterialivSGIX")!, def_glGetFragmentMaterialivSGIX);
+  fn_glLightEnviSGIX = new Deno.UnsafeFnPointer(proc("glLightEnviSGIX")!, def_glLightEnviSGIX);
 }

@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -131,9 +123,7 @@ export const def_glViewportIndexedfv = {
   result: "void",
 } as const;
 
-let fn_glViewportIndexedfv!: Deno.UnsafeFnPointer<
-  typeof def_glViewportIndexedfv
->;
+let fn_glViewportIndexedfv!: Deno.UnsafeFnPointer<typeof def_glViewportIndexedfv>;
 
 export function ViewportIndexedfv(
   index: GLuint,
@@ -228,9 +218,7 @@ export const def_glDepthRangeIndexed = {
   result: "void",
 } as const;
 
-let fn_glDepthRangeIndexed!: Deno.UnsafeFnPointer<
-  typeof def_glDepthRangeIndexed
->;
+let fn_glDepthRangeIndexed!: Deno.UnsafeFnPointer<typeof def_glDepthRangeIndexed>;
 
 export function DepthRangeIndexed(
   index: GLuint,
@@ -287,9 +275,7 @@ export const def_glDepthRangeArraydvNV = {
   result: "void",
 } as const;
 
-let fn_glDepthRangeArraydvNV!: Deno.UnsafeFnPointer<
-  typeof def_glDepthRangeArraydvNV
->;
+let fn_glDepthRangeArraydvNV!: Deno.UnsafeFnPointer<typeof def_glDepthRangeArraydvNV>;
 
 export function DepthRangeArraydvNV(
   first: GLuint,
@@ -308,9 +294,7 @@ export const def_glDepthRangeIndexeddNV = {
   result: "void",
 } as const;
 
-let fn_glDepthRangeIndexeddNV!: Deno.UnsafeFnPointer<
-  typeof def_glDepthRangeIndexeddNV
->;
+let fn_glDepthRangeIndexeddNV!: Deno.UnsafeFnPointer<typeof def_glDepthRangeIndexeddNV>;
 
 export function DepthRangeIndexeddNV(
   index: GLuint,
@@ -326,52 +310,16 @@ export function DepthRangeIndexeddNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glViewportArrayv = new Deno.UnsafeFnPointer(
-    proc("glViewportArrayv"),
-    def_glViewportArrayv,
-  );
-  fn_glViewportIndexedf = new Deno.UnsafeFnPointer(
-    proc("glViewportIndexedf"),
-    def_glViewportIndexedf,
-  );
-  fn_glViewportIndexedfv = new Deno.UnsafeFnPointer(
-    proc("glViewportIndexedfv"),
-    def_glViewportIndexedfv,
-  );
-  fn_glScissorArrayv = new Deno.UnsafeFnPointer(
-    proc("glScissorArrayv"),
-    def_glScissorArrayv,
-  );
-  fn_glScissorIndexed = new Deno.UnsafeFnPointer(
-    proc("glScissorIndexed"),
-    def_glScissorIndexed,
-  );
-  fn_glScissorIndexedv = new Deno.UnsafeFnPointer(
-    proc("glScissorIndexedv"),
-    def_glScissorIndexedv,
-  );
-  fn_glDepthRangeArrayv = new Deno.UnsafeFnPointer(
-    proc("glDepthRangeArrayv"),
-    def_glDepthRangeArrayv,
-  );
-  fn_glDepthRangeIndexed = new Deno.UnsafeFnPointer(
-    proc("glDepthRangeIndexed"),
-    def_glDepthRangeIndexed,
-  );
-  fn_glGetFloati_v = new Deno.UnsafeFnPointer(
-    proc("glGetFloati_v"),
-    def_glGetFloati_v,
-  );
-  fn_glGetDoublei_v = new Deno.UnsafeFnPointer(
-    proc("glGetDoublei_v"),
-    def_glGetDoublei_v,
-  );
-  fn_glDepthRangeArraydvNV = new Deno.UnsafeFnPointer(
-    proc("glDepthRangeArraydvNV"),
-    def_glDepthRangeArraydvNV,
-  );
-  fn_glDepthRangeIndexeddNV = new Deno.UnsafeFnPointer(
-    proc("glDepthRangeIndexeddNV"),
-    def_glDepthRangeIndexeddNV,
-  );
+  fn_glViewportArrayv = new Deno.UnsafeFnPointer(proc("glViewportArrayv")!, def_glViewportArrayv);
+  fn_glViewportIndexedf = new Deno.UnsafeFnPointer(proc("glViewportIndexedf")!, def_glViewportIndexedf);
+  fn_glViewportIndexedfv = new Deno.UnsafeFnPointer(proc("glViewportIndexedfv")!, def_glViewportIndexedfv);
+  fn_glScissorArrayv = new Deno.UnsafeFnPointer(proc("glScissorArrayv")!, def_glScissorArrayv);
+  fn_glScissorIndexed = new Deno.UnsafeFnPointer(proc("glScissorIndexed")!, def_glScissorIndexed);
+  fn_glScissorIndexedv = new Deno.UnsafeFnPointer(proc("glScissorIndexedv")!, def_glScissorIndexedv);
+  fn_glDepthRangeArrayv = new Deno.UnsafeFnPointer(proc("glDepthRangeArrayv")!, def_glDepthRangeArrayv);
+  fn_glDepthRangeIndexed = new Deno.UnsafeFnPointer(proc("glDepthRangeIndexed")!, def_glDepthRangeIndexed);
+  fn_glGetFloati_v = new Deno.UnsafeFnPointer(proc("glGetFloati_v")!, def_glGetFloati_v);
+  fn_glGetDoublei_v = new Deno.UnsafeFnPointer(proc("glGetDoublei_v")!, def_glGetDoublei_v);
+  fn_glDepthRangeArraydvNV = new Deno.UnsafeFnPointer(proc("glDepthRangeArraydvNV")!, def_glDepthRangeArraydvNV);
+  fn_glDepthRangeIndexeddNV = new Deno.UnsafeFnPointer(proc("glDepthRangeIndexeddNV")!, def_glDepthRangeIndexeddNV);
 }

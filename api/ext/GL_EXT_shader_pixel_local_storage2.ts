@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -70,8 +62,7 @@ export type GLVULKANPROCNV = Buffer;
 /// Enums
 export const MAX_SHADER_COMBINED_LOCAL_STORAGE_FAST_SIZE_EXT = 0x9650;
 export const MAX_SHADER_COMBINED_LOCAL_STORAGE_SIZE_EXT = 0x9651;
-export const FRAMEBUFFER_INCOMPLETE_INSUFFICIENT_SHADER_COMBINED_LOCAL_STORAGE_EXT =
-  0x9652;
+export const FRAMEBUFFER_INCOMPLETE_INSUFFICIENT_SHADER_COMBINED_LOCAL_STORAGE_EXT = 0x9652;
 
 /// Commands
 
@@ -80,9 +71,7 @@ export const def_glFramebufferPixelLocalStorageSizeEXT = {
   result: "void",
 } as const;
 
-let fn_glFramebufferPixelLocalStorageSizeEXT!: Deno.UnsafeFnPointer<
-  typeof def_glFramebufferPixelLocalStorageSizeEXT
->;
+let fn_glFramebufferPixelLocalStorageSizeEXT!: Deno.UnsafeFnPointer<typeof def_glFramebufferPixelLocalStorageSizeEXT>;
 
 export function FramebufferPixelLocalStorageSizeEXT(
   target: GLuint,
@@ -99,9 +88,7 @@ export const def_glGetFramebufferPixelLocalStorageSizeEXT = {
   result: "i32",
 } as const;
 
-let fn_glGetFramebufferPixelLocalStorageSizeEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetFramebufferPixelLocalStorageSizeEXT
->;
+let fn_glGetFramebufferPixelLocalStorageSizeEXT!: Deno.UnsafeFnPointer<typeof def_glGetFramebufferPixelLocalStorageSizeEXT>;
 
 export function GetFramebufferPixelLocalStorageSizeEXT(
   target: GLuint,
@@ -116,9 +103,7 @@ export const def_glClearPixelLocalStorageuiEXT = {
   result: "void",
 } as const;
 
-let fn_glClearPixelLocalStorageuiEXT!: Deno.UnsafeFnPointer<
-  typeof def_glClearPixelLocalStorageuiEXT
->;
+let fn_glClearPixelLocalStorageuiEXT!: Deno.UnsafeFnPointer<typeof def_glClearPixelLocalStorageuiEXT>;
 
 export function ClearPixelLocalStorageuiEXT(
   offset: GLsizei,
@@ -134,16 +119,7 @@ export function ClearPixelLocalStorageuiEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFramebufferPixelLocalStorageSizeEXT = new Deno.UnsafeFnPointer(
-    proc("glFramebufferPixelLocalStorageSizeEXT"),
-    def_glFramebufferPixelLocalStorageSizeEXT,
-  );
-  fn_glGetFramebufferPixelLocalStorageSizeEXT = new Deno.UnsafeFnPointer(
-    proc("glGetFramebufferPixelLocalStorageSizeEXT"),
-    def_glGetFramebufferPixelLocalStorageSizeEXT,
-  );
-  fn_glClearPixelLocalStorageuiEXT = new Deno.UnsafeFnPointer(
-    proc("glClearPixelLocalStorageuiEXT"),
-    def_glClearPixelLocalStorageuiEXT,
-  );
+  fn_glFramebufferPixelLocalStorageSizeEXT = new Deno.UnsafeFnPointer(proc("glFramebufferPixelLocalStorageSizeEXT")!, def_glFramebufferPixelLocalStorageSizeEXT);
+  fn_glGetFramebufferPixelLocalStorageSizeEXT = new Deno.UnsafeFnPointer(proc("glGetFramebufferPixelLocalStorageSizeEXT")!, def_glGetFramebufferPixelLocalStorageSizeEXT);
+  fn_glClearPixelLocalStorageuiEXT = new Deno.UnsafeFnPointer(proc("glClearPixelLocalStorageuiEXT")!, def_glClearPixelLocalStorageuiEXT);
 }

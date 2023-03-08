@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -415,9 +407,7 @@ export const def_glMultiTexCoord1hNV = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1hNV!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord1hNV
->;
+let fn_glMultiTexCoord1hNV!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1hNV>;
 
 export function MultiTexCoord1hNV(
   target: GLenum,
@@ -434,9 +424,7 @@ export const def_glMultiTexCoord1hvNV = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord1hvNV
->;
+let fn_glMultiTexCoord1hvNV!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1hvNV>;
 
 export function MultiTexCoord1hvNV(
   target: GLenum,
@@ -453,9 +441,7 @@ export const def_glMultiTexCoord2hNV = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2hNV!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord2hNV
->;
+let fn_glMultiTexCoord2hNV!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2hNV>;
 
 export function MultiTexCoord2hNV(
   target: GLenum,
@@ -474,9 +460,7 @@ export const def_glMultiTexCoord2hvNV = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord2hvNV
->;
+let fn_glMultiTexCoord2hvNV!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2hvNV>;
 
 export function MultiTexCoord2hvNV(
   target: GLenum,
@@ -493,9 +477,7 @@ export const def_glMultiTexCoord3hNV = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3hNV!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord3hNV
->;
+let fn_glMultiTexCoord3hNV!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3hNV>;
 
 export function MultiTexCoord3hNV(
   target: GLenum,
@@ -516,9 +498,7 @@ export const def_glMultiTexCoord3hvNV = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord3hvNV
->;
+let fn_glMultiTexCoord3hvNV!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3hvNV>;
 
 export function MultiTexCoord3hvNV(
   target: GLenum,
@@ -535,9 +515,7 @@ export const def_glMultiTexCoord4hNV = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4hNV!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord4hNV
->;
+let fn_glMultiTexCoord4hNV!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4hNV>;
 
 export function MultiTexCoord4hNV(
   target: GLenum,
@@ -560,9 +538,7 @@ export const def_glMultiTexCoord4hvNV = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord4hvNV
->;
+let fn_glMultiTexCoord4hvNV!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4hvNV>;
 
 export function MultiTexCoord4hvNV(
   target: GLenum,
@@ -609,9 +585,7 @@ export const def_glSecondaryColor3hNV = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3hNV!: Deno.UnsafeFnPointer<
-  typeof def_glSecondaryColor3hNV
->;
+let fn_glSecondaryColor3hNV!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3hNV>;
 
 export function SecondaryColor3hNV(
   red: GLhalfNV,
@@ -630,9 +604,7 @@ export const def_glSecondaryColor3hvNV = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColor3hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glSecondaryColor3hvNV
->;
+let fn_glSecondaryColor3hvNV!: Deno.UnsafeFnPointer<typeof def_glSecondaryColor3hvNV>;
 
 export function SecondaryColor3hvNV(
   v: Buffer,
@@ -694,9 +666,7 @@ export const def_glVertexAttrib1hvNV = {
   result: "void",
 } as const;
 
-let fn_glVertexAttrib1hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glVertexAttrib1hvNV
->;
+let fn_glVertexAttrib1hvNV!: Deno.UnsafeFnPointer<typeof def_glVertexAttrib1hvNV>;
 
 export function VertexAttrib1hvNV(
   index: GLuint,
@@ -732,9 +702,7 @@ export const def_glVertexAttrib2hvNV = {
   result: "void",
 } as const;
 
-let fn_glVertexAttrib2hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glVertexAttrib2hvNV
->;
+let fn_glVertexAttrib2hvNV!: Deno.UnsafeFnPointer<typeof def_glVertexAttrib2hvNV>;
 
 export function VertexAttrib2hvNV(
   index: GLuint,
@@ -772,9 +740,7 @@ export const def_glVertexAttrib3hvNV = {
   result: "void",
 } as const;
 
-let fn_glVertexAttrib3hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glVertexAttrib3hvNV
->;
+let fn_glVertexAttrib3hvNV!: Deno.UnsafeFnPointer<typeof def_glVertexAttrib3hvNV>;
 
 export function VertexAttrib3hvNV(
   index: GLuint,
@@ -814,9 +780,7 @@ export const def_glVertexAttrib4hvNV = {
   result: "void",
 } as const;
 
-let fn_glVertexAttrib4hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glVertexAttrib4hvNV
->;
+let fn_glVertexAttrib4hvNV!: Deno.UnsafeFnPointer<typeof def_glVertexAttrib4hvNV>;
 
 export function VertexAttrib4hvNV(
   index: GLuint,
@@ -833,9 +797,7 @@ export const def_glVertexAttribs1hvNV = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribs1hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glVertexAttribs1hvNV
->;
+let fn_glVertexAttribs1hvNV!: Deno.UnsafeFnPointer<typeof def_glVertexAttribs1hvNV>;
 
 export function VertexAttribs1hvNV(
   index: GLuint,
@@ -854,9 +816,7 @@ export const def_glVertexAttribs2hvNV = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribs2hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glVertexAttribs2hvNV
->;
+let fn_glVertexAttribs2hvNV!: Deno.UnsafeFnPointer<typeof def_glVertexAttribs2hvNV>;
 
 export function VertexAttribs2hvNV(
   index: GLuint,
@@ -875,9 +835,7 @@ export const def_glVertexAttribs3hvNV = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribs3hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glVertexAttribs3hvNV
->;
+let fn_glVertexAttribs3hvNV!: Deno.UnsafeFnPointer<typeof def_glVertexAttribs3hvNV>;
 
 export function VertexAttribs3hvNV(
   index: GLuint,
@@ -896,9 +854,7 @@ export const def_glVertexAttribs4hvNV = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribs4hvNV!: Deno.UnsafeFnPointer<
-  typeof def_glVertexAttribs4hvNV
->;
+let fn_glVertexAttribs4hvNV!: Deno.UnsafeFnPointer<typeof def_glVertexAttribs4hvNV>;
 
 export function VertexAttribs4hvNV(
   index: GLuint,
@@ -914,188 +870,50 @@ export function VertexAttribs4hvNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glVertex2hNV = new Deno.UnsafeFnPointer(
-    proc("glVertex2hNV"),
-    def_glVertex2hNV,
-  );
-  fn_glVertex2hvNV = new Deno.UnsafeFnPointer(
-    proc("glVertex2hvNV"),
-    def_glVertex2hvNV,
-  );
-  fn_glVertex3hNV = new Deno.UnsafeFnPointer(
-    proc("glVertex3hNV"),
-    def_glVertex3hNV,
-  );
-  fn_glVertex3hvNV = new Deno.UnsafeFnPointer(
-    proc("glVertex3hvNV"),
-    def_glVertex3hvNV,
-  );
-  fn_glVertex4hNV = new Deno.UnsafeFnPointer(
-    proc("glVertex4hNV"),
-    def_glVertex4hNV,
-  );
-  fn_glVertex4hvNV = new Deno.UnsafeFnPointer(
-    proc("glVertex4hvNV"),
-    def_glVertex4hvNV,
-  );
-  fn_glNormal3hNV = new Deno.UnsafeFnPointer(
-    proc("glNormal3hNV"),
-    def_glNormal3hNV,
-  );
-  fn_glNormal3hvNV = new Deno.UnsafeFnPointer(
-    proc("glNormal3hvNV"),
-    def_glNormal3hvNV,
-  );
-  fn_glColor3hNV = new Deno.UnsafeFnPointer(
-    proc("glColor3hNV"),
-    def_glColor3hNV,
-  );
-  fn_glColor3hvNV = new Deno.UnsafeFnPointer(
-    proc("glColor3hvNV"),
-    def_glColor3hvNV,
-  );
-  fn_glColor4hNV = new Deno.UnsafeFnPointer(
-    proc("glColor4hNV"),
-    def_glColor4hNV,
-  );
-  fn_glColor4hvNV = new Deno.UnsafeFnPointer(
-    proc("glColor4hvNV"),
-    def_glColor4hvNV,
-  );
-  fn_glTexCoord1hNV = new Deno.UnsafeFnPointer(
-    proc("glTexCoord1hNV"),
-    def_glTexCoord1hNV,
-  );
-  fn_glTexCoord1hvNV = new Deno.UnsafeFnPointer(
-    proc("glTexCoord1hvNV"),
-    def_glTexCoord1hvNV,
-  );
-  fn_glTexCoord2hNV = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2hNV"),
-    def_glTexCoord2hNV,
-  );
-  fn_glTexCoord2hvNV = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2hvNV"),
-    def_glTexCoord2hvNV,
-  );
-  fn_glTexCoord3hNV = new Deno.UnsafeFnPointer(
-    proc("glTexCoord3hNV"),
-    def_glTexCoord3hNV,
-  );
-  fn_glTexCoord3hvNV = new Deno.UnsafeFnPointer(
-    proc("glTexCoord3hvNV"),
-    def_glTexCoord3hvNV,
-  );
-  fn_glTexCoord4hNV = new Deno.UnsafeFnPointer(
-    proc("glTexCoord4hNV"),
-    def_glTexCoord4hNV,
-  );
-  fn_glTexCoord4hvNV = new Deno.UnsafeFnPointer(
-    proc("glTexCoord4hvNV"),
-    def_glTexCoord4hvNV,
-  );
-  fn_glMultiTexCoord1hNV = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord1hNV"),
-    def_glMultiTexCoord1hNV,
-  );
-  fn_glMultiTexCoord1hvNV = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord1hvNV"),
-    def_glMultiTexCoord1hvNV,
-  );
-  fn_glMultiTexCoord2hNV = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord2hNV"),
-    def_glMultiTexCoord2hNV,
-  );
-  fn_glMultiTexCoord2hvNV = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord2hvNV"),
-    def_glMultiTexCoord2hvNV,
-  );
-  fn_glMultiTexCoord3hNV = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord3hNV"),
-    def_glMultiTexCoord3hNV,
-  );
-  fn_glMultiTexCoord3hvNV = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord3hvNV"),
-    def_glMultiTexCoord3hvNV,
-  );
-  fn_glMultiTexCoord4hNV = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord4hNV"),
-    def_glMultiTexCoord4hNV,
-  );
-  fn_glMultiTexCoord4hvNV = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord4hvNV"),
-    def_glMultiTexCoord4hvNV,
-  );
-  fn_glFogCoordhNV = new Deno.UnsafeFnPointer(
-    proc("glFogCoordhNV"),
-    def_glFogCoordhNV,
-  );
-  fn_glFogCoordhvNV = new Deno.UnsafeFnPointer(
-    proc("glFogCoordhvNV"),
-    def_glFogCoordhvNV,
-  );
-  fn_glSecondaryColor3hNV = new Deno.UnsafeFnPointer(
-    proc("glSecondaryColor3hNV"),
-    def_glSecondaryColor3hNV,
-  );
-  fn_glSecondaryColor3hvNV = new Deno.UnsafeFnPointer(
-    proc("glSecondaryColor3hvNV"),
-    def_glSecondaryColor3hvNV,
-  );
-  fn_glVertexWeighthNV = new Deno.UnsafeFnPointer(
-    proc("glVertexWeighthNV"),
-    def_glVertexWeighthNV,
-  );
-  fn_glVertexWeighthvNV = new Deno.UnsafeFnPointer(
-    proc("glVertexWeighthvNV"),
-    def_glVertexWeighthvNV,
-  );
-  fn_glVertexAttrib1hNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttrib1hNV"),
-    def_glVertexAttrib1hNV,
-  );
-  fn_glVertexAttrib1hvNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttrib1hvNV"),
-    def_glVertexAttrib1hvNV,
-  );
-  fn_glVertexAttrib2hNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttrib2hNV"),
-    def_glVertexAttrib2hNV,
-  );
-  fn_glVertexAttrib2hvNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttrib2hvNV"),
-    def_glVertexAttrib2hvNV,
-  );
-  fn_glVertexAttrib3hNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttrib3hNV"),
-    def_glVertexAttrib3hNV,
-  );
-  fn_glVertexAttrib3hvNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttrib3hvNV"),
-    def_glVertexAttrib3hvNV,
-  );
-  fn_glVertexAttrib4hNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttrib4hNV"),
-    def_glVertexAttrib4hNV,
-  );
-  fn_glVertexAttrib4hvNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttrib4hvNV"),
-    def_glVertexAttrib4hvNV,
-  );
-  fn_glVertexAttribs1hvNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttribs1hvNV"),
-    def_glVertexAttribs1hvNV,
-  );
-  fn_glVertexAttribs2hvNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttribs2hvNV"),
-    def_glVertexAttribs2hvNV,
-  );
-  fn_glVertexAttribs3hvNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttribs3hvNV"),
-    def_glVertexAttribs3hvNV,
-  );
-  fn_glVertexAttribs4hvNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttribs4hvNV"),
-    def_glVertexAttribs4hvNV,
-  );
+  fn_glVertex2hNV = new Deno.UnsafeFnPointer(proc("glVertex2hNV")!, def_glVertex2hNV);
+  fn_glVertex2hvNV = new Deno.UnsafeFnPointer(proc("glVertex2hvNV")!, def_glVertex2hvNV);
+  fn_glVertex3hNV = new Deno.UnsafeFnPointer(proc("glVertex3hNV")!, def_glVertex3hNV);
+  fn_glVertex3hvNV = new Deno.UnsafeFnPointer(proc("glVertex3hvNV")!, def_glVertex3hvNV);
+  fn_glVertex4hNV = new Deno.UnsafeFnPointer(proc("glVertex4hNV")!, def_glVertex4hNV);
+  fn_glVertex4hvNV = new Deno.UnsafeFnPointer(proc("glVertex4hvNV")!, def_glVertex4hvNV);
+  fn_glNormal3hNV = new Deno.UnsafeFnPointer(proc("glNormal3hNV")!, def_glNormal3hNV);
+  fn_glNormal3hvNV = new Deno.UnsafeFnPointer(proc("glNormal3hvNV")!, def_glNormal3hvNV);
+  fn_glColor3hNV = new Deno.UnsafeFnPointer(proc("glColor3hNV")!, def_glColor3hNV);
+  fn_glColor3hvNV = new Deno.UnsafeFnPointer(proc("glColor3hvNV")!, def_glColor3hvNV);
+  fn_glColor4hNV = new Deno.UnsafeFnPointer(proc("glColor4hNV")!, def_glColor4hNV);
+  fn_glColor4hvNV = new Deno.UnsafeFnPointer(proc("glColor4hvNV")!, def_glColor4hvNV);
+  fn_glTexCoord1hNV = new Deno.UnsafeFnPointer(proc("glTexCoord1hNV")!, def_glTexCoord1hNV);
+  fn_glTexCoord1hvNV = new Deno.UnsafeFnPointer(proc("glTexCoord1hvNV")!, def_glTexCoord1hvNV);
+  fn_glTexCoord2hNV = new Deno.UnsafeFnPointer(proc("glTexCoord2hNV")!, def_glTexCoord2hNV);
+  fn_glTexCoord2hvNV = new Deno.UnsafeFnPointer(proc("glTexCoord2hvNV")!, def_glTexCoord2hvNV);
+  fn_glTexCoord3hNV = new Deno.UnsafeFnPointer(proc("glTexCoord3hNV")!, def_glTexCoord3hNV);
+  fn_glTexCoord3hvNV = new Deno.UnsafeFnPointer(proc("glTexCoord3hvNV")!, def_glTexCoord3hvNV);
+  fn_glTexCoord4hNV = new Deno.UnsafeFnPointer(proc("glTexCoord4hNV")!, def_glTexCoord4hNV);
+  fn_glTexCoord4hvNV = new Deno.UnsafeFnPointer(proc("glTexCoord4hvNV")!, def_glTexCoord4hvNV);
+  fn_glMultiTexCoord1hNV = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1hNV")!, def_glMultiTexCoord1hNV);
+  fn_glMultiTexCoord1hvNV = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1hvNV")!, def_glMultiTexCoord1hvNV);
+  fn_glMultiTexCoord2hNV = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2hNV")!, def_glMultiTexCoord2hNV);
+  fn_glMultiTexCoord2hvNV = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2hvNV")!, def_glMultiTexCoord2hvNV);
+  fn_glMultiTexCoord3hNV = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3hNV")!, def_glMultiTexCoord3hNV);
+  fn_glMultiTexCoord3hvNV = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3hvNV")!, def_glMultiTexCoord3hvNV);
+  fn_glMultiTexCoord4hNV = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4hNV")!, def_glMultiTexCoord4hNV);
+  fn_glMultiTexCoord4hvNV = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4hvNV")!, def_glMultiTexCoord4hvNV);
+  fn_glFogCoordhNV = new Deno.UnsafeFnPointer(proc("glFogCoordhNV")!, def_glFogCoordhNV);
+  fn_glFogCoordhvNV = new Deno.UnsafeFnPointer(proc("glFogCoordhvNV")!, def_glFogCoordhvNV);
+  fn_glSecondaryColor3hNV = new Deno.UnsafeFnPointer(proc("glSecondaryColor3hNV")!, def_glSecondaryColor3hNV);
+  fn_glSecondaryColor3hvNV = new Deno.UnsafeFnPointer(proc("glSecondaryColor3hvNV")!, def_glSecondaryColor3hvNV);
+  fn_glVertexWeighthNV = new Deno.UnsafeFnPointer(proc("glVertexWeighthNV")!, def_glVertexWeighthNV);
+  fn_glVertexWeighthvNV = new Deno.UnsafeFnPointer(proc("glVertexWeighthvNV")!, def_glVertexWeighthvNV);
+  fn_glVertexAttrib1hNV = new Deno.UnsafeFnPointer(proc("glVertexAttrib1hNV")!, def_glVertexAttrib1hNV);
+  fn_glVertexAttrib1hvNV = new Deno.UnsafeFnPointer(proc("glVertexAttrib1hvNV")!, def_glVertexAttrib1hvNV);
+  fn_glVertexAttrib2hNV = new Deno.UnsafeFnPointer(proc("glVertexAttrib2hNV")!, def_glVertexAttrib2hNV);
+  fn_glVertexAttrib2hvNV = new Deno.UnsafeFnPointer(proc("glVertexAttrib2hvNV")!, def_glVertexAttrib2hvNV);
+  fn_glVertexAttrib3hNV = new Deno.UnsafeFnPointer(proc("glVertexAttrib3hNV")!, def_glVertexAttrib3hNV);
+  fn_glVertexAttrib3hvNV = new Deno.UnsafeFnPointer(proc("glVertexAttrib3hvNV")!, def_glVertexAttrib3hvNV);
+  fn_glVertexAttrib4hNV = new Deno.UnsafeFnPointer(proc("glVertexAttrib4hNV")!, def_glVertexAttrib4hNV);
+  fn_glVertexAttrib4hvNV = new Deno.UnsafeFnPointer(proc("glVertexAttrib4hvNV")!, def_glVertexAttrib4hvNV);
+  fn_glVertexAttribs1hvNV = new Deno.UnsafeFnPointer(proc("glVertexAttribs1hvNV")!, def_glVertexAttribs1hvNV);
+  fn_glVertexAttribs2hvNV = new Deno.UnsafeFnPointer(proc("glVertexAttribs2hvNV")!, def_glVertexAttribs2hvNV);
+  fn_glVertexAttribs3hvNV = new Deno.UnsafeFnPointer(proc("glVertexAttribs3hvNV")!, def_glVertexAttribs3hvNV);
+  fn_glVertexAttribs4hvNV = new Deno.UnsafeFnPointer(proc("glVertexAttribs4hvNV")!, def_glVertexAttribs4hvNV);
 }

@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -139,9 +131,7 @@ export const def_glClientWaitSyncAPPLE = {
   result: "u32",
 } as const;
 
-let fn_glClientWaitSyncAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glClientWaitSyncAPPLE
->;
+let fn_glClientWaitSyncAPPLE!: Deno.UnsafeFnPointer<typeof def_glClientWaitSyncAPPLE>;
 
 export function ClientWaitSyncAPPLE(
   sync: GLsync,
@@ -151,7 +141,7 @@ export function ClientWaitSyncAPPLE(
   return fn_glClientWaitSyncAPPLE.call(
     bufferToFFI(sync),
     flags,
-    timeout,
+    Deno.UnsafePointer.value(timeout),
   );
 }
 
@@ -170,7 +160,7 @@ export function WaitSyncAPPLE(
   fn_glWaitSyncAPPLE.call(
     bufferToFFI(sync),
     flags,
-    timeout,
+    Deno.UnsafePointer.value(timeout),
   );
 }
 
@@ -179,9 +169,7 @@ export const def_glGetInteger64vAPPLE = {
   result: "void",
 } as const;
 
-let fn_glGetInteger64vAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glGetInteger64vAPPLE
->;
+let fn_glGetInteger64vAPPLE!: Deno.UnsafeFnPointer<typeof def_glGetInteger64vAPPLE>;
 
 export function GetInteger64vAPPLE(
   pname: GLenum,
@@ -218,32 +206,11 @@ export function GetSyncivAPPLE(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFenceSyncAPPLE = new Deno.UnsafeFnPointer(
-    proc("glFenceSyncAPPLE"),
-    def_glFenceSyncAPPLE,
-  );
-  fn_glIsSyncAPPLE = new Deno.UnsafeFnPointer(
-    proc("glIsSyncAPPLE"),
-    def_glIsSyncAPPLE,
-  );
-  fn_glDeleteSyncAPPLE = new Deno.UnsafeFnPointer(
-    proc("glDeleteSyncAPPLE"),
-    def_glDeleteSyncAPPLE,
-  );
-  fn_glClientWaitSyncAPPLE = new Deno.UnsafeFnPointer(
-    proc("glClientWaitSyncAPPLE"),
-    def_glClientWaitSyncAPPLE,
-  );
-  fn_glWaitSyncAPPLE = new Deno.UnsafeFnPointer(
-    proc("glWaitSyncAPPLE"),
-    def_glWaitSyncAPPLE,
-  );
-  fn_glGetInteger64vAPPLE = new Deno.UnsafeFnPointer(
-    proc("glGetInteger64vAPPLE"),
-    def_glGetInteger64vAPPLE,
-  );
-  fn_glGetSyncivAPPLE = new Deno.UnsafeFnPointer(
-    proc("glGetSyncivAPPLE"),
-    def_glGetSyncivAPPLE,
-  );
+  fn_glFenceSyncAPPLE = new Deno.UnsafeFnPointer(proc("glFenceSyncAPPLE")!, def_glFenceSyncAPPLE);
+  fn_glIsSyncAPPLE = new Deno.UnsafeFnPointer(proc("glIsSyncAPPLE")!, def_glIsSyncAPPLE);
+  fn_glDeleteSyncAPPLE = new Deno.UnsafeFnPointer(proc("glDeleteSyncAPPLE")!, def_glDeleteSyncAPPLE);
+  fn_glClientWaitSyncAPPLE = new Deno.UnsafeFnPointer(proc("glClientWaitSyncAPPLE")!, def_glClientWaitSyncAPPLE);
+  fn_glWaitSyncAPPLE = new Deno.UnsafeFnPointer(proc("glWaitSyncAPPLE")!, def_glWaitSyncAPPLE);
+  fn_glGetInteger64vAPPLE = new Deno.UnsafeFnPointer(proc("glGetInteger64vAPPLE")!, def_glGetInteger64vAPPLE);
+  fn_glGetSyncivAPPLE = new Deno.UnsafeFnPointer(proc("glGetSyncivAPPLE")!, def_glGetSyncivAPPLE);
 }

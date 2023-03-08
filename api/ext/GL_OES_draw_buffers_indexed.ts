@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -138,9 +130,7 @@ export const def_glBlendEquationiOES = {
   result: "void",
 } as const;
 
-let fn_glBlendEquationiOES!: Deno.UnsafeFnPointer<
-  typeof def_glBlendEquationiOES
->;
+let fn_glBlendEquationiOES!: Deno.UnsafeFnPointer<typeof def_glBlendEquationiOES>;
 
 export function BlendEquationiOES(
   buf: GLuint,
@@ -157,9 +147,7 @@ export const def_glBlendEquationSeparateiOES = {
   result: "void",
 } as const;
 
-let fn_glBlendEquationSeparateiOES!: Deno.UnsafeFnPointer<
-  typeof def_glBlendEquationSeparateiOES
->;
+let fn_glBlendEquationSeparateiOES!: Deno.UnsafeFnPointer<typeof def_glBlendEquationSeparateiOES>;
 
 export function BlendEquationSeparateiOES(
   buf: GLuint,
@@ -197,9 +185,7 @@ export const def_glBlendFuncSeparateiOES = {
   result: "void",
 } as const;
 
-let fn_glBlendFuncSeparateiOES!: Deno.UnsafeFnPointer<
-  typeof def_glBlendFuncSeparateiOES
->;
+let fn_glBlendFuncSeparateiOES!: Deno.UnsafeFnPointer<typeof def_glBlendFuncSeparateiOES>;
 
 export function BlendFuncSeparateiOES(
   buf: GLuint,
@@ -259,36 +245,12 @@ export function IsEnablediOES(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glEnableiOES = new Deno.UnsafeFnPointer(
-    proc("glEnableiOES"),
-    def_glEnableiOES,
-  );
-  fn_glDisableiOES = new Deno.UnsafeFnPointer(
-    proc("glDisableiOES"),
-    def_glDisableiOES,
-  );
-  fn_glBlendEquationiOES = new Deno.UnsafeFnPointer(
-    proc("glBlendEquationiOES"),
-    def_glBlendEquationiOES,
-  );
-  fn_glBlendEquationSeparateiOES = new Deno.UnsafeFnPointer(
-    proc("glBlendEquationSeparateiOES"),
-    def_glBlendEquationSeparateiOES,
-  );
-  fn_glBlendFunciOES = new Deno.UnsafeFnPointer(
-    proc("glBlendFunciOES"),
-    def_glBlendFunciOES,
-  );
-  fn_glBlendFuncSeparateiOES = new Deno.UnsafeFnPointer(
-    proc("glBlendFuncSeparateiOES"),
-    def_glBlendFuncSeparateiOES,
-  );
-  fn_glColorMaskiOES = new Deno.UnsafeFnPointer(
-    proc("glColorMaskiOES"),
-    def_glColorMaskiOES,
-  );
-  fn_glIsEnablediOES = new Deno.UnsafeFnPointer(
-    proc("glIsEnablediOES"),
-    def_glIsEnablediOES,
-  );
+  fn_glEnableiOES = new Deno.UnsafeFnPointer(proc("glEnableiOES")!, def_glEnableiOES);
+  fn_glDisableiOES = new Deno.UnsafeFnPointer(proc("glDisableiOES")!, def_glDisableiOES);
+  fn_glBlendEquationiOES = new Deno.UnsafeFnPointer(proc("glBlendEquationiOES")!, def_glBlendEquationiOES);
+  fn_glBlendEquationSeparateiOES = new Deno.UnsafeFnPointer(proc("glBlendEquationSeparateiOES")!, def_glBlendEquationSeparateiOES);
+  fn_glBlendFunciOES = new Deno.UnsafeFnPointer(proc("glBlendFunciOES")!, def_glBlendFunciOES);
+  fn_glBlendFuncSeparateiOES = new Deno.UnsafeFnPointer(proc("glBlendFuncSeparateiOES")!, def_glBlendFuncSeparateiOES);
+  fn_glColorMaskiOES = new Deno.UnsafeFnPointer(proc("glColorMaskiOES")!, def_glColorMaskiOES);
+  fn_glIsEnablediOES = new Deno.UnsafeFnPointer(proc("glIsEnablediOES")!, def_glIsEnablediOES);
 }

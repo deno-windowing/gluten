@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -132,9 +124,7 @@ export const def_glCombinerParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glCombinerParameterfvNV!: Deno.UnsafeFnPointer<
-  typeof def_glCombinerParameterfvNV
->;
+let fn_glCombinerParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glCombinerParameterfvNV>;
 
 export function CombinerParameterfvNV(
   pname: GLenum,
@@ -151,9 +141,7 @@ export const def_glCombinerParameterfNV = {
   result: "void",
 } as const;
 
-let fn_glCombinerParameterfNV!: Deno.UnsafeFnPointer<
-  typeof def_glCombinerParameterfNV
->;
+let fn_glCombinerParameterfNV!: Deno.UnsafeFnPointer<typeof def_glCombinerParameterfNV>;
 
 export function CombinerParameterfNV(
   pname: GLenum,
@@ -170,9 +158,7 @@ export const def_glCombinerParameterivNV = {
   result: "void",
 } as const;
 
-let fn_glCombinerParameterivNV!: Deno.UnsafeFnPointer<
-  typeof def_glCombinerParameterivNV
->;
+let fn_glCombinerParameterivNV!: Deno.UnsafeFnPointer<typeof def_glCombinerParameterivNV>;
 
 export function CombinerParameterivNV(
   pname: GLenum,
@@ -189,9 +175,7 @@ export const def_glCombinerParameteriNV = {
   result: "void",
 } as const;
 
-let fn_glCombinerParameteriNV!: Deno.UnsafeFnPointer<
-  typeof def_glCombinerParameteriNV
->;
+let fn_glCombinerParameteriNV!: Deno.UnsafeFnPointer<typeof def_glCombinerParameteriNV>;
 
 export function CombinerParameteriNV(
   pname: GLenum,
@@ -229,18 +213,7 @@ export function CombinerInputNV(
 }
 
 export const def_glCombinerOutputNV = {
-  parameters: [
-    "u32",
-    "u32",
-    "u32",
-    "u32",
-    "u32",
-    "u32",
-    "u32",
-    "u8",
-    "u8",
-    "u8",
-  ],
+  parameters: ["u32", "u32", "u32", "u32", "u32", "u32", "u32", "u8", "u8", "u8"],
   result: "void",
 } as const;
 
@@ -277,9 +250,7 @@ export const def_glFinalCombinerInputNV = {
   result: "void",
 } as const;
 
-let fn_glFinalCombinerInputNV!: Deno.UnsafeFnPointer<
-  typeof def_glFinalCombinerInputNV
->;
+let fn_glFinalCombinerInputNV!: Deno.UnsafeFnPointer<typeof def_glFinalCombinerInputNV>;
 
 export function FinalCombinerInputNV(
   variable: GLenum,
@@ -300,9 +271,7 @@ export const def_glGetCombinerInputParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glGetCombinerInputParameterfvNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetCombinerInputParameterfvNV
->;
+let fn_glGetCombinerInputParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glGetCombinerInputParameterfvNV>;
 
 export function GetCombinerInputParameterfvNV(
   stage: GLenum,
@@ -325,9 +294,7 @@ export const def_glGetCombinerInputParameterivNV = {
   result: "void",
 } as const;
 
-let fn_glGetCombinerInputParameterivNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetCombinerInputParameterivNV
->;
+let fn_glGetCombinerInputParameterivNV!: Deno.UnsafeFnPointer<typeof def_glGetCombinerInputParameterivNV>;
 
 export function GetCombinerInputParameterivNV(
   stage: GLenum,
@@ -350,9 +317,7 @@ export const def_glGetCombinerOutputParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glGetCombinerOutputParameterfvNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetCombinerOutputParameterfvNV
->;
+let fn_glGetCombinerOutputParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glGetCombinerOutputParameterfvNV>;
 
 export function GetCombinerOutputParameterfvNV(
   stage: GLenum,
@@ -373,9 +338,7 @@ export const def_glGetCombinerOutputParameterivNV = {
   result: "void",
 } as const;
 
-let fn_glGetCombinerOutputParameterivNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetCombinerOutputParameterivNV
->;
+let fn_glGetCombinerOutputParameterivNV!: Deno.UnsafeFnPointer<typeof def_glGetCombinerOutputParameterivNV>;
 
 export function GetCombinerOutputParameterivNV(
   stage: GLenum,
@@ -396,9 +359,7 @@ export const def_glGetFinalCombinerInputParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glGetFinalCombinerInputParameterfvNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetFinalCombinerInputParameterfvNV
->;
+let fn_glGetFinalCombinerInputParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glGetFinalCombinerInputParameterfvNV>;
 
 export function GetFinalCombinerInputParameterfvNV(
   variable: GLenum,
@@ -417,9 +378,7 @@ export const def_glGetFinalCombinerInputParameterivNV = {
   result: "void",
 } as const;
 
-let fn_glGetFinalCombinerInputParameterivNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetFinalCombinerInputParameterivNV
->;
+let fn_glGetFinalCombinerInputParameterivNV!: Deno.UnsafeFnPointer<typeof def_glGetFinalCombinerInputParameterivNV>;
 
 export function GetFinalCombinerInputParameterivNV(
   variable: GLenum,
@@ -435,56 +394,17 @@ export function GetFinalCombinerInputParameterivNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glCombinerParameterfvNV = new Deno.UnsafeFnPointer(
-    proc("glCombinerParameterfvNV"),
-    def_glCombinerParameterfvNV,
-  );
-  fn_glCombinerParameterfNV = new Deno.UnsafeFnPointer(
-    proc("glCombinerParameterfNV"),
-    def_glCombinerParameterfNV,
-  );
-  fn_glCombinerParameterivNV = new Deno.UnsafeFnPointer(
-    proc("glCombinerParameterivNV"),
-    def_glCombinerParameterivNV,
-  );
-  fn_glCombinerParameteriNV = new Deno.UnsafeFnPointer(
-    proc("glCombinerParameteriNV"),
-    def_glCombinerParameteriNV,
-  );
-  fn_glCombinerInputNV = new Deno.UnsafeFnPointer(
-    proc("glCombinerInputNV"),
-    def_glCombinerInputNV,
-  );
-  fn_glCombinerOutputNV = new Deno.UnsafeFnPointer(
-    proc("glCombinerOutputNV"),
-    def_glCombinerOutputNV,
-  );
-  fn_glFinalCombinerInputNV = new Deno.UnsafeFnPointer(
-    proc("glFinalCombinerInputNV"),
-    def_glFinalCombinerInputNV,
-  );
-  fn_glGetCombinerInputParameterfvNV = new Deno.UnsafeFnPointer(
-    proc("glGetCombinerInputParameterfvNV"),
-    def_glGetCombinerInputParameterfvNV,
-  );
-  fn_glGetCombinerInputParameterivNV = new Deno.UnsafeFnPointer(
-    proc("glGetCombinerInputParameterivNV"),
-    def_glGetCombinerInputParameterivNV,
-  );
-  fn_glGetCombinerOutputParameterfvNV = new Deno.UnsafeFnPointer(
-    proc("glGetCombinerOutputParameterfvNV"),
-    def_glGetCombinerOutputParameterfvNV,
-  );
-  fn_glGetCombinerOutputParameterivNV = new Deno.UnsafeFnPointer(
-    proc("glGetCombinerOutputParameterivNV"),
-    def_glGetCombinerOutputParameterivNV,
-  );
-  fn_glGetFinalCombinerInputParameterfvNV = new Deno.UnsafeFnPointer(
-    proc("glGetFinalCombinerInputParameterfvNV"),
-    def_glGetFinalCombinerInputParameterfvNV,
-  );
-  fn_glGetFinalCombinerInputParameterivNV = new Deno.UnsafeFnPointer(
-    proc("glGetFinalCombinerInputParameterivNV"),
-    def_glGetFinalCombinerInputParameterivNV,
-  );
+  fn_glCombinerParameterfvNV = new Deno.UnsafeFnPointer(proc("glCombinerParameterfvNV")!, def_glCombinerParameterfvNV);
+  fn_glCombinerParameterfNV = new Deno.UnsafeFnPointer(proc("glCombinerParameterfNV")!, def_glCombinerParameterfNV);
+  fn_glCombinerParameterivNV = new Deno.UnsafeFnPointer(proc("glCombinerParameterivNV")!, def_glCombinerParameterivNV);
+  fn_glCombinerParameteriNV = new Deno.UnsafeFnPointer(proc("glCombinerParameteriNV")!, def_glCombinerParameteriNV);
+  fn_glCombinerInputNV = new Deno.UnsafeFnPointer(proc("glCombinerInputNV")!, def_glCombinerInputNV);
+  fn_glCombinerOutputNV = new Deno.UnsafeFnPointer(proc("glCombinerOutputNV")!, def_glCombinerOutputNV);
+  fn_glFinalCombinerInputNV = new Deno.UnsafeFnPointer(proc("glFinalCombinerInputNV")!, def_glFinalCombinerInputNV);
+  fn_glGetCombinerInputParameterfvNV = new Deno.UnsafeFnPointer(proc("glGetCombinerInputParameterfvNV")!, def_glGetCombinerInputParameterfvNV);
+  fn_glGetCombinerInputParameterivNV = new Deno.UnsafeFnPointer(proc("glGetCombinerInputParameterivNV")!, def_glGetCombinerInputParameterivNV);
+  fn_glGetCombinerOutputParameterfvNV = new Deno.UnsafeFnPointer(proc("glGetCombinerOutputParameterfvNV")!, def_glGetCombinerOutputParameterfvNV);
+  fn_glGetCombinerOutputParameterivNV = new Deno.UnsafeFnPointer(proc("glGetCombinerOutputParameterivNV")!, def_glGetCombinerOutputParameterivNV);
+  fn_glGetFinalCombinerInputParameterfvNV = new Deno.UnsafeFnPointer(proc("glGetFinalCombinerInputParameterfvNV")!, def_glGetFinalCombinerInputParameterfvNV);
+  fn_glGetFinalCombinerInputParameterivNV = new Deno.UnsafeFnPointer(proc("glGetFinalCombinerInputParameterivNV")!, def_glGetFinalCombinerInputParameterivNV);
 }

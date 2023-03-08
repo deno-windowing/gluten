@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -335,68 +327,20 @@ export function WindowPos3svARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glWindowPos2dARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2dARB"),
-    def_glWindowPos2dARB,
-  );
-  fn_glWindowPos2dvARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2dvARB"),
-    def_glWindowPos2dvARB,
-  );
-  fn_glWindowPos2fARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2fARB"),
-    def_glWindowPos2fARB,
-  );
-  fn_glWindowPos2fvARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2fvARB"),
-    def_glWindowPos2fvARB,
-  );
-  fn_glWindowPos2iARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2iARB"),
-    def_glWindowPos2iARB,
-  );
-  fn_glWindowPos2ivARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2ivARB"),
-    def_glWindowPos2ivARB,
-  );
-  fn_glWindowPos2sARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2sARB"),
-    def_glWindowPos2sARB,
-  );
-  fn_glWindowPos2svARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2svARB"),
-    def_glWindowPos2svARB,
-  );
-  fn_glWindowPos3dARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3dARB"),
-    def_glWindowPos3dARB,
-  );
-  fn_glWindowPos3dvARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3dvARB"),
-    def_glWindowPos3dvARB,
-  );
-  fn_glWindowPos3fARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3fARB"),
-    def_glWindowPos3fARB,
-  );
-  fn_glWindowPos3fvARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3fvARB"),
-    def_glWindowPos3fvARB,
-  );
-  fn_glWindowPos3iARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3iARB"),
-    def_glWindowPos3iARB,
-  );
-  fn_glWindowPos3ivARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3ivARB"),
-    def_glWindowPos3ivARB,
-  );
-  fn_glWindowPos3sARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3sARB"),
-    def_glWindowPos3sARB,
-  );
-  fn_glWindowPos3svARB = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3svARB"),
-    def_glWindowPos3svARB,
-  );
+  fn_glWindowPos2dARB = new Deno.UnsafeFnPointer(proc("glWindowPos2dARB")!, def_glWindowPos2dARB);
+  fn_glWindowPos2dvARB = new Deno.UnsafeFnPointer(proc("glWindowPos2dvARB")!, def_glWindowPos2dvARB);
+  fn_glWindowPos2fARB = new Deno.UnsafeFnPointer(proc("glWindowPos2fARB")!, def_glWindowPos2fARB);
+  fn_glWindowPos2fvARB = new Deno.UnsafeFnPointer(proc("glWindowPos2fvARB")!, def_glWindowPos2fvARB);
+  fn_glWindowPos2iARB = new Deno.UnsafeFnPointer(proc("glWindowPos2iARB")!, def_glWindowPos2iARB);
+  fn_glWindowPos2ivARB = new Deno.UnsafeFnPointer(proc("glWindowPos2ivARB")!, def_glWindowPos2ivARB);
+  fn_glWindowPos2sARB = new Deno.UnsafeFnPointer(proc("glWindowPos2sARB")!, def_glWindowPos2sARB);
+  fn_glWindowPos2svARB = new Deno.UnsafeFnPointer(proc("glWindowPos2svARB")!, def_glWindowPos2svARB);
+  fn_glWindowPos3dARB = new Deno.UnsafeFnPointer(proc("glWindowPos3dARB")!, def_glWindowPos3dARB);
+  fn_glWindowPos3dvARB = new Deno.UnsafeFnPointer(proc("glWindowPos3dvARB")!, def_glWindowPos3dvARB);
+  fn_glWindowPos3fARB = new Deno.UnsafeFnPointer(proc("glWindowPos3fARB")!, def_glWindowPos3fARB);
+  fn_glWindowPos3fvARB = new Deno.UnsafeFnPointer(proc("glWindowPos3fvARB")!, def_glWindowPos3fvARB);
+  fn_glWindowPos3iARB = new Deno.UnsafeFnPointer(proc("glWindowPos3iARB")!, def_glWindowPos3iARB);
+  fn_glWindowPos3ivARB = new Deno.UnsafeFnPointer(proc("glWindowPos3ivARB")!, def_glWindowPos3ivARB);
+  fn_glWindowPos3sARB = new Deno.UnsafeFnPointer(proc("glWindowPos3sARB")!, def_glWindowPos3sARB);
+  fn_glWindowPos3svARB = new Deno.UnsafeFnPointer(proc("glWindowPos3svARB")!, def_glWindowPos3svARB);
 }

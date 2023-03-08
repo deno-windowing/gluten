@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -107,9 +99,7 @@ export const def_glCoverageModulationTableNV = {
   result: "void",
 } as const;
 
-let fn_glCoverageModulationTableNV!: Deno.UnsafeFnPointer<
-  typeof def_glCoverageModulationTableNV
->;
+let fn_glCoverageModulationTableNV!: Deno.UnsafeFnPointer<typeof def_glCoverageModulationTableNV>;
 
 export function CoverageModulationTableNV(
   n: GLsizei,
@@ -126,9 +116,7 @@ export const def_glGetCoverageModulationTableNV = {
   result: "void",
 } as const;
 
-let fn_glGetCoverageModulationTableNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetCoverageModulationTableNV
->;
+let fn_glGetCoverageModulationTableNV!: Deno.UnsafeFnPointer<typeof def_glGetCoverageModulationTableNV>;
 
 export function GetCoverageModulationTableNV(
   bufSize: GLsizei,
@@ -145,9 +133,7 @@ export const def_glCoverageModulationNV = {
   result: "void",
 } as const;
 
-let fn_glCoverageModulationNV!: Deno.UnsafeFnPointer<
-  typeof def_glCoverageModulationNV
->;
+let fn_glCoverageModulationNV!: Deno.UnsafeFnPointer<typeof def_glCoverageModulationNV>;
 
 export function CoverageModulationNV(
   components: GLenum,
@@ -159,20 +145,8 @@ export function CoverageModulationNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glRasterSamplesEXT = new Deno.UnsafeFnPointer(
-    proc("glRasterSamplesEXT"),
-    def_glRasterSamplesEXT,
-  );
-  fn_glCoverageModulationTableNV = new Deno.UnsafeFnPointer(
-    proc("glCoverageModulationTableNV"),
-    def_glCoverageModulationTableNV,
-  );
-  fn_glGetCoverageModulationTableNV = new Deno.UnsafeFnPointer(
-    proc("glGetCoverageModulationTableNV"),
-    def_glGetCoverageModulationTableNV,
-  );
-  fn_glCoverageModulationNV = new Deno.UnsafeFnPointer(
-    proc("glCoverageModulationNV"),
-    def_glCoverageModulationNV,
-  );
+  fn_glRasterSamplesEXT = new Deno.UnsafeFnPointer(proc("glRasterSamplesEXT")!, def_glRasterSamplesEXT);
+  fn_glCoverageModulationTableNV = new Deno.UnsafeFnPointer(proc("glCoverageModulationTableNV")!, def_glCoverageModulationTableNV);
+  fn_glGetCoverageModulationTableNV = new Deno.UnsafeFnPointer(proc("glGetCoverageModulationTableNV")!, def_glGetCoverageModulationTableNV);
+  fn_glCoverageModulationNV = new Deno.UnsafeFnPointer(proc("glCoverageModulationNV")!, def_glCoverageModulationNV);
 }

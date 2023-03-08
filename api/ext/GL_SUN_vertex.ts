@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -74,9 +66,7 @@ export const def_glColor4ubVertex2fSUN = {
   result: "void",
 } as const;
 
-let fn_glColor4ubVertex2fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glColor4ubVertex2fSUN
->;
+let fn_glColor4ubVertex2fSUN!: Deno.UnsafeFnPointer<typeof def_glColor4ubVertex2fSUN>;
 
 export function Color4ubVertex2fSUN(
   r: GLubyte,
@@ -101,9 +91,7 @@ export const def_glColor4ubVertex2fvSUN = {
   result: "void",
 } as const;
 
-let fn_glColor4ubVertex2fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glColor4ubVertex2fvSUN
->;
+let fn_glColor4ubVertex2fvSUN!: Deno.UnsafeFnPointer<typeof def_glColor4ubVertex2fvSUN>;
 
 export function Color4ubVertex2fvSUN(
   c: Buffer,
@@ -120,9 +108,7 @@ export const def_glColor4ubVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glColor4ubVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glColor4ubVertex3fSUN
->;
+let fn_glColor4ubVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glColor4ubVertex3fSUN>;
 
 export function Color4ubVertex3fSUN(
   r: GLubyte,
@@ -149,9 +135,7 @@ export const def_glColor4ubVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glColor4ubVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glColor4ubVertex3fvSUN
->;
+let fn_glColor4ubVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glColor4ubVertex3fvSUN>;
 
 export function Color4ubVertex3fvSUN(
   c: Buffer,
@@ -168,9 +152,7 @@ export const def_glColor3fVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glColor3fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glColor3fVertex3fSUN
->;
+let fn_glColor3fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glColor3fVertex3fSUN>;
 
 export function Color3fVertex3fSUN(
   r: GLfloat,
@@ -195,9 +177,7 @@ export const def_glColor3fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glColor3fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glColor3fVertex3fvSUN
->;
+let fn_glColor3fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glColor3fVertex3fvSUN>;
 
 export function Color3fVertex3fvSUN(
   c: Buffer,
@@ -214,9 +194,7 @@ export const def_glNormal3fVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glNormal3fVertex3fSUN
->;
+let fn_glNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glNormal3fVertex3fSUN>;
 
 export function Normal3fVertex3fSUN(
   nx: GLfloat,
@@ -241,9 +219,7 @@ export const def_glNormal3fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glNormal3fVertex3fvSUN
->;
+let fn_glNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glNormal3fVertex3fvSUN>;
 
 export function Normal3fVertex3fvSUN(
   n: Buffer,
@@ -256,24 +232,11 @@ export function Normal3fVertex3fvSUN(
 }
 
 export const def_glColor4fNormal3fVertex3fSUN = {
-  parameters: [
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-  ],
+  parameters: ["f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32"],
   result: "void",
 } as const;
 
-let fn_glColor4fNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glColor4fNormal3fVertex3fSUN
->;
+let fn_glColor4fNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glColor4fNormal3fVertex3fSUN>;
 
 export function Color4fNormal3fVertex3fSUN(
   r: GLfloat,
@@ -306,9 +269,7 @@ export const def_glColor4fNormal3fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glColor4fNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glColor4fNormal3fVertex3fvSUN
->;
+let fn_glColor4fNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glColor4fNormal3fVertex3fvSUN>;
 
 export function Color4fNormal3fVertex3fvSUN(
   c: Buffer,
@@ -327,9 +288,7 @@ export const def_glTexCoord2fVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord2fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord2fVertex3fSUN
->;
+let fn_glTexCoord2fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord2fVertex3fSUN>;
 
 export function TexCoord2fVertex3fSUN(
   s: GLfloat,
@@ -352,9 +311,7 @@ export const def_glTexCoord2fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord2fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord2fVertex3fvSUN
->;
+let fn_glTexCoord2fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord2fVertex3fvSUN>;
 
 export function TexCoord2fVertex3fvSUN(
   tc: Buffer,
@@ -371,9 +328,7 @@ export const def_glTexCoord4fVertex4fSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord4fVertex4fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord4fVertex4fSUN
->;
+let fn_glTexCoord4fVertex4fSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord4fVertex4fSUN>;
 
 export function TexCoord4fVertex4fSUN(
   s: GLfloat,
@@ -402,9 +357,7 @@ export const def_glTexCoord4fVertex4fvSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord4fVertex4fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord4fVertex4fvSUN
->;
+let fn_glTexCoord4fVertex4fvSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord4fVertex4fvSUN>;
 
 export function TexCoord4fVertex4fvSUN(
   tc: Buffer,
@@ -421,9 +374,7 @@ export const def_glTexCoord2fColor4ubVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord2fColor4ubVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord2fColor4ubVertex3fSUN
->;
+let fn_glTexCoord2fColor4ubVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord2fColor4ubVertex3fSUN>;
 
 export function TexCoord2fColor4ubVertex3fSUN(
   s: GLfloat,
@@ -454,9 +405,7 @@ export const def_glTexCoord2fColor4ubVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord2fColor4ubVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord2fColor4ubVertex3fvSUN
->;
+let fn_glTexCoord2fColor4ubVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord2fColor4ubVertex3fvSUN>;
 
 export function TexCoord2fColor4ubVertex3fvSUN(
   tc: Buffer,
@@ -475,9 +424,7 @@ export const def_glTexCoord2fColor3fVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord2fColor3fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord2fColor3fVertex3fSUN
->;
+let fn_glTexCoord2fColor3fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord2fColor3fVertex3fSUN>;
 
 export function TexCoord2fColor3fVertex3fSUN(
   s: GLfloat,
@@ -506,9 +453,7 @@ export const def_glTexCoord2fColor3fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord2fColor3fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord2fColor3fVertex3fvSUN
->;
+let fn_glTexCoord2fColor3fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord2fColor3fVertex3fvSUN>;
 
 export function TexCoord2fColor3fVertex3fvSUN(
   tc: Buffer,
@@ -527,9 +472,7 @@ export const def_glTexCoord2fNormal3fVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord2fNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord2fNormal3fVertex3fSUN
->;
+let fn_glTexCoord2fNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord2fNormal3fVertex3fSUN>;
 
 export function TexCoord2fNormal3fVertex3fSUN(
   s: GLfloat,
@@ -558,9 +501,7 @@ export const def_glTexCoord2fNormal3fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord2fNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord2fNormal3fVertex3fvSUN
->;
+let fn_glTexCoord2fNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord2fNormal3fVertex3fvSUN>;
 
 export function TexCoord2fNormal3fVertex3fvSUN(
   tc: Buffer,
@@ -575,26 +516,11 @@ export function TexCoord2fNormal3fVertex3fvSUN(
 }
 
 export const def_glTexCoord2fColor4fNormal3fVertex3fSUN = {
-  parameters: [
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-  ],
+  parameters: ["f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32"],
   result: "void",
 } as const;
 
-let fn_glTexCoord2fColor4fNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord2fColor4fNormal3fVertex3fSUN
->;
+let fn_glTexCoord2fColor4fNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord2fColor4fNormal3fVertex3fSUN>;
 
 export function TexCoord2fColor4fNormal3fVertex3fSUN(
   s: GLfloat,
@@ -631,9 +557,7 @@ export const def_glTexCoord2fColor4fNormal3fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord2fColor4fNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord2fColor4fNormal3fVertex3fvSUN
->;
+let fn_glTexCoord2fColor4fNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord2fColor4fNormal3fVertex3fvSUN>;
 
 export function TexCoord2fColor4fNormal3fVertex3fvSUN(
   tc: Buffer,
@@ -650,29 +574,11 @@ export function TexCoord2fColor4fNormal3fVertex3fvSUN(
 }
 
 export const def_glTexCoord4fColor4fNormal3fVertex4fSUN = {
-  parameters: [
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-  ],
+  parameters: ["f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32"],
   result: "void",
 } as const;
 
-let fn_glTexCoord4fColor4fNormal3fVertex4fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord4fColor4fNormal3fVertex4fSUN
->;
+let fn_glTexCoord4fColor4fNormal3fVertex4fSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord4fColor4fNormal3fVertex4fSUN>;
 
 export function TexCoord4fColor4fNormal3fVertex4fSUN(
   s: GLfloat,
@@ -715,9 +621,7 @@ export const def_glTexCoord4fColor4fNormal3fVertex4fvSUN = {
   result: "void",
 } as const;
 
-let fn_glTexCoord4fColor4fNormal3fVertex4fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoord4fColor4fNormal3fVertex4fvSUN
->;
+let fn_glTexCoord4fColor4fNormal3fVertex4fvSUN!: Deno.UnsafeFnPointer<typeof def_glTexCoord4fColor4fNormal3fVertex4fvSUN>;
 
 export function TexCoord4fColor4fNormal3fVertex4fvSUN(
   tc: Buffer,
@@ -738,9 +642,7 @@ export const def_glReplacementCodeuiVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiVertex3fSUN
->;
+let fn_glReplacementCodeuiVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiVertex3fSUN>;
 
 export function ReplacementCodeuiVertex3fSUN(
   rc: GLuint,
@@ -761,9 +663,7 @@ export const def_glReplacementCodeuiVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiVertex3fvSUN
->;
+let fn_glReplacementCodeuiVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiVertex3fvSUN>;
 
 export function ReplacementCodeuiVertex3fvSUN(
   rc: Buffer,
@@ -780,9 +680,7 @@ export const def_glReplacementCodeuiColor4ubVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiColor4ubVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiColor4ubVertex3fSUN
->;
+let fn_glReplacementCodeuiColor4ubVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiColor4ubVertex3fSUN>;
 
 export function ReplacementCodeuiColor4ubVertex3fSUN(
   rc: GLuint,
@@ -811,9 +709,7 @@ export const def_glReplacementCodeuiColor4ubVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiColor4ubVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiColor4ubVertex3fvSUN
->;
+let fn_glReplacementCodeuiColor4ubVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiColor4ubVertex3fvSUN>;
 
 export function ReplacementCodeuiColor4ubVertex3fvSUN(
   rc: Buffer,
@@ -832,9 +728,7 @@ export const def_glReplacementCodeuiColor3fVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiColor3fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiColor3fVertex3fSUN
->;
+let fn_glReplacementCodeuiColor3fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiColor3fVertex3fSUN>;
 
 export function ReplacementCodeuiColor3fVertex3fSUN(
   rc: GLuint,
@@ -861,9 +755,7 @@ export const def_glReplacementCodeuiColor3fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiColor3fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiColor3fVertex3fvSUN
->;
+let fn_glReplacementCodeuiColor3fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiColor3fVertex3fvSUN>;
 
 export function ReplacementCodeuiColor3fVertex3fvSUN(
   rc: Buffer,
@@ -882,9 +774,7 @@ export const def_glReplacementCodeuiNormal3fVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiNormal3fVertex3fSUN
->;
+let fn_glReplacementCodeuiNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiNormal3fVertex3fSUN>;
 
 export function ReplacementCodeuiNormal3fVertex3fSUN(
   rc: GLuint,
@@ -911,9 +801,7 @@ export const def_glReplacementCodeuiNormal3fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiNormal3fVertex3fvSUN
->;
+let fn_glReplacementCodeuiNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiNormal3fVertex3fvSUN>;
 
 export function ReplacementCodeuiNormal3fVertex3fvSUN(
   rc: Buffer,
@@ -928,25 +816,11 @@ export function ReplacementCodeuiNormal3fVertex3fvSUN(
 }
 
 export const def_glReplacementCodeuiColor4fNormal3fVertex3fSUN = {
-  parameters: [
-    "u32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-  ],
+  parameters: ["u32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32"],
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiColor4fNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiColor4fNormal3fVertex3fSUN
->;
+let fn_glReplacementCodeuiColor4fNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiColor4fNormal3fVertex3fSUN>;
 
 export function ReplacementCodeuiColor4fNormal3fVertex3fSUN(
   rc: GLuint,
@@ -981,9 +855,7 @@ export const def_glReplacementCodeuiColor4fNormal3fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiColor4fNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiColor4fNormal3fVertex3fvSUN
->;
+let fn_glReplacementCodeuiColor4fNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiColor4fNormal3fVertex3fvSUN>;
 
 export function ReplacementCodeuiColor4fNormal3fVertex3fvSUN(
   rc: Buffer,
@@ -1004,9 +876,7 @@ export const def_glReplacementCodeuiTexCoord2fVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiTexCoord2fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiTexCoord2fVertex3fSUN
->;
+let fn_glReplacementCodeuiTexCoord2fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiTexCoord2fVertex3fSUN>;
 
 export function ReplacementCodeuiTexCoord2fVertex3fSUN(
   rc: GLuint,
@@ -1031,9 +901,7 @@ export const def_glReplacementCodeuiTexCoord2fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiTexCoord2fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiTexCoord2fVertex3fvSUN
->;
+let fn_glReplacementCodeuiTexCoord2fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiTexCoord2fVertex3fvSUN>;
 
 export function ReplacementCodeuiTexCoord2fVertex3fvSUN(
   rc: Buffer,
@@ -1052,9 +920,7 @@ export const def_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN
->;
+let fn_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN>;
 
 export function ReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(
   rc: GLuint,
@@ -1085,9 +951,7 @@ export const def_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<
-  typeof def_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN
->;
+let fn_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN>;
 
 export function ReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(
   rc: Buffer,
@@ -1104,28 +968,11 @@ export function ReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(
 }
 
 export const def_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN = {
-  parameters: [
-    "u32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-    "f32",
-  ],
+  parameters: ["u32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32", "f32"],
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN!:
-  Deno.UnsafeFnPointer<
-    typeof def_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN
-  >;
+let fn_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN>;
 
 export function ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN(
   rc: GLuint,
@@ -1164,10 +1011,7 @@ export const def_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN!:
-  Deno.UnsafeFnPointer<
-    typeof def_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN
-  >;
+let fn_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN>;
 
 export function ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(
   rc: Buffer,
@@ -1187,168 +1031,44 @@ export function ReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glColor4ubVertex2fSUN = new Deno.UnsafeFnPointer(
-    proc("glColor4ubVertex2fSUN"),
-    def_glColor4ubVertex2fSUN,
-  );
-  fn_glColor4ubVertex2fvSUN = new Deno.UnsafeFnPointer(
-    proc("glColor4ubVertex2fvSUN"),
-    def_glColor4ubVertex2fvSUN,
-  );
-  fn_glColor4ubVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glColor4ubVertex3fSUN"),
-    def_glColor4ubVertex3fSUN,
-  );
-  fn_glColor4ubVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glColor4ubVertex3fvSUN"),
-    def_glColor4ubVertex3fvSUN,
-  );
-  fn_glColor3fVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glColor3fVertex3fSUN"),
-    def_glColor3fVertex3fSUN,
-  );
-  fn_glColor3fVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glColor3fVertex3fvSUN"),
-    def_glColor3fVertex3fvSUN,
-  );
-  fn_glNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glNormal3fVertex3fSUN"),
-    def_glNormal3fVertex3fSUN,
-  );
-  fn_glNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glNormal3fVertex3fvSUN"),
-    def_glNormal3fVertex3fvSUN,
-  );
-  fn_glColor4fNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glColor4fNormal3fVertex3fSUN"),
-    def_glColor4fNormal3fVertex3fSUN,
-  );
-  fn_glColor4fNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glColor4fNormal3fVertex3fvSUN"),
-    def_glColor4fNormal3fVertex3fvSUN,
-  );
-  fn_glTexCoord2fVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2fVertex3fSUN"),
-    def_glTexCoord2fVertex3fSUN,
-  );
-  fn_glTexCoord2fVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2fVertex3fvSUN"),
-    def_glTexCoord2fVertex3fvSUN,
-  );
-  fn_glTexCoord4fVertex4fSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord4fVertex4fSUN"),
-    def_glTexCoord4fVertex4fSUN,
-  );
-  fn_glTexCoord4fVertex4fvSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord4fVertex4fvSUN"),
-    def_glTexCoord4fVertex4fvSUN,
-  );
-  fn_glTexCoord2fColor4ubVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2fColor4ubVertex3fSUN"),
-    def_glTexCoord2fColor4ubVertex3fSUN,
-  );
-  fn_glTexCoord2fColor4ubVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2fColor4ubVertex3fvSUN"),
-    def_glTexCoord2fColor4ubVertex3fvSUN,
-  );
-  fn_glTexCoord2fColor3fVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2fColor3fVertex3fSUN"),
-    def_glTexCoord2fColor3fVertex3fSUN,
-  );
-  fn_glTexCoord2fColor3fVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2fColor3fVertex3fvSUN"),
-    def_glTexCoord2fColor3fVertex3fvSUN,
-  );
-  fn_glTexCoord2fNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2fNormal3fVertex3fSUN"),
-    def_glTexCoord2fNormal3fVertex3fSUN,
-  );
-  fn_glTexCoord2fNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2fNormal3fVertex3fvSUN"),
-    def_glTexCoord2fNormal3fVertex3fvSUN,
-  );
-  fn_glTexCoord2fColor4fNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2fColor4fNormal3fVertex3fSUN"),
-    def_glTexCoord2fColor4fNormal3fVertex3fSUN,
-  );
-  fn_glTexCoord2fColor4fNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord2fColor4fNormal3fVertex3fvSUN"),
-    def_glTexCoord2fColor4fNormal3fVertex3fvSUN,
-  );
-  fn_glTexCoord4fColor4fNormal3fVertex4fSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord4fColor4fNormal3fVertex4fSUN"),
-    def_glTexCoord4fColor4fNormal3fVertex4fSUN,
-  );
-  fn_glTexCoord4fColor4fNormal3fVertex4fvSUN = new Deno.UnsafeFnPointer(
-    proc("glTexCoord4fColor4fNormal3fVertex4fvSUN"),
-    def_glTexCoord4fColor4fNormal3fVertex4fvSUN,
-  );
-  fn_glReplacementCodeuiVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiVertex3fSUN"),
-    def_glReplacementCodeuiVertex3fSUN,
-  );
-  fn_glReplacementCodeuiVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiVertex3fvSUN"),
-    def_glReplacementCodeuiVertex3fvSUN,
-  );
-  fn_glReplacementCodeuiColor4ubVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiColor4ubVertex3fSUN"),
-    def_glReplacementCodeuiColor4ubVertex3fSUN,
-  );
-  fn_glReplacementCodeuiColor4ubVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiColor4ubVertex3fvSUN"),
-    def_glReplacementCodeuiColor4ubVertex3fvSUN,
-  );
-  fn_glReplacementCodeuiColor3fVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiColor3fVertex3fSUN"),
-    def_glReplacementCodeuiColor3fVertex3fSUN,
-  );
-  fn_glReplacementCodeuiColor3fVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiColor3fVertex3fvSUN"),
-    def_glReplacementCodeuiColor3fVertex3fvSUN,
-  );
-  fn_glReplacementCodeuiNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiNormal3fVertex3fSUN"),
-    def_glReplacementCodeuiNormal3fVertex3fSUN,
-  );
-  fn_glReplacementCodeuiNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiNormal3fVertex3fvSUN"),
-    def_glReplacementCodeuiNormal3fVertex3fvSUN,
-  );
-  fn_glReplacementCodeuiColor4fNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiColor4fNormal3fVertex3fSUN"),
-    def_glReplacementCodeuiColor4fNormal3fVertex3fSUN,
-  );
-  fn_glReplacementCodeuiColor4fNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiColor4fNormal3fVertex3fvSUN"),
-    def_glReplacementCodeuiColor4fNormal3fVertex3fvSUN,
-  );
-  fn_glReplacementCodeuiTexCoord2fVertex3fSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiTexCoord2fVertex3fSUN"),
-    def_glReplacementCodeuiTexCoord2fVertex3fSUN,
-  );
-  fn_glReplacementCodeuiTexCoord2fVertex3fvSUN = new Deno.UnsafeFnPointer(
-    proc("glReplacementCodeuiTexCoord2fVertex3fvSUN"),
-    def_glReplacementCodeuiTexCoord2fVertex3fvSUN,
-  );
-  fn_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN = new Deno
-    .UnsafeFnPointer(
-    proc("glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN"),
-    def_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN,
-  );
-  fn_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN = new Deno
-    .UnsafeFnPointer(
-    proc("glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN"),
-    def_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN,
-  );
-  fn_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN = new Deno
-    .UnsafeFnPointer(
-    proc("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN"),
-    def_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN,
-  );
-  fn_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN = new Deno
-    .UnsafeFnPointer(
-    proc("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN"),
-    def_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN,
-  );
+  fn_glColor4ubVertex2fSUN = new Deno.UnsafeFnPointer(proc("glColor4ubVertex2fSUN")!, def_glColor4ubVertex2fSUN);
+  fn_glColor4ubVertex2fvSUN = new Deno.UnsafeFnPointer(proc("glColor4ubVertex2fvSUN")!, def_glColor4ubVertex2fvSUN);
+  fn_glColor4ubVertex3fSUN = new Deno.UnsafeFnPointer(proc("glColor4ubVertex3fSUN")!, def_glColor4ubVertex3fSUN);
+  fn_glColor4ubVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glColor4ubVertex3fvSUN")!, def_glColor4ubVertex3fvSUN);
+  fn_glColor3fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glColor3fVertex3fSUN")!, def_glColor3fVertex3fSUN);
+  fn_glColor3fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glColor3fVertex3fvSUN")!, def_glColor3fVertex3fvSUN);
+  fn_glNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glNormal3fVertex3fSUN")!, def_glNormal3fVertex3fSUN);
+  fn_glNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glNormal3fVertex3fvSUN")!, def_glNormal3fVertex3fvSUN);
+  fn_glColor4fNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glColor4fNormal3fVertex3fSUN")!, def_glColor4fNormal3fVertex3fSUN);
+  fn_glColor4fNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glColor4fNormal3fVertex3fvSUN")!, def_glColor4fNormal3fVertex3fvSUN);
+  fn_glTexCoord2fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glTexCoord2fVertex3fSUN")!, def_glTexCoord2fVertex3fSUN);
+  fn_glTexCoord2fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glTexCoord2fVertex3fvSUN")!, def_glTexCoord2fVertex3fvSUN);
+  fn_glTexCoord4fVertex4fSUN = new Deno.UnsafeFnPointer(proc("glTexCoord4fVertex4fSUN")!, def_glTexCoord4fVertex4fSUN);
+  fn_glTexCoord4fVertex4fvSUN = new Deno.UnsafeFnPointer(proc("glTexCoord4fVertex4fvSUN")!, def_glTexCoord4fVertex4fvSUN);
+  fn_glTexCoord2fColor4ubVertex3fSUN = new Deno.UnsafeFnPointer(proc("glTexCoord2fColor4ubVertex3fSUN")!, def_glTexCoord2fColor4ubVertex3fSUN);
+  fn_glTexCoord2fColor4ubVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glTexCoord2fColor4ubVertex3fvSUN")!, def_glTexCoord2fColor4ubVertex3fvSUN);
+  fn_glTexCoord2fColor3fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glTexCoord2fColor3fVertex3fSUN")!, def_glTexCoord2fColor3fVertex3fSUN);
+  fn_glTexCoord2fColor3fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glTexCoord2fColor3fVertex3fvSUN")!, def_glTexCoord2fColor3fVertex3fvSUN);
+  fn_glTexCoord2fNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glTexCoord2fNormal3fVertex3fSUN")!, def_glTexCoord2fNormal3fVertex3fSUN);
+  fn_glTexCoord2fNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glTexCoord2fNormal3fVertex3fvSUN")!, def_glTexCoord2fNormal3fVertex3fvSUN);
+  fn_glTexCoord2fColor4fNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glTexCoord2fColor4fNormal3fVertex3fSUN")!, def_glTexCoord2fColor4fNormal3fVertex3fSUN);
+  fn_glTexCoord2fColor4fNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glTexCoord2fColor4fNormal3fVertex3fvSUN")!, def_glTexCoord2fColor4fNormal3fVertex3fvSUN);
+  fn_glTexCoord4fColor4fNormal3fVertex4fSUN = new Deno.UnsafeFnPointer(proc("glTexCoord4fColor4fNormal3fVertex4fSUN")!, def_glTexCoord4fColor4fNormal3fVertex4fSUN);
+  fn_glTexCoord4fColor4fNormal3fVertex4fvSUN = new Deno.UnsafeFnPointer(proc("glTexCoord4fColor4fNormal3fVertex4fvSUN")!, def_glTexCoord4fColor4fNormal3fVertex4fvSUN);
+  fn_glReplacementCodeuiVertex3fSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiVertex3fSUN")!, def_glReplacementCodeuiVertex3fSUN);
+  fn_glReplacementCodeuiVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiVertex3fvSUN")!, def_glReplacementCodeuiVertex3fvSUN);
+  fn_glReplacementCodeuiColor4ubVertex3fSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiColor4ubVertex3fSUN")!, def_glReplacementCodeuiColor4ubVertex3fSUN);
+  fn_glReplacementCodeuiColor4ubVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiColor4ubVertex3fvSUN")!, def_glReplacementCodeuiColor4ubVertex3fvSUN);
+  fn_glReplacementCodeuiColor3fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiColor3fVertex3fSUN")!, def_glReplacementCodeuiColor3fVertex3fSUN);
+  fn_glReplacementCodeuiColor3fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiColor3fVertex3fvSUN")!, def_glReplacementCodeuiColor3fVertex3fvSUN);
+  fn_glReplacementCodeuiNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiNormal3fVertex3fSUN")!, def_glReplacementCodeuiNormal3fVertex3fSUN);
+  fn_glReplacementCodeuiNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiNormal3fVertex3fvSUN")!, def_glReplacementCodeuiNormal3fVertex3fvSUN);
+  fn_glReplacementCodeuiColor4fNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiColor4fNormal3fVertex3fSUN")!, def_glReplacementCodeuiColor4fNormal3fVertex3fSUN);
+  fn_glReplacementCodeuiColor4fNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiColor4fNormal3fVertex3fvSUN")!, def_glReplacementCodeuiColor4fNormal3fVertex3fvSUN);
+  fn_glReplacementCodeuiTexCoord2fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiTexCoord2fVertex3fSUN")!, def_glReplacementCodeuiTexCoord2fVertex3fSUN);
+  fn_glReplacementCodeuiTexCoord2fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiTexCoord2fVertex3fvSUN")!, def_glReplacementCodeuiTexCoord2fVertex3fvSUN);
+  fn_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN")!, def_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN);
+  fn_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN")!, def_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN);
+  fn_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN")!, def_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN);
+  fn_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN")!, def_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN);
 }

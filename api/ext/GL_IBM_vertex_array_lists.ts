@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -92,9 +84,7 @@ export const def_glColorPointerListIBM = {
   result: "void",
 } as const;
 
-let fn_glColorPointerListIBM!: Deno.UnsafeFnPointer<
-  typeof def_glColorPointerListIBM
->;
+let fn_glColorPointerListIBM!: Deno.UnsafeFnPointer<typeof def_glColorPointerListIBM>;
 
 export function ColorPointerListIBM(
   size: GLint,
@@ -117,9 +107,7 @@ export const def_glSecondaryColorPointerListIBM = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColorPointerListIBM!: Deno.UnsafeFnPointer<
-  typeof def_glSecondaryColorPointerListIBM
->;
+let fn_glSecondaryColorPointerListIBM!: Deno.UnsafeFnPointer<typeof def_glSecondaryColorPointerListIBM>;
 
 export function SecondaryColorPointerListIBM(
   size: GLint,
@@ -142,9 +130,7 @@ export const def_glEdgeFlagPointerListIBM = {
   result: "void",
 } as const;
 
-let fn_glEdgeFlagPointerListIBM!: Deno.UnsafeFnPointer<
-  typeof def_glEdgeFlagPointerListIBM
->;
+let fn_glEdgeFlagPointerListIBM!: Deno.UnsafeFnPointer<typeof def_glEdgeFlagPointerListIBM>;
 
 export function EdgeFlagPointerListIBM(
   stride: GLint,
@@ -163,9 +149,7 @@ export const def_glFogCoordPointerListIBM = {
   result: "void",
 } as const;
 
-let fn_glFogCoordPointerListIBM!: Deno.UnsafeFnPointer<
-  typeof def_glFogCoordPointerListIBM
->;
+let fn_glFogCoordPointerListIBM!: Deno.UnsafeFnPointer<typeof def_glFogCoordPointerListIBM>;
 
 export function FogCoordPointerListIBM(
   type: GLenum,
@@ -186,9 +170,7 @@ export const def_glIndexPointerListIBM = {
   result: "void",
 } as const;
 
-let fn_glIndexPointerListIBM!: Deno.UnsafeFnPointer<
-  typeof def_glIndexPointerListIBM
->;
+let fn_glIndexPointerListIBM!: Deno.UnsafeFnPointer<typeof def_glIndexPointerListIBM>;
 
 export function IndexPointerListIBM(
   type: GLenum,
@@ -209,9 +191,7 @@ export const def_glNormalPointerListIBM = {
   result: "void",
 } as const;
 
-let fn_glNormalPointerListIBM!: Deno.UnsafeFnPointer<
-  typeof def_glNormalPointerListIBM
->;
+let fn_glNormalPointerListIBM!: Deno.UnsafeFnPointer<typeof def_glNormalPointerListIBM>;
 
 export function NormalPointerListIBM(
   type: GLenum,
@@ -232,9 +212,7 @@ export const def_glTexCoordPointerListIBM = {
   result: "void",
 } as const;
 
-let fn_glTexCoordPointerListIBM!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoordPointerListIBM
->;
+let fn_glTexCoordPointerListIBM!: Deno.UnsafeFnPointer<typeof def_glTexCoordPointerListIBM>;
 
 export function TexCoordPointerListIBM(
   size: GLint,
@@ -257,9 +235,7 @@ export const def_glVertexPointerListIBM = {
   result: "void",
 } as const;
 
-let fn_glVertexPointerListIBM!: Deno.UnsafeFnPointer<
-  typeof def_glVertexPointerListIBM
->;
+let fn_glVertexPointerListIBM!: Deno.UnsafeFnPointer<typeof def_glVertexPointerListIBM>;
 
 export function VertexPointerListIBM(
   size: GLint,
@@ -279,36 +255,12 @@ export function VertexPointerListIBM(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glColorPointerListIBM = new Deno.UnsafeFnPointer(
-    proc("glColorPointerListIBM"),
-    def_glColorPointerListIBM,
-  );
-  fn_glSecondaryColorPointerListIBM = new Deno.UnsafeFnPointer(
-    proc("glSecondaryColorPointerListIBM"),
-    def_glSecondaryColorPointerListIBM,
-  );
-  fn_glEdgeFlagPointerListIBM = new Deno.UnsafeFnPointer(
-    proc("glEdgeFlagPointerListIBM"),
-    def_glEdgeFlagPointerListIBM,
-  );
-  fn_glFogCoordPointerListIBM = new Deno.UnsafeFnPointer(
-    proc("glFogCoordPointerListIBM"),
-    def_glFogCoordPointerListIBM,
-  );
-  fn_glIndexPointerListIBM = new Deno.UnsafeFnPointer(
-    proc("glIndexPointerListIBM"),
-    def_glIndexPointerListIBM,
-  );
-  fn_glNormalPointerListIBM = new Deno.UnsafeFnPointer(
-    proc("glNormalPointerListIBM"),
-    def_glNormalPointerListIBM,
-  );
-  fn_glTexCoordPointerListIBM = new Deno.UnsafeFnPointer(
-    proc("glTexCoordPointerListIBM"),
-    def_glTexCoordPointerListIBM,
-  );
-  fn_glVertexPointerListIBM = new Deno.UnsafeFnPointer(
-    proc("glVertexPointerListIBM"),
-    def_glVertexPointerListIBM,
-  );
+  fn_glColorPointerListIBM = new Deno.UnsafeFnPointer(proc("glColorPointerListIBM")!, def_glColorPointerListIBM);
+  fn_glSecondaryColorPointerListIBM = new Deno.UnsafeFnPointer(proc("glSecondaryColorPointerListIBM")!, def_glSecondaryColorPointerListIBM);
+  fn_glEdgeFlagPointerListIBM = new Deno.UnsafeFnPointer(proc("glEdgeFlagPointerListIBM")!, def_glEdgeFlagPointerListIBM);
+  fn_glFogCoordPointerListIBM = new Deno.UnsafeFnPointer(proc("glFogCoordPointerListIBM")!, def_glFogCoordPointerListIBM);
+  fn_glIndexPointerListIBM = new Deno.UnsafeFnPointer(proc("glIndexPointerListIBM")!, def_glIndexPointerListIBM);
+  fn_glNormalPointerListIBM = new Deno.UnsafeFnPointer(proc("glNormalPointerListIBM")!, def_glNormalPointerListIBM);
+  fn_glTexCoordPointerListIBM = new Deno.UnsafeFnPointer(proc("glTexCoordPointerListIBM")!, def_glTexCoordPointerListIBM);
+  fn_glVertexPointerListIBM = new Deno.UnsafeFnPointer(proc("glVertexPointerListIBM")!, def_glVertexPointerListIBM);
 }

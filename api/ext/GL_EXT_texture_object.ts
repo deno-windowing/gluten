@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -81,9 +73,7 @@ export const def_glAreTexturesResidentEXT = {
   result: "u8",
 } as const;
 
-let fn_glAreTexturesResidentEXT!: Deno.UnsafeFnPointer<
-  typeof def_glAreTexturesResidentEXT
->;
+let fn_glAreTexturesResidentEXT!: Deno.UnsafeFnPointer<typeof def_glAreTexturesResidentEXT>;
 
 export function AreTexturesResidentEXT(
   n: GLsizei,
@@ -119,9 +109,7 @@ export const def_glDeleteTexturesEXT = {
   result: "void",
 } as const;
 
-let fn_glDeleteTexturesEXT!: Deno.UnsafeFnPointer<
-  typeof def_glDeleteTexturesEXT
->;
+let fn_glDeleteTexturesEXT!: Deno.UnsafeFnPointer<typeof def_glDeleteTexturesEXT>;
 
 export function DeleteTexturesEXT(
   n: GLsizei,
@@ -170,9 +158,7 @@ export const def_glPrioritizeTexturesEXT = {
   result: "void",
 } as const;
 
-let fn_glPrioritizeTexturesEXT!: Deno.UnsafeFnPointer<
-  typeof def_glPrioritizeTexturesEXT
->;
+let fn_glPrioritizeTexturesEXT!: Deno.UnsafeFnPointer<typeof def_glPrioritizeTexturesEXT>;
 
 export function PrioritizeTexturesEXT(
   n: GLsizei,
@@ -188,28 +174,10 @@ export function PrioritizeTexturesEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glAreTexturesResidentEXT = new Deno.UnsafeFnPointer(
-    proc("glAreTexturesResidentEXT"),
-    def_glAreTexturesResidentEXT,
-  );
-  fn_glBindTextureEXT = new Deno.UnsafeFnPointer(
-    proc("glBindTextureEXT"),
-    def_glBindTextureEXT,
-  );
-  fn_glDeleteTexturesEXT = new Deno.UnsafeFnPointer(
-    proc("glDeleteTexturesEXT"),
-    def_glDeleteTexturesEXT,
-  );
-  fn_glGenTexturesEXT = new Deno.UnsafeFnPointer(
-    proc("glGenTexturesEXT"),
-    def_glGenTexturesEXT,
-  );
-  fn_glIsTextureEXT = new Deno.UnsafeFnPointer(
-    proc("glIsTextureEXT"),
-    def_glIsTextureEXT,
-  );
-  fn_glPrioritizeTexturesEXT = new Deno.UnsafeFnPointer(
-    proc("glPrioritizeTexturesEXT"),
-    def_glPrioritizeTexturesEXT,
-  );
+  fn_glAreTexturesResidentEXT = new Deno.UnsafeFnPointer(proc("glAreTexturesResidentEXT")!, def_glAreTexturesResidentEXT);
+  fn_glBindTextureEXT = new Deno.UnsafeFnPointer(proc("glBindTextureEXT")!, def_glBindTextureEXT);
+  fn_glDeleteTexturesEXT = new Deno.UnsafeFnPointer(proc("glDeleteTexturesEXT")!, def_glDeleteTexturesEXT);
+  fn_glGenTexturesEXT = new Deno.UnsafeFnPointer(proc("glGenTexturesEXT")!, def_glGenTexturesEXT);
+  fn_glIsTextureEXT = new Deno.UnsafeFnPointer(proc("glIsTextureEXT")!, def_glIsTextureEXT);
+  fn_glPrioritizeTexturesEXT = new Deno.UnsafeFnPointer(proc("glPrioritizeTexturesEXT")!, def_glPrioritizeTexturesEXT);
 }

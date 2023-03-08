@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -74,9 +66,7 @@ export const def_glBufferPageCommitmentMemNV = {
   result: "void",
 } as const;
 
-let fn_glBufferPageCommitmentMemNV!: Deno.UnsafeFnPointer<
-  typeof def_glBufferPageCommitmentMemNV
->;
+let fn_glBufferPageCommitmentMemNV!: Deno.UnsafeFnPointer<typeof def_glBufferPageCommitmentMemNV>;
 
 export function BufferPageCommitmentMemNV(
   target: GLenum,
@@ -89,34 +79,19 @@ export function BufferPageCommitmentMemNV(
   fn_glBufferPageCommitmentMemNV.call(
     target,
     bufferToFFI(offset),
-    size,
+    Deno.UnsafePointer.value(size),
     memory,
-    memOffset,
+    Deno.UnsafePointer.value(memOffset),
     commit,
   );
 }
 
 export const def_glTexPageCommitmentMemNV = {
-  parameters: [
-    "u32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "u32",
-    "u64",
-    "u8",
-  ],
+  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "u32", "u64", "u8"],
   result: "void",
 } as const;
 
-let fn_glTexPageCommitmentMemNV!: Deno.UnsafeFnPointer<
-  typeof def_glTexPageCommitmentMemNV
->;
+let fn_glTexPageCommitmentMemNV!: Deno.UnsafeFnPointer<typeof def_glTexPageCommitmentMemNV>;
 
 export function TexPageCommitmentMemNV(
   target: GLenum,
@@ -143,7 +118,7 @@ export function TexPageCommitmentMemNV(
     height,
     depth,
     memory,
-    offset,
+    Deno.UnsafePointer.value(offset),
     commit,
   );
 }
@@ -153,9 +128,7 @@ export const def_glNamedBufferPageCommitmentMemNV = {
   result: "void",
 } as const;
 
-let fn_glNamedBufferPageCommitmentMemNV!: Deno.UnsafeFnPointer<
-  typeof def_glNamedBufferPageCommitmentMemNV
->;
+let fn_glNamedBufferPageCommitmentMemNV!: Deno.UnsafeFnPointer<typeof def_glNamedBufferPageCommitmentMemNV>;
 
 export function NamedBufferPageCommitmentMemNV(
   buffer: GLuint,
@@ -168,34 +141,19 @@ export function NamedBufferPageCommitmentMemNV(
   fn_glNamedBufferPageCommitmentMemNV.call(
     buffer,
     bufferToFFI(offset),
-    size,
+    Deno.UnsafePointer.value(size),
     memory,
-    memOffset,
+    Deno.UnsafePointer.value(memOffset),
     commit,
   );
 }
 
 export const def_glTexturePageCommitmentMemNV = {
-  parameters: [
-    "u32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "u32",
-    "u64",
-    "u8",
-  ],
+  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "u32", "u64", "u8"],
   result: "void",
 } as const;
 
-let fn_glTexturePageCommitmentMemNV!: Deno.UnsafeFnPointer<
-  typeof def_glTexturePageCommitmentMemNV
->;
+let fn_glTexturePageCommitmentMemNV!: Deno.UnsafeFnPointer<typeof def_glTexturePageCommitmentMemNV>;
 
 export function TexturePageCommitmentMemNV(
   texture: GLuint,
@@ -222,27 +180,15 @@ export function TexturePageCommitmentMemNV(
     height,
     depth,
     memory,
-    offset,
+    Deno.UnsafePointer.value(offset),
     commit,
   );
 }
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBufferPageCommitmentMemNV = new Deno.UnsafeFnPointer(
-    proc("glBufferPageCommitmentMemNV"),
-    def_glBufferPageCommitmentMemNV,
-  );
-  fn_glTexPageCommitmentMemNV = new Deno.UnsafeFnPointer(
-    proc("glTexPageCommitmentMemNV"),
-    def_glTexPageCommitmentMemNV,
-  );
-  fn_glNamedBufferPageCommitmentMemNV = new Deno.UnsafeFnPointer(
-    proc("glNamedBufferPageCommitmentMemNV"),
-    def_glNamedBufferPageCommitmentMemNV,
-  );
-  fn_glTexturePageCommitmentMemNV = new Deno.UnsafeFnPointer(
-    proc("glTexturePageCommitmentMemNV"),
-    def_glTexturePageCommitmentMemNV,
-  );
+  fn_glBufferPageCommitmentMemNV = new Deno.UnsafeFnPointer(proc("glBufferPageCommitmentMemNV")!, def_glBufferPageCommitmentMemNV);
+  fn_glTexPageCommitmentMemNV = new Deno.UnsafeFnPointer(proc("glTexPageCommitmentMemNV")!, def_glTexPageCommitmentMemNV);
+  fn_glNamedBufferPageCommitmentMemNV = new Deno.UnsafeFnPointer(proc("glNamedBufferPageCommitmentMemNV")!, def_glNamedBufferPageCommitmentMemNV);
+  fn_glTexturePageCommitmentMemNV = new Deno.UnsafeFnPointer(proc("glTexturePageCommitmentMemNV")!, def_glTexturePageCommitmentMemNV);
 }

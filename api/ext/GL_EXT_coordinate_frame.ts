@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -430,9 +422,7 @@ export const def_glTangentPointerEXT = {
   result: "void",
 } as const;
 
-let fn_glTangentPointerEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTangentPointerEXT
->;
+let fn_glTangentPointerEXT!: Deno.UnsafeFnPointer<typeof def_glTangentPointerEXT>;
 
 export function TangentPointerEXT(
   type: GLenum,
@@ -451,9 +441,7 @@ export const def_glBinormalPointerEXT = {
   result: "void",
 } as const;
 
-let fn_glBinormalPointerEXT!: Deno.UnsafeFnPointer<
-  typeof def_glBinormalPointerEXT
->;
+let fn_glBinormalPointerEXT!: Deno.UnsafeFnPointer<typeof def_glBinormalPointerEXT>;
 
 export function BinormalPointerEXT(
   type: GLenum,
@@ -469,92 +457,26 @@ export function BinormalPointerEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTangent3bEXT = new Deno.UnsafeFnPointer(
-    proc("glTangent3bEXT"),
-    def_glTangent3bEXT,
-  );
-  fn_glTangent3bvEXT = new Deno.UnsafeFnPointer(
-    proc("glTangent3bvEXT"),
-    def_glTangent3bvEXT,
-  );
-  fn_glTangent3dEXT = new Deno.UnsafeFnPointer(
-    proc("glTangent3dEXT"),
-    def_glTangent3dEXT,
-  );
-  fn_glTangent3dvEXT = new Deno.UnsafeFnPointer(
-    proc("glTangent3dvEXT"),
-    def_glTangent3dvEXT,
-  );
-  fn_glTangent3fEXT = new Deno.UnsafeFnPointer(
-    proc("glTangent3fEXT"),
-    def_glTangent3fEXT,
-  );
-  fn_glTangent3fvEXT = new Deno.UnsafeFnPointer(
-    proc("glTangent3fvEXT"),
-    def_glTangent3fvEXT,
-  );
-  fn_glTangent3iEXT = new Deno.UnsafeFnPointer(
-    proc("glTangent3iEXT"),
-    def_glTangent3iEXT,
-  );
-  fn_glTangent3ivEXT = new Deno.UnsafeFnPointer(
-    proc("glTangent3ivEXT"),
-    def_glTangent3ivEXT,
-  );
-  fn_glTangent3sEXT = new Deno.UnsafeFnPointer(
-    proc("glTangent3sEXT"),
-    def_glTangent3sEXT,
-  );
-  fn_glTangent3svEXT = new Deno.UnsafeFnPointer(
-    proc("glTangent3svEXT"),
-    def_glTangent3svEXT,
-  );
-  fn_glBinormal3bEXT = new Deno.UnsafeFnPointer(
-    proc("glBinormal3bEXT"),
-    def_glBinormal3bEXT,
-  );
-  fn_glBinormal3bvEXT = new Deno.UnsafeFnPointer(
-    proc("glBinormal3bvEXT"),
-    def_glBinormal3bvEXT,
-  );
-  fn_glBinormal3dEXT = new Deno.UnsafeFnPointer(
-    proc("glBinormal3dEXT"),
-    def_glBinormal3dEXT,
-  );
-  fn_glBinormal3dvEXT = new Deno.UnsafeFnPointer(
-    proc("glBinormal3dvEXT"),
-    def_glBinormal3dvEXT,
-  );
-  fn_glBinormal3fEXT = new Deno.UnsafeFnPointer(
-    proc("glBinormal3fEXT"),
-    def_glBinormal3fEXT,
-  );
-  fn_glBinormal3fvEXT = new Deno.UnsafeFnPointer(
-    proc("glBinormal3fvEXT"),
-    def_glBinormal3fvEXT,
-  );
-  fn_glBinormal3iEXT = new Deno.UnsafeFnPointer(
-    proc("glBinormal3iEXT"),
-    def_glBinormal3iEXT,
-  );
-  fn_glBinormal3ivEXT = new Deno.UnsafeFnPointer(
-    proc("glBinormal3ivEXT"),
-    def_glBinormal3ivEXT,
-  );
-  fn_glBinormal3sEXT = new Deno.UnsafeFnPointer(
-    proc("glBinormal3sEXT"),
-    def_glBinormal3sEXT,
-  );
-  fn_glBinormal3svEXT = new Deno.UnsafeFnPointer(
-    proc("glBinormal3svEXT"),
-    def_glBinormal3svEXT,
-  );
-  fn_glTangentPointerEXT = new Deno.UnsafeFnPointer(
-    proc("glTangentPointerEXT"),
-    def_glTangentPointerEXT,
-  );
-  fn_glBinormalPointerEXT = new Deno.UnsafeFnPointer(
-    proc("glBinormalPointerEXT"),
-    def_glBinormalPointerEXT,
-  );
+  fn_glTangent3bEXT = new Deno.UnsafeFnPointer(proc("glTangent3bEXT")!, def_glTangent3bEXT);
+  fn_glTangent3bvEXT = new Deno.UnsafeFnPointer(proc("glTangent3bvEXT")!, def_glTangent3bvEXT);
+  fn_glTangent3dEXT = new Deno.UnsafeFnPointer(proc("glTangent3dEXT")!, def_glTangent3dEXT);
+  fn_glTangent3dvEXT = new Deno.UnsafeFnPointer(proc("glTangent3dvEXT")!, def_glTangent3dvEXT);
+  fn_glTangent3fEXT = new Deno.UnsafeFnPointer(proc("glTangent3fEXT")!, def_glTangent3fEXT);
+  fn_glTangent3fvEXT = new Deno.UnsafeFnPointer(proc("glTangent3fvEXT")!, def_glTangent3fvEXT);
+  fn_glTangent3iEXT = new Deno.UnsafeFnPointer(proc("glTangent3iEXT")!, def_glTangent3iEXT);
+  fn_glTangent3ivEXT = new Deno.UnsafeFnPointer(proc("glTangent3ivEXT")!, def_glTangent3ivEXT);
+  fn_glTangent3sEXT = new Deno.UnsafeFnPointer(proc("glTangent3sEXT")!, def_glTangent3sEXT);
+  fn_glTangent3svEXT = new Deno.UnsafeFnPointer(proc("glTangent3svEXT")!, def_glTangent3svEXT);
+  fn_glBinormal3bEXT = new Deno.UnsafeFnPointer(proc("glBinormal3bEXT")!, def_glBinormal3bEXT);
+  fn_glBinormal3bvEXT = new Deno.UnsafeFnPointer(proc("glBinormal3bvEXT")!, def_glBinormal3bvEXT);
+  fn_glBinormal3dEXT = new Deno.UnsafeFnPointer(proc("glBinormal3dEXT")!, def_glBinormal3dEXT);
+  fn_glBinormal3dvEXT = new Deno.UnsafeFnPointer(proc("glBinormal3dvEXT")!, def_glBinormal3dvEXT);
+  fn_glBinormal3fEXT = new Deno.UnsafeFnPointer(proc("glBinormal3fEXT")!, def_glBinormal3fEXT);
+  fn_glBinormal3fvEXT = new Deno.UnsafeFnPointer(proc("glBinormal3fvEXT")!, def_glBinormal3fvEXT);
+  fn_glBinormal3iEXT = new Deno.UnsafeFnPointer(proc("glBinormal3iEXT")!, def_glBinormal3iEXT);
+  fn_glBinormal3ivEXT = new Deno.UnsafeFnPointer(proc("glBinormal3ivEXT")!, def_glBinormal3ivEXT);
+  fn_glBinormal3sEXT = new Deno.UnsafeFnPointer(proc("glBinormal3sEXT")!, def_glBinormal3sEXT);
+  fn_glBinormal3svEXT = new Deno.UnsafeFnPointer(proc("glBinormal3svEXT")!, def_glBinormal3svEXT);
+  fn_glTangentPointerEXT = new Deno.UnsafeFnPointer(proc("glTangentPointerEXT")!, def_glTangentPointerEXT);
+  fn_glBinormalPointerEXT = new Deno.UnsafeFnPointer(proc("glBinormalPointerEXT")!, def_glBinormalPointerEXT);
 }

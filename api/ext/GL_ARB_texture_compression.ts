@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -83,23 +75,11 @@ export const COMPRESSED_TEXTURE_FORMATS_ARB = 0x86a3;
 /// Commands
 
 export const def_glCompressedTexImage3DARB = {
-  parameters: [
-    "u32",
-    "i32",
-    "u32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "buffer",
-  ],
+  parameters: ["u32", "i32", "u32", "i32", "i32", "i32", "i32", "i32", "buffer"],
   result: "void",
 } as const;
 
-let fn_glCompressedTexImage3DARB!: Deno.UnsafeFnPointer<
-  typeof def_glCompressedTexImage3DARB
->;
+let fn_glCompressedTexImage3DARB!: Deno.UnsafeFnPointer<typeof def_glCompressedTexImage3DARB>;
 
 export function CompressedTexImage3DARB(
   target: GLenum,
@@ -130,9 +110,7 @@ export const def_glCompressedTexImage2DARB = {
   result: "void",
 } as const;
 
-let fn_glCompressedTexImage2DARB!: Deno.UnsafeFnPointer<
-  typeof def_glCompressedTexImage2DARB
->;
+let fn_glCompressedTexImage2DARB!: Deno.UnsafeFnPointer<typeof def_glCompressedTexImage2DARB>;
 
 export function CompressedTexImage2DARB(
   target: GLenum,
@@ -161,9 +139,7 @@ export const def_glCompressedTexImage1DARB = {
   result: "void",
 } as const;
 
-let fn_glCompressedTexImage1DARB!: Deno.UnsafeFnPointer<
-  typeof def_glCompressedTexImage1DARB
->;
+let fn_glCompressedTexImage1DARB!: Deno.UnsafeFnPointer<typeof def_glCompressedTexImage1DARB>;
 
 export function CompressedTexImage1DARB(
   target: GLenum,
@@ -186,25 +162,11 @@ export function CompressedTexImage1DARB(
 }
 
 export const def_glCompressedTexSubImage3DARB = {
-  parameters: [
-    "u32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "u32",
-    "i32",
-    "buffer",
-  ],
+  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "u32", "i32", "buffer"],
   result: "void",
 } as const;
 
-let fn_glCompressedTexSubImage3DARB!: Deno.UnsafeFnPointer<
-  typeof def_glCompressedTexSubImage3DARB
->;
+let fn_glCompressedTexSubImage3DARB!: Deno.UnsafeFnPointer<typeof def_glCompressedTexSubImage3DARB>;
 
 export function CompressedTexSubImage3DARB(
   target: GLenum,
@@ -235,23 +197,11 @@ export function CompressedTexSubImage3DARB(
 }
 
 export const def_glCompressedTexSubImage2DARB = {
-  parameters: [
-    "u32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "u32",
-    "i32",
-    "buffer",
-  ],
+  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "u32", "i32", "buffer"],
   result: "void",
 } as const;
 
-let fn_glCompressedTexSubImage2DARB!: Deno.UnsafeFnPointer<
-  typeof def_glCompressedTexSubImage2DARB
->;
+let fn_glCompressedTexSubImage2DARB!: Deno.UnsafeFnPointer<typeof def_glCompressedTexSubImage2DARB>;
 
 export function CompressedTexSubImage2DARB(
   target: GLenum,
@@ -282,9 +232,7 @@ export const def_glCompressedTexSubImage1DARB = {
   result: "void",
 } as const;
 
-let fn_glCompressedTexSubImage1DARB!: Deno.UnsafeFnPointer<
-  typeof def_glCompressedTexSubImage1DARB
->;
+let fn_glCompressedTexSubImage1DARB!: Deno.UnsafeFnPointer<typeof def_glCompressedTexSubImage1DARB>;
 
 export function CompressedTexSubImage1DARB(
   target: GLenum,
@@ -311,9 +259,7 @@ export const def_glGetCompressedTexImageARB = {
   result: "void",
 } as const;
 
-let fn_glGetCompressedTexImageARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetCompressedTexImageARB
->;
+let fn_glGetCompressedTexImageARB!: Deno.UnsafeFnPointer<typeof def_glGetCompressedTexImageARB>;
 
 export function GetCompressedTexImageARB(
   target: GLenum,
@@ -329,32 +275,11 @@ export function GetCompressedTexImageARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glCompressedTexImage3DARB = new Deno.UnsafeFnPointer(
-    proc("glCompressedTexImage3DARB"),
-    def_glCompressedTexImage3DARB,
-  );
-  fn_glCompressedTexImage2DARB = new Deno.UnsafeFnPointer(
-    proc("glCompressedTexImage2DARB"),
-    def_glCompressedTexImage2DARB,
-  );
-  fn_glCompressedTexImage1DARB = new Deno.UnsafeFnPointer(
-    proc("glCompressedTexImage1DARB"),
-    def_glCompressedTexImage1DARB,
-  );
-  fn_glCompressedTexSubImage3DARB = new Deno.UnsafeFnPointer(
-    proc("glCompressedTexSubImage3DARB"),
-    def_glCompressedTexSubImage3DARB,
-  );
-  fn_glCompressedTexSubImage2DARB = new Deno.UnsafeFnPointer(
-    proc("glCompressedTexSubImage2DARB"),
-    def_glCompressedTexSubImage2DARB,
-  );
-  fn_glCompressedTexSubImage1DARB = new Deno.UnsafeFnPointer(
-    proc("glCompressedTexSubImage1DARB"),
-    def_glCompressedTexSubImage1DARB,
-  );
-  fn_glGetCompressedTexImageARB = new Deno.UnsafeFnPointer(
-    proc("glGetCompressedTexImageARB"),
-    def_glGetCompressedTexImageARB,
-  );
+  fn_glCompressedTexImage3DARB = new Deno.UnsafeFnPointer(proc("glCompressedTexImage3DARB")!, def_glCompressedTexImage3DARB);
+  fn_glCompressedTexImage2DARB = new Deno.UnsafeFnPointer(proc("glCompressedTexImage2DARB")!, def_glCompressedTexImage2DARB);
+  fn_glCompressedTexImage1DARB = new Deno.UnsafeFnPointer(proc("glCompressedTexImage1DARB")!, def_glCompressedTexImage1DARB);
+  fn_glCompressedTexSubImage3DARB = new Deno.UnsafeFnPointer(proc("glCompressedTexSubImage3DARB")!, def_glCompressedTexSubImage3DARB);
+  fn_glCompressedTexSubImage2DARB = new Deno.UnsafeFnPointer(proc("glCompressedTexSubImage2DARB")!, def_glCompressedTexSubImage2DARB);
+  fn_glCompressedTexSubImage1DARB = new Deno.UnsafeFnPointer(proc("glCompressedTexSubImage1DARB")!, def_glCompressedTexSubImage1DARB);
+  fn_glGetCompressedTexImageARB = new Deno.UnsafeFnPointer(proc("glGetCompressedTexImageARB")!, def_glGetCompressedTexImageARB);
 }

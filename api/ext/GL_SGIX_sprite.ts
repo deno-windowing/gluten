@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -83,9 +75,7 @@ export const def_glSpriteParameterfSGIX = {
   result: "void",
 } as const;
 
-let fn_glSpriteParameterfSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glSpriteParameterfSGIX
->;
+let fn_glSpriteParameterfSGIX!: Deno.UnsafeFnPointer<typeof def_glSpriteParameterfSGIX>;
 
 export function SpriteParameterfSGIX(
   pname: GLenum,
@@ -102,9 +92,7 @@ export const def_glSpriteParameterfvSGIX = {
   result: "void",
 } as const;
 
-let fn_glSpriteParameterfvSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glSpriteParameterfvSGIX
->;
+let fn_glSpriteParameterfvSGIX!: Deno.UnsafeFnPointer<typeof def_glSpriteParameterfvSGIX>;
 
 export function SpriteParameterfvSGIX(
   pname: GLenum,
@@ -121,9 +109,7 @@ export const def_glSpriteParameteriSGIX = {
   result: "void",
 } as const;
 
-let fn_glSpriteParameteriSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glSpriteParameteriSGIX
->;
+let fn_glSpriteParameteriSGIX!: Deno.UnsafeFnPointer<typeof def_glSpriteParameteriSGIX>;
 
 export function SpriteParameteriSGIX(
   pname: GLenum,
@@ -140,9 +126,7 @@ export const def_glSpriteParameterivSGIX = {
   result: "void",
 } as const;
 
-let fn_glSpriteParameterivSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glSpriteParameterivSGIX
->;
+let fn_glSpriteParameterivSGIX!: Deno.UnsafeFnPointer<typeof def_glSpriteParameterivSGIX>;
 
 export function SpriteParameterivSGIX(
   pname: GLenum,
@@ -156,20 +140,8 @@ export function SpriteParameterivSGIX(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glSpriteParameterfSGIX = new Deno.UnsafeFnPointer(
-    proc("glSpriteParameterfSGIX"),
-    def_glSpriteParameterfSGIX,
-  );
-  fn_glSpriteParameterfvSGIX = new Deno.UnsafeFnPointer(
-    proc("glSpriteParameterfvSGIX"),
-    def_glSpriteParameterfvSGIX,
-  );
-  fn_glSpriteParameteriSGIX = new Deno.UnsafeFnPointer(
-    proc("glSpriteParameteriSGIX"),
-    def_glSpriteParameteriSGIX,
-  );
-  fn_glSpriteParameterivSGIX = new Deno.UnsafeFnPointer(
-    proc("glSpriteParameterivSGIX"),
-    def_glSpriteParameterivSGIX,
-  );
+  fn_glSpriteParameterfSGIX = new Deno.UnsafeFnPointer(proc("glSpriteParameterfSGIX")!, def_glSpriteParameterfSGIX);
+  fn_glSpriteParameterfvSGIX = new Deno.UnsafeFnPointer(proc("glSpriteParameterfvSGIX")!, def_glSpriteParameterfvSGIX);
+  fn_glSpriteParameteriSGIX = new Deno.UnsafeFnPointer(proc("glSpriteParameteriSGIX")!, def_glSpriteParameteriSGIX);
+  fn_glSpriteParameterivSGIX = new Deno.UnsafeFnPointer(proc("glSpriteParameterivSGIX")!, def_glSpriteParameterivSGIX);
 }

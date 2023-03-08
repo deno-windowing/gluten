@@ -1,26 +1,18 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
   if (buf === null) return null;
-  else if (typeof buf === "number" || typeof buf === "bigint") {
-    if (buf === 0 || buf === 0n) return null;
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer(buf, 1));
-  } else if (buf instanceof ArrayBuffer) {
+  if (buf instanceof ArrayBuffer) {
     return new Uint8Array(buf);
+  } else if (isTypedArray(buf)) {
+    return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(buf.buffer);
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -84,9 +76,7 @@ export const def_glGetGraphicsResetStatusARB = {
   result: "u32",
 } as const;
 
-let fn_glGetGraphicsResetStatusARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetGraphicsResetStatusARB
->;
+let fn_glGetGraphicsResetStatusARB!: Deno.UnsafeFnPointer<typeof def_glGetGraphicsResetStatusARB>;
 
 export function GetGraphicsResetStatusARB(): GLenum {
   return fn_glGetGraphicsResetStatusARB.call();
@@ -151,9 +141,7 @@ export const def_glGetnCompressedTexImageARB = {
   result: "void",
 } as const;
 
-let fn_glGetnCompressedTexImageARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetnCompressedTexImageARB
->;
+let fn_glGetnCompressedTexImageARB!: Deno.UnsafeFnPointer<typeof def_glGetnCompressedTexImageARB>;
 
 export function GetnCompressedTexImageARB(
   target: GLenum,
@@ -216,9 +204,7 @@ export const def_glGetnUniformuivARB = {
   result: "void",
 } as const;
 
-let fn_glGetnUniformuivARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetnUniformuivARB
->;
+let fn_glGetnUniformuivARB!: Deno.UnsafeFnPointer<typeof def_glGetnUniformuivARB>;
 
 export function GetnUniformuivARB(
   program: GLuint,
@@ -323,9 +309,7 @@ export const def_glGetnPixelMapfvARB = {
   result: "void",
 } as const;
 
-let fn_glGetnPixelMapfvARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetnPixelMapfvARB
->;
+let fn_glGetnPixelMapfvARB!: Deno.UnsafeFnPointer<typeof def_glGetnPixelMapfvARB>;
 
 export function GetnPixelMapfvARB(
   map: GLenum,
@@ -344,9 +328,7 @@ export const def_glGetnPixelMapuivARB = {
   result: "void",
 } as const;
 
-let fn_glGetnPixelMapuivARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetnPixelMapuivARB
->;
+let fn_glGetnPixelMapuivARB!: Deno.UnsafeFnPointer<typeof def_glGetnPixelMapuivARB>;
 
 export function GetnPixelMapuivARB(
   map: GLenum,
@@ -365,9 +347,7 @@ export const def_glGetnPixelMapusvARB = {
   result: "void",
 } as const;
 
-let fn_glGetnPixelMapusvARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetnPixelMapusvARB
->;
+let fn_glGetnPixelMapusvARB!: Deno.UnsafeFnPointer<typeof def_glGetnPixelMapusvARB>;
 
 export function GetnPixelMapusvARB(
   map: GLenum,
@@ -386,9 +366,7 @@ export const def_glGetnPolygonStippleARB = {
   result: "void",
 } as const;
 
-let fn_glGetnPolygonStippleARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetnPolygonStippleARB
->;
+let fn_glGetnPolygonStippleARB!: Deno.UnsafeFnPointer<typeof def_glGetnPolygonStippleARB>;
 
 export function GetnPolygonStippleARB(
   bufSize: GLsizei,
@@ -405,9 +383,7 @@ export const def_glGetnColorTableARB = {
   result: "void",
 } as const;
 
-let fn_glGetnColorTableARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetnColorTableARB
->;
+let fn_glGetnColorTableARB!: Deno.UnsafeFnPointer<typeof def_glGetnColorTableARB>;
 
 export function GetnColorTableARB(
   target: GLenum,
@@ -430,9 +406,7 @@ export const def_glGetnConvolutionFilterARB = {
   result: "void",
 } as const;
 
-let fn_glGetnConvolutionFilterARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetnConvolutionFilterARB
->;
+let fn_glGetnConvolutionFilterARB!: Deno.UnsafeFnPointer<typeof def_glGetnConvolutionFilterARB>;
 
 export function GetnConvolutionFilterARB(
   target: GLenum,
@@ -455,9 +429,7 @@ export const def_glGetnSeparableFilterARB = {
   result: "void",
 } as const;
 
-let fn_glGetnSeparableFilterARB!: Deno.UnsafeFnPointer<
-  typeof def_glGetnSeparableFilterARB
->;
+let fn_glGetnSeparableFilterARB!: Deno.UnsafeFnPointer<typeof def_glGetnSeparableFilterARB>;
 
 export function GetnSeparableFilterARB(
   target: GLenum,
@@ -533,84 +505,24 @@ export function GetnMinmaxARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetGraphicsResetStatusARB = new Deno.UnsafeFnPointer(
-    proc("glGetGraphicsResetStatusARB"),
-    def_glGetGraphicsResetStatusARB,
-  );
-  fn_glGetnTexImageARB = new Deno.UnsafeFnPointer(
-    proc("glGetnTexImageARB"),
-    def_glGetnTexImageARB,
-  );
-  fn_glReadnPixelsARB = new Deno.UnsafeFnPointer(
-    proc("glReadnPixelsARB"),
-    def_glReadnPixelsARB,
-  );
-  fn_glGetnCompressedTexImageARB = new Deno.UnsafeFnPointer(
-    proc("glGetnCompressedTexImageARB"),
-    def_glGetnCompressedTexImageARB,
-  );
-  fn_glGetnUniformfvARB = new Deno.UnsafeFnPointer(
-    proc("glGetnUniformfvARB"),
-    def_glGetnUniformfvARB,
-  );
-  fn_glGetnUniformivARB = new Deno.UnsafeFnPointer(
-    proc("glGetnUniformivARB"),
-    def_glGetnUniformivARB,
-  );
-  fn_glGetnUniformuivARB = new Deno.UnsafeFnPointer(
-    proc("glGetnUniformuivARB"),
-    def_glGetnUniformuivARB,
-  );
-  fn_glGetnUniformdvARB = new Deno.UnsafeFnPointer(
-    proc("glGetnUniformdvARB"),
-    def_glGetnUniformdvARB,
-  );
-  fn_glGetnMapdvARB = new Deno.UnsafeFnPointer(
-    proc("glGetnMapdvARB"),
-    def_glGetnMapdvARB,
-  );
-  fn_glGetnMapfvARB = new Deno.UnsafeFnPointer(
-    proc("glGetnMapfvARB"),
-    def_glGetnMapfvARB,
-  );
-  fn_glGetnMapivARB = new Deno.UnsafeFnPointer(
-    proc("glGetnMapivARB"),
-    def_glGetnMapivARB,
-  );
-  fn_glGetnPixelMapfvARB = new Deno.UnsafeFnPointer(
-    proc("glGetnPixelMapfvARB"),
-    def_glGetnPixelMapfvARB,
-  );
-  fn_glGetnPixelMapuivARB = new Deno.UnsafeFnPointer(
-    proc("glGetnPixelMapuivARB"),
-    def_glGetnPixelMapuivARB,
-  );
-  fn_glGetnPixelMapusvARB = new Deno.UnsafeFnPointer(
-    proc("glGetnPixelMapusvARB"),
-    def_glGetnPixelMapusvARB,
-  );
-  fn_glGetnPolygonStippleARB = new Deno.UnsafeFnPointer(
-    proc("glGetnPolygonStippleARB"),
-    def_glGetnPolygonStippleARB,
-  );
-  fn_glGetnColorTableARB = new Deno.UnsafeFnPointer(
-    proc("glGetnColorTableARB"),
-    def_glGetnColorTableARB,
-  );
-  fn_glGetnConvolutionFilterARB = new Deno.UnsafeFnPointer(
-    proc("glGetnConvolutionFilterARB"),
-    def_glGetnConvolutionFilterARB,
-  );
-  fn_glGetnSeparableFilterARB = new Deno.UnsafeFnPointer(
-    proc("glGetnSeparableFilterARB"),
-    def_glGetnSeparableFilterARB,
-  );
-  fn_glGetnHistogramARB = new Deno.UnsafeFnPointer(
-    proc("glGetnHistogramARB"),
-    def_glGetnHistogramARB,
-  );
-  fn_glGetnMinmaxARB = new Deno.UnsafeFnPointer(
-    proc("glGetnMinmaxARB"),
-    def_glGetnMinmaxARB,
-  );
+  fn_glGetGraphicsResetStatusARB = new Deno.UnsafeFnPointer(proc("glGetGraphicsResetStatusARB")!, def_glGetGraphicsResetStatusARB);
+  fn_glGetnTexImageARB = new Deno.UnsafeFnPointer(proc("glGetnTexImageARB")!, def_glGetnTexImageARB);
+  fn_glReadnPixelsARB = new Deno.UnsafeFnPointer(proc("glReadnPixelsARB")!, def_glReadnPixelsARB);
+  fn_glGetnCompressedTexImageARB = new Deno.UnsafeFnPointer(proc("glGetnCompressedTexImageARB")!, def_glGetnCompressedTexImageARB);
+  fn_glGetnUniformfvARB = new Deno.UnsafeFnPointer(proc("glGetnUniformfvARB")!, def_glGetnUniformfvARB);
+  fn_glGetnUniformivARB = new Deno.UnsafeFnPointer(proc("glGetnUniformivARB")!, def_glGetnUniformivARB);
+  fn_glGetnUniformuivARB = new Deno.UnsafeFnPointer(proc("glGetnUniformuivARB")!, def_glGetnUniformuivARB);
+  fn_glGetnUniformdvARB = new Deno.UnsafeFnPointer(proc("glGetnUniformdvARB")!, def_glGetnUniformdvARB);
+  fn_glGetnMapdvARB = new Deno.UnsafeFnPointer(proc("glGetnMapdvARB")!, def_glGetnMapdvARB);
+  fn_glGetnMapfvARB = new Deno.UnsafeFnPointer(proc("glGetnMapfvARB")!, def_glGetnMapfvARB);
+  fn_glGetnMapivARB = new Deno.UnsafeFnPointer(proc("glGetnMapivARB")!, def_glGetnMapivARB);
+  fn_glGetnPixelMapfvARB = new Deno.UnsafeFnPointer(proc("glGetnPixelMapfvARB")!, def_glGetnPixelMapfvARB);
+  fn_glGetnPixelMapuivARB = new Deno.UnsafeFnPointer(proc("glGetnPixelMapuivARB")!, def_glGetnPixelMapuivARB);
+  fn_glGetnPixelMapusvARB = new Deno.UnsafeFnPointer(proc("glGetnPixelMapusvARB")!, def_glGetnPixelMapusvARB);
+  fn_glGetnPolygonStippleARB = new Deno.UnsafeFnPointer(proc("glGetnPolygonStippleARB")!, def_glGetnPolygonStippleARB);
+  fn_glGetnColorTableARB = new Deno.UnsafeFnPointer(proc("glGetnColorTableARB")!, def_glGetnColorTableARB);
+  fn_glGetnConvolutionFilterARB = new Deno.UnsafeFnPointer(proc("glGetnConvolutionFilterARB")!, def_glGetnConvolutionFilterARB);
+  fn_glGetnSeparableFilterARB = new Deno.UnsafeFnPointer(proc("glGetnSeparableFilterARB")!, def_glGetnSeparableFilterARB);
+  fn_glGetnHistogramARB = new Deno.UnsafeFnPointer(proc("glGetnHistogramARB")!, def_glGetnHistogramARB);
+  fn_glGetnMinmaxARB = new Deno.UnsafeFnPointer(proc("glGetnMinmaxARB")!, def_glGetnMinmaxARB);
 }
