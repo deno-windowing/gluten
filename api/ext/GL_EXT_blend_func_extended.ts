@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -89,9 +75,7 @@ export const def_glBindFragDataLocationIndexedEXT = {
   result: "void",
 } as const;
 
-let fn_glBindFragDataLocationIndexedEXT!: Deno.UnsafeFnPointer<
-  typeof def_glBindFragDataLocationIndexedEXT
->;
+let fn_glBindFragDataLocationIndexedEXT!: Deno.UnsafeFnPointer<typeof def_glBindFragDataLocationIndexedEXT>;
 
 export function BindFragDataLocationIndexedEXT(
   program: GLuint,
@@ -112,9 +96,7 @@ export const def_glBindFragDataLocationEXT = {
   result: "void",
 } as const;
 
-let fn_glBindFragDataLocationEXT!: Deno.UnsafeFnPointer<
-  typeof def_glBindFragDataLocationEXT
->;
+let fn_glBindFragDataLocationEXT!: Deno.UnsafeFnPointer<typeof def_glBindFragDataLocationEXT>;
 
 export function BindFragDataLocationEXT(
   program: GLuint,
@@ -133,9 +115,7 @@ export const def_glGetProgramResourceLocationIndexEXT = {
   result: "i32",
 } as const;
 
-let fn_glGetProgramResourceLocationIndexEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramResourceLocationIndexEXT
->;
+let fn_glGetProgramResourceLocationIndexEXT!: Deno.UnsafeFnPointer<typeof def_glGetProgramResourceLocationIndexEXT>;
 
 export function GetProgramResourceLocationIndexEXT(
   program: GLuint,
@@ -154,9 +134,7 @@ export const def_glGetFragDataIndexEXT = {
   result: "i32",
 } as const;
 
-let fn_glGetFragDataIndexEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetFragDataIndexEXT
->;
+let fn_glGetFragDataIndexEXT!: Deno.UnsafeFnPointer<typeof def_glGetFragDataIndexEXT>;
 
 export function GetFragDataIndexEXT(
   program: GLuint,
@@ -170,20 +148,8 @@ export function GetFragDataIndexEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBindFragDataLocationIndexedEXT = new Deno.UnsafeFnPointer(
-    proc("glBindFragDataLocationIndexedEXT")!,
-    def_glBindFragDataLocationIndexedEXT,
-  );
-  fn_glBindFragDataLocationEXT = new Deno.UnsafeFnPointer(
-    proc("glBindFragDataLocationEXT")!,
-    def_glBindFragDataLocationEXT,
-  );
-  fn_glGetProgramResourceLocationIndexEXT = new Deno.UnsafeFnPointer(
-    proc("glGetProgramResourceLocationIndexEXT")!,
-    def_glGetProgramResourceLocationIndexEXT,
-  );
-  fn_glGetFragDataIndexEXT = new Deno.UnsafeFnPointer(
-    proc("glGetFragDataIndexEXT")!,
-    def_glGetFragDataIndexEXT,
-  );
+  fn_glBindFragDataLocationIndexedEXT = new Deno.UnsafeFnPointer(proc("glBindFragDataLocationIndexedEXT")!, def_glBindFragDataLocationIndexedEXT);
+  fn_glBindFragDataLocationEXT = new Deno.UnsafeFnPointer(proc("glBindFragDataLocationEXT")!, def_glBindFragDataLocationEXT);
+  fn_glGetProgramResourceLocationIndexEXT = new Deno.UnsafeFnPointer(proc("glGetProgramResourceLocationIndexEXT")!, def_glGetProgramResourceLocationIndexEXT);
+  fn_glGetFragDataIndexEXT = new Deno.UnsafeFnPointer(proc("glGetFragDataIndexEXT")!, def_glGetFragDataIndexEXT);
 }

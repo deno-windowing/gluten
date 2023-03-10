@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -83,9 +69,7 @@ export const def_glBindVertexArrayAPPLE = {
   result: "void",
 } as const;
 
-let fn_glBindVertexArrayAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glBindVertexArrayAPPLE
->;
+let fn_glBindVertexArrayAPPLE!: Deno.UnsafeFnPointer<typeof def_glBindVertexArrayAPPLE>;
 
 export function BindVertexArrayAPPLE(
   array: GLuint,
@@ -100,9 +84,7 @@ export const def_glDeleteVertexArraysAPPLE = {
   result: "void",
 } as const;
 
-let fn_glDeleteVertexArraysAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glDeleteVertexArraysAPPLE
->;
+let fn_glDeleteVertexArraysAPPLE!: Deno.UnsafeFnPointer<typeof def_glDeleteVertexArraysAPPLE>;
 
 export function DeleteVertexArraysAPPLE(
   n: GLsizei,
@@ -119,9 +101,7 @@ export const def_glGenVertexArraysAPPLE = {
   result: "void",
 } as const;
 
-let fn_glGenVertexArraysAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glGenVertexArraysAPPLE
->;
+let fn_glGenVertexArraysAPPLE!: Deno.UnsafeFnPointer<typeof def_glGenVertexArraysAPPLE>;
 
 export function GenVertexArraysAPPLE(
   n: GLsizei,
@@ -138,9 +118,7 @@ export const def_glIsVertexArrayAPPLE = {
   result: "u8",
 } as const;
 
-let fn_glIsVertexArrayAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glIsVertexArrayAPPLE
->;
+let fn_glIsVertexArrayAPPLE!: Deno.UnsafeFnPointer<typeof def_glIsVertexArrayAPPLE>;
 
 export function IsVertexArrayAPPLE(
   array: GLuint,
@@ -152,20 +130,8 @@ export function IsVertexArrayAPPLE(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBindVertexArrayAPPLE = new Deno.UnsafeFnPointer(
-    proc("glBindVertexArrayAPPLE")!,
-    def_glBindVertexArrayAPPLE,
-  );
-  fn_glDeleteVertexArraysAPPLE = new Deno.UnsafeFnPointer(
-    proc("glDeleteVertexArraysAPPLE")!,
-    def_glDeleteVertexArraysAPPLE,
-  );
-  fn_glGenVertexArraysAPPLE = new Deno.UnsafeFnPointer(
-    proc("glGenVertexArraysAPPLE")!,
-    def_glGenVertexArraysAPPLE,
-  );
-  fn_glIsVertexArrayAPPLE = new Deno.UnsafeFnPointer(
-    proc("glIsVertexArrayAPPLE")!,
-    def_glIsVertexArrayAPPLE,
-  );
+  fn_glBindVertexArrayAPPLE = new Deno.UnsafeFnPointer(proc("glBindVertexArrayAPPLE")!, def_glBindVertexArrayAPPLE);
+  fn_glDeleteVertexArraysAPPLE = new Deno.UnsafeFnPointer(proc("glDeleteVertexArraysAPPLE")!, def_glDeleteVertexArraysAPPLE);
+  fn_glGenVertexArraysAPPLE = new Deno.UnsafeFnPointer(proc("glGenVertexArraysAPPLE")!, def_glGenVertexArraysAPPLE);
+  fn_glIsVertexArrayAPPLE = new Deno.UnsafeFnPointer(proc("glIsVertexArrayAPPLE")!, def_glIsVertexArrayAPPLE);
 }

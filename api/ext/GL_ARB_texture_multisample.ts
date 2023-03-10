@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -103,9 +89,7 @@ export const def_glTexImage2DMultisample = {
   result: "void",
 } as const;
 
-let fn_glTexImage2DMultisample!: Deno.UnsafeFnPointer<
-  typeof def_glTexImage2DMultisample
->;
+let fn_glTexImage2DMultisample!: Deno.UnsafeFnPointer<typeof def_glTexImage2DMultisample>;
 
 export function TexImage2DMultisample(
   target: GLenum,
@@ -130,9 +114,7 @@ export const def_glTexImage3DMultisample = {
   result: "void",
 } as const;
 
-let fn_glTexImage3DMultisample!: Deno.UnsafeFnPointer<
-  typeof def_glTexImage3DMultisample
->;
+let fn_glTexImage3DMultisample!: Deno.UnsafeFnPointer<typeof def_glTexImage3DMultisample>;
 
 export function TexImage3DMultisample(
   target: GLenum,
@@ -192,20 +174,8 @@ export function SampleMaski(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexImage2DMultisample = new Deno.UnsafeFnPointer(
-    proc("glTexImage2DMultisample")!,
-    def_glTexImage2DMultisample,
-  );
-  fn_glTexImage3DMultisample = new Deno.UnsafeFnPointer(
-    proc("glTexImage3DMultisample")!,
-    def_glTexImage3DMultisample,
-  );
-  fn_glGetMultisamplefv = new Deno.UnsafeFnPointer(
-    proc("glGetMultisamplefv")!,
-    def_glGetMultisamplefv,
-  );
-  fn_glSampleMaski = new Deno.UnsafeFnPointer(
-    proc("glSampleMaski")!,
-    def_glSampleMaski,
-  );
+  fn_glTexImage2DMultisample = new Deno.UnsafeFnPointer(proc("glTexImage2DMultisample")!, def_glTexImage2DMultisample);
+  fn_glTexImage3DMultisample = new Deno.UnsafeFnPointer(proc("glTexImage3DMultisample")!, def_glTexImage3DMultisample);
+  fn_glGetMultisamplefv = new Deno.UnsafeFnPointer(proc("glGetMultisamplefv")!, def_glGetMultisamplefv);
+  fn_glSampleMaski = new Deno.UnsafeFnPointer(proc("glSampleMaski")!, def_glSampleMaski);
 }

@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -187,9 +173,7 @@ export const def_glGetQueryObjectuivEXT = {
   result: "void",
 } as const;
 
-let fn_glGetQueryObjectuivEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetQueryObjectuivEXT
->;
+let fn_glGetQueryObjectuivEXT!: Deno.UnsafeFnPointer<typeof def_glGetQueryObjectuivEXT>;
 
 export function GetQueryObjectuivEXT(
   id: GLuint,
@@ -205,32 +189,11 @@ export function GetQueryObjectuivEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGenQueriesEXT = new Deno.UnsafeFnPointer(
-    proc("glGenQueriesEXT")!,
-    def_glGenQueriesEXT,
-  );
-  fn_glDeleteQueriesEXT = new Deno.UnsafeFnPointer(
-    proc("glDeleteQueriesEXT")!,
-    def_glDeleteQueriesEXT,
-  );
-  fn_glIsQueryEXT = new Deno.UnsafeFnPointer(
-    proc("glIsQueryEXT")!,
-    def_glIsQueryEXT,
-  );
-  fn_glBeginQueryEXT = new Deno.UnsafeFnPointer(
-    proc("glBeginQueryEXT")!,
-    def_glBeginQueryEXT,
-  );
-  fn_glEndQueryEXT = new Deno.UnsafeFnPointer(
-    proc("glEndQueryEXT")!,
-    def_glEndQueryEXT,
-  );
-  fn_glGetQueryivEXT = new Deno.UnsafeFnPointer(
-    proc("glGetQueryivEXT")!,
-    def_glGetQueryivEXT,
-  );
-  fn_glGetQueryObjectuivEXT = new Deno.UnsafeFnPointer(
-    proc("glGetQueryObjectuivEXT")!,
-    def_glGetQueryObjectuivEXT,
-  );
+  fn_glGenQueriesEXT = new Deno.UnsafeFnPointer(proc("glGenQueriesEXT")!, def_glGenQueriesEXT);
+  fn_glDeleteQueriesEXT = new Deno.UnsafeFnPointer(proc("glDeleteQueriesEXT")!, def_glDeleteQueriesEXT);
+  fn_glIsQueryEXT = new Deno.UnsafeFnPointer(proc("glIsQueryEXT")!, def_glIsQueryEXT);
+  fn_glBeginQueryEXT = new Deno.UnsafeFnPointer(proc("glBeginQueryEXT")!, def_glBeginQueryEXT);
+  fn_glEndQueryEXT = new Deno.UnsafeFnPointer(proc("glEndQueryEXT")!, def_glEndQueryEXT);
+  fn_glGetQueryivEXT = new Deno.UnsafeFnPointer(proc("glGetQueryivEXT")!, def_glGetQueryivEXT);
+  fn_glGetQueryObjectuivEXT = new Deno.UnsafeFnPointer(proc("glGetQueryObjectuivEXT")!, def_glGetQueryObjectuivEXT);
 }

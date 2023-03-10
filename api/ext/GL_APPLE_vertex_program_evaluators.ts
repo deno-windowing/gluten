@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -92,9 +78,7 @@ export const def_glEnableVertexAttribAPPLE = {
   result: "void",
 } as const;
 
-let fn_glEnableVertexAttribAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glEnableVertexAttribAPPLE
->;
+let fn_glEnableVertexAttribAPPLE!: Deno.UnsafeFnPointer<typeof def_glEnableVertexAttribAPPLE>;
 
 export function EnableVertexAttribAPPLE(
   index: GLuint,
@@ -111,9 +95,7 @@ export const def_glDisableVertexAttribAPPLE = {
   result: "void",
 } as const;
 
-let fn_glDisableVertexAttribAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glDisableVertexAttribAPPLE
->;
+let fn_glDisableVertexAttribAPPLE!: Deno.UnsafeFnPointer<typeof def_glDisableVertexAttribAPPLE>;
 
 export function DisableVertexAttribAPPLE(
   index: GLuint,
@@ -130,9 +112,7 @@ export const def_glIsVertexAttribEnabledAPPLE = {
   result: "u8",
 } as const;
 
-let fn_glIsVertexAttribEnabledAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glIsVertexAttribEnabledAPPLE
->;
+let fn_glIsVertexAttribEnabledAPPLE!: Deno.UnsafeFnPointer<typeof def_glIsVertexAttribEnabledAPPLE>;
 
 export function IsVertexAttribEnabledAPPLE(
   index: GLuint,
@@ -149,9 +129,7 @@ export const def_glMapVertexAttrib1dAPPLE = {
   result: "void",
 } as const;
 
-let fn_glMapVertexAttrib1dAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glMapVertexAttrib1dAPPLE
->;
+let fn_glMapVertexAttrib1dAPPLE!: Deno.UnsafeFnPointer<typeof def_glMapVertexAttrib1dAPPLE>;
 
 export function MapVertexAttrib1dAPPLE(
   index: GLuint,
@@ -178,9 +156,7 @@ export const def_glMapVertexAttrib1fAPPLE = {
   result: "void",
 } as const;
 
-let fn_glMapVertexAttrib1fAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glMapVertexAttrib1fAPPLE
->;
+let fn_glMapVertexAttrib1fAPPLE!: Deno.UnsafeFnPointer<typeof def_glMapVertexAttrib1fAPPLE>;
 
 export function MapVertexAttrib1fAPPLE(
   index: GLuint,
@@ -203,25 +179,11 @@ export function MapVertexAttrib1fAPPLE(
 }
 
 export const def_glMapVertexAttrib2dAPPLE = {
-  parameters: [
-    "u32",
-    "u32",
-    "f64",
-    "f64",
-    "i32",
-    "i32",
-    "f64",
-    "f64",
-    "i32",
-    "i32",
-    "buffer",
-  ],
+  parameters: ["u32", "u32", "f64", "f64", "i32", "i32", "f64", "f64", "i32", "i32", "buffer"],
   result: "void",
 } as const;
 
-let fn_glMapVertexAttrib2dAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glMapVertexAttrib2dAPPLE
->;
+let fn_glMapVertexAttrib2dAPPLE!: Deno.UnsafeFnPointer<typeof def_glMapVertexAttrib2dAPPLE>;
 
 export function MapVertexAttrib2dAPPLE(
   index: GLuint,
@@ -252,25 +214,11 @@ export function MapVertexAttrib2dAPPLE(
 }
 
 export const def_glMapVertexAttrib2fAPPLE = {
-  parameters: [
-    "u32",
-    "u32",
-    "f32",
-    "f32",
-    "i32",
-    "i32",
-    "f32",
-    "f32",
-    "i32",
-    "i32",
-    "buffer",
-  ],
+  parameters: ["u32", "u32", "f32", "f32", "i32", "i32", "f32", "f32", "i32", "i32", "buffer"],
   result: "void",
 } as const;
 
-let fn_glMapVertexAttrib2fAPPLE!: Deno.UnsafeFnPointer<
-  typeof def_glMapVertexAttrib2fAPPLE
->;
+let fn_glMapVertexAttrib2fAPPLE!: Deno.UnsafeFnPointer<typeof def_glMapVertexAttrib2fAPPLE>;
 
 export function MapVertexAttrib2fAPPLE(
   index: GLuint,
@@ -302,32 +250,11 @@ export function MapVertexAttrib2fAPPLE(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glEnableVertexAttribAPPLE = new Deno.UnsafeFnPointer(
-    proc("glEnableVertexAttribAPPLE")!,
-    def_glEnableVertexAttribAPPLE,
-  );
-  fn_glDisableVertexAttribAPPLE = new Deno.UnsafeFnPointer(
-    proc("glDisableVertexAttribAPPLE")!,
-    def_glDisableVertexAttribAPPLE,
-  );
-  fn_glIsVertexAttribEnabledAPPLE = new Deno.UnsafeFnPointer(
-    proc("glIsVertexAttribEnabledAPPLE")!,
-    def_glIsVertexAttribEnabledAPPLE,
-  );
-  fn_glMapVertexAttrib1dAPPLE = new Deno.UnsafeFnPointer(
-    proc("glMapVertexAttrib1dAPPLE")!,
-    def_glMapVertexAttrib1dAPPLE,
-  );
-  fn_glMapVertexAttrib1fAPPLE = new Deno.UnsafeFnPointer(
-    proc("glMapVertexAttrib1fAPPLE")!,
-    def_glMapVertexAttrib1fAPPLE,
-  );
-  fn_glMapVertexAttrib2dAPPLE = new Deno.UnsafeFnPointer(
-    proc("glMapVertexAttrib2dAPPLE")!,
-    def_glMapVertexAttrib2dAPPLE,
-  );
-  fn_glMapVertexAttrib2fAPPLE = new Deno.UnsafeFnPointer(
-    proc("glMapVertexAttrib2fAPPLE")!,
-    def_glMapVertexAttrib2fAPPLE,
-  );
+  fn_glEnableVertexAttribAPPLE = new Deno.UnsafeFnPointer(proc("glEnableVertexAttribAPPLE")!, def_glEnableVertexAttribAPPLE);
+  fn_glDisableVertexAttribAPPLE = new Deno.UnsafeFnPointer(proc("glDisableVertexAttribAPPLE")!, def_glDisableVertexAttribAPPLE);
+  fn_glIsVertexAttribEnabledAPPLE = new Deno.UnsafeFnPointer(proc("glIsVertexAttribEnabledAPPLE")!, def_glIsVertexAttribEnabledAPPLE);
+  fn_glMapVertexAttrib1dAPPLE = new Deno.UnsafeFnPointer(proc("glMapVertexAttrib1dAPPLE")!, def_glMapVertexAttrib1dAPPLE);
+  fn_glMapVertexAttrib1fAPPLE = new Deno.UnsafeFnPointer(proc("glMapVertexAttrib1fAPPLE")!, def_glMapVertexAttrib1fAPPLE);
+  fn_glMapVertexAttrib2dAPPLE = new Deno.UnsafeFnPointer(proc("glMapVertexAttrib2dAPPLE")!, def_glMapVertexAttrib2dAPPLE);
+  fn_glMapVertexAttrib2fAPPLE = new Deno.UnsafeFnPointer(proc("glMapVertexAttrib2fAPPLE")!, def_glMapVertexAttrib2fAPPLE);
 }

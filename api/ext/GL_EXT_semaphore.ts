@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -95,9 +81,7 @@ export const def_glGetUnsignedBytevEXT = {
   result: "void",
 } as const;
 
-let fn_glGetUnsignedBytevEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetUnsignedBytevEXT
->;
+let fn_glGetUnsignedBytevEXT!: Deno.UnsafeFnPointer<typeof def_glGetUnsignedBytevEXT>;
 
 export function GetUnsignedBytevEXT(
   pname: GLenum,
@@ -114,9 +98,7 @@ export const def_glGetUnsignedBytei_vEXT = {
   result: "void",
 } as const;
 
-let fn_glGetUnsignedBytei_vEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetUnsignedBytei_vEXT
->;
+let fn_glGetUnsignedBytei_vEXT!: Deno.UnsafeFnPointer<typeof def_glGetUnsignedBytei_vEXT>;
 
 export function GetUnsignedBytei_vEXT(
   target: GLenum,
@@ -152,9 +134,7 @@ export const def_glDeleteSemaphoresEXT = {
   result: "void",
 } as const;
 
-let fn_glDeleteSemaphoresEXT!: Deno.UnsafeFnPointer<
-  typeof def_glDeleteSemaphoresEXT
->;
+let fn_glDeleteSemaphoresEXT!: Deno.UnsafeFnPointer<typeof def_glDeleteSemaphoresEXT>;
 
 export function DeleteSemaphoresEXT(
   n: GLsizei,
@@ -186,9 +166,7 @@ export const def_glSemaphoreParameterui64vEXT = {
   result: "void",
 } as const;
 
-let fn_glSemaphoreParameterui64vEXT!: Deno.UnsafeFnPointer<
-  typeof def_glSemaphoreParameterui64vEXT
->;
+let fn_glSemaphoreParameterui64vEXT!: Deno.UnsafeFnPointer<typeof def_glSemaphoreParameterui64vEXT>;
 
 export function SemaphoreParameterui64vEXT(
   semaphore: GLuint,
@@ -207,9 +185,7 @@ export const def_glGetSemaphoreParameterui64vEXT = {
   result: "void",
 } as const;
 
-let fn_glGetSemaphoreParameterui64vEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetSemaphoreParameterui64vEXT
->;
+let fn_glGetSemaphoreParameterui64vEXT!: Deno.UnsafeFnPointer<typeof def_glGetSemaphoreParameterui64vEXT>;
 
 export function GetSemaphoreParameterui64vEXT(
   semaphore: GLuint,
@@ -253,9 +229,7 @@ export const def_glSignalSemaphoreEXT = {
   result: "void",
 } as const;
 
-let fn_glSignalSemaphoreEXT!: Deno.UnsafeFnPointer<
-  typeof def_glSignalSemaphoreEXT
->;
+let fn_glSignalSemaphoreEXT!: Deno.UnsafeFnPointer<typeof def_glSignalSemaphoreEXT>;
 
 export function SignalSemaphoreEXT(
   semaphore: GLuint,
@@ -277,40 +251,13 @@ export function SignalSemaphoreEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetUnsignedBytevEXT = new Deno.UnsafeFnPointer(
-    proc("glGetUnsignedBytevEXT")!,
-    def_glGetUnsignedBytevEXT,
-  );
-  fn_glGetUnsignedBytei_vEXT = new Deno.UnsafeFnPointer(
-    proc("glGetUnsignedBytei_vEXT")!,
-    def_glGetUnsignedBytei_vEXT,
-  );
-  fn_glGenSemaphoresEXT = new Deno.UnsafeFnPointer(
-    proc("glGenSemaphoresEXT")!,
-    def_glGenSemaphoresEXT,
-  );
-  fn_glDeleteSemaphoresEXT = new Deno.UnsafeFnPointer(
-    proc("glDeleteSemaphoresEXT")!,
-    def_glDeleteSemaphoresEXT,
-  );
-  fn_glIsSemaphoreEXT = new Deno.UnsafeFnPointer(
-    proc("glIsSemaphoreEXT")!,
-    def_glIsSemaphoreEXT,
-  );
-  fn_glSemaphoreParameterui64vEXT = new Deno.UnsafeFnPointer(
-    proc("glSemaphoreParameterui64vEXT")!,
-    def_glSemaphoreParameterui64vEXT,
-  );
-  fn_glGetSemaphoreParameterui64vEXT = new Deno.UnsafeFnPointer(
-    proc("glGetSemaphoreParameterui64vEXT")!,
-    def_glGetSemaphoreParameterui64vEXT,
-  );
-  fn_glWaitSemaphoreEXT = new Deno.UnsafeFnPointer(
-    proc("glWaitSemaphoreEXT")!,
-    def_glWaitSemaphoreEXT,
-  );
-  fn_glSignalSemaphoreEXT = new Deno.UnsafeFnPointer(
-    proc("glSignalSemaphoreEXT")!,
-    def_glSignalSemaphoreEXT,
-  );
+  fn_glGetUnsignedBytevEXT = new Deno.UnsafeFnPointer(proc("glGetUnsignedBytevEXT")!, def_glGetUnsignedBytevEXT);
+  fn_glGetUnsignedBytei_vEXT = new Deno.UnsafeFnPointer(proc("glGetUnsignedBytei_vEXT")!, def_glGetUnsignedBytei_vEXT);
+  fn_glGenSemaphoresEXT = new Deno.UnsafeFnPointer(proc("glGenSemaphoresEXT")!, def_glGenSemaphoresEXT);
+  fn_glDeleteSemaphoresEXT = new Deno.UnsafeFnPointer(proc("glDeleteSemaphoresEXT")!, def_glDeleteSemaphoresEXT);
+  fn_glIsSemaphoreEXT = new Deno.UnsafeFnPointer(proc("glIsSemaphoreEXT")!, def_glIsSemaphoreEXT);
+  fn_glSemaphoreParameterui64vEXT = new Deno.UnsafeFnPointer(proc("glSemaphoreParameterui64vEXT")!, def_glSemaphoreParameterui64vEXT);
+  fn_glGetSemaphoreParameterui64vEXT = new Deno.UnsafeFnPointer(proc("glGetSemaphoreParameterui64vEXT")!, def_glGetSemaphoreParameterui64vEXT);
+  fn_glWaitSemaphoreEXT = new Deno.UnsafeFnPointer(proc("glWaitSemaphoreEXT")!, def_glWaitSemaphoreEXT);
+  fn_glSignalSemaphoreEXT = new Deno.UnsafeFnPointer(proc("glSignalSemaphoreEXT")!, def_glSignalSemaphoreEXT);
 }

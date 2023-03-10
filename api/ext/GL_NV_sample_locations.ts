@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -90,9 +76,7 @@ export const def_glFramebufferSampleLocationsfvNV = {
   result: "void",
 } as const;
 
-let fn_glFramebufferSampleLocationsfvNV!: Deno.UnsafeFnPointer<
-  typeof def_glFramebufferSampleLocationsfvNV
->;
+let fn_glFramebufferSampleLocationsfvNV!: Deno.UnsafeFnPointer<typeof def_glFramebufferSampleLocationsfvNV>;
 
 export function FramebufferSampleLocationsfvNV(
   target: GLenum,
@@ -113,9 +97,7 @@ export const def_glNamedFramebufferSampleLocationsfvNV = {
   result: "void",
 } as const;
 
-let fn_glNamedFramebufferSampleLocationsfvNV!: Deno.UnsafeFnPointer<
-  typeof def_glNamedFramebufferSampleLocationsfvNV
->;
+let fn_glNamedFramebufferSampleLocationsfvNV!: Deno.UnsafeFnPointer<typeof def_glNamedFramebufferSampleLocationsfvNV>;
 
 export function NamedFramebufferSampleLocationsfvNV(
   framebuffer: GLuint,
@@ -136,9 +118,7 @@ export const def_glResolveDepthValuesNV = {
   result: "void",
 } as const;
 
-let fn_glResolveDepthValuesNV!: Deno.UnsafeFnPointer<
-  typeof def_glResolveDepthValuesNV
->;
+let fn_glResolveDepthValuesNV!: Deno.UnsafeFnPointer<typeof def_glResolveDepthValuesNV>;
 
 export function ResolveDepthValuesNV(): void {
   fn_glResolveDepthValuesNV.call();
@@ -146,16 +126,7 @@ export function ResolveDepthValuesNV(): void {
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFramebufferSampleLocationsfvNV = new Deno.UnsafeFnPointer(
-    proc("glFramebufferSampleLocationsfvNV")!,
-    def_glFramebufferSampleLocationsfvNV,
-  );
-  fn_glNamedFramebufferSampleLocationsfvNV = new Deno.UnsafeFnPointer(
-    proc("glNamedFramebufferSampleLocationsfvNV")!,
-    def_glNamedFramebufferSampleLocationsfvNV,
-  );
-  fn_glResolveDepthValuesNV = new Deno.UnsafeFnPointer(
-    proc("glResolveDepthValuesNV")!,
-    def_glResolveDepthValuesNV,
-  );
+  fn_glFramebufferSampleLocationsfvNV = new Deno.UnsafeFnPointer(proc("glFramebufferSampleLocationsfvNV")!, def_glFramebufferSampleLocationsfvNV);
+  fn_glNamedFramebufferSampleLocationsfvNV = new Deno.UnsafeFnPointer(proc("glNamedFramebufferSampleLocationsfvNV")!, def_glNamedFramebufferSampleLocationsfvNV);
+  fn_glResolveDepthValuesNV = new Deno.UnsafeFnPointer(proc("glResolveDepthValuesNV")!, def_glResolveDepthValuesNV);
 }

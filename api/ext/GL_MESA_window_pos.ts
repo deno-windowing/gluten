@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -485,100 +471,28 @@ export function WindowPos4svMESA(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glWindowPos2dMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2dMESA")!,
-    def_glWindowPos2dMESA,
-  );
-  fn_glWindowPos2dvMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2dvMESA")!,
-    def_glWindowPos2dvMESA,
-  );
-  fn_glWindowPos2fMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2fMESA")!,
-    def_glWindowPos2fMESA,
-  );
-  fn_glWindowPos2fvMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2fvMESA")!,
-    def_glWindowPos2fvMESA,
-  );
-  fn_glWindowPos2iMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2iMESA")!,
-    def_glWindowPos2iMESA,
-  );
-  fn_glWindowPos2ivMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2ivMESA")!,
-    def_glWindowPos2ivMESA,
-  );
-  fn_glWindowPos2sMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2sMESA")!,
-    def_glWindowPos2sMESA,
-  );
-  fn_glWindowPos2svMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos2svMESA")!,
-    def_glWindowPos2svMESA,
-  );
-  fn_glWindowPos3dMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3dMESA")!,
-    def_glWindowPos3dMESA,
-  );
-  fn_glWindowPos3dvMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3dvMESA")!,
-    def_glWindowPos3dvMESA,
-  );
-  fn_glWindowPos3fMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3fMESA")!,
-    def_glWindowPos3fMESA,
-  );
-  fn_glWindowPos3fvMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3fvMESA")!,
-    def_glWindowPos3fvMESA,
-  );
-  fn_glWindowPos3iMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3iMESA")!,
-    def_glWindowPos3iMESA,
-  );
-  fn_glWindowPos3ivMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3ivMESA")!,
-    def_glWindowPos3ivMESA,
-  );
-  fn_glWindowPos3sMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3sMESA")!,
-    def_glWindowPos3sMESA,
-  );
-  fn_glWindowPos3svMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos3svMESA")!,
-    def_glWindowPos3svMESA,
-  );
-  fn_glWindowPos4dMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos4dMESA")!,
-    def_glWindowPos4dMESA,
-  );
-  fn_glWindowPos4dvMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos4dvMESA")!,
-    def_glWindowPos4dvMESA,
-  );
-  fn_glWindowPos4fMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos4fMESA")!,
-    def_glWindowPos4fMESA,
-  );
-  fn_glWindowPos4fvMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos4fvMESA")!,
-    def_glWindowPos4fvMESA,
-  );
-  fn_glWindowPos4iMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos4iMESA")!,
-    def_glWindowPos4iMESA,
-  );
-  fn_glWindowPos4ivMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos4ivMESA")!,
-    def_glWindowPos4ivMESA,
-  );
-  fn_glWindowPos4sMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos4sMESA")!,
-    def_glWindowPos4sMESA,
-  );
-  fn_glWindowPos4svMESA = new Deno.UnsafeFnPointer(
-    proc("glWindowPos4svMESA")!,
-    def_glWindowPos4svMESA,
-  );
+  fn_glWindowPos2dMESA = new Deno.UnsafeFnPointer(proc("glWindowPos2dMESA")!, def_glWindowPos2dMESA);
+  fn_glWindowPos2dvMESA = new Deno.UnsafeFnPointer(proc("glWindowPos2dvMESA")!, def_glWindowPos2dvMESA);
+  fn_glWindowPos2fMESA = new Deno.UnsafeFnPointer(proc("glWindowPos2fMESA")!, def_glWindowPos2fMESA);
+  fn_glWindowPos2fvMESA = new Deno.UnsafeFnPointer(proc("glWindowPos2fvMESA")!, def_glWindowPos2fvMESA);
+  fn_glWindowPos2iMESA = new Deno.UnsafeFnPointer(proc("glWindowPos2iMESA")!, def_glWindowPos2iMESA);
+  fn_glWindowPos2ivMESA = new Deno.UnsafeFnPointer(proc("glWindowPos2ivMESA")!, def_glWindowPos2ivMESA);
+  fn_glWindowPos2sMESA = new Deno.UnsafeFnPointer(proc("glWindowPos2sMESA")!, def_glWindowPos2sMESA);
+  fn_glWindowPos2svMESA = new Deno.UnsafeFnPointer(proc("glWindowPos2svMESA")!, def_glWindowPos2svMESA);
+  fn_glWindowPos3dMESA = new Deno.UnsafeFnPointer(proc("glWindowPos3dMESA")!, def_glWindowPos3dMESA);
+  fn_glWindowPos3dvMESA = new Deno.UnsafeFnPointer(proc("glWindowPos3dvMESA")!, def_glWindowPos3dvMESA);
+  fn_glWindowPos3fMESA = new Deno.UnsafeFnPointer(proc("glWindowPos3fMESA")!, def_glWindowPos3fMESA);
+  fn_glWindowPos3fvMESA = new Deno.UnsafeFnPointer(proc("glWindowPos3fvMESA")!, def_glWindowPos3fvMESA);
+  fn_glWindowPos3iMESA = new Deno.UnsafeFnPointer(proc("glWindowPos3iMESA")!, def_glWindowPos3iMESA);
+  fn_glWindowPos3ivMESA = new Deno.UnsafeFnPointer(proc("glWindowPos3ivMESA")!, def_glWindowPos3ivMESA);
+  fn_glWindowPos3sMESA = new Deno.UnsafeFnPointer(proc("glWindowPos3sMESA")!, def_glWindowPos3sMESA);
+  fn_glWindowPos3svMESA = new Deno.UnsafeFnPointer(proc("glWindowPos3svMESA")!, def_glWindowPos3svMESA);
+  fn_glWindowPos4dMESA = new Deno.UnsafeFnPointer(proc("glWindowPos4dMESA")!, def_glWindowPos4dMESA);
+  fn_glWindowPos4dvMESA = new Deno.UnsafeFnPointer(proc("glWindowPos4dvMESA")!, def_glWindowPos4dvMESA);
+  fn_glWindowPos4fMESA = new Deno.UnsafeFnPointer(proc("glWindowPos4fMESA")!, def_glWindowPos4fMESA);
+  fn_glWindowPos4fvMESA = new Deno.UnsafeFnPointer(proc("glWindowPos4fvMESA")!, def_glWindowPos4fvMESA);
+  fn_glWindowPos4iMESA = new Deno.UnsafeFnPointer(proc("glWindowPos4iMESA")!, def_glWindowPos4iMESA);
+  fn_glWindowPos4ivMESA = new Deno.UnsafeFnPointer(proc("glWindowPos4ivMESA")!, def_glWindowPos4ivMESA);
+  fn_glWindowPos4sMESA = new Deno.UnsafeFnPointer(proc("glWindowPos4sMESA")!, def_glWindowPos4sMESA);
+  fn_glWindowPos4svMESA = new Deno.UnsafeFnPointer(proc("glWindowPos4svMESA")!, def_glWindowPos4svMESA);
 }

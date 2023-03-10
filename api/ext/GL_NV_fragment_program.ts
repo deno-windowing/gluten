@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -88,9 +74,7 @@ export const def_glProgramNamedParameter4fNV = {
   result: "void",
 } as const;
 
-let fn_glProgramNamedParameter4fNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramNamedParameter4fNV
->;
+let fn_glProgramNamedParameter4fNV!: Deno.UnsafeFnPointer<typeof def_glProgramNamedParameter4fNV>;
 
 export function ProgramNamedParameter4fNV(
   id: GLuint,
@@ -117,9 +101,7 @@ export const def_glProgramNamedParameter4fvNV = {
   result: "void",
 } as const;
 
-let fn_glProgramNamedParameter4fvNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramNamedParameter4fvNV
->;
+let fn_glProgramNamedParameter4fvNV!: Deno.UnsafeFnPointer<typeof def_glProgramNamedParameter4fvNV>;
 
 export function ProgramNamedParameter4fvNV(
   id: GLuint,
@@ -140,9 +122,7 @@ export const def_glProgramNamedParameter4dNV = {
   result: "void",
 } as const;
 
-let fn_glProgramNamedParameter4dNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramNamedParameter4dNV
->;
+let fn_glProgramNamedParameter4dNV!: Deno.UnsafeFnPointer<typeof def_glProgramNamedParameter4dNV>;
 
 export function ProgramNamedParameter4dNV(
   id: GLuint,
@@ -169,9 +149,7 @@ export const def_glProgramNamedParameter4dvNV = {
   result: "void",
 } as const;
 
-let fn_glProgramNamedParameter4dvNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramNamedParameter4dvNV
->;
+let fn_glProgramNamedParameter4dvNV!: Deno.UnsafeFnPointer<typeof def_glProgramNamedParameter4dvNV>;
 
 export function ProgramNamedParameter4dvNV(
   id: GLuint,
@@ -192,9 +170,7 @@ export const def_glGetProgramNamedParameterfvNV = {
   result: "void",
 } as const;
 
-let fn_glGetProgramNamedParameterfvNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramNamedParameterfvNV
->;
+let fn_glGetProgramNamedParameterfvNV!: Deno.UnsafeFnPointer<typeof def_glGetProgramNamedParameterfvNV>;
 
 export function GetProgramNamedParameterfvNV(
   id: GLuint,
@@ -215,9 +191,7 @@ export const def_glGetProgramNamedParameterdvNV = {
   result: "void",
 } as const;
 
-let fn_glGetProgramNamedParameterdvNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramNamedParameterdvNV
->;
+let fn_glGetProgramNamedParameterdvNV!: Deno.UnsafeFnPointer<typeof def_glGetProgramNamedParameterdvNV>;
 
 export function GetProgramNamedParameterdvNV(
   id: GLuint,
@@ -235,28 +209,10 @@ export function GetProgramNamedParameterdvNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glProgramNamedParameter4fNV = new Deno.UnsafeFnPointer(
-    proc("glProgramNamedParameter4fNV")!,
-    def_glProgramNamedParameter4fNV,
-  );
-  fn_glProgramNamedParameter4fvNV = new Deno.UnsafeFnPointer(
-    proc("glProgramNamedParameter4fvNV")!,
-    def_glProgramNamedParameter4fvNV,
-  );
-  fn_glProgramNamedParameter4dNV = new Deno.UnsafeFnPointer(
-    proc("glProgramNamedParameter4dNV")!,
-    def_glProgramNamedParameter4dNV,
-  );
-  fn_glProgramNamedParameter4dvNV = new Deno.UnsafeFnPointer(
-    proc("glProgramNamedParameter4dvNV")!,
-    def_glProgramNamedParameter4dvNV,
-  );
-  fn_glGetProgramNamedParameterfvNV = new Deno.UnsafeFnPointer(
-    proc("glGetProgramNamedParameterfvNV")!,
-    def_glGetProgramNamedParameterfvNV,
-  );
-  fn_glGetProgramNamedParameterdvNV = new Deno.UnsafeFnPointer(
-    proc("glGetProgramNamedParameterdvNV")!,
-    def_glGetProgramNamedParameterdvNV,
-  );
+  fn_glProgramNamedParameter4fNV = new Deno.UnsafeFnPointer(proc("glProgramNamedParameter4fNV")!, def_glProgramNamedParameter4fNV);
+  fn_glProgramNamedParameter4fvNV = new Deno.UnsafeFnPointer(proc("glProgramNamedParameter4fvNV")!, def_glProgramNamedParameter4fvNV);
+  fn_glProgramNamedParameter4dNV = new Deno.UnsafeFnPointer(proc("glProgramNamedParameter4dNV")!, def_glProgramNamedParameter4dNV);
+  fn_glProgramNamedParameter4dvNV = new Deno.UnsafeFnPointer(proc("glProgramNamedParameter4dvNV")!, def_glProgramNamedParameter4dvNV);
+  fn_glGetProgramNamedParameterfvNV = new Deno.UnsafeFnPointer(proc("glGetProgramNamedParameterfvNV")!, def_glGetProgramNamedParameterfvNV);
+  fn_glGetProgramNamedParameterdvNV = new Deno.UnsafeFnPointer(proc("glGetProgramNamedParameterdvNV")!, def_glGetProgramNamedParameterdvNV);
 }

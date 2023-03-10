@@ -275,4 +275,4 @@ for (const name in functions) {
 }
 src += `}\n`;
 
-Deno.writeTextFileSync(new URL("../src/api/gles2.ts", import.meta.url), src);
+Deno.writeTextFileSync(new URL("../api/gles2.ts", import.meta.url), src);

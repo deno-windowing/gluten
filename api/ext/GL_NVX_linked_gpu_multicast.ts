@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -84,9 +70,7 @@ export const def_glLGPUNamedBufferSubDataNVX = {
   result: "void",
 } as const;
 
-let fn_glLGPUNamedBufferSubDataNVX!: Deno.UnsafeFnPointer<
-  typeof def_glLGPUNamedBufferSubDataNVX
->;
+let fn_glLGPUNamedBufferSubDataNVX!: Deno.UnsafeFnPointer<typeof def_glLGPUNamedBufferSubDataNVX>;
 
 export function LGPUNamedBufferSubDataNVX(
   gpuMask: GLbitfield,
@@ -105,31 +89,11 @@ export function LGPUNamedBufferSubDataNVX(
 }
 
 export const def_glLGPUCopyImageSubDataNVX = {
-  parameters: [
-    "u32",
-    "u32",
-    "u32",
-    "u32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "u32",
-    "u32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-    "i32",
-  ],
+  parameters: ["u32", "u32", "u32", "u32", "i32", "i32", "i32", "i32", "u32", "u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32"],
   result: "void",
 } as const;
 
-let fn_glLGPUCopyImageSubDataNVX!: Deno.UnsafeFnPointer<
-  typeof def_glLGPUCopyImageSubDataNVX
->;
+let fn_glLGPUCopyImageSubDataNVX!: Deno.UnsafeFnPointer<typeof def_glLGPUCopyImageSubDataNVX>;
 
 export function LGPUCopyImageSubDataNVX(
   sourceGpu: GLuint,
@@ -184,16 +148,7 @@ export function LGPUInterlockNVX(): void {
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glLGPUNamedBufferSubDataNVX = new Deno.UnsafeFnPointer(
-    proc("glLGPUNamedBufferSubDataNVX")!,
-    def_glLGPUNamedBufferSubDataNVX,
-  );
-  fn_glLGPUCopyImageSubDataNVX = new Deno.UnsafeFnPointer(
-    proc("glLGPUCopyImageSubDataNVX")!,
-    def_glLGPUCopyImageSubDataNVX,
-  );
-  fn_glLGPUInterlockNVX = new Deno.UnsafeFnPointer(
-    proc("glLGPUInterlockNVX")!,
-    def_glLGPUInterlockNVX,
-  );
+  fn_glLGPUNamedBufferSubDataNVX = new Deno.UnsafeFnPointer(proc("glLGPUNamedBufferSubDataNVX")!, def_glLGPUNamedBufferSubDataNVX);
+  fn_glLGPUCopyImageSubDataNVX = new Deno.UnsafeFnPointer(proc("glLGPUCopyImageSubDataNVX")!, def_glLGPUCopyImageSubDataNVX);
+  fn_glLGPUInterlockNVX = new Deno.UnsafeFnPointer(proc("glLGPUInterlockNVX")!, def_glLGPUInterlockNVX);
 }

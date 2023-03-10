@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -90,9 +76,7 @@ export const def_glNewObjectBufferATI = {
   result: "u32",
 } as const;
 
-let fn_glNewObjectBufferATI!: Deno.UnsafeFnPointer<
-  typeof def_glNewObjectBufferATI
->;
+let fn_glNewObjectBufferATI!: Deno.UnsafeFnPointer<typeof def_glNewObjectBufferATI>;
 
 export function NewObjectBufferATI(
   size: GLsizei,
@@ -111,9 +95,7 @@ export const def_glIsObjectBufferATI = {
   result: "u8",
 } as const;
 
-let fn_glIsObjectBufferATI!: Deno.UnsafeFnPointer<
-  typeof def_glIsObjectBufferATI
->;
+let fn_glIsObjectBufferATI!: Deno.UnsafeFnPointer<typeof def_glIsObjectBufferATI>;
 
 export function IsObjectBufferATI(
   buffer: GLuint,
@@ -128,9 +110,7 @@ export const def_glUpdateObjectBufferATI = {
   result: "void",
 } as const;
 
-let fn_glUpdateObjectBufferATI!: Deno.UnsafeFnPointer<
-  typeof def_glUpdateObjectBufferATI
->;
+let fn_glUpdateObjectBufferATI!: Deno.UnsafeFnPointer<typeof def_glUpdateObjectBufferATI>;
 
 export function UpdateObjectBufferATI(
   buffer: GLuint,
@@ -153,9 +133,7 @@ export const def_glGetObjectBufferfvATI = {
   result: "void",
 } as const;
 
-let fn_glGetObjectBufferfvATI!: Deno.UnsafeFnPointer<
-  typeof def_glGetObjectBufferfvATI
->;
+let fn_glGetObjectBufferfvATI!: Deno.UnsafeFnPointer<typeof def_glGetObjectBufferfvATI>;
 
 export function GetObjectBufferfvATI(
   buffer: GLuint,
@@ -174,9 +152,7 @@ export const def_glGetObjectBufferivATI = {
   result: "void",
 } as const;
 
-let fn_glGetObjectBufferivATI!: Deno.UnsafeFnPointer<
-  typeof def_glGetObjectBufferivATI
->;
+let fn_glGetObjectBufferivATI!: Deno.UnsafeFnPointer<typeof def_glGetObjectBufferivATI>;
 
 export function GetObjectBufferivATI(
   buffer: GLuint,
@@ -195,9 +171,7 @@ export const def_glFreeObjectBufferATI = {
   result: "void",
 } as const;
 
-let fn_glFreeObjectBufferATI!: Deno.UnsafeFnPointer<
-  typeof def_glFreeObjectBufferATI
->;
+let fn_glFreeObjectBufferATI!: Deno.UnsafeFnPointer<typeof def_glFreeObjectBufferATI>;
 
 export function FreeObjectBufferATI(
   buffer: GLuint,
@@ -237,9 +211,7 @@ export const def_glGetArrayObjectfvATI = {
   result: "void",
 } as const;
 
-let fn_glGetArrayObjectfvATI!: Deno.UnsafeFnPointer<
-  typeof def_glGetArrayObjectfvATI
->;
+let fn_glGetArrayObjectfvATI!: Deno.UnsafeFnPointer<typeof def_glGetArrayObjectfvATI>;
 
 export function GetArrayObjectfvATI(
   array: GLenum,
@@ -258,9 +230,7 @@ export const def_glGetArrayObjectivATI = {
   result: "void",
 } as const;
 
-let fn_glGetArrayObjectivATI!: Deno.UnsafeFnPointer<
-  typeof def_glGetArrayObjectivATI
->;
+let fn_glGetArrayObjectivATI!: Deno.UnsafeFnPointer<typeof def_glGetArrayObjectivATI>;
 
 export function GetArrayObjectivATI(
   array: GLenum,
@@ -279,9 +249,7 @@ export const def_glVariantArrayObjectATI = {
   result: "void",
 } as const;
 
-let fn_glVariantArrayObjectATI!: Deno.UnsafeFnPointer<
-  typeof def_glVariantArrayObjectATI
->;
+let fn_glVariantArrayObjectATI!: Deno.UnsafeFnPointer<typeof def_glVariantArrayObjectATI>;
 
 export function VariantArrayObjectATI(
   id: GLuint,
@@ -304,9 +272,7 @@ export const def_glGetVariantArrayObjectfvATI = {
   result: "void",
 } as const;
 
-let fn_glGetVariantArrayObjectfvATI!: Deno.UnsafeFnPointer<
-  typeof def_glGetVariantArrayObjectfvATI
->;
+let fn_glGetVariantArrayObjectfvATI!: Deno.UnsafeFnPointer<typeof def_glGetVariantArrayObjectfvATI>;
 
 export function GetVariantArrayObjectfvATI(
   id: GLuint,
@@ -325,9 +291,7 @@ export const def_glGetVariantArrayObjectivATI = {
   result: "void",
 } as const;
 
-let fn_glGetVariantArrayObjectivATI!: Deno.UnsafeFnPointer<
-  typeof def_glGetVariantArrayObjectivATI
->;
+let fn_glGetVariantArrayObjectivATI!: Deno.UnsafeFnPointer<typeof def_glGetVariantArrayObjectivATI>;
 
 export function GetVariantArrayObjectivATI(
   id: GLuint,
@@ -343,52 +307,16 @@ export function GetVariantArrayObjectivATI(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glNewObjectBufferATI = new Deno.UnsafeFnPointer(
-    proc("glNewObjectBufferATI")!,
-    def_glNewObjectBufferATI,
-  );
-  fn_glIsObjectBufferATI = new Deno.UnsafeFnPointer(
-    proc("glIsObjectBufferATI")!,
-    def_glIsObjectBufferATI,
-  );
-  fn_glUpdateObjectBufferATI = new Deno.UnsafeFnPointer(
-    proc("glUpdateObjectBufferATI")!,
-    def_glUpdateObjectBufferATI,
-  );
-  fn_glGetObjectBufferfvATI = new Deno.UnsafeFnPointer(
-    proc("glGetObjectBufferfvATI")!,
-    def_glGetObjectBufferfvATI,
-  );
-  fn_glGetObjectBufferivATI = new Deno.UnsafeFnPointer(
-    proc("glGetObjectBufferivATI")!,
-    def_glGetObjectBufferivATI,
-  );
-  fn_glFreeObjectBufferATI = new Deno.UnsafeFnPointer(
-    proc("glFreeObjectBufferATI")!,
-    def_glFreeObjectBufferATI,
-  );
-  fn_glArrayObjectATI = new Deno.UnsafeFnPointer(
-    proc("glArrayObjectATI")!,
-    def_glArrayObjectATI,
-  );
-  fn_glGetArrayObjectfvATI = new Deno.UnsafeFnPointer(
-    proc("glGetArrayObjectfvATI")!,
-    def_glGetArrayObjectfvATI,
-  );
-  fn_glGetArrayObjectivATI = new Deno.UnsafeFnPointer(
-    proc("glGetArrayObjectivATI")!,
-    def_glGetArrayObjectivATI,
-  );
-  fn_glVariantArrayObjectATI = new Deno.UnsafeFnPointer(
-    proc("glVariantArrayObjectATI")!,
-    def_glVariantArrayObjectATI,
-  );
-  fn_glGetVariantArrayObjectfvATI = new Deno.UnsafeFnPointer(
-    proc("glGetVariantArrayObjectfvATI")!,
-    def_glGetVariantArrayObjectfvATI,
-  );
-  fn_glGetVariantArrayObjectivATI = new Deno.UnsafeFnPointer(
-    proc("glGetVariantArrayObjectivATI")!,
-    def_glGetVariantArrayObjectivATI,
-  );
+  fn_glNewObjectBufferATI = new Deno.UnsafeFnPointer(proc("glNewObjectBufferATI")!, def_glNewObjectBufferATI);
+  fn_glIsObjectBufferATI = new Deno.UnsafeFnPointer(proc("glIsObjectBufferATI")!, def_glIsObjectBufferATI);
+  fn_glUpdateObjectBufferATI = new Deno.UnsafeFnPointer(proc("glUpdateObjectBufferATI")!, def_glUpdateObjectBufferATI);
+  fn_glGetObjectBufferfvATI = new Deno.UnsafeFnPointer(proc("glGetObjectBufferfvATI")!, def_glGetObjectBufferfvATI);
+  fn_glGetObjectBufferivATI = new Deno.UnsafeFnPointer(proc("glGetObjectBufferivATI")!, def_glGetObjectBufferivATI);
+  fn_glFreeObjectBufferATI = new Deno.UnsafeFnPointer(proc("glFreeObjectBufferATI")!, def_glFreeObjectBufferATI);
+  fn_glArrayObjectATI = new Deno.UnsafeFnPointer(proc("glArrayObjectATI")!, def_glArrayObjectATI);
+  fn_glGetArrayObjectfvATI = new Deno.UnsafeFnPointer(proc("glGetArrayObjectfvATI")!, def_glGetArrayObjectfvATI);
+  fn_glGetArrayObjectivATI = new Deno.UnsafeFnPointer(proc("glGetArrayObjectivATI")!, def_glGetArrayObjectivATI);
+  fn_glVariantArrayObjectATI = new Deno.UnsafeFnPointer(proc("glVariantArrayObjectATI")!, def_glVariantArrayObjectATI);
+  fn_glGetVariantArrayObjectfvATI = new Deno.UnsafeFnPointer(proc("glGetVariantArrayObjectfvATI")!, def_glGetVariantArrayObjectfvATI);
+  fn_glGetVariantArrayObjectivATI = new Deno.UnsafeFnPointer(proc("glGetVariantArrayObjectivATI")!, def_glGetVariantArrayObjectivATI);
 }

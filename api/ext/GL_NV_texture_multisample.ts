@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -84,9 +70,7 @@ export const def_glTexImage2DMultisampleCoverageNV = {
   result: "void",
 } as const;
 
-let fn_glTexImage2DMultisampleCoverageNV!: Deno.UnsafeFnPointer<
-  typeof def_glTexImage2DMultisampleCoverageNV
->;
+let fn_glTexImage2DMultisampleCoverageNV!: Deno.UnsafeFnPointer<typeof def_glTexImage2DMultisampleCoverageNV>;
 
 export function TexImage2DMultisampleCoverageNV(
   target: GLenum,
@@ -113,9 +97,7 @@ export const def_glTexImage3DMultisampleCoverageNV = {
   result: "void",
 } as const;
 
-let fn_glTexImage3DMultisampleCoverageNV!: Deno.UnsafeFnPointer<
-  typeof def_glTexImage3DMultisampleCoverageNV
->;
+let fn_glTexImage3DMultisampleCoverageNV!: Deno.UnsafeFnPointer<typeof def_glTexImage3DMultisampleCoverageNV>;
 
 export function TexImage3DMultisampleCoverageNV(
   target: GLenum,
@@ -144,9 +126,7 @@ export const def_glTextureImage2DMultisampleNV = {
   result: "void",
 } as const;
 
-let fn_glTextureImage2DMultisampleNV!: Deno.UnsafeFnPointer<
-  typeof def_glTextureImage2DMultisampleNV
->;
+let fn_glTextureImage2DMultisampleNV!: Deno.UnsafeFnPointer<typeof def_glTextureImage2DMultisampleNV>;
 
 export function TextureImage2DMultisampleNV(
   texture: GLuint,
@@ -173,9 +153,7 @@ export const def_glTextureImage3DMultisampleNV = {
   result: "void",
 } as const;
 
-let fn_glTextureImage3DMultisampleNV!: Deno.UnsafeFnPointer<
-  typeof def_glTextureImage3DMultisampleNV
->;
+let fn_glTextureImage3DMultisampleNV!: Deno.UnsafeFnPointer<typeof def_glTextureImage3DMultisampleNV>;
 
 export function TextureImage3DMultisampleNV(
   texture: GLuint,
@@ -204,9 +182,7 @@ export const def_glTextureImage2DMultisampleCoverageNV = {
   result: "void",
 } as const;
 
-let fn_glTextureImage2DMultisampleCoverageNV!: Deno.UnsafeFnPointer<
-  typeof def_glTextureImage2DMultisampleCoverageNV
->;
+let fn_glTextureImage2DMultisampleCoverageNV!: Deno.UnsafeFnPointer<typeof def_glTextureImage2DMultisampleCoverageNV>;
 
 export function TextureImage2DMultisampleCoverageNV(
   texture: GLuint,
@@ -235,9 +211,7 @@ export const def_glTextureImage3DMultisampleCoverageNV = {
   result: "void",
 } as const;
 
-let fn_glTextureImage3DMultisampleCoverageNV!: Deno.UnsafeFnPointer<
-  typeof def_glTextureImage3DMultisampleCoverageNV
->;
+let fn_glTextureImage3DMultisampleCoverageNV!: Deno.UnsafeFnPointer<typeof def_glTextureImage3DMultisampleCoverageNV>;
 
 export function TextureImage3DMultisampleCoverageNV(
   texture: GLuint,
@@ -265,28 +239,10 @@ export function TextureImage3DMultisampleCoverageNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexImage2DMultisampleCoverageNV = new Deno.UnsafeFnPointer(
-    proc("glTexImage2DMultisampleCoverageNV")!,
-    def_glTexImage2DMultisampleCoverageNV,
-  );
-  fn_glTexImage3DMultisampleCoverageNV = new Deno.UnsafeFnPointer(
-    proc("glTexImage3DMultisampleCoverageNV")!,
-    def_glTexImage3DMultisampleCoverageNV,
-  );
-  fn_glTextureImage2DMultisampleNV = new Deno.UnsafeFnPointer(
-    proc("glTextureImage2DMultisampleNV")!,
-    def_glTextureImage2DMultisampleNV,
-  );
-  fn_glTextureImage3DMultisampleNV = new Deno.UnsafeFnPointer(
-    proc("glTextureImage3DMultisampleNV")!,
-    def_glTextureImage3DMultisampleNV,
-  );
-  fn_glTextureImage2DMultisampleCoverageNV = new Deno.UnsafeFnPointer(
-    proc("glTextureImage2DMultisampleCoverageNV")!,
-    def_glTextureImage2DMultisampleCoverageNV,
-  );
-  fn_glTextureImage3DMultisampleCoverageNV = new Deno.UnsafeFnPointer(
-    proc("glTextureImage3DMultisampleCoverageNV")!,
-    def_glTextureImage3DMultisampleCoverageNV,
-  );
+  fn_glTexImage2DMultisampleCoverageNV = new Deno.UnsafeFnPointer(proc("glTexImage2DMultisampleCoverageNV")!, def_glTexImage2DMultisampleCoverageNV);
+  fn_glTexImage3DMultisampleCoverageNV = new Deno.UnsafeFnPointer(proc("glTexImage3DMultisampleCoverageNV")!, def_glTexImage3DMultisampleCoverageNV);
+  fn_glTextureImage2DMultisampleNV = new Deno.UnsafeFnPointer(proc("glTextureImage2DMultisampleNV")!, def_glTextureImage2DMultisampleNV);
+  fn_glTextureImage3DMultisampleNV = new Deno.UnsafeFnPointer(proc("glTextureImage3DMultisampleNV")!, def_glTextureImage3DMultisampleNV);
+  fn_glTextureImage2DMultisampleCoverageNV = new Deno.UnsafeFnPointer(proc("glTextureImage2DMultisampleCoverageNV")!, def_glTextureImage2DMultisampleCoverageNV);
+  fn_glTextureImage3DMultisampleCoverageNV = new Deno.UnsafeFnPointer(proc("glTextureImage3DMultisampleCoverageNV")!, def_glTextureImage3DMultisampleCoverageNV);
 }

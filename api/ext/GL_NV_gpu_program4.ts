@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -90,9 +76,7 @@ export const def_glProgramLocalParameterI4iNV = {
   result: "void",
 } as const;
 
-let fn_glProgramLocalParameterI4iNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramLocalParameterI4iNV
->;
+let fn_glProgramLocalParameterI4iNV!: Deno.UnsafeFnPointer<typeof def_glProgramLocalParameterI4iNV>;
 
 export function ProgramLocalParameterI4iNV(
   target: GLenum,
@@ -117,9 +101,7 @@ export const def_glProgramLocalParameterI4ivNV = {
   result: "void",
 } as const;
 
-let fn_glProgramLocalParameterI4ivNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramLocalParameterI4ivNV
->;
+let fn_glProgramLocalParameterI4ivNV!: Deno.UnsafeFnPointer<typeof def_glProgramLocalParameterI4ivNV>;
 
 export function ProgramLocalParameterI4ivNV(
   target: GLenum,
@@ -138,9 +120,7 @@ export const def_glProgramLocalParametersI4ivNV = {
   result: "void",
 } as const;
 
-let fn_glProgramLocalParametersI4ivNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramLocalParametersI4ivNV
->;
+let fn_glProgramLocalParametersI4ivNV!: Deno.UnsafeFnPointer<typeof def_glProgramLocalParametersI4ivNV>;
 
 export function ProgramLocalParametersI4ivNV(
   target: GLenum,
@@ -161,9 +141,7 @@ export const def_glProgramLocalParameterI4uiNV = {
   result: "void",
 } as const;
 
-let fn_glProgramLocalParameterI4uiNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramLocalParameterI4uiNV
->;
+let fn_glProgramLocalParameterI4uiNV!: Deno.UnsafeFnPointer<typeof def_glProgramLocalParameterI4uiNV>;
 
 export function ProgramLocalParameterI4uiNV(
   target: GLenum,
@@ -188,9 +166,7 @@ export const def_glProgramLocalParameterI4uivNV = {
   result: "void",
 } as const;
 
-let fn_glProgramLocalParameterI4uivNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramLocalParameterI4uivNV
->;
+let fn_glProgramLocalParameterI4uivNV!: Deno.UnsafeFnPointer<typeof def_glProgramLocalParameterI4uivNV>;
 
 export function ProgramLocalParameterI4uivNV(
   target: GLenum,
@@ -209,9 +185,7 @@ export const def_glProgramLocalParametersI4uivNV = {
   result: "void",
 } as const;
 
-let fn_glProgramLocalParametersI4uivNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramLocalParametersI4uivNV
->;
+let fn_glProgramLocalParametersI4uivNV!: Deno.UnsafeFnPointer<typeof def_glProgramLocalParametersI4uivNV>;
 
 export function ProgramLocalParametersI4uivNV(
   target: GLenum,
@@ -232,9 +206,7 @@ export const def_glProgramEnvParameterI4iNV = {
   result: "void",
 } as const;
 
-let fn_glProgramEnvParameterI4iNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramEnvParameterI4iNV
->;
+let fn_glProgramEnvParameterI4iNV!: Deno.UnsafeFnPointer<typeof def_glProgramEnvParameterI4iNV>;
 
 export function ProgramEnvParameterI4iNV(
   target: GLenum,
@@ -259,9 +231,7 @@ export const def_glProgramEnvParameterI4ivNV = {
   result: "void",
 } as const;
 
-let fn_glProgramEnvParameterI4ivNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramEnvParameterI4ivNV
->;
+let fn_glProgramEnvParameterI4ivNV!: Deno.UnsafeFnPointer<typeof def_glProgramEnvParameterI4ivNV>;
 
 export function ProgramEnvParameterI4ivNV(
   target: GLenum,
@@ -280,9 +250,7 @@ export const def_glProgramEnvParametersI4ivNV = {
   result: "void",
 } as const;
 
-let fn_glProgramEnvParametersI4ivNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramEnvParametersI4ivNV
->;
+let fn_glProgramEnvParametersI4ivNV!: Deno.UnsafeFnPointer<typeof def_glProgramEnvParametersI4ivNV>;
 
 export function ProgramEnvParametersI4ivNV(
   target: GLenum,
@@ -303,9 +271,7 @@ export const def_glProgramEnvParameterI4uiNV = {
   result: "void",
 } as const;
 
-let fn_glProgramEnvParameterI4uiNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramEnvParameterI4uiNV
->;
+let fn_glProgramEnvParameterI4uiNV!: Deno.UnsafeFnPointer<typeof def_glProgramEnvParameterI4uiNV>;
 
 export function ProgramEnvParameterI4uiNV(
   target: GLenum,
@@ -330,9 +296,7 @@ export const def_glProgramEnvParameterI4uivNV = {
   result: "void",
 } as const;
 
-let fn_glProgramEnvParameterI4uivNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramEnvParameterI4uivNV
->;
+let fn_glProgramEnvParameterI4uivNV!: Deno.UnsafeFnPointer<typeof def_glProgramEnvParameterI4uivNV>;
 
 export function ProgramEnvParameterI4uivNV(
   target: GLenum,
@@ -351,9 +315,7 @@ export const def_glProgramEnvParametersI4uivNV = {
   result: "void",
 } as const;
 
-let fn_glProgramEnvParametersI4uivNV!: Deno.UnsafeFnPointer<
-  typeof def_glProgramEnvParametersI4uivNV
->;
+let fn_glProgramEnvParametersI4uivNV!: Deno.UnsafeFnPointer<typeof def_glProgramEnvParametersI4uivNV>;
 
 export function ProgramEnvParametersI4uivNV(
   target: GLenum,
@@ -374,9 +336,7 @@ export const def_glGetProgramLocalParameterIivNV = {
   result: "void",
 } as const;
 
-let fn_glGetProgramLocalParameterIivNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramLocalParameterIivNV
->;
+let fn_glGetProgramLocalParameterIivNV!: Deno.UnsafeFnPointer<typeof def_glGetProgramLocalParameterIivNV>;
 
 export function GetProgramLocalParameterIivNV(
   target: GLenum,
@@ -395,9 +355,7 @@ export const def_glGetProgramLocalParameterIuivNV = {
   result: "void",
 } as const;
 
-let fn_glGetProgramLocalParameterIuivNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramLocalParameterIuivNV
->;
+let fn_glGetProgramLocalParameterIuivNV!: Deno.UnsafeFnPointer<typeof def_glGetProgramLocalParameterIuivNV>;
 
 export function GetProgramLocalParameterIuivNV(
   target: GLenum,
@@ -416,9 +374,7 @@ export const def_glGetProgramEnvParameterIivNV = {
   result: "void",
 } as const;
 
-let fn_glGetProgramEnvParameterIivNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramEnvParameterIivNV
->;
+let fn_glGetProgramEnvParameterIivNV!: Deno.UnsafeFnPointer<typeof def_glGetProgramEnvParameterIivNV>;
 
 export function GetProgramEnvParameterIivNV(
   target: GLenum,
@@ -437,9 +393,7 @@ export const def_glGetProgramEnvParameterIuivNV = {
   result: "void",
 } as const;
 
-let fn_glGetProgramEnvParameterIuivNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramEnvParameterIuivNV
->;
+let fn_glGetProgramEnvParameterIuivNV!: Deno.UnsafeFnPointer<typeof def_glGetProgramEnvParameterIuivNV>;
 
 export function GetProgramEnvParameterIuivNV(
   target: GLenum,
@@ -455,68 +409,20 @@ export function GetProgramEnvParameterIuivNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glProgramLocalParameterI4iNV = new Deno.UnsafeFnPointer(
-    proc("glProgramLocalParameterI4iNV")!,
-    def_glProgramLocalParameterI4iNV,
-  );
-  fn_glProgramLocalParameterI4ivNV = new Deno.UnsafeFnPointer(
-    proc("glProgramLocalParameterI4ivNV")!,
-    def_glProgramLocalParameterI4ivNV,
-  );
-  fn_glProgramLocalParametersI4ivNV = new Deno.UnsafeFnPointer(
-    proc("glProgramLocalParametersI4ivNV")!,
-    def_glProgramLocalParametersI4ivNV,
-  );
-  fn_glProgramLocalParameterI4uiNV = new Deno.UnsafeFnPointer(
-    proc("glProgramLocalParameterI4uiNV")!,
-    def_glProgramLocalParameterI4uiNV,
-  );
-  fn_glProgramLocalParameterI4uivNV = new Deno.UnsafeFnPointer(
-    proc("glProgramLocalParameterI4uivNV")!,
-    def_glProgramLocalParameterI4uivNV,
-  );
-  fn_glProgramLocalParametersI4uivNV = new Deno.UnsafeFnPointer(
-    proc("glProgramLocalParametersI4uivNV")!,
-    def_glProgramLocalParametersI4uivNV,
-  );
-  fn_glProgramEnvParameterI4iNV = new Deno.UnsafeFnPointer(
-    proc("glProgramEnvParameterI4iNV")!,
-    def_glProgramEnvParameterI4iNV,
-  );
-  fn_glProgramEnvParameterI4ivNV = new Deno.UnsafeFnPointer(
-    proc("glProgramEnvParameterI4ivNV")!,
-    def_glProgramEnvParameterI4ivNV,
-  );
-  fn_glProgramEnvParametersI4ivNV = new Deno.UnsafeFnPointer(
-    proc("glProgramEnvParametersI4ivNV")!,
-    def_glProgramEnvParametersI4ivNV,
-  );
-  fn_glProgramEnvParameterI4uiNV = new Deno.UnsafeFnPointer(
-    proc("glProgramEnvParameterI4uiNV")!,
-    def_glProgramEnvParameterI4uiNV,
-  );
-  fn_glProgramEnvParameterI4uivNV = new Deno.UnsafeFnPointer(
-    proc("glProgramEnvParameterI4uivNV")!,
-    def_glProgramEnvParameterI4uivNV,
-  );
-  fn_glProgramEnvParametersI4uivNV = new Deno.UnsafeFnPointer(
-    proc("glProgramEnvParametersI4uivNV")!,
-    def_glProgramEnvParametersI4uivNV,
-  );
-  fn_glGetProgramLocalParameterIivNV = new Deno.UnsafeFnPointer(
-    proc("glGetProgramLocalParameterIivNV")!,
-    def_glGetProgramLocalParameterIivNV,
-  );
-  fn_glGetProgramLocalParameterIuivNV = new Deno.UnsafeFnPointer(
-    proc("glGetProgramLocalParameterIuivNV")!,
-    def_glGetProgramLocalParameterIuivNV,
-  );
-  fn_glGetProgramEnvParameterIivNV = new Deno.UnsafeFnPointer(
-    proc("glGetProgramEnvParameterIivNV")!,
-    def_glGetProgramEnvParameterIivNV,
-  );
-  fn_glGetProgramEnvParameterIuivNV = new Deno.UnsafeFnPointer(
-    proc("glGetProgramEnvParameterIuivNV")!,
-    def_glGetProgramEnvParameterIuivNV,
-  );
+  fn_glProgramLocalParameterI4iNV = new Deno.UnsafeFnPointer(proc("glProgramLocalParameterI4iNV")!, def_glProgramLocalParameterI4iNV);
+  fn_glProgramLocalParameterI4ivNV = new Deno.UnsafeFnPointer(proc("glProgramLocalParameterI4ivNV")!, def_glProgramLocalParameterI4ivNV);
+  fn_glProgramLocalParametersI4ivNV = new Deno.UnsafeFnPointer(proc("glProgramLocalParametersI4ivNV")!, def_glProgramLocalParametersI4ivNV);
+  fn_glProgramLocalParameterI4uiNV = new Deno.UnsafeFnPointer(proc("glProgramLocalParameterI4uiNV")!, def_glProgramLocalParameterI4uiNV);
+  fn_glProgramLocalParameterI4uivNV = new Deno.UnsafeFnPointer(proc("glProgramLocalParameterI4uivNV")!, def_glProgramLocalParameterI4uivNV);
+  fn_glProgramLocalParametersI4uivNV = new Deno.UnsafeFnPointer(proc("glProgramLocalParametersI4uivNV")!, def_glProgramLocalParametersI4uivNV);
+  fn_glProgramEnvParameterI4iNV = new Deno.UnsafeFnPointer(proc("glProgramEnvParameterI4iNV")!, def_glProgramEnvParameterI4iNV);
+  fn_glProgramEnvParameterI4ivNV = new Deno.UnsafeFnPointer(proc("glProgramEnvParameterI4ivNV")!, def_glProgramEnvParameterI4ivNV);
+  fn_glProgramEnvParametersI4ivNV = new Deno.UnsafeFnPointer(proc("glProgramEnvParametersI4ivNV")!, def_glProgramEnvParametersI4ivNV);
+  fn_glProgramEnvParameterI4uiNV = new Deno.UnsafeFnPointer(proc("glProgramEnvParameterI4uiNV")!, def_glProgramEnvParameterI4uiNV);
+  fn_glProgramEnvParameterI4uivNV = new Deno.UnsafeFnPointer(proc("glProgramEnvParameterI4uivNV")!, def_glProgramEnvParameterI4uivNV);
+  fn_glProgramEnvParametersI4uivNV = new Deno.UnsafeFnPointer(proc("glProgramEnvParametersI4uivNV")!, def_glProgramEnvParametersI4uivNV);
+  fn_glGetProgramLocalParameterIivNV = new Deno.UnsafeFnPointer(proc("glGetProgramLocalParameterIivNV")!, def_glGetProgramLocalParameterIivNV);
+  fn_glGetProgramLocalParameterIuivNV = new Deno.UnsafeFnPointer(proc("glGetProgramLocalParameterIuivNV")!, def_glGetProgramLocalParameterIuivNV);
+  fn_glGetProgramEnvParameterIivNV = new Deno.UnsafeFnPointer(proc("glGetProgramEnvParameterIivNV")!, def_glGetProgramEnvParameterIivNV);
+  fn_glGetProgramEnvParameterIuivNV = new Deno.UnsafeFnPointer(proc("glGetProgramEnvParameterIuivNV")!, def_glGetProgramEnvParameterIuivNV);
 }

@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -314,9 +300,7 @@ export const def_glUniformMatrix2x3dv = {
   result: "void",
 } as const;
 
-let fn_glUniformMatrix2x3dv!: Deno.UnsafeFnPointer<
-  typeof def_glUniformMatrix2x3dv
->;
+let fn_glUniformMatrix2x3dv!: Deno.UnsafeFnPointer<typeof def_glUniformMatrix2x3dv>;
 
 export function UniformMatrix2x3dv(
   location: GLint,
@@ -337,9 +321,7 @@ export const def_glUniformMatrix2x4dv = {
   result: "void",
 } as const;
 
-let fn_glUniformMatrix2x4dv!: Deno.UnsafeFnPointer<
-  typeof def_glUniformMatrix2x4dv
->;
+let fn_glUniformMatrix2x4dv!: Deno.UnsafeFnPointer<typeof def_glUniformMatrix2x4dv>;
 
 export function UniformMatrix2x4dv(
   location: GLint,
@@ -360,9 +342,7 @@ export const def_glUniformMatrix3x2dv = {
   result: "void",
 } as const;
 
-let fn_glUniformMatrix3x2dv!: Deno.UnsafeFnPointer<
-  typeof def_glUniformMatrix3x2dv
->;
+let fn_glUniformMatrix3x2dv!: Deno.UnsafeFnPointer<typeof def_glUniformMatrix3x2dv>;
 
 export function UniformMatrix3x2dv(
   location: GLint,
@@ -383,9 +363,7 @@ export const def_glUniformMatrix3x4dv = {
   result: "void",
 } as const;
 
-let fn_glUniformMatrix3x4dv!: Deno.UnsafeFnPointer<
-  typeof def_glUniformMatrix3x4dv
->;
+let fn_glUniformMatrix3x4dv!: Deno.UnsafeFnPointer<typeof def_glUniformMatrix3x4dv>;
 
 export function UniformMatrix3x4dv(
   location: GLint,
@@ -406,9 +384,7 @@ export const def_glUniformMatrix4x2dv = {
   result: "void",
 } as const;
 
-let fn_glUniformMatrix4x2dv!: Deno.UnsafeFnPointer<
-  typeof def_glUniformMatrix4x2dv
->;
+let fn_glUniformMatrix4x2dv!: Deno.UnsafeFnPointer<typeof def_glUniformMatrix4x2dv>;
 
 export function UniformMatrix4x2dv(
   location: GLint,
@@ -429,9 +405,7 @@ export const def_glUniformMatrix4x3dv = {
   result: "void",
 } as const;
 
-let fn_glUniformMatrix4x3dv!: Deno.UnsafeFnPointer<
-  typeof def_glUniformMatrix4x3dv
->;
+let fn_glUniformMatrix4x3dv!: Deno.UnsafeFnPointer<typeof def_glUniformMatrix4x3dv>;
 
 export function UniformMatrix4x3dv(
   location: GLint,
@@ -468,76 +442,22 @@ export function GetUniformdv(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glUniform1d = new Deno.UnsafeFnPointer(
-    proc("glUniform1d")!,
-    def_glUniform1d,
-  );
-  fn_glUniform2d = new Deno.UnsafeFnPointer(
-    proc("glUniform2d")!,
-    def_glUniform2d,
-  );
-  fn_glUniform3d = new Deno.UnsafeFnPointer(
-    proc("glUniform3d")!,
-    def_glUniform3d,
-  );
-  fn_glUniform4d = new Deno.UnsafeFnPointer(
-    proc("glUniform4d")!,
-    def_glUniform4d,
-  );
-  fn_glUniform1dv = new Deno.UnsafeFnPointer(
-    proc("glUniform1dv")!,
-    def_glUniform1dv,
-  );
-  fn_glUniform2dv = new Deno.UnsafeFnPointer(
-    proc("glUniform2dv")!,
-    def_glUniform2dv,
-  );
-  fn_glUniform3dv = new Deno.UnsafeFnPointer(
-    proc("glUniform3dv")!,
-    def_glUniform3dv,
-  );
-  fn_glUniform4dv = new Deno.UnsafeFnPointer(
-    proc("glUniform4dv")!,
-    def_glUniform4dv,
-  );
-  fn_glUniformMatrix2dv = new Deno.UnsafeFnPointer(
-    proc("glUniformMatrix2dv")!,
-    def_glUniformMatrix2dv,
-  );
-  fn_glUniformMatrix3dv = new Deno.UnsafeFnPointer(
-    proc("glUniformMatrix3dv")!,
-    def_glUniformMatrix3dv,
-  );
-  fn_glUniformMatrix4dv = new Deno.UnsafeFnPointer(
-    proc("glUniformMatrix4dv")!,
-    def_glUniformMatrix4dv,
-  );
-  fn_glUniformMatrix2x3dv = new Deno.UnsafeFnPointer(
-    proc("glUniformMatrix2x3dv")!,
-    def_glUniformMatrix2x3dv,
-  );
-  fn_glUniformMatrix2x4dv = new Deno.UnsafeFnPointer(
-    proc("glUniformMatrix2x4dv")!,
-    def_glUniformMatrix2x4dv,
-  );
-  fn_glUniformMatrix3x2dv = new Deno.UnsafeFnPointer(
-    proc("glUniformMatrix3x2dv")!,
-    def_glUniformMatrix3x2dv,
-  );
-  fn_glUniformMatrix3x4dv = new Deno.UnsafeFnPointer(
-    proc("glUniformMatrix3x4dv")!,
-    def_glUniformMatrix3x4dv,
-  );
-  fn_glUniformMatrix4x2dv = new Deno.UnsafeFnPointer(
-    proc("glUniformMatrix4x2dv")!,
-    def_glUniformMatrix4x2dv,
-  );
-  fn_glUniformMatrix4x3dv = new Deno.UnsafeFnPointer(
-    proc("glUniformMatrix4x3dv")!,
-    def_glUniformMatrix4x3dv,
-  );
-  fn_glGetUniformdv = new Deno.UnsafeFnPointer(
-    proc("glGetUniformdv")!,
-    def_glGetUniformdv,
-  );
+  fn_glUniform1d = new Deno.UnsafeFnPointer(proc("glUniform1d")!, def_glUniform1d);
+  fn_glUniform2d = new Deno.UnsafeFnPointer(proc("glUniform2d")!, def_glUniform2d);
+  fn_glUniform3d = new Deno.UnsafeFnPointer(proc("glUniform3d")!, def_glUniform3d);
+  fn_glUniform4d = new Deno.UnsafeFnPointer(proc("glUniform4d")!, def_glUniform4d);
+  fn_glUniform1dv = new Deno.UnsafeFnPointer(proc("glUniform1dv")!, def_glUniform1dv);
+  fn_glUniform2dv = new Deno.UnsafeFnPointer(proc("glUniform2dv")!, def_glUniform2dv);
+  fn_glUniform3dv = new Deno.UnsafeFnPointer(proc("glUniform3dv")!, def_glUniform3dv);
+  fn_glUniform4dv = new Deno.UnsafeFnPointer(proc("glUniform4dv")!, def_glUniform4dv);
+  fn_glUniformMatrix2dv = new Deno.UnsafeFnPointer(proc("glUniformMatrix2dv")!, def_glUniformMatrix2dv);
+  fn_glUniformMatrix3dv = new Deno.UnsafeFnPointer(proc("glUniformMatrix3dv")!, def_glUniformMatrix3dv);
+  fn_glUniformMatrix4dv = new Deno.UnsafeFnPointer(proc("glUniformMatrix4dv")!, def_glUniformMatrix4dv);
+  fn_glUniformMatrix2x3dv = new Deno.UnsafeFnPointer(proc("glUniformMatrix2x3dv")!, def_glUniformMatrix2x3dv);
+  fn_glUniformMatrix2x4dv = new Deno.UnsafeFnPointer(proc("glUniformMatrix2x4dv")!, def_glUniformMatrix2x4dv);
+  fn_glUniformMatrix3x2dv = new Deno.UnsafeFnPointer(proc("glUniformMatrix3x2dv")!, def_glUniformMatrix3x2dv);
+  fn_glUniformMatrix3x4dv = new Deno.UnsafeFnPointer(proc("glUniformMatrix3x4dv")!, def_glUniformMatrix3x4dv);
+  fn_glUniformMatrix4x2dv = new Deno.UnsafeFnPointer(proc("glUniformMatrix4x2dv")!, def_glUniformMatrix4x2dv);
+  fn_glUniformMatrix4x3dv = new Deno.UnsafeFnPointer(proc("glUniformMatrix4x3dv")!, def_glUniformMatrix4x3dv);
+  fn_glGetUniformdv = new Deno.UnsafeFnPointer(proc("glGetUniformdv")!, def_glGetUniformdv);
 }

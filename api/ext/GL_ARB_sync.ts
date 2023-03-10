@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -219,26 +205,11 @@ export function GetSynciv(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFenceSync = new Deno.UnsafeFnPointer(
-    proc("glFenceSync")!,
-    def_glFenceSync,
-  );
+  fn_glFenceSync = new Deno.UnsafeFnPointer(proc("glFenceSync")!, def_glFenceSync);
   fn_glIsSync = new Deno.UnsafeFnPointer(proc("glIsSync")!, def_glIsSync);
-  fn_glDeleteSync = new Deno.UnsafeFnPointer(
-    proc("glDeleteSync")!,
-    def_glDeleteSync,
-  );
-  fn_glClientWaitSync = new Deno.UnsafeFnPointer(
-    proc("glClientWaitSync")!,
-    def_glClientWaitSync,
-  );
+  fn_glDeleteSync = new Deno.UnsafeFnPointer(proc("glDeleteSync")!, def_glDeleteSync);
+  fn_glClientWaitSync = new Deno.UnsafeFnPointer(proc("glClientWaitSync")!, def_glClientWaitSync);
   fn_glWaitSync = new Deno.UnsafeFnPointer(proc("glWaitSync")!, def_glWaitSync);
-  fn_glGetInteger64v = new Deno.UnsafeFnPointer(
-    proc("glGetInteger64v")!,
-    def_glGetInteger64v,
-  );
-  fn_glGetSynciv = new Deno.UnsafeFnPointer(
-    proc("glGetSynciv")!,
-    def_glGetSynciv,
-  );
+  fn_glGetInteger64v = new Deno.UnsafeFnPointer(proc("glGetInteger64v")!, def_glGetInteger64v);
+  fn_glGetSynciv = new Deno.UnsafeFnPointer(proc("glGetSynciv")!, def_glGetSynciv);
 }

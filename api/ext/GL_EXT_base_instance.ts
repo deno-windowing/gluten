@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -80,9 +66,7 @@ export const def_glDrawArraysInstancedBaseInstanceEXT = {
   result: "void",
 } as const;
 
-let fn_glDrawArraysInstancedBaseInstanceEXT!: Deno.UnsafeFnPointer<
-  typeof def_glDrawArraysInstancedBaseInstanceEXT
->;
+let fn_glDrawArraysInstancedBaseInstanceEXT!: Deno.UnsafeFnPointer<typeof def_glDrawArraysInstancedBaseInstanceEXT>;
 
 export function DrawArraysInstancedBaseInstanceEXT(
   mode: GLenum,
@@ -105,9 +89,7 @@ export const def_glDrawElementsInstancedBaseInstanceEXT = {
   result: "void",
 } as const;
 
-let fn_glDrawElementsInstancedBaseInstanceEXT!: Deno.UnsafeFnPointer<
-  typeof def_glDrawElementsInstancedBaseInstanceEXT
->;
+let fn_glDrawElementsInstancedBaseInstanceEXT!: Deno.UnsafeFnPointer<typeof def_glDrawElementsInstancedBaseInstanceEXT>;
 
 export function DrawElementsInstancedBaseInstanceEXT(
   mode: GLenum,
@@ -132,9 +114,7 @@ export const def_glDrawElementsInstancedBaseVertexBaseInstanceEXT = {
   result: "void",
 } as const;
 
-let fn_glDrawElementsInstancedBaseVertexBaseInstanceEXT!: Deno.UnsafeFnPointer<
-  typeof def_glDrawElementsInstancedBaseVertexBaseInstanceEXT
->;
+let fn_glDrawElementsInstancedBaseVertexBaseInstanceEXT!: Deno.UnsafeFnPointer<typeof def_glDrawElementsInstancedBaseVertexBaseInstanceEXT>;
 
 export function DrawElementsInstancedBaseVertexBaseInstanceEXT(
   mode: GLenum,
@@ -158,17 +138,7 @@ export function DrawElementsInstancedBaseVertexBaseInstanceEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDrawArraysInstancedBaseInstanceEXT = new Deno.UnsafeFnPointer(
-    proc("glDrawArraysInstancedBaseInstanceEXT")!,
-    def_glDrawArraysInstancedBaseInstanceEXT,
-  );
-  fn_glDrawElementsInstancedBaseInstanceEXT = new Deno.UnsafeFnPointer(
-    proc("glDrawElementsInstancedBaseInstanceEXT")!,
-    def_glDrawElementsInstancedBaseInstanceEXT,
-  );
-  fn_glDrawElementsInstancedBaseVertexBaseInstanceEXT = new Deno
-    .UnsafeFnPointer(
-    proc("glDrawElementsInstancedBaseVertexBaseInstanceEXT")!,
-    def_glDrawElementsInstancedBaseVertexBaseInstanceEXT,
-  );
+  fn_glDrawArraysInstancedBaseInstanceEXT = new Deno.UnsafeFnPointer(proc("glDrawArraysInstancedBaseInstanceEXT")!, def_glDrawArraysInstancedBaseInstanceEXT);
+  fn_glDrawElementsInstancedBaseInstanceEXT = new Deno.UnsafeFnPointer(proc("glDrawElementsInstancedBaseInstanceEXT")!, def_glDrawElementsInstancedBaseInstanceEXT);
+  fn_glDrawElementsInstancedBaseVertexBaseInstanceEXT = new Deno.UnsafeFnPointer(proc("glDrawElementsInstancedBaseVertexBaseInstanceEXT")!, def_glDrawElementsInstancedBaseVertexBaseInstanceEXT);
 }

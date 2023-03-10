@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -97,9 +83,7 @@ export const def_glImageTransformParameteriHP = {
   result: "void",
 } as const;
 
-let fn_glImageTransformParameteriHP!: Deno.UnsafeFnPointer<
-  typeof def_glImageTransformParameteriHP
->;
+let fn_glImageTransformParameteriHP!: Deno.UnsafeFnPointer<typeof def_glImageTransformParameteriHP>;
 
 export function ImageTransformParameteriHP(
   target: GLenum,
@@ -118,9 +102,7 @@ export const def_glImageTransformParameterfHP = {
   result: "void",
 } as const;
 
-let fn_glImageTransformParameterfHP!: Deno.UnsafeFnPointer<
-  typeof def_glImageTransformParameterfHP
->;
+let fn_glImageTransformParameterfHP!: Deno.UnsafeFnPointer<typeof def_glImageTransformParameterfHP>;
 
 export function ImageTransformParameterfHP(
   target: GLenum,
@@ -139,9 +121,7 @@ export const def_glImageTransformParameterivHP = {
   result: "void",
 } as const;
 
-let fn_glImageTransformParameterivHP!: Deno.UnsafeFnPointer<
-  typeof def_glImageTransformParameterivHP
->;
+let fn_glImageTransformParameterivHP!: Deno.UnsafeFnPointer<typeof def_glImageTransformParameterivHP>;
 
 export function ImageTransformParameterivHP(
   target: GLenum,
@@ -160,9 +140,7 @@ export const def_glImageTransformParameterfvHP = {
   result: "void",
 } as const;
 
-let fn_glImageTransformParameterfvHP!: Deno.UnsafeFnPointer<
-  typeof def_glImageTransformParameterfvHP
->;
+let fn_glImageTransformParameterfvHP!: Deno.UnsafeFnPointer<typeof def_glImageTransformParameterfvHP>;
 
 export function ImageTransformParameterfvHP(
   target: GLenum,
@@ -181,9 +159,7 @@ export const def_glGetImageTransformParameterivHP = {
   result: "void",
 } as const;
 
-let fn_glGetImageTransformParameterivHP!: Deno.UnsafeFnPointer<
-  typeof def_glGetImageTransformParameterivHP
->;
+let fn_glGetImageTransformParameterivHP!: Deno.UnsafeFnPointer<typeof def_glGetImageTransformParameterivHP>;
 
 export function GetImageTransformParameterivHP(
   target: GLenum,
@@ -202,9 +178,7 @@ export const def_glGetImageTransformParameterfvHP = {
   result: "void",
 } as const;
 
-let fn_glGetImageTransformParameterfvHP!: Deno.UnsafeFnPointer<
-  typeof def_glGetImageTransformParameterfvHP
->;
+let fn_glGetImageTransformParameterfvHP!: Deno.UnsafeFnPointer<typeof def_glGetImageTransformParameterfvHP>;
 
 export function GetImageTransformParameterfvHP(
   target: GLenum,
@@ -220,28 +194,10 @@ export function GetImageTransformParameterfvHP(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glImageTransformParameteriHP = new Deno.UnsafeFnPointer(
-    proc("glImageTransformParameteriHP")!,
-    def_glImageTransformParameteriHP,
-  );
-  fn_glImageTransformParameterfHP = new Deno.UnsafeFnPointer(
-    proc("glImageTransformParameterfHP")!,
-    def_glImageTransformParameterfHP,
-  );
-  fn_glImageTransformParameterivHP = new Deno.UnsafeFnPointer(
-    proc("glImageTransformParameterivHP")!,
-    def_glImageTransformParameterivHP,
-  );
-  fn_glImageTransformParameterfvHP = new Deno.UnsafeFnPointer(
-    proc("glImageTransformParameterfvHP")!,
-    def_glImageTransformParameterfvHP,
-  );
-  fn_glGetImageTransformParameterivHP = new Deno.UnsafeFnPointer(
-    proc("glGetImageTransformParameterivHP")!,
-    def_glGetImageTransformParameterivHP,
-  );
-  fn_glGetImageTransformParameterfvHP = new Deno.UnsafeFnPointer(
-    proc("glGetImageTransformParameterfvHP")!,
-    def_glGetImageTransformParameterfvHP,
-  );
+  fn_glImageTransformParameteriHP = new Deno.UnsafeFnPointer(proc("glImageTransformParameteriHP")!, def_glImageTransformParameteriHP);
+  fn_glImageTransformParameterfHP = new Deno.UnsafeFnPointer(proc("glImageTransformParameterfHP")!, def_glImageTransformParameterfHP);
+  fn_glImageTransformParameterivHP = new Deno.UnsafeFnPointer(proc("glImageTransformParameterivHP")!, def_glImageTransformParameterivHP);
+  fn_glImageTransformParameterfvHP = new Deno.UnsafeFnPointer(proc("glImageTransformParameterfvHP")!, def_glImageTransformParameterfvHP);
+  fn_glGetImageTransformParameterivHP = new Deno.UnsafeFnPointer(proc("glGetImageTransformParameterivHP")!, def_glGetImageTransformParameterivHP);
+  fn_glGetImageTransformParameterfvHP = new Deno.UnsafeFnPointer(proc("glGetImageTransformParameterfvHP")!, def_glGetImageTransformParameterfvHP);
 }

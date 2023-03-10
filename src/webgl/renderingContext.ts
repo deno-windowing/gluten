@@ -5,15 +5,70 @@ import * as gl from "../../api/gles22.ts";
 import { _uniformLocation, glObjectName } from "./object.ts";
 import { cstr } from "./utils.ts";
 
+export type WebGLPowerPreference = "default" | "high-performance" | "low-power";
+
 export interface WebGLContextAttributes {
+  /**
+   * If the value is true, the drawing buffer has an alpha channel for the purposes of
+   * performing OpenGL destination alpha operations and compositing with the page.
+   * If the value is false, no alpha buffer is available.
+   */
   alpha?: boolean;
+
+  /**
+   * If the value is true, the drawing buffer has a depth buffer of at least 16 bits. If the value is false, no depth buffer is available.
+   */
   depth?: boolean;
+
+  /**
+   * If the value is true, the drawing buffer has a stencil buffer of at least 8 bits. If the value is false, no stencil buffer is available.
+   */
   stencil?: boolean;
+
+  /**
+   * If the value is true and the implementation supports antialiasing
+   * the drawing buffer will perform antialiasing using its choice of technique (multisample/supersample) and quality.
+   * If the value is false or the implementation does not support antialiasing, no antialiasing is performed.
+   */
   antialias?: boolean;
+
+  /**
+   * If the value is true the page compositor will assume the drawing buffer contains colors with premultiplied alpha.
+   * If the value is false the page compositor will assume that colors in the drawing buffer are not premultiplied.
+   * This flag is ignored if the alpha flag is false.
+   */
   premultipliedAlpha?: boolean;
+
+  /**
+   * If false, once the drawing buffer is presented the contents of the drawing buffer are cleared to their default values.
+   * All elements of the drawing buffer (color, depth and stencil) are cleared.
+   * If the value is true the buffers will not be cleared and will preserve their values until cleared or overwritten by the author.
+   */
   preserveDrawingBuffer?: boolean;
-  powerPreference?: "default" | "high-performance" | "low-power";
+
+  /**
+   * Provides a hint to the user agent indicating what configuration of GPU is suitable for this WebGL context.
+   * This may influence which GPU is used in a system with multiple GPUs.
+   * For example, a dual-GPU system might have one GPU that consumes less power at the expense of rendering performance.
+   * Note that this property is only a hint and a WebGL implementation may choose to ignore it.
+   * WebGL implementations use context lost and restored events to regulate power and memory consumption,
+   * regardless of the value of this attribute.
+   */
+  powerPreference?: WebGLPowerPreference;
+
+  /**
+   * If the value is true, context creation will fail if the implementation determines
+   * that the performance of the created WebGL context would be dramatically lower than
+   * that of a native application making equivalent OpenGL calls.
+   */
   failIfMajorPerformanceCaveat?: boolean;
+
+  /**
+   * If the value is true, then the user agent may optimize the rendering of the canvas to reduce the latency,
+   * as measured from input events to rasterization, by desynchronizing the canvas paint cycle from the event loop,
+   * bypassing the ordinary user agent rendering algorithm, or both. Insofar as this mode involves bypassing the usual paint mechanisms,
+   * rasterization, or both, it might introduce visible tearing artifacts.
+   */
   desynchronized?: boolean;
 }
 
@@ -415,6 +470,13 @@ export class WebGLRenderingContext {
 
   /// 5.14.6 Framebuffer objects
 
+  /**
+   * Bind the given WebGLFramebuffer object to the given binding point (target), which must be FRAMEBUFFER.
+   * If framebuffer is null, the default framebuffer provided by the context is bound and attempts to modify
+   * or query state on target FRAMEBUFFER will generate an INVALID_OPERATION error.
+   * An attempt to bind an object marked for deletion will generate an INVALID_OPERATION error,
+   * and the current binding will remain untouched.
+   */
   bindFramebuffer(target: number, framebuffer: WebGLFramebuffer | null) {
     gl.BindFramebuffer(target, framebuffer?.[glObjectName] ?? 0);
   }
@@ -474,17 +536,26 @@ export class WebGLRenderingContext {
   }
 
   /// 5.14.7 Renderbuffer objects
-
+  /**
+   * Bind the given WebGLRenderbuffer object to the given binding point (target), which must be RENDERBUFFER.
+   * If renderbuffer is null the renderbuffer object currently bound to this target is unbound.
+   * An attempt to bind an object marked for deletion will generate an INVALID_OPERATION error,
+   * and the current binding will remain untouched.
+   */
   bindRenderbuffer(target: number, renderbuffer: WebGLRenderbuffer | null) {
     gl.BindRenderbuffer(target, renderbuffer?.[glObjectName] ?? 0);
   }
 
+  /**
+   * Create a WebGLRenderbuffer object and initialize it with a renderbuffer object name as if by calling glGenRenderbuffers.
+   */
   createRenderbuffer() {
     const renderbuffer = new Uint32Array(1);
     gl.GenRenderbuffers(1, renderbuffer);
     return new WebGLRenderbuffer(renderbuffer[0]);
   }
 
+  /** */
   renderbufferStorage(
     target: number,
     internalformat: number,
@@ -614,18 +685,33 @@ export class WebGLRenderingContext {
     return new WebGLShader(shader);
   }
 
+  /**
+   * Mark for deletion the program object contained in the passed WebGLProgram, as if by calling glDeleteProgram.
+   * If the object has already been marked for deletion, the call has no effect.
+   * Note that underlying GL object will be automatically marked for deletion when the JS object is destroyed,
+   * however this method allows authors to mark an object for deletion early.
+   */
   deleteProgram(program: WebGLProgram | null) {
     if (program) {
       gl.DeleteProgram(program[glObjectName]);
     }
   }
 
+  /**
+   * Mark for deletion the shader object contained in the passed WebGLShader, as if by calling glDeleteShader.
+   * If the object has already been marked for deletion, the call has no effect.
+   * Note that underlying GL object will be automatically marked for deletion when the JS object is destroyed,
+   * however this method allows authors to mark an object for deletion early.
+   */
   deleteShader(shader: WebGLShader | null) {
     if (shader) {
       gl.DeleteShader(shader[glObjectName]);
     }
   }
 
+  /**
+   * Return the value for the passed pname given the passed program. The type returned is the natural type for the requested pname.
+   */
   getProgramParameter(program: WebGLProgram, pname: number) {
     switch (pname) {
       case gl.DELETE_STATUS:
@@ -646,6 +732,12 @@ export class WebGLRenderingContext {
     }
   }
 
+  /**
+   * Return a new WebGLShaderPrecisionFormat describing the range and precision for the specified shader numeric format.
+   * The shadertype value can be FRAGMENT_SHADER or VERTEX_SHADER.
+   * The precisiontype value can be LOW_FLOAT, MEDIUM_FLOAT, HIGH_FLOAT, LOW_INT, MEDIUM_INT or HIGH_INT.
+   * Returns null if any OpenGL errors are generated during the execution of this function.
+   */
   getShaderPrecisionFormat(
     shaderType: number,
     precisionType: number,
@@ -660,6 +752,10 @@ export class WebGLRenderingContext {
     };
   }
 
+  /**
+   * If program was generated by a different WebGLRenderingContext than this one, generates an INVALID_OPERATION error.
+   * Returns null if any OpenGL errors are generated during the execution of this function.
+   */
   getProgramInfoLog(program: WebGLProgram) {
     const length = new Uint32Array(1);
     gl.GetProgramInfoLog(
@@ -684,6 +780,7 @@ export class WebGLRenderingContext {
   getSupportedExtensions(): string[] {
     return [];
   }
+
   /**
    * Returns information about the given shader.
    */
@@ -761,6 +858,10 @@ export class WebGLRenderingContext {
 
   /// 5.14.10 Uniforms and attributes
 
+  /**
+   * Disable the vertex attribute at index as an array.
+   * WebGL imposes additional rules beyond OpenGL ES 2.0 regarding enabled vertex attributes
+   */
   disableVertexAttribArray(index: number) {
     gl.DisableVertexAttribArray(index);
   }
@@ -772,6 +873,12 @@ export class WebGLRenderingContext {
     gl.EnableVertexAttribArray(index);
   }
 
+  /**
+   * Returns a new WebGLActiveInfo object describing the size,
+   * type and name of the vertex attribute at the passed index of the passed program object.
+   * If the passed index is out of range, generates an INVALID_VALUE error and returns null.
+   * Returns null if any OpenGL errors are generated during the execution of this function.
+   */
   getActiveAttrib(program: WebGLProgram, index: number) {
     const name = new Uint8Array(256);
     const length = new Uint32Array(1);
@@ -793,6 +900,11 @@ export class WebGLRenderingContext {
     };
   }
 
+  /**
+   * Returns a new WebGLActiveInfo object describing the size, type and name of the uniform at the passed index of the passed program object.
+   * If the passed index is out of range, generates an INVALID_VALUE error and returns null.
+   * Returns null if any OpenGL errors are generated during the execution of this function.
+   */
   getActiveUniform(program: WebGLProgram, index: number) {
     const name = new Uint8Array(256);
     const length = new Uint32Array(1);
@@ -821,6 +933,10 @@ export class WebGLRenderingContext {
     return gl.GetAttribLocation(program[glObjectName], cstr(name));
   }
 
+  /**
+   * Return a new WebGLUniformLocation that represents the location of a specific uniform variable within a program object.
+   * The return value is null if name does not correspond to an active uniform variable in the passed program.
+   */
   getUniformLocation(program: WebGLProgram, name: string) {
     const location = gl.GetUniformLocation(program[glObjectName], cstr(name));
     return location < 0 ? null : new WebGLUniformLocation(location);
@@ -943,6 +1059,13 @@ export class WebGLRenderingContext {
     gl.DrawArrays(mode, first, count);
   }
 
+  /**
+   * Draw using the currently bound element array buffer.
+   * The given offset is in bytes, and must be a valid multiple of the size of the given type or an INVALID_OPERATION error will be generated;
+   * in addition the offset must be non-negative or an INVALID_VALUE error will be generated; see Buffer Offset and Stride Requirements.
+   * If count is greater than zero,
+   * then a non-null WebGLBuffer must be bound to the ELEMENT_ARRAY_BUFFER binding point or an INVALID_OPERATION error will be generated.
+   */
   drawElements(mode: number, count: number, type: number, offset: number) {
     gl.DrawElements(mode, count, type, Deno.UnsafePointer.create(offset));
   }
@@ -957,6 +1080,11 @@ export class WebGLRenderingContext {
 
   /// 5.14.12 Read Operations
 
+  /**
+   * Pixels in the current framebuffer are read back into an ArrayBufferView object.
+   * Fills pixels with the pixel data in the specified rectangle of the frame buffer.
+   * The data returned from readPixels must be up-to-date as of the most recently sent drawing command.
+   */
   readPixels(
     x: number,
     y: number,
@@ -978,7 +1106,12 @@ export class WebGLRenderingContext {
   }
 
   /// 5.14.14 Detecting and enabling extensions
-
+  /**
+   * Returns an object if, and only if, name is an ASCII case-insensitive match [HTML] for one of the names returned from getSupportedExtensions;
+   * otherwise, returns null. The object returned from getExtension contains any constants or functions provided by the extension.
+   * A returned object may have no constants or functions if the extension does not define any,
+   * but a unique object must still be returned. That object is used to indicate that the extension has been enabled.
+   */
   getExtension(name: string) {
     console.log("STUB: getExtension:", name);
     return null;

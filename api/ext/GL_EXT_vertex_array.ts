@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -171,9 +157,7 @@ export const def_glEdgeFlagPointerEXT = {
   result: "void",
 } as const;
 
-let fn_glEdgeFlagPointerEXT!: Deno.UnsafeFnPointer<
-  typeof def_glEdgeFlagPointerEXT
->;
+let fn_glEdgeFlagPointerEXT!: Deno.UnsafeFnPointer<typeof def_glEdgeFlagPointerEXT>;
 
 export function EdgeFlagPointerEXT(
   stride: GLsizei,
@@ -251,9 +235,7 @@ export const def_glTexCoordPointerEXT = {
   result: "void",
 } as const;
 
-let fn_glTexCoordPointerEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTexCoordPointerEXT
->;
+let fn_glTexCoordPointerEXT!: Deno.UnsafeFnPointer<typeof def_glTexCoordPointerEXT>;
 
 export function TexCoordPointerEXT(
   size: GLint,
@@ -296,40 +278,13 @@ export function VertexPointerEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glArrayElementEXT = new Deno.UnsafeFnPointer(
-    proc("glArrayElementEXT")!,
-    def_glArrayElementEXT,
-  );
-  fn_glColorPointerEXT = new Deno.UnsafeFnPointer(
-    proc("glColorPointerEXT")!,
-    def_glColorPointerEXT,
-  );
-  fn_glDrawArraysEXT = new Deno.UnsafeFnPointer(
-    proc("glDrawArraysEXT")!,
-    def_glDrawArraysEXT,
-  );
-  fn_glEdgeFlagPointerEXT = new Deno.UnsafeFnPointer(
-    proc("glEdgeFlagPointerEXT")!,
-    def_glEdgeFlagPointerEXT,
-  );
-  fn_glGetPointervEXT = new Deno.UnsafeFnPointer(
-    proc("glGetPointervEXT")!,
-    def_glGetPointervEXT,
-  );
-  fn_glIndexPointerEXT = new Deno.UnsafeFnPointer(
-    proc("glIndexPointerEXT")!,
-    def_glIndexPointerEXT,
-  );
-  fn_glNormalPointerEXT = new Deno.UnsafeFnPointer(
-    proc("glNormalPointerEXT")!,
-    def_glNormalPointerEXT,
-  );
-  fn_glTexCoordPointerEXT = new Deno.UnsafeFnPointer(
-    proc("glTexCoordPointerEXT")!,
-    def_glTexCoordPointerEXT,
-  );
-  fn_glVertexPointerEXT = new Deno.UnsafeFnPointer(
-    proc("glVertexPointerEXT")!,
-    def_glVertexPointerEXT,
-  );
+  fn_glArrayElementEXT = new Deno.UnsafeFnPointer(proc("glArrayElementEXT")!, def_glArrayElementEXT);
+  fn_glColorPointerEXT = new Deno.UnsafeFnPointer(proc("glColorPointerEXT")!, def_glColorPointerEXT);
+  fn_glDrawArraysEXT = new Deno.UnsafeFnPointer(proc("glDrawArraysEXT")!, def_glDrawArraysEXT);
+  fn_glEdgeFlagPointerEXT = new Deno.UnsafeFnPointer(proc("glEdgeFlagPointerEXT")!, def_glEdgeFlagPointerEXT);
+  fn_glGetPointervEXT = new Deno.UnsafeFnPointer(proc("glGetPointervEXT")!, def_glGetPointervEXT);
+  fn_glIndexPointerEXT = new Deno.UnsafeFnPointer(proc("glIndexPointerEXT")!, def_glIndexPointerEXT);
+  fn_glNormalPointerEXT = new Deno.UnsafeFnPointer(proc("glNormalPointerEXT")!, def_glNormalPointerEXT);
+  fn_glTexCoordPointerEXT = new Deno.UnsafeFnPointer(proc("glTexCoordPointerEXT")!, def_glTexCoordPointerEXT);
+  fn_glVertexPointerEXT = new Deno.UnsafeFnPointer(proc("glVertexPointerEXT")!, def_glVertexPointerEXT);
 }

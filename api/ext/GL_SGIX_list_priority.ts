@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -83,9 +69,7 @@ export const def_glGetListParameterfvSGIX = {
   result: "void",
 } as const;
 
-let fn_glGetListParameterfvSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glGetListParameterfvSGIX
->;
+let fn_glGetListParameterfvSGIX!: Deno.UnsafeFnPointer<typeof def_glGetListParameterfvSGIX>;
 
 export function GetListParameterfvSGIX(
   list: GLuint,
@@ -104,9 +88,7 @@ export const def_glGetListParameterivSGIX = {
   result: "void",
 } as const;
 
-let fn_glGetListParameterivSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glGetListParameterivSGIX
->;
+let fn_glGetListParameterivSGIX!: Deno.UnsafeFnPointer<typeof def_glGetListParameterivSGIX>;
 
 export function GetListParameterivSGIX(
   list: GLuint,
@@ -125,9 +107,7 @@ export const def_glListParameterfSGIX = {
   result: "void",
 } as const;
 
-let fn_glListParameterfSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glListParameterfSGIX
->;
+let fn_glListParameterfSGIX!: Deno.UnsafeFnPointer<typeof def_glListParameterfSGIX>;
 
 export function ListParameterfSGIX(
   list: GLuint,
@@ -146,9 +126,7 @@ export const def_glListParameterfvSGIX = {
   result: "void",
 } as const;
 
-let fn_glListParameterfvSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glListParameterfvSGIX
->;
+let fn_glListParameterfvSGIX!: Deno.UnsafeFnPointer<typeof def_glListParameterfvSGIX>;
 
 export function ListParameterfvSGIX(
   list: GLuint,
@@ -167,9 +145,7 @@ export const def_glListParameteriSGIX = {
   result: "void",
 } as const;
 
-let fn_glListParameteriSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glListParameteriSGIX
->;
+let fn_glListParameteriSGIX!: Deno.UnsafeFnPointer<typeof def_glListParameteriSGIX>;
 
 export function ListParameteriSGIX(
   list: GLuint,
@@ -188,9 +164,7 @@ export const def_glListParameterivSGIX = {
   result: "void",
 } as const;
 
-let fn_glListParameterivSGIX!: Deno.UnsafeFnPointer<
-  typeof def_glListParameterivSGIX
->;
+let fn_glListParameterivSGIX!: Deno.UnsafeFnPointer<typeof def_glListParameterivSGIX>;
 
 export function ListParameterivSGIX(
   list: GLuint,
@@ -206,28 +180,10 @@ export function ListParameterivSGIX(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetListParameterfvSGIX = new Deno.UnsafeFnPointer(
-    proc("glGetListParameterfvSGIX")!,
-    def_glGetListParameterfvSGIX,
-  );
-  fn_glGetListParameterivSGIX = new Deno.UnsafeFnPointer(
-    proc("glGetListParameterivSGIX")!,
-    def_glGetListParameterivSGIX,
-  );
-  fn_glListParameterfSGIX = new Deno.UnsafeFnPointer(
-    proc("glListParameterfSGIX")!,
-    def_glListParameterfSGIX,
-  );
-  fn_glListParameterfvSGIX = new Deno.UnsafeFnPointer(
-    proc("glListParameterfvSGIX")!,
-    def_glListParameterfvSGIX,
-  );
-  fn_glListParameteriSGIX = new Deno.UnsafeFnPointer(
-    proc("glListParameteriSGIX")!,
-    def_glListParameteriSGIX,
-  );
-  fn_glListParameterivSGIX = new Deno.UnsafeFnPointer(
-    proc("glListParameterivSGIX")!,
-    def_glListParameterivSGIX,
-  );
+  fn_glGetListParameterfvSGIX = new Deno.UnsafeFnPointer(proc("glGetListParameterfvSGIX")!, def_glGetListParameterfvSGIX);
+  fn_glGetListParameterivSGIX = new Deno.UnsafeFnPointer(proc("glGetListParameterivSGIX")!, def_glGetListParameterivSGIX);
+  fn_glListParameterfSGIX = new Deno.UnsafeFnPointer(proc("glListParameterfSGIX")!, def_glListParameterfSGIX);
+  fn_glListParameterfvSGIX = new Deno.UnsafeFnPointer(proc("glListParameterfvSGIX")!, def_glListParameterfvSGIX);
+  fn_glListParameteriSGIX = new Deno.UnsafeFnPointer(proc("glListParameteriSGIX")!, def_glListParameteriSGIX);
+  fn_glListParameterivSGIX = new Deno.UnsafeFnPointer(proc("glListParameterivSGIX")!, def_glListParameterivSGIX);
 }

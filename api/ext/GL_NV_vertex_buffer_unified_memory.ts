@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -107,9 +93,7 @@ export const def_glBufferAddressRangeNV = {
   result: "void",
 } as const;
 
-let fn_glBufferAddressRangeNV!: Deno.UnsafeFnPointer<
-  typeof def_glBufferAddressRangeNV
->;
+let fn_glBufferAddressRangeNV!: Deno.UnsafeFnPointer<typeof def_glBufferAddressRangeNV>;
 
 export function BufferAddressRangeNV(
   pname: GLenum,
@@ -236,9 +220,7 @@ export const def_glSecondaryColorFormatNV = {
   result: "void",
 } as const;
 
-let fn_glSecondaryColorFormatNV!: Deno.UnsafeFnPointer<
-  typeof def_glSecondaryColorFormatNV
->;
+let fn_glSecondaryColorFormatNV!: Deno.UnsafeFnPointer<typeof def_glSecondaryColorFormatNV>;
 
 export function SecondaryColorFormatNV(
   size: GLint,
@@ -274,9 +256,7 @@ export const def_glVertexAttribFormatNV = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribFormatNV!: Deno.UnsafeFnPointer<
-  typeof def_glVertexAttribFormatNV
->;
+let fn_glVertexAttribFormatNV!: Deno.UnsafeFnPointer<typeof def_glVertexAttribFormatNV>;
 
 export function VertexAttribFormatNV(
   index: GLuint,
@@ -299,9 +279,7 @@ export const def_glVertexAttribIFormatNV = {
   result: "void",
 } as const;
 
-let fn_glVertexAttribIFormatNV!: Deno.UnsafeFnPointer<
-  typeof def_glVertexAttribIFormatNV
->;
+let fn_glVertexAttribIFormatNV!: Deno.UnsafeFnPointer<typeof def_glVertexAttribIFormatNV>;
 
 export function VertexAttribIFormatNV(
   index: GLuint,
@@ -322,9 +300,7 @@ export const def_glGetIntegerui64i_vNV = {
   result: "void",
 } as const;
 
-let fn_glGetIntegerui64i_vNV!: Deno.UnsafeFnPointer<
-  typeof def_glGetIntegerui64i_vNV
->;
+let fn_glGetIntegerui64i_vNV!: Deno.UnsafeFnPointer<typeof def_glGetIntegerui64i_vNV>;
 
 export function GetIntegerui64i_vNV(
   value: GLenum,
@@ -340,52 +316,16 @@ export function GetIntegerui64i_vNV(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBufferAddressRangeNV = new Deno.UnsafeFnPointer(
-    proc("glBufferAddressRangeNV")!,
-    def_glBufferAddressRangeNV,
-  );
-  fn_glVertexFormatNV = new Deno.UnsafeFnPointer(
-    proc("glVertexFormatNV")!,
-    def_glVertexFormatNV,
-  );
-  fn_glNormalFormatNV = new Deno.UnsafeFnPointer(
-    proc("glNormalFormatNV")!,
-    def_glNormalFormatNV,
-  );
-  fn_glColorFormatNV = new Deno.UnsafeFnPointer(
-    proc("glColorFormatNV")!,
-    def_glColorFormatNV,
-  );
-  fn_glIndexFormatNV = new Deno.UnsafeFnPointer(
-    proc("glIndexFormatNV")!,
-    def_glIndexFormatNV,
-  );
-  fn_glTexCoordFormatNV = new Deno.UnsafeFnPointer(
-    proc("glTexCoordFormatNV")!,
-    def_glTexCoordFormatNV,
-  );
-  fn_glEdgeFlagFormatNV = new Deno.UnsafeFnPointer(
-    proc("glEdgeFlagFormatNV")!,
-    def_glEdgeFlagFormatNV,
-  );
-  fn_glSecondaryColorFormatNV = new Deno.UnsafeFnPointer(
-    proc("glSecondaryColorFormatNV")!,
-    def_glSecondaryColorFormatNV,
-  );
-  fn_glFogCoordFormatNV = new Deno.UnsafeFnPointer(
-    proc("glFogCoordFormatNV")!,
-    def_glFogCoordFormatNV,
-  );
-  fn_glVertexAttribFormatNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttribFormatNV")!,
-    def_glVertexAttribFormatNV,
-  );
-  fn_glVertexAttribIFormatNV = new Deno.UnsafeFnPointer(
-    proc("glVertexAttribIFormatNV")!,
-    def_glVertexAttribIFormatNV,
-  );
-  fn_glGetIntegerui64i_vNV = new Deno.UnsafeFnPointer(
-    proc("glGetIntegerui64i_vNV")!,
-    def_glGetIntegerui64i_vNV,
-  );
+  fn_glBufferAddressRangeNV = new Deno.UnsafeFnPointer(proc("glBufferAddressRangeNV")!, def_glBufferAddressRangeNV);
+  fn_glVertexFormatNV = new Deno.UnsafeFnPointer(proc("glVertexFormatNV")!, def_glVertexFormatNV);
+  fn_glNormalFormatNV = new Deno.UnsafeFnPointer(proc("glNormalFormatNV")!, def_glNormalFormatNV);
+  fn_glColorFormatNV = new Deno.UnsafeFnPointer(proc("glColorFormatNV")!, def_glColorFormatNV);
+  fn_glIndexFormatNV = new Deno.UnsafeFnPointer(proc("glIndexFormatNV")!, def_glIndexFormatNV);
+  fn_glTexCoordFormatNV = new Deno.UnsafeFnPointer(proc("glTexCoordFormatNV")!, def_glTexCoordFormatNV);
+  fn_glEdgeFlagFormatNV = new Deno.UnsafeFnPointer(proc("glEdgeFlagFormatNV")!, def_glEdgeFlagFormatNV);
+  fn_glSecondaryColorFormatNV = new Deno.UnsafeFnPointer(proc("glSecondaryColorFormatNV")!, def_glSecondaryColorFormatNV);
+  fn_glFogCoordFormatNV = new Deno.UnsafeFnPointer(proc("glFogCoordFormatNV")!, def_glFogCoordFormatNV);
+  fn_glVertexAttribFormatNV = new Deno.UnsafeFnPointer(proc("glVertexAttribFormatNV")!, def_glVertexAttribFormatNV);
+  fn_glVertexAttribIFormatNV = new Deno.UnsafeFnPointer(proc("glVertexAttribIFormatNV")!, def_glVertexAttribIFormatNV);
+  fn_glGetIntegerui64i_vNV = new Deno.UnsafeFnPointer(proc("glGetIntegerui64i_vNV")!, def_glGetIntegerui64i_vNV);
 }

@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -132,9 +118,7 @@ export const def_glClientActiveTextureARB = {
   result: "void",
 } as const;
 
-let fn_glClientActiveTextureARB!: Deno.UnsafeFnPointer<
-  typeof def_glClientActiveTextureARB
->;
+let fn_glClientActiveTextureARB!: Deno.UnsafeFnPointer<typeof def_glClientActiveTextureARB>;
 
 export function ClientActiveTextureARB(
   texture: GLenum,
@@ -149,9 +133,7 @@ export const def_glMultiTexCoord1dARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1dARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord1dARB
->;
+let fn_glMultiTexCoord1dARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1dARB>;
 
 export function MultiTexCoord1dARB(
   target: GLenum,
@@ -168,9 +150,7 @@ export const def_glMultiTexCoord1dvARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1dvARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord1dvARB
->;
+let fn_glMultiTexCoord1dvARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1dvARB>;
 
 export function MultiTexCoord1dvARB(
   target: GLenum,
@@ -187,9 +167,7 @@ export const def_glMultiTexCoord1fARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1fARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord1fARB
->;
+let fn_glMultiTexCoord1fARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1fARB>;
 
 export function MultiTexCoord1fARB(
   target: GLenum,
@@ -206,9 +184,7 @@ export const def_glMultiTexCoord1fvARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1fvARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord1fvARB
->;
+let fn_glMultiTexCoord1fvARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1fvARB>;
 
 export function MultiTexCoord1fvARB(
   target: GLenum,
@@ -225,9 +201,7 @@ export const def_glMultiTexCoord1iARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1iARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord1iARB
->;
+let fn_glMultiTexCoord1iARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1iARB>;
 
 export function MultiTexCoord1iARB(
   target: GLenum,
@@ -244,9 +218,7 @@ export const def_glMultiTexCoord1ivARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1ivARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord1ivARB
->;
+let fn_glMultiTexCoord1ivARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1ivARB>;
 
 export function MultiTexCoord1ivARB(
   target: GLenum,
@@ -263,9 +235,7 @@ export const def_glMultiTexCoord1sARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1sARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord1sARB
->;
+let fn_glMultiTexCoord1sARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1sARB>;
 
 export function MultiTexCoord1sARB(
   target: GLenum,
@@ -282,9 +252,7 @@ export const def_glMultiTexCoord1svARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord1svARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord1svARB
->;
+let fn_glMultiTexCoord1svARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord1svARB>;
 
 export function MultiTexCoord1svARB(
   target: GLenum,
@@ -301,9 +269,7 @@ export const def_glMultiTexCoord2dARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2dARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord2dARB
->;
+let fn_glMultiTexCoord2dARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2dARB>;
 
 export function MultiTexCoord2dARB(
   target: GLenum,
@@ -322,9 +288,7 @@ export const def_glMultiTexCoord2dvARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2dvARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord2dvARB
->;
+let fn_glMultiTexCoord2dvARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2dvARB>;
 
 export function MultiTexCoord2dvARB(
   target: GLenum,
@@ -341,9 +305,7 @@ export const def_glMultiTexCoord2fARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2fARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord2fARB
->;
+let fn_glMultiTexCoord2fARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2fARB>;
 
 export function MultiTexCoord2fARB(
   target: GLenum,
@@ -362,9 +324,7 @@ export const def_glMultiTexCoord2fvARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2fvARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord2fvARB
->;
+let fn_glMultiTexCoord2fvARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2fvARB>;
 
 export function MultiTexCoord2fvARB(
   target: GLenum,
@@ -381,9 +341,7 @@ export const def_glMultiTexCoord2iARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2iARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord2iARB
->;
+let fn_glMultiTexCoord2iARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2iARB>;
 
 export function MultiTexCoord2iARB(
   target: GLenum,
@@ -402,9 +360,7 @@ export const def_glMultiTexCoord2ivARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2ivARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord2ivARB
->;
+let fn_glMultiTexCoord2ivARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2ivARB>;
 
 export function MultiTexCoord2ivARB(
   target: GLenum,
@@ -421,9 +377,7 @@ export const def_glMultiTexCoord2sARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2sARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord2sARB
->;
+let fn_glMultiTexCoord2sARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2sARB>;
 
 export function MultiTexCoord2sARB(
   target: GLenum,
@@ -442,9 +396,7 @@ export const def_glMultiTexCoord2svARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord2svARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord2svARB
->;
+let fn_glMultiTexCoord2svARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord2svARB>;
 
 export function MultiTexCoord2svARB(
   target: GLenum,
@@ -461,9 +413,7 @@ export const def_glMultiTexCoord3dARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3dARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord3dARB
->;
+let fn_glMultiTexCoord3dARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3dARB>;
 
 export function MultiTexCoord3dARB(
   target: GLenum,
@@ -484,9 +434,7 @@ export const def_glMultiTexCoord3dvARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3dvARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord3dvARB
->;
+let fn_glMultiTexCoord3dvARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3dvARB>;
 
 export function MultiTexCoord3dvARB(
   target: GLenum,
@@ -503,9 +451,7 @@ export const def_glMultiTexCoord3fARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3fARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord3fARB
->;
+let fn_glMultiTexCoord3fARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3fARB>;
 
 export function MultiTexCoord3fARB(
   target: GLenum,
@@ -526,9 +472,7 @@ export const def_glMultiTexCoord3fvARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3fvARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord3fvARB
->;
+let fn_glMultiTexCoord3fvARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3fvARB>;
 
 export function MultiTexCoord3fvARB(
   target: GLenum,
@@ -545,9 +489,7 @@ export const def_glMultiTexCoord3iARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3iARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord3iARB
->;
+let fn_glMultiTexCoord3iARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3iARB>;
 
 export function MultiTexCoord3iARB(
   target: GLenum,
@@ -568,9 +510,7 @@ export const def_glMultiTexCoord3ivARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3ivARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord3ivARB
->;
+let fn_glMultiTexCoord3ivARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3ivARB>;
 
 export function MultiTexCoord3ivARB(
   target: GLenum,
@@ -587,9 +527,7 @@ export const def_glMultiTexCoord3sARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3sARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord3sARB
->;
+let fn_glMultiTexCoord3sARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3sARB>;
 
 export function MultiTexCoord3sARB(
   target: GLenum,
@@ -610,9 +548,7 @@ export const def_glMultiTexCoord3svARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord3svARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord3svARB
->;
+let fn_glMultiTexCoord3svARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord3svARB>;
 
 export function MultiTexCoord3svARB(
   target: GLenum,
@@ -629,9 +565,7 @@ export const def_glMultiTexCoord4dARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4dARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord4dARB
->;
+let fn_glMultiTexCoord4dARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4dARB>;
 
 export function MultiTexCoord4dARB(
   target: GLenum,
@@ -654,9 +588,7 @@ export const def_glMultiTexCoord4dvARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4dvARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord4dvARB
->;
+let fn_glMultiTexCoord4dvARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4dvARB>;
 
 export function MultiTexCoord4dvARB(
   target: GLenum,
@@ -673,9 +605,7 @@ export const def_glMultiTexCoord4fARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4fARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord4fARB
->;
+let fn_glMultiTexCoord4fARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4fARB>;
 
 export function MultiTexCoord4fARB(
   target: GLenum,
@@ -698,9 +628,7 @@ export const def_glMultiTexCoord4fvARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4fvARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord4fvARB
->;
+let fn_glMultiTexCoord4fvARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4fvARB>;
 
 export function MultiTexCoord4fvARB(
   target: GLenum,
@@ -717,9 +645,7 @@ export const def_glMultiTexCoord4iARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4iARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord4iARB
->;
+let fn_glMultiTexCoord4iARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4iARB>;
 
 export function MultiTexCoord4iARB(
   target: GLenum,
@@ -742,9 +668,7 @@ export const def_glMultiTexCoord4ivARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4ivARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord4ivARB
->;
+let fn_glMultiTexCoord4ivARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4ivARB>;
 
 export function MultiTexCoord4ivARB(
   target: GLenum,
@@ -761,9 +685,7 @@ export const def_glMultiTexCoord4sARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4sARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord4sARB
->;
+let fn_glMultiTexCoord4sARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4sARB>;
 
 export function MultiTexCoord4sARB(
   target: GLenum,
@@ -786,9 +708,7 @@ export const def_glMultiTexCoord4svARB = {
   result: "void",
 } as const;
 
-let fn_glMultiTexCoord4svARB!: Deno.UnsafeFnPointer<
-  typeof def_glMultiTexCoord4svARB
->;
+let fn_glMultiTexCoord4svARB!: Deno.UnsafeFnPointer<typeof def_glMultiTexCoord4svARB>;
 
 export function MultiTexCoord4svARB(
   target: GLenum,
@@ -802,140 +722,38 @@ export function MultiTexCoord4svARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glActiveTextureARB = new Deno.UnsafeFnPointer(
-    proc("glActiveTextureARB")!,
-    def_glActiveTextureARB,
-  );
-  fn_glClientActiveTextureARB = new Deno.UnsafeFnPointer(
-    proc("glClientActiveTextureARB")!,
-    def_glClientActiveTextureARB,
-  );
-  fn_glMultiTexCoord1dARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord1dARB")!,
-    def_glMultiTexCoord1dARB,
-  );
-  fn_glMultiTexCoord1dvARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord1dvARB")!,
-    def_glMultiTexCoord1dvARB,
-  );
-  fn_glMultiTexCoord1fARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord1fARB")!,
-    def_glMultiTexCoord1fARB,
-  );
-  fn_glMultiTexCoord1fvARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord1fvARB")!,
-    def_glMultiTexCoord1fvARB,
-  );
-  fn_glMultiTexCoord1iARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord1iARB")!,
-    def_glMultiTexCoord1iARB,
-  );
-  fn_glMultiTexCoord1ivARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord1ivARB")!,
-    def_glMultiTexCoord1ivARB,
-  );
-  fn_glMultiTexCoord1sARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord1sARB")!,
-    def_glMultiTexCoord1sARB,
-  );
-  fn_glMultiTexCoord1svARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord1svARB")!,
-    def_glMultiTexCoord1svARB,
-  );
-  fn_glMultiTexCoord2dARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord2dARB")!,
-    def_glMultiTexCoord2dARB,
-  );
-  fn_glMultiTexCoord2dvARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord2dvARB")!,
-    def_glMultiTexCoord2dvARB,
-  );
-  fn_glMultiTexCoord2fARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord2fARB")!,
-    def_glMultiTexCoord2fARB,
-  );
-  fn_glMultiTexCoord2fvARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord2fvARB")!,
-    def_glMultiTexCoord2fvARB,
-  );
-  fn_glMultiTexCoord2iARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord2iARB")!,
-    def_glMultiTexCoord2iARB,
-  );
-  fn_glMultiTexCoord2ivARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord2ivARB")!,
-    def_glMultiTexCoord2ivARB,
-  );
-  fn_glMultiTexCoord2sARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord2sARB")!,
-    def_glMultiTexCoord2sARB,
-  );
-  fn_glMultiTexCoord2svARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord2svARB")!,
-    def_glMultiTexCoord2svARB,
-  );
-  fn_glMultiTexCoord3dARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord3dARB")!,
-    def_glMultiTexCoord3dARB,
-  );
-  fn_glMultiTexCoord3dvARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord3dvARB")!,
-    def_glMultiTexCoord3dvARB,
-  );
-  fn_glMultiTexCoord3fARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord3fARB")!,
-    def_glMultiTexCoord3fARB,
-  );
-  fn_glMultiTexCoord3fvARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord3fvARB")!,
-    def_glMultiTexCoord3fvARB,
-  );
-  fn_glMultiTexCoord3iARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord3iARB")!,
-    def_glMultiTexCoord3iARB,
-  );
-  fn_glMultiTexCoord3ivARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord3ivARB")!,
-    def_glMultiTexCoord3ivARB,
-  );
-  fn_glMultiTexCoord3sARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord3sARB")!,
-    def_glMultiTexCoord3sARB,
-  );
-  fn_glMultiTexCoord3svARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord3svARB")!,
-    def_glMultiTexCoord3svARB,
-  );
-  fn_glMultiTexCoord4dARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord4dARB")!,
-    def_glMultiTexCoord4dARB,
-  );
-  fn_glMultiTexCoord4dvARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord4dvARB")!,
-    def_glMultiTexCoord4dvARB,
-  );
-  fn_glMultiTexCoord4fARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord4fARB")!,
-    def_glMultiTexCoord4fARB,
-  );
-  fn_glMultiTexCoord4fvARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord4fvARB")!,
-    def_glMultiTexCoord4fvARB,
-  );
-  fn_glMultiTexCoord4iARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord4iARB")!,
-    def_glMultiTexCoord4iARB,
-  );
-  fn_glMultiTexCoord4ivARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord4ivARB")!,
-    def_glMultiTexCoord4ivARB,
-  );
-  fn_glMultiTexCoord4sARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord4sARB")!,
-    def_glMultiTexCoord4sARB,
-  );
-  fn_glMultiTexCoord4svARB = new Deno.UnsafeFnPointer(
-    proc("glMultiTexCoord4svARB")!,
-    def_glMultiTexCoord4svARB,
-  );
+  fn_glActiveTextureARB = new Deno.UnsafeFnPointer(proc("glActiveTextureARB")!, def_glActiveTextureARB);
+  fn_glClientActiveTextureARB = new Deno.UnsafeFnPointer(proc("glClientActiveTextureARB")!, def_glClientActiveTextureARB);
+  fn_glMultiTexCoord1dARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1dARB")!, def_glMultiTexCoord1dARB);
+  fn_glMultiTexCoord1dvARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1dvARB")!, def_glMultiTexCoord1dvARB);
+  fn_glMultiTexCoord1fARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1fARB")!, def_glMultiTexCoord1fARB);
+  fn_glMultiTexCoord1fvARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1fvARB")!, def_glMultiTexCoord1fvARB);
+  fn_glMultiTexCoord1iARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1iARB")!, def_glMultiTexCoord1iARB);
+  fn_glMultiTexCoord1ivARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1ivARB")!, def_glMultiTexCoord1ivARB);
+  fn_glMultiTexCoord1sARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1sARB")!, def_glMultiTexCoord1sARB);
+  fn_glMultiTexCoord1svARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord1svARB")!, def_glMultiTexCoord1svARB);
+  fn_glMultiTexCoord2dARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2dARB")!, def_glMultiTexCoord2dARB);
+  fn_glMultiTexCoord2dvARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2dvARB")!, def_glMultiTexCoord2dvARB);
+  fn_glMultiTexCoord2fARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2fARB")!, def_glMultiTexCoord2fARB);
+  fn_glMultiTexCoord2fvARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2fvARB")!, def_glMultiTexCoord2fvARB);
+  fn_glMultiTexCoord2iARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2iARB")!, def_glMultiTexCoord2iARB);
+  fn_glMultiTexCoord2ivARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2ivARB")!, def_glMultiTexCoord2ivARB);
+  fn_glMultiTexCoord2sARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2sARB")!, def_glMultiTexCoord2sARB);
+  fn_glMultiTexCoord2svARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord2svARB")!, def_glMultiTexCoord2svARB);
+  fn_glMultiTexCoord3dARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3dARB")!, def_glMultiTexCoord3dARB);
+  fn_glMultiTexCoord3dvARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3dvARB")!, def_glMultiTexCoord3dvARB);
+  fn_glMultiTexCoord3fARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3fARB")!, def_glMultiTexCoord3fARB);
+  fn_glMultiTexCoord3fvARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3fvARB")!, def_glMultiTexCoord3fvARB);
+  fn_glMultiTexCoord3iARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3iARB")!, def_glMultiTexCoord3iARB);
+  fn_glMultiTexCoord3ivARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3ivARB")!, def_glMultiTexCoord3ivARB);
+  fn_glMultiTexCoord3sARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3sARB")!, def_glMultiTexCoord3sARB);
+  fn_glMultiTexCoord3svARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord3svARB")!, def_glMultiTexCoord3svARB);
+  fn_glMultiTexCoord4dARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4dARB")!, def_glMultiTexCoord4dARB);
+  fn_glMultiTexCoord4dvARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4dvARB")!, def_glMultiTexCoord4dvARB);
+  fn_glMultiTexCoord4fARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4fARB")!, def_glMultiTexCoord4fARB);
+  fn_glMultiTexCoord4fvARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4fvARB")!, def_glMultiTexCoord4fvARB);
+  fn_glMultiTexCoord4iARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4iARB")!, def_glMultiTexCoord4iARB);
+  fn_glMultiTexCoord4ivARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4ivARB")!, def_glMultiTexCoord4ivARB);
+  fn_glMultiTexCoord4sARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4sARB")!, def_glMultiTexCoord4sARB);
+  fn_glMultiTexCoord4svARB = new Deno.UnsafeFnPointer(proc("glMultiTexCoord4svARB")!, def_glMultiTexCoord4svARB);
 }

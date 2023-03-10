@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -132,9 +118,7 @@ export const def_glGetProgramInterfaceiv = {
   result: "void",
 } as const;
 
-let fn_glGetProgramInterfaceiv!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramInterfaceiv
->;
+let fn_glGetProgramInterfaceiv!: Deno.UnsafeFnPointer<typeof def_glGetProgramInterfaceiv>;
 
 export function GetProgramInterfaceiv(
   program: GLuint,
@@ -155,9 +139,7 @@ export const def_glGetProgramResourceIndex = {
   result: "u32",
 } as const;
 
-let fn_glGetProgramResourceIndex!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramResourceIndex
->;
+let fn_glGetProgramResourceIndex!: Deno.UnsafeFnPointer<typeof def_glGetProgramResourceIndex>;
 
 export function GetProgramResourceIndex(
   program: GLuint,
@@ -176,9 +158,7 @@ export const def_glGetProgramResourceName = {
   result: "void",
 } as const;
 
-let fn_glGetProgramResourceName!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramResourceName
->;
+let fn_glGetProgramResourceName!: Deno.UnsafeFnPointer<typeof def_glGetProgramResourceName>;
 
 export function GetProgramResourceName(
   program: GLuint,
@@ -203,9 +183,7 @@ export const def_glGetProgramResourceiv = {
   result: "void",
 } as const;
 
-let fn_glGetProgramResourceiv!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramResourceiv
->;
+let fn_glGetProgramResourceiv!: Deno.UnsafeFnPointer<typeof def_glGetProgramResourceiv>;
 
 export function GetProgramResourceiv(
   program: GLuint,
@@ -234,9 +212,7 @@ export const def_glGetProgramResourceLocation = {
   result: "i32",
 } as const;
 
-let fn_glGetProgramResourceLocation!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramResourceLocation
->;
+let fn_glGetProgramResourceLocation!: Deno.UnsafeFnPointer<typeof def_glGetProgramResourceLocation>;
 
 export function GetProgramResourceLocation(
   program: GLuint,
@@ -255,9 +231,7 @@ export const def_glGetProgramResourceLocationIndex = {
   result: "i32",
 } as const;
 
-let fn_glGetProgramResourceLocationIndex!: Deno.UnsafeFnPointer<
-  typeof def_glGetProgramResourceLocationIndex
->;
+let fn_glGetProgramResourceLocationIndex!: Deno.UnsafeFnPointer<typeof def_glGetProgramResourceLocationIndex>;
 
 export function GetProgramResourceLocationIndex(
   program: GLuint,
@@ -273,28 +247,10 @@ export function GetProgramResourceLocationIndex(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetProgramInterfaceiv = new Deno.UnsafeFnPointer(
-    proc("glGetProgramInterfaceiv")!,
-    def_glGetProgramInterfaceiv,
-  );
-  fn_glGetProgramResourceIndex = new Deno.UnsafeFnPointer(
-    proc("glGetProgramResourceIndex")!,
-    def_glGetProgramResourceIndex,
-  );
-  fn_glGetProgramResourceName = new Deno.UnsafeFnPointer(
-    proc("glGetProgramResourceName")!,
-    def_glGetProgramResourceName,
-  );
-  fn_glGetProgramResourceiv = new Deno.UnsafeFnPointer(
-    proc("glGetProgramResourceiv")!,
-    def_glGetProgramResourceiv,
-  );
-  fn_glGetProgramResourceLocation = new Deno.UnsafeFnPointer(
-    proc("glGetProgramResourceLocation")!,
-    def_glGetProgramResourceLocation,
-  );
-  fn_glGetProgramResourceLocationIndex = new Deno.UnsafeFnPointer(
-    proc("glGetProgramResourceLocationIndex")!,
-    def_glGetProgramResourceLocationIndex,
-  );
+  fn_glGetProgramInterfaceiv = new Deno.UnsafeFnPointer(proc("glGetProgramInterfaceiv")!, def_glGetProgramInterfaceiv);
+  fn_glGetProgramResourceIndex = new Deno.UnsafeFnPointer(proc("glGetProgramResourceIndex")!, def_glGetProgramResourceIndex);
+  fn_glGetProgramResourceName = new Deno.UnsafeFnPointer(proc("glGetProgramResourceName")!, def_glGetProgramResourceName);
+  fn_glGetProgramResourceiv = new Deno.UnsafeFnPointer(proc("glGetProgramResourceiv")!, def_glGetProgramResourceiv);
+  fn_glGetProgramResourceLocation = new Deno.UnsafeFnPointer(proc("glGetProgramResourceLocation")!, def_glGetProgramResourceLocation);
+  fn_glGetProgramResourceLocationIndex = new Deno.UnsafeFnPointer(proc("glGetProgramResourceLocationIndex")!, def_glGetProgramResourceLocationIndex);
 }

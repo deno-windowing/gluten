@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -93,9 +79,7 @@ export const def_glGetUnsignedBytevEXT = {
   result: "void",
 } as const;
 
-let fn_glGetUnsignedBytevEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetUnsignedBytevEXT
->;
+let fn_glGetUnsignedBytevEXT!: Deno.UnsafeFnPointer<typeof def_glGetUnsignedBytevEXT>;
 
 export function GetUnsignedBytevEXT(
   pname: GLenum,
@@ -112,9 +96,7 @@ export const def_glGetUnsignedBytei_vEXT = {
   result: "void",
 } as const;
 
-let fn_glGetUnsignedBytei_vEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetUnsignedBytei_vEXT
->;
+let fn_glGetUnsignedBytei_vEXT!: Deno.UnsafeFnPointer<typeof def_glGetUnsignedBytei_vEXT>;
 
 export function GetUnsignedBytei_vEXT(
   target: GLenum,
@@ -133,9 +115,7 @@ export const def_glDeleteMemoryObjectsEXT = {
   result: "void",
 } as const;
 
-let fn_glDeleteMemoryObjectsEXT!: Deno.UnsafeFnPointer<
-  typeof def_glDeleteMemoryObjectsEXT
->;
+let fn_glDeleteMemoryObjectsEXT!: Deno.UnsafeFnPointer<typeof def_glDeleteMemoryObjectsEXT>;
 
 export function DeleteMemoryObjectsEXT(
   n: GLsizei,
@@ -152,9 +132,7 @@ export const def_glIsMemoryObjectEXT = {
   result: "u8",
 } as const;
 
-let fn_glIsMemoryObjectEXT!: Deno.UnsafeFnPointer<
-  typeof def_glIsMemoryObjectEXT
->;
+let fn_glIsMemoryObjectEXT!: Deno.UnsafeFnPointer<typeof def_glIsMemoryObjectEXT>;
 
 export function IsMemoryObjectEXT(
   memoryObject: GLuint,
@@ -169,9 +147,7 @@ export const def_glCreateMemoryObjectsEXT = {
   result: "void",
 } as const;
 
-let fn_glCreateMemoryObjectsEXT!: Deno.UnsafeFnPointer<
-  typeof def_glCreateMemoryObjectsEXT
->;
+let fn_glCreateMemoryObjectsEXT!: Deno.UnsafeFnPointer<typeof def_glCreateMemoryObjectsEXT>;
 
 export function CreateMemoryObjectsEXT(
   n: GLsizei,
@@ -188,9 +164,7 @@ export const def_glMemoryObjectParameterivEXT = {
   result: "void",
 } as const;
 
-let fn_glMemoryObjectParameterivEXT!: Deno.UnsafeFnPointer<
-  typeof def_glMemoryObjectParameterivEXT
->;
+let fn_glMemoryObjectParameterivEXT!: Deno.UnsafeFnPointer<typeof def_glMemoryObjectParameterivEXT>;
 
 export function MemoryObjectParameterivEXT(
   memoryObject: GLuint,
@@ -209,9 +183,7 @@ export const def_glGetMemoryObjectParameterivEXT = {
   result: "void",
 } as const;
 
-let fn_glGetMemoryObjectParameterivEXT!: Deno.UnsafeFnPointer<
-  typeof def_glGetMemoryObjectParameterivEXT
->;
+let fn_glGetMemoryObjectParameterivEXT!: Deno.UnsafeFnPointer<typeof def_glGetMemoryObjectParameterivEXT>;
 
 export function GetMemoryObjectParameterivEXT(
   memoryObject: GLuint,
@@ -230,9 +202,7 @@ export const def_glTexStorageMem2DEXT = {
   result: "void",
 } as const;
 
-let fn_glTexStorageMem2DEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTexStorageMem2DEXT
->;
+let fn_glTexStorageMem2DEXT!: Deno.UnsafeFnPointer<typeof def_glTexStorageMem2DEXT>;
 
 export function TexStorageMem2DEXT(
   target: GLenum,
@@ -259,9 +229,7 @@ export const def_glTexStorageMem2DMultisampleEXT = {
   result: "void",
 } as const;
 
-let fn_glTexStorageMem2DMultisampleEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTexStorageMem2DMultisampleEXT
->;
+let fn_glTexStorageMem2DMultisampleEXT!: Deno.UnsafeFnPointer<typeof def_glTexStorageMem2DMultisampleEXT>;
 
 export function TexStorageMem2DMultisampleEXT(
   target: GLenum,
@@ -290,9 +258,7 @@ export const def_glTexStorageMem3DEXT = {
   result: "void",
 } as const;
 
-let fn_glTexStorageMem3DEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTexStorageMem3DEXT
->;
+let fn_glTexStorageMem3DEXT!: Deno.UnsafeFnPointer<typeof def_glTexStorageMem3DEXT>;
 
 export function TexStorageMem3DEXT(
   target: GLenum,
@@ -321,9 +287,7 @@ export const def_glTexStorageMem3DMultisampleEXT = {
   result: "void",
 } as const;
 
-let fn_glTexStorageMem3DMultisampleEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTexStorageMem3DMultisampleEXT
->;
+let fn_glTexStorageMem3DMultisampleEXT!: Deno.UnsafeFnPointer<typeof def_glTexStorageMem3DMultisampleEXT>;
 
 export function TexStorageMem3DMultisampleEXT(
   target: GLenum,
@@ -354,9 +318,7 @@ export const def_glBufferStorageMemEXT = {
   result: "void",
 } as const;
 
-let fn_glBufferStorageMemEXT!: Deno.UnsafeFnPointer<
-  typeof def_glBufferStorageMemEXT
->;
+let fn_glBufferStorageMemEXT!: Deno.UnsafeFnPointer<typeof def_glBufferStorageMemEXT>;
 
 export function BufferStorageMemEXT(
   target: GLenum,
@@ -377,9 +339,7 @@ export const def_glTextureStorageMem2DEXT = {
   result: "void",
 } as const;
 
-let fn_glTextureStorageMem2DEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTextureStorageMem2DEXT
->;
+let fn_glTextureStorageMem2DEXT!: Deno.UnsafeFnPointer<typeof def_glTextureStorageMem2DEXT>;
 
 export function TextureStorageMem2DEXT(
   texture: GLuint,
@@ -406,9 +366,7 @@ export const def_glTextureStorageMem2DMultisampleEXT = {
   result: "void",
 } as const;
 
-let fn_glTextureStorageMem2DMultisampleEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTextureStorageMem2DMultisampleEXT
->;
+let fn_glTextureStorageMem2DMultisampleEXT!: Deno.UnsafeFnPointer<typeof def_glTextureStorageMem2DMultisampleEXT>;
 
 export function TextureStorageMem2DMultisampleEXT(
   texture: GLuint,
@@ -437,9 +395,7 @@ export const def_glTextureStorageMem3DEXT = {
   result: "void",
 } as const;
 
-let fn_glTextureStorageMem3DEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTextureStorageMem3DEXT
->;
+let fn_glTextureStorageMem3DEXT!: Deno.UnsafeFnPointer<typeof def_glTextureStorageMem3DEXT>;
 
 export function TextureStorageMem3DEXT(
   texture: GLuint,
@@ -468,9 +424,7 @@ export const def_glTextureStorageMem3DMultisampleEXT = {
   result: "void",
 } as const;
 
-let fn_glTextureStorageMem3DMultisampleEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTextureStorageMem3DMultisampleEXT
->;
+let fn_glTextureStorageMem3DMultisampleEXT!: Deno.UnsafeFnPointer<typeof def_glTextureStorageMem3DMultisampleEXT>;
 
 export function TextureStorageMem3DMultisampleEXT(
   texture: GLuint,
@@ -501,9 +455,7 @@ export const def_glNamedBufferStorageMemEXT = {
   result: "void",
 } as const;
 
-let fn_glNamedBufferStorageMemEXT!: Deno.UnsafeFnPointer<
-  typeof def_glNamedBufferStorageMemEXT
->;
+let fn_glNamedBufferStorageMemEXT!: Deno.UnsafeFnPointer<typeof def_glNamedBufferStorageMemEXT>;
 
 export function NamedBufferStorageMemEXT(
   buffer: GLuint,
@@ -524,9 +476,7 @@ export const def_glTexStorageMem1DEXT = {
   result: "void",
 } as const;
 
-let fn_glTexStorageMem1DEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTexStorageMem1DEXT
->;
+let fn_glTexStorageMem1DEXT!: Deno.UnsafeFnPointer<typeof def_glTexStorageMem1DEXT>;
 
 export function TexStorageMem1DEXT(
   target: GLenum,
@@ -551,9 +501,7 @@ export const def_glTextureStorageMem1DEXT = {
   result: "void",
 } as const;
 
-let fn_glTextureStorageMem1DEXT!: Deno.UnsafeFnPointer<
-  typeof def_glTextureStorageMem1DEXT
->;
+let fn_glTextureStorageMem1DEXT!: Deno.UnsafeFnPointer<typeof def_glTextureStorageMem1DEXT>;
 
 export function TextureStorageMem1DEXT(
   texture: GLuint,
@@ -575,80 +523,23 @@ export function TextureStorageMem1DEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetUnsignedBytevEXT = new Deno.UnsafeFnPointer(
-    proc("glGetUnsignedBytevEXT")!,
-    def_glGetUnsignedBytevEXT,
-  );
-  fn_glGetUnsignedBytei_vEXT = new Deno.UnsafeFnPointer(
-    proc("glGetUnsignedBytei_vEXT")!,
-    def_glGetUnsignedBytei_vEXT,
-  );
-  fn_glDeleteMemoryObjectsEXT = new Deno.UnsafeFnPointer(
-    proc("glDeleteMemoryObjectsEXT")!,
-    def_glDeleteMemoryObjectsEXT,
-  );
-  fn_glIsMemoryObjectEXT = new Deno.UnsafeFnPointer(
-    proc("glIsMemoryObjectEXT")!,
-    def_glIsMemoryObjectEXT,
-  );
-  fn_glCreateMemoryObjectsEXT = new Deno.UnsafeFnPointer(
-    proc("glCreateMemoryObjectsEXT")!,
-    def_glCreateMemoryObjectsEXT,
-  );
-  fn_glMemoryObjectParameterivEXT = new Deno.UnsafeFnPointer(
-    proc("glMemoryObjectParameterivEXT")!,
-    def_glMemoryObjectParameterivEXT,
-  );
-  fn_glGetMemoryObjectParameterivEXT = new Deno.UnsafeFnPointer(
-    proc("glGetMemoryObjectParameterivEXT")!,
-    def_glGetMemoryObjectParameterivEXT,
-  );
-  fn_glTexStorageMem2DEXT = new Deno.UnsafeFnPointer(
-    proc("glTexStorageMem2DEXT")!,
-    def_glTexStorageMem2DEXT,
-  );
-  fn_glTexStorageMem2DMultisampleEXT = new Deno.UnsafeFnPointer(
-    proc("glTexStorageMem2DMultisampleEXT")!,
-    def_glTexStorageMem2DMultisampleEXT,
-  );
-  fn_glTexStorageMem3DEXT = new Deno.UnsafeFnPointer(
-    proc("glTexStorageMem3DEXT")!,
-    def_glTexStorageMem3DEXT,
-  );
-  fn_glTexStorageMem3DMultisampleEXT = new Deno.UnsafeFnPointer(
-    proc("glTexStorageMem3DMultisampleEXT")!,
-    def_glTexStorageMem3DMultisampleEXT,
-  );
-  fn_glBufferStorageMemEXT = new Deno.UnsafeFnPointer(
-    proc("glBufferStorageMemEXT")!,
-    def_glBufferStorageMemEXT,
-  );
-  fn_glTextureStorageMem2DEXT = new Deno.UnsafeFnPointer(
-    proc("glTextureStorageMem2DEXT")!,
-    def_glTextureStorageMem2DEXT,
-  );
-  fn_glTextureStorageMem2DMultisampleEXT = new Deno.UnsafeFnPointer(
-    proc("glTextureStorageMem2DMultisampleEXT")!,
-    def_glTextureStorageMem2DMultisampleEXT,
-  );
-  fn_glTextureStorageMem3DEXT = new Deno.UnsafeFnPointer(
-    proc("glTextureStorageMem3DEXT")!,
-    def_glTextureStorageMem3DEXT,
-  );
-  fn_glTextureStorageMem3DMultisampleEXT = new Deno.UnsafeFnPointer(
-    proc("glTextureStorageMem3DMultisampleEXT")!,
-    def_glTextureStorageMem3DMultisampleEXT,
-  );
-  fn_glNamedBufferStorageMemEXT = new Deno.UnsafeFnPointer(
-    proc("glNamedBufferStorageMemEXT")!,
-    def_glNamedBufferStorageMemEXT,
-  );
-  fn_glTexStorageMem1DEXT = new Deno.UnsafeFnPointer(
-    proc("glTexStorageMem1DEXT")!,
-    def_glTexStorageMem1DEXT,
-  );
-  fn_glTextureStorageMem1DEXT = new Deno.UnsafeFnPointer(
-    proc("glTextureStorageMem1DEXT")!,
-    def_glTextureStorageMem1DEXT,
-  );
+  fn_glGetUnsignedBytevEXT = new Deno.UnsafeFnPointer(proc("glGetUnsignedBytevEXT")!, def_glGetUnsignedBytevEXT);
+  fn_glGetUnsignedBytei_vEXT = new Deno.UnsafeFnPointer(proc("glGetUnsignedBytei_vEXT")!, def_glGetUnsignedBytei_vEXT);
+  fn_glDeleteMemoryObjectsEXT = new Deno.UnsafeFnPointer(proc("glDeleteMemoryObjectsEXT")!, def_glDeleteMemoryObjectsEXT);
+  fn_glIsMemoryObjectEXT = new Deno.UnsafeFnPointer(proc("glIsMemoryObjectEXT")!, def_glIsMemoryObjectEXT);
+  fn_glCreateMemoryObjectsEXT = new Deno.UnsafeFnPointer(proc("glCreateMemoryObjectsEXT")!, def_glCreateMemoryObjectsEXT);
+  fn_glMemoryObjectParameterivEXT = new Deno.UnsafeFnPointer(proc("glMemoryObjectParameterivEXT")!, def_glMemoryObjectParameterivEXT);
+  fn_glGetMemoryObjectParameterivEXT = new Deno.UnsafeFnPointer(proc("glGetMemoryObjectParameterivEXT")!, def_glGetMemoryObjectParameterivEXT);
+  fn_glTexStorageMem2DEXT = new Deno.UnsafeFnPointer(proc("glTexStorageMem2DEXT")!, def_glTexStorageMem2DEXT);
+  fn_glTexStorageMem2DMultisampleEXT = new Deno.UnsafeFnPointer(proc("glTexStorageMem2DMultisampleEXT")!, def_glTexStorageMem2DMultisampleEXT);
+  fn_glTexStorageMem3DEXT = new Deno.UnsafeFnPointer(proc("glTexStorageMem3DEXT")!, def_glTexStorageMem3DEXT);
+  fn_glTexStorageMem3DMultisampleEXT = new Deno.UnsafeFnPointer(proc("glTexStorageMem3DMultisampleEXT")!, def_glTexStorageMem3DMultisampleEXT);
+  fn_glBufferStorageMemEXT = new Deno.UnsafeFnPointer(proc("glBufferStorageMemEXT")!, def_glBufferStorageMemEXT);
+  fn_glTextureStorageMem2DEXT = new Deno.UnsafeFnPointer(proc("glTextureStorageMem2DEXT")!, def_glTextureStorageMem2DEXT);
+  fn_glTextureStorageMem2DMultisampleEXT = new Deno.UnsafeFnPointer(proc("glTextureStorageMem2DMultisampleEXT")!, def_glTextureStorageMem2DMultisampleEXT);
+  fn_glTextureStorageMem3DEXT = new Deno.UnsafeFnPointer(proc("glTextureStorageMem3DEXT")!, def_glTextureStorageMem3DEXT);
+  fn_glTextureStorageMem3DMultisampleEXT = new Deno.UnsafeFnPointer(proc("glTextureStorageMem3DMultisampleEXT")!, def_glTextureStorageMem3DMultisampleEXT);
+  fn_glNamedBufferStorageMemEXT = new Deno.UnsafeFnPointer(proc("glNamedBufferStorageMemEXT")!, def_glNamedBufferStorageMemEXT);
+  fn_glTexStorageMem1DEXT = new Deno.UnsafeFnPointer(proc("glTexStorageMem1DEXT")!, def_glTexStorageMem1DEXT);
+  fn_glTextureStorageMem1DEXT = new Deno.UnsafeFnPointer(proc("glTextureStorageMem1DEXT")!, def_glTextureStorageMem1DEXT);
 }

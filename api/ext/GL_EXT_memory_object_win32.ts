@@ -1,20 +1,8 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray =
-  | Int8Array
-  | Uint8Array
-  | Int16Array
-  | Uint16Array
-  | Int32Array
-  | Uint32Array
-  | Float32Array
-  | Float64Array;
-const isTypedArray = (arr: unknown) =>
-  arr instanceof Int8Array || arr instanceof Uint8Array ||
-  arr instanceof Int16Array || arr instanceof Uint16Array ||
-  arr instanceof Int32Array || arr instanceof Uint32Array ||
-  arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
+const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -24,9 +12,7 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(
-      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
-    );
+    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
   }
 }
 
@@ -91,9 +77,7 @@ export const def_glImportMemoryWin32HandleEXT = {
   result: "void",
 } as const;
 
-let fn_glImportMemoryWin32HandleEXT!: Deno.UnsafeFnPointer<
-  typeof def_glImportMemoryWin32HandleEXT
->;
+let fn_glImportMemoryWin32HandleEXT!: Deno.UnsafeFnPointer<typeof def_glImportMemoryWin32HandleEXT>;
 
 export function ImportMemoryWin32HandleEXT(
   memory: GLuint,
@@ -114,9 +98,7 @@ export const def_glImportMemoryWin32NameEXT = {
   result: "void",
 } as const;
 
-let fn_glImportMemoryWin32NameEXT!: Deno.UnsafeFnPointer<
-  typeof def_glImportMemoryWin32NameEXT
->;
+let fn_glImportMemoryWin32NameEXT!: Deno.UnsafeFnPointer<typeof def_glImportMemoryWin32NameEXT>;
 
 export function ImportMemoryWin32NameEXT(
   memory: GLuint,
@@ -134,12 +116,6 @@ export function ImportMemoryWin32NameEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glImportMemoryWin32HandleEXT = new Deno.UnsafeFnPointer(
-    proc("glImportMemoryWin32HandleEXT")!,
-    def_glImportMemoryWin32HandleEXT,
-  );
-  fn_glImportMemoryWin32NameEXT = new Deno.UnsafeFnPointer(
-    proc("glImportMemoryWin32NameEXT")!,
-    def_glImportMemoryWin32NameEXT,
-  );
+  fn_glImportMemoryWin32HandleEXT = new Deno.UnsafeFnPointer(proc("glImportMemoryWin32HandleEXT")!, def_glImportMemoryWin32HandleEXT);
+  fn_glImportMemoryWin32NameEXT = new Deno.UnsafeFnPointer(proc("glImportMemoryWin32NameEXT")!, def_glImportMemoryWin32NameEXT);
 }
