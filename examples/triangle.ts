@@ -2,7 +2,7 @@ import {
   createWindow,
   getProcAddress,
   mainloop,
-} from "https://deno.land/x/dwm@0.3.2/mod.ts";
+} from "https://deno.land/x/dwm@0.3.3/mod.ts";
 import * as gl from "../api/gles23.2.ts";
 
 const window = createWindow({
