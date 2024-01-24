@@ -27,7 +27,7 @@ class Game extends World {
     camera.setTarget(BABYLON.Vector3.Zero());
 
     // This attaches the camera to the canvas
-    camera.attachControl(window, true);
+    camera.attachControl(globalThis, true);
 
     // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
     const light = new BABYLON.HemisphericLight(

@@ -10,38 +10,38 @@ import {
 import "./renderingContext.ts";
 
 export class WebGLCanvas extends HTMLElement {
-  window: DwmWindow;
+  win: DwmWindow;
   #context: WebGLRenderingContext;
 
   constructor(options: CreateWindowOptions) {
     super();
-    this.window = createWindow(Object.assign({
+    this.win = createWindow(Object.assign({
       glVersion: [2, 0],
       gles: true,
     }, options));
-    this.#context = new WebGLRenderingContext(this.window);
+    this.#context = new WebGLRenderingContext(this.win);
   }
 
   get width() {
-    const size = this.window.size;
+    const size = this.win.size;
     return size.width;
   }
 
   set width(width: number) {
-    const size = this.window.size;
+    const size = this.win.size;
     size.width = width;
-    this.window.size = size;
+    this.win.size = size;
   }
 
   get height() {
-    const size = this.window.size;
+    const size = this.win.size;
     return size.height;
   }
 
   set height(height: number) {
-    const size = this.window.size;
+    const size = this.win.size;
     size.height = height;
-    this.window.size = size;
+    this.win.size = size;
   }
 
   getContext(contextId: "webgl"): WebGLRenderingContext;
@@ -77,7 +77,7 @@ export class WebGLCanvas extends HTMLElement {
 
   async run() {
     await mainloop(() => {
-      this.window.swapBuffers();
+      this.win.swapBuffers();
     }, false);
   }
 }

@@ -23,7 +23,7 @@ callback ([DWM](https://github.com/deno-windowing/dwm) handles both).
 
 ```ts
 // GLES2 3.2 API
-import * as gl from "https://deno.land/x/gluten@0.1.1/api/gles23.2.ts";
+import * as gl from "https://deno.land/x/gluten@0.1.2/api/gles23.2.ts";
 
 // Initialize function pointers
 gl.load(yourGetProcAddress);
@@ -53,10 +53,10 @@ Extensions:
 ## Maintainers
 
 - Dj ([@DjDeveloperr](https://github.com/DjDeveloperr))
-- Loading ([@load1n9](https://github.com/load1n9))
+- Dean Srebnik ([@load1n9](https://github.com/load1n9))
 
 ## License
 
 [Apache-2.0](./LICENSE) licensed.
 
-Copyright 2023 © The Deno Windowing Team
+Copyright 2024 © The Deno Windowing Team
