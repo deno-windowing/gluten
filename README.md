@@ -23,7 +23,7 @@ callback ([DWM](https://github.com/deno-windowing/dwm) handles both).
 
 ```ts
 // GLES2 3.2 API
-import * as gl from "https://deno.land/x/gluten@0.1.2/api/gles23.2.ts";
+import * as gl from "https://deno.land/x/gluten@0.1.8/api/gles23.2.ts";
 
 // Initialize function pointers
 gl.load(yourGetProcAddress);
@@ -38,11 +38,10 @@ context creation.
 
 Check [./examples](./examples/) for some usage examples.
 
-Since this module depends on unstable FFI API, you need to pass `--unstable`
-along with `--allow-ffi`.
+Since this module depends on unstable FFI API, you need to pass `--unstable-ffi`.
 
 ```sh
-deno run --unstable --allow-ffi <file>
+deno run -A --unstable-ffi <file>
 ```
 
 Extensions:

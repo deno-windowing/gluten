@@ -11,7 +11,7 @@ import "https://preview.babylonjs.com/proceduralTexturesLibrary/babylonjs.proced
 import "https://preview.babylonjs.com/postProcessesLibrary/babylonjs.postProcess.min.js";
 import "https://preview.babylonjs.com/loaders/babylonjs.loaders.js";
 import "https://preview.babylonjs.com/serializers/babylonjs.serializers.min.js";
-import { CreateWindowOptions } from "../src/webgl/deps.ts";
+import type { CreateWindowOptions } from "../src/webgl/deps.ts";
 
 BABYLON.SceneLoader.ShowLoadingScreen = false;
 

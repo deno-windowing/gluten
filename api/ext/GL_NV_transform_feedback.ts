@@ -86,11 +86,11 @@ export const SEPARATE_ATTRIBS_NV = 0x8c8d;
 export const TRANSFORM_FEEDBACK_BUFFER_NV = 0x8c8e;
 export const TRANSFORM_FEEDBACK_BUFFER_BINDING_NV = 0x8c8f;
 export const LAYER_NV = 0x8daa;
-export const NEXT_BUFFER_NV = 0x-2;
-export const SKIP_COMPONENTS4_NV = 0x-3;
-export const SKIP_COMPONENTS3_NV = 0x-4;
-export const SKIP_COMPONENTS2_NV = 0x-5;
-export const SKIP_COMPONENTS1_NV = 0x-6;
+export const NEXT_BUFFER_NV = 2;
+export const SKIP_COMPONENTS4_NV = 3;
+export const SKIP_COMPONENTS3_NV = 4;
+export const SKIP_COMPONENTS2_NV = 5;
+export const SKIP_COMPONENTS1_NV = 6;
 
 /// Commands
 

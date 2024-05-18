@@ -312,7 +312,7 @@ let fn_glSwizzleEXT!: Deno.UnsafeFnPointer<typeof def_glSwizzleEXT>;
 
 export function SwizzleEXT(
   res: GLuint,
-  in: GLuint,
+  inn: GLuint,
   outX: GLenum,
   outY: GLenum,
   outZ: GLenum,
@@ -320,7 +320,7 @@ export function SwizzleEXT(
 ): void {
   fn_glSwizzleEXT.call(
     res,
-    in,
+    inn,
     outX,
     outY,
     outZ,
@@ -337,7 +337,7 @@ let fn_glWriteMaskEXT!: Deno.UnsafeFnPointer<typeof def_glWriteMaskEXT>;
 
 export function WriteMaskEXT(
   res: GLuint,
-  in: GLuint,
+  inn: GLuint,
   outX: GLenum,
   outY: GLenum,
   outZ: GLenum,
@@ -345,7 +345,7 @@ export function WriteMaskEXT(
 ): void {
   fn_glWriteMaskEXT.call(
     res,
-    in,
+    inn,
     outX,
     outY,
     outZ,
