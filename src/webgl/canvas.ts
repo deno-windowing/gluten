@@ -3,8 +3,8 @@
 import { HTMLElement } from "../dom/element.ts";
 import {
   createWindow,
-  CreateWindowOptions,
-  DwmWindow,
+  type CreateWindowOptions,
+  type DwmWindow,
   mainloop,
 } from "./deps.ts";
 import "./renderingContext.ts";
