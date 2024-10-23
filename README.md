@@ -38,7 +38,8 @@ context creation.
 
 Check [./examples](./examples/) for some usage examples.
 
-Since this module depends on unstable FFI API, you need to pass `--unstable-ffi`.
+Since this module depends on unstable FFI API, you need to pass
+`--unstable-ffi`.
 
 ```sh
 deno run -A --unstable-ffi <file>

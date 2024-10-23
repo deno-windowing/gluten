@@ -22,7 +22,7 @@ export class WebGLCanvas extends HTMLElement {
     this.#context = new WebGLRenderingContext(this.win);
   }
 
-  get width() {
+  get width(): number {
     const size = this.win.size;
     return size.width;
   }
@@ -33,7 +33,7 @@ export class WebGLCanvas extends HTMLElement {
     this.win.size = size;
   }
 
-  get height() {
+  get height(): number {
     const size = this.win.size;
     return size.height;
   }
@@ -54,7 +54,16 @@ export class WebGLCanvas extends HTMLElement {
     }
   }
 
-  getBoundingClientRect() {
+  getBoundingClientRect(): {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+    top: number;
+    left: number;
+    bottom: number;
+    right: number;
+  } {
     return {
       x: 0,
       y: 0,
@@ -67,11 +76,11 @@ export class WebGLCanvas extends HTMLElement {
     };
   }
 
-  addEventListener(...args: any[]): void {
+  override addEventListener(...args: any[]): void {
     (addEventListener as any)(...args);
   }
 
-  removeEventListener(...args: any[]): void {
+  override removeEventListener(...args: any[]): void {
     (removeEventListener as any)(...args);
   }
 

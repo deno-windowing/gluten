@@ -1,12 +1,12 @@
 import {
-  Command,
+  type Command,
   commands,
   enums,
-  Extension,
+  type Extension,
   extensions,
-  Feature,
+  type Feature,
   features,
-  RequireOrRemove,
+  type RequireOrRemove,
   typedefs,
 } from "./process_xml.ts";
 
@@ -33,11 +33,7 @@ export function block(fn: CallableFunction) {
 }
 
 export function jsify(name: string) {
-  if (["function"].includes(name)) {
-    return "_" + name;
-  } else {
-    return name;
-  }
+  return ["function"].includes(name) ? "_" + name : name;
 }
 
 export function stripGL(name: string) {

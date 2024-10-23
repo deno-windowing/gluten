@@ -1,6 +1,6 @@
 {
   "name": "@gfx/gl",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "exports": {
     ".": "./mod.ts",
     "./webgl": "./src/webgl/mod.ts",
@@ -10,11 +10,11 @@
   "tasks": {
     "parse-xml": "deno run -A --unstable ./scripts/parse_xml.ts",
     "gen": "deno run -A --unstable ./scripts/emitter.ts",
-    "example:babylon" : "deno run -A --unstable-ffi ./examples/babylon.ts",
-    "example:babylon2" : "deno run -A --unstable-ffi ./examples/babylon2.ts",
-    "example:three" : "deno run -A --unstable-ffi ./examples/three.ts",
-    "example:triangle" : "deno run -A --unstable-ffi ./examples/triangle.ts",
-    "example:webgl" : "deno run -A --unstable-ffi ./examples/webgl.ts"
+    "example:babylon": "deno run -A --unstable-ffi ./examples/babylon.ts",
+    "example:babylon2": "deno run -A --unstable-ffi ./examples/babylon2.ts",
+    "example:three": "deno run -A --unstable-ffi ./examples/three.ts",
+    "example:triangle": "deno run -A --unstable-ffi ./examples/triangle.ts",
+    "example:webgl": "deno run -A --unstable-ffi ./examples/webgl.ts"
   },
   "fmt": {
     "files": {

@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -70,7 +84,18 @@ export const FRAMEBUFFER_ATTACHMENT_TEXTURE_3D_ZOFFSET_OES = 0x8cd4;
 /// Commands
 
 export const def_glTexImage3DOES = {
-  parameters: ["u32", "i32", "u32", "i32", "i32", "i32", "i32", "u32", "u32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
@@ -103,7 +128,19 @@ export function TexImage3DOES(
 }
 
 export const def_glTexSubImage3DOES = {
-  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "u32", "u32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
@@ -142,7 +179,9 @@ export const def_glCopyTexSubImage3DOES = {
   result: "void",
 } as const;
 
-let fn_glCopyTexSubImage3DOES!: Deno.UnsafeFnPointer<typeof def_glCopyTexSubImage3DOES>;
+let fn_glCopyTexSubImage3DOES!: Deno.UnsafeFnPointer<
+  typeof def_glCopyTexSubImage3DOES
+>;
 
 export function CopyTexSubImage3DOES(
   target: GLenum,
@@ -169,11 +208,23 @@ export function CopyTexSubImage3DOES(
 }
 
 export const def_glCompressedTexImage3DOES = {
-  parameters: ["u32", "i32", "u32", "i32", "i32", "i32", "i32", "i32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
-let fn_glCompressedTexImage3DOES!: Deno.UnsafeFnPointer<typeof def_glCompressedTexImage3DOES>;
+let fn_glCompressedTexImage3DOES!: Deno.UnsafeFnPointer<
+  typeof def_glCompressedTexImage3DOES
+>;
 
 export function CompressedTexImage3DOES(
   target: GLenum,
@@ -200,11 +251,25 @@ export function CompressedTexImage3DOES(
 }
 
 export const def_glCompressedTexSubImage3DOES = {
-  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "u32", "i32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "i32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
-let fn_glCompressedTexSubImage3DOES!: Deno.UnsafeFnPointer<typeof def_glCompressedTexSubImage3DOES>;
+let fn_glCompressedTexSubImage3DOES!: Deno.UnsafeFnPointer<
+  typeof def_glCompressedTexSubImage3DOES
+>;
 
 export function CompressedTexSubImage3DOES(
   target: GLenum,
@@ -239,7 +304,9 @@ export const def_glFramebufferTexture3DOES = {
   result: "void",
 } as const;
 
-let fn_glFramebufferTexture3DOES!: Deno.UnsafeFnPointer<typeof def_glFramebufferTexture3DOES>;
+let fn_glFramebufferTexture3DOES!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferTexture3DOES
+>;
 
 export function FramebufferTexture3DOES(
   target: GLenum,
@@ -261,10 +328,28 @@ export function FramebufferTexture3DOES(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexImage3DOES = new Deno.UnsafeFnPointer(proc("glTexImage3DOES")!, def_glTexImage3DOES);
-  fn_glTexSubImage3DOES = new Deno.UnsafeFnPointer(proc("glTexSubImage3DOES")!, def_glTexSubImage3DOES);
-  fn_glCopyTexSubImage3DOES = new Deno.UnsafeFnPointer(proc("glCopyTexSubImage3DOES")!, def_glCopyTexSubImage3DOES);
-  fn_glCompressedTexImage3DOES = new Deno.UnsafeFnPointer(proc("glCompressedTexImage3DOES")!, def_glCompressedTexImage3DOES);
-  fn_glCompressedTexSubImage3DOES = new Deno.UnsafeFnPointer(proc("glCompressedTexSubImage3DOES")!, def_glCompressedTexSubImage3DOES);
-  fn_glFramebufferTexture3DOES = new Deno.UnsafeFnPointer(proc("glFramebufferTexture3DOES")!, def_glFramebufferTexture3DOES);
+  fn_glTexImage3DOES = new Deno.UnsafeFnPointer(
+    proc("glTexImage3DOES")!,
+    def_glTexImage3DOES,
+  );
+  fn_glTexSubImage3DOES = new Deno.UnsafeFnPointer(
+    proc("glTexSubImage3DOES")!,
+    def_glTexSubImage3DOES,
+  );
+  fn_glCopyTexSubImage3DOES = new Deno.UnsafeFnPointer(
+    proc("glCopyTexSubImage3DOES")!,
+    def_glCopyTexSubImage3DOES,
+  );
+  fn_glCompressedTexImage3DOES = new Deno.UnsafeFnPointer(
+    proc("glCompressedTexImage3DOES")!,
+    def_glCompressedTexImage3DOES,
+  );
+  fn_glCompressedTexSubImage3DOES = new Deno.UnsafeFnPointer(
+    proc("glCompressedTexSubImage3DOES")!,
+    def_glCompressedTexSubImage3DOES,
+  );
+  fn_glFramebufferTexture3DOES = new Deno.UnsafeFnPointer(
+    proc("glFramebufferTexture3DOES")!,
+    def_glFramebufferTexture3DOES,
+  );
 }

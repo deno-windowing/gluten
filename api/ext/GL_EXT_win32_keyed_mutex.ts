@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -66,7 +80,9 @@ export const def_glAcquireKeyedMutexWin32EXT = {
   result: "u8",
 } as const;
 
-let fn_glAcquireKeyedMutexWin32EXT!: Deno.UnsafeFnPointer<typeof def_glAcquireKeyedMutexWin32EXT>;
+let fn_glAcquireKeyedMutexWin32EXT!: Deno.UnsafeFnPointer<
+  typeof def_glAcquireKeyedMutexWin32EXT
+>;
 
 export function AcquireKeyedMutexWin32EXT(
   memory: GLuint,
@@ -85,7 +101,9 @@ export const def_glReleaseKeyedMutexWin32EXT = {
   result: "u8",
 } as const;
 
-let fn_glReleaseKeyedMutexWin32EXT!: Deno.UnsafeFnPointer<typeof def_glReleaseKeyedMutexWin32EXT>;
+let fn_glReleaseKeyedMutexWin32EXT!: Deno.UnsafeFnPointer<
+  typeof def_glReleaseKeyedMutexWin32EXT
+>;
 
 export function ReleaseKeyedMutexWin32EXT(
   memory: GLuint,
@@ -99,6 +117,12 @@ export function ReleaseKeyedMutexWin32EXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glAcquireKeyedMutexWin32EXT = new Deno.UnsafeFnPointer(proc("glAcquireKeyedMutexWin32EXT")!, def_glAcquireKeyedMutexWin32EXT);
-  fn_glReleaseKeyedMutexWin32EXT = new Deno.UnsafeFnPointer(proc("glReleaseKeyedMutexWin32EXT")!, def_glReleaseKeyedMutexWin32EXT);
+  fn_glAcquireKeyedMutexWin32EXT = new Deno.UnsafeFnPointer(
+    proc("glAcquireKeyedMutexWin32EXT")!,
+    def_glAcquireKeyedMutexWin32EXT,
+  );
+  fn_glReleaseKeyedMutexWin32EXT = new Deno.UnsafeFnPointer(
+    proc("glReleaseKeyedMutexWin32EXT")!,
+    def_glReleaseKeyedMutexWin32EXT,
+  );
 }

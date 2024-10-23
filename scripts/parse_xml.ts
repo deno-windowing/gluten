@@ -1,18 +1,15 @@
-import { XMLParser } from "npm:fast-xml-parser";
+import { parse } from "npm:fast-xml-parser@3.17.0";
 
-const parser = new XMLParser({
-  ignoreAttributes: false,
-  allowBooleanAttributes: true,
-  parseTagValue: true,
-  parseAttributeValue: true,
-  alwaysCreateTextNode: true,
-  attributeNamePrefix: "$",
-});
 const xml = Deno.readTextFileSync(
   new URL("../OpenGL-Registry/xml/gl.xml", import.meta.url),
 );
 
-const gl = parser.parse(xml);
+const gl = parse(xml, {
+  ignoreAttributes: false,
+  allowBooleanAttributes: true,
+  parseAttributeValue: true,
+  attributeNamePrefix: "$",
+});
 
 Deno.writeTextFileSync(
   new URL("../data/gl.json", import.meta.url),

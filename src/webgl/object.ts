@@ -18,7 +18,7 @@ export class WebGLObject {
     }
   }
 
-  static make(name: number) {
+  static make(name: number): WebGLObject {
     if (cache.has(name)) {
       return cache.get(name)!;
     } else {
@@ -28,11 +28,11 @@ export class WebGLObject {
     }
   }
 
-  toString() {
+  toString(): string {
     return `WebGLObject(${this[glObjectName]})`;
   }
 
-  [Symbol.for("Deno.customInspect")]() {
+  [Symbol.for("Deno.customInspect")](): string {
     return this.toString();
   }
 }
@@ -66,7 +66,7 @@ export class WebGLUniformLocation {
     this[_uniformLocation] = location;
   }
 
-  [Symbol.for("Deno.customInspect")]() {
+  [Symbol.for("Deno.customInspect")](): string {
     return `WebGLUniformLocation(${this[_uniformLocation]})`;
   }
 }

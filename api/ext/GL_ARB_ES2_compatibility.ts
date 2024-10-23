@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -84,7 +98,9 @@ export const def_glReleaseShaderCompiler = {
   result: "void",
 } as const;
 
-let fn_glReleaseShaderCompiler!: Deno.UnsafeFnPointer<typeof def_glReleaseShaderCompiler>;
+let fn_glReleaseShaderCompiler!: Deno.UnsafeFnPointer<
+  typeof def_glReleaseShaderCompiler
+>;
 
 export function ReleaseShaderCompiler(): void {
   fn_glReleaseShaderCompiler.call();
@@ -118,7 +134,9 @@ export const def_glGetShaderPrecisionFormat = {
   result: "void",
 } as const;
 
-let fn_glGetShaderPrecisionFormat!: Deno.UnsafeFnPointer<typeof def_glGetShaderPrecisionFormat>;
+let fn_glGetShaderPrecisionFormat!: Deno.UnsafeFnPointer<
+  typeof def_glGetShaderPrecisionFormat
+>;
 
 export function GetShaderPrecisionFormat(
   shadertype: GLenum,
@@ -168,9 +186,24 @@ export function ClearDepthf(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glReleaseShaderCompiler = new Deno.UnsafeFnPointer(proc("glReleaseShaderCompiler")!, def_glReleaseShaderCompiler);
-  fn_glShaderBinary = new Deno.UnsafeFnPointer(proc("glShaderBinary")!, def_glShaderBinary);
-  fn_glGetShaderPrecisionFormat = new Deno.UnsafeFnPointer(proc("glGetShaderPrecisionFormat")!, def_glGetShaderPrecisionFormat);
-  fn_glDepthRangef = new Deno.UnsafeFnPointer(proc("glDepthRangef")!, def_glDepthRangef);
-  fn_glClearDepthf = new Deno.UnsafeFnPointer(proc("glClearDepthf")!, def_glClearDepthf);
+  fn_glReleaseShaderCompiler = new Deno.UnsafeFnPointer(
+    proc("glReleaseShaderCompiler")!,
+    def_glReleaseShaderCompiler,
+  );
+  fn_glShaderBinary = new Deno.UnsafeFnPointer(
+    proc("glShaderBinary")!,
+    def_glShaderBinary,
+  );
+  fn_glGetShaderPrecisionFormat = new Deno.UnsafeFnPointer(
+    proc("glGetShaderPrecisionFormat")!,
+    def_glGetShaderPrecisionFormat,
+  );
+  fn_glDepthRangef = new Deno.UnsafeFnPointer(
+    proc("glDepthRangef")!,
+    def_glDepthRangef,
+  );
+  fn_glClearDepthf = new Deno.UnsafeFnPointer(
+    proc("glClearDepthf")!,
+    def_glClearDepthf,
+  );
 }

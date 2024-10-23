@@ -1,5 +1,5 @@
-//@deno-types="npm:babylonjs"
-import "https://deno.land/x/xhr@0.1.0/mod.ts";
+//@deno-types="npm:babylonjs@7.30.1"
+import "jsr:@kitsonk/xhr@0.5.0";
 import { WebGLCanvas } from "../src/webgl/mod.ts";
 import "https://preview.babylonjs.com/ammo.js";
 import "https://preview.babylonjs.com/cannon.js";
@@ -37,7 +37,7 @@ export abstract class World {
   abstract createScene(): BABYLON.Scene;
 }
 
-export function init<T extends World>(app: T) {
+export function init<T extends World>(app: T): Promise<void> | undefined {
   const world = app;
   try {
     const scene = world.createScene();

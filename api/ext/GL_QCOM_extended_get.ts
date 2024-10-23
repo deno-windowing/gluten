@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -79,7 +93,9 @@ export const def_glExtGetTexturesQCOM = {
   result: "void",
 } as const;
 
-let fn_glExtGetTexturesQCOM!: Deno.UnsafeFnPointer<typeof def_glExtGetTexturesQCOM>;
+let fn_glExtGetTexturesQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtGetTexturesQCOM
+>;
 
 export function ExtGetTexturesQCOM(
   textures: Buffer,
@@ -98,7 +114,9 @@ export const def_glExtGetBuffersQCOM = {
   result: "void",
 } as const;
 
-let fn_glExtGetBuffersQCOM!: Deno.UnsafeFnPointer<typeof def_glExtGetBuffersQCOM>;
+let fn_glExtGetBuffersQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtGetBuffersQCOM
+>;
 
 export function ExtGetBuffersQCOM(
   buffers: Buffer,
@@ -117,7 +135,9 @@ export const def_glExtGetRenderbuffersQCOM = {
   result: "void",
 } as const;
 
-let fn_glExtGetRenderbuffersQCOM!: Deno.UnsafeFnPointer<typeof def_glExtGetRenderbuffersQCOM>;
+let fn_glExtGetRenderbuffersQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtGetRenderbuffersQCOM
+>;
 
 export function ExtGetRenderbuffersQCOM(
   renderbuffers: Buffer,
@@ -136,7 +156,9 @@ export const def_glExtGetFramebuffersQCOM = {
   result: "void",
 } as const;
 
-let fn_glExtGetFramebuffersQCOM!: Deno.UnsafeFnPointer<typeof def_glExtGetFramebuffersQCOM>;
+let fn_glExtGetFramebuffersQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtGetFramebuffersQCOM
+>;
 
 export function ExtGetFramebuffersQCOM(
   framebuffers: Buffer,
@@ -155,7 +177,9 @@ export const def_glExtGetTexLevelParameterivQCOM = {
   result: "void",
 } as const;
 
-let fn_glExtGetTexLevelParameterivQCOM!: Deno.UnsafeFnPointer<typeof def_glExtGetTexLevelParameterivQCOM>;
+let fn_glExtGetTexLevelParameterivQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtGetTexLevelParameterivQCOM
+>;
 
 export function ExtGetTexLevelParameterivQCOM(
   texture: GLuint,
@@ -178,7 +202,9 @@ export const def_glExtTexObjectStateOverrideiQCOM = {
   result: "void",
 } as const;
 
-let fn_glExtTexObjectStateOverrideiQCOM!: Deno.UnsafeFnPointer<typeof def_glExtTexObjectStateOverrideiQCOM>;
+let fn_glExtTexObjectStateOverrideiQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtTexObjectStateOverrideiQCOM
+>;
 
 export function ExtTexObjectStateOverrideiQCOM(
   target: GLenum,
@@ -193,11 +219,25 @@ export function ExtTexObjectStateOverrideiQCOM(
 }
 
 export const def_glExtGetTexSubImageQCOM = {
-  parameters: ["u32", "i32", "i32", "i32", "i32", "i32", "i32", "i32", "u32", "u32", "buffer"],
+  parameters: [
+    "u32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "i32",
+    "u32",
+    "u32",
+    "buffer",
+  ],
   result: "void",
 } as const;
 
-let fn_glExtGetTexSubImageQCOM!: Deno.UnsafeFnPointer<typeof def_glExtGetTexSubImageQCOM>;
+let fn_glExtGetTexSubImageQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtGetTexSubImageQCOM
+>;
 
 export function ExtGetTexSubImageQCOM(
   target: GLenum,
@@ -232,7 +272,9 @@ export const def_glExtGetBufferPointervQCOM = {
   result: "void",
 } as const;
 
-let fn_glExtGetBufferPointervQCOM!: Deno.UnsafeFnPointer<typeof def_glExtGetBufferPointervQCOM>;
+let fn_glExtGetBufferPointervQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glExtGetBufferPointervQCOM
+>;
 
 export function ExtGetBufferPointervQCOM(
   target: GLenum,
@@ -246,12 +288,36 @@ export function ExtGetBufferPointervQCOM(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glExtGetTexturesQCOM = new Deno.UnsafeFnPointer(proc("glExtGetTexturesQCOM")!, def_glExtGetTexturesQCOM);
-  fn_glExtGetBuffersQCOM = new Deno.UnsafeFnPointer(proc("glExtGetBuffersQCOM")!, def_glExtGetBuffersQCOM);
-  fn_glExtGetRenderbuffersQCOM = new Deno.UnsafeFnPointer(proc("glExtGetRenderbuffersQCOM")!, def_glExtGetRenderbuffersQCOM);
-  fn_glExtGetFramebuffersQCOM = new Deno.UnsafeFnPointer(proc("glExtGetFramebuffersQCOM")!, def_glExtGetFramebuffersQCOM);
-  fn_glExtGetTexLevelParameterivQCOM = new Deno.UnsafeFnPointer(proc("glExtGetTexLevelParameterivQCOM")!, def_glExtGetTexLevelParameterivQCOM);
-  fn_glExtTexObjectStateOverrideiQCOM = new Deno.UnsafeFnPointer(proc("glExtTexObjectStateOverrideiQCOM")!, def_glExtTexObjectStateOverrideiQCOM);
-  fn_glExtGetTexSubImageQCOM = new Deno.UnsafeFnPointer(proc("glExtGetTexSubImageQCOM")!, def_glExtGetTexSubImageQCOM);
-  fn_glExtGetBufferPointervQCOM = new Deno.UnsafeFnPointer(proc("glExtGetBufferPointervQCOM")!, def_glExtGetBufferPointervQCOM);
+  fn_glExtGetTexturesQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtGetTexturesQCOM")!,
+    def_glExtGetTexturesQCOM,
+  );
+  fn_glExtGetBuffersQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtGetBuffersQCOM")!,
+    def_glExtGetBuffersQCOM,
+  );
+  fn_glExtGetRenderbuffersQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtGetRenderbuffersQCOM")!,
+    def_glExtGetRenderbuffersQCOM,
+  );
+  fn_glExtGetFramebuffersQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtGetFramebuffersQCOM")!,
+    def_glExtGetFramebuffersQCOM,
+  );
+  fn_glExtGetTexLevelParameterivQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtGetTexLevelParameterivQCOM")!,
+    def_glExtGetTexLevelParameterivQCOM,
+  );
+  fn_glExtTexObjectStateOverrideiQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtTexObjectStateOverrideiQCOM")!,
+    def_glExtTexObjectStateOverrideiQCOM,
+  );
+  fn_glExtGetTexSubImageQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtGetTexSubImageQCOM")!,
+    def_glExtGetTexSubImageQCOM,
+  );
+  fn_glExtGetBufferPointervQCOM = new Deno.UnsafeFnPointer(
+    proc("glExtGetBufferPointervQCOM")!,
+    def_glExtGetBufferPointervQCOM,
+  );
 }

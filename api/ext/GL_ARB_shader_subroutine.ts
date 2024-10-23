@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -79,7 +93,9 @@ export const def_glGetSubroutineUniformLocation = {
   result: "i32",
 } as const;
 
-let fn_glGetSubroutineUniformLocation!: Deno.UnsafeFnPointer<typeof def_glGetSubroutineUniformLocation>;
+let fn_glGetSubroutineUniformLocation!: Deno.UnsafeFnPointer<
+  typeof def_glGetSubroutineUniformLocation
+>;
 
 export function GetSubroutineUniformLocation(
   program: GLuint,
@@ -98,7 +114,9 @@ export const def_glGetSubroutineIndex = {
   result: "u32",
 } as const;
 
-let fn_glGetSubroutineIndex!: Deno.UnsafeFnPointer<typeof def_glGetSubroutineIndex>;
+let fn_glGetSubroutineIndex!: Deno.UnsafeFnPointer<
+  typeof def_glGetSubroutineIndex
+>;
 
 export function GetSubroutineIndex(
   program: GLuint,
@@ -117,7 +135,9 @@ export const def_glGetActiveSubroutineUniformiv = {
   result: "void",
 } as const;
 
-let fn_glGetActiveSubroutineUniformiv!: Deno.UnsafeFnPointer<typeof def_glGetActiveSubroutineUniformiv>;
+let fn_glGetActiveSubroutineUniformiv!: Deno.UnsafeFnPointer<
+  typeof def_glGetActiveSubroutineUniformiv
+>;
 
 export function GetActiveSubroutineUniformiv(
   program: GLuint,
@@ -140,7 +160,9 @@ export const def_glGetActiveSubroutineUniformName = {
   result: "void",
 } as const;
 
-let fn_glGetActiveSubroutineUniformName!: Deno.UnsafeFnPointer<typeof def_glGetActiveSubroutineUniformName>;
+let fn_glGetActiveSubroutineUniformName!: Deno.UnsafeFnPointer<
+  typeof def_glGetActiveSubroutineUniformName
+>;
 
 export function GetActiveSubroutineUniformName(
   program: GLuint,
@@ -165,7 +187,9 @@ export const def_glGetActiveSubroutineName = {
   result: "void",
 } as const;
 
-let fn_glGetActiveSubroutineName!: Deno.UnsafeFnPointer<typeof def_glGetActiveSubroutineName>;
+let fn_glGetActiveSubroutineName!: Deno.UnsafeFnPointer<
+  typeof def_glGetActiveSubroutineName
+>;
 
 export function GetActiveSubroutineName(
   program: GLuint,
@@ -190,7 +214,9 @@ export const def_glUniformSubroutinesuiv = {
   result: "void",
 } as const;
 
-let fn_glUniformSubroutinesuiv!: Deno.UnsafeFnPointer<typeof def_glUniformSubroutinesuiv>;
+let fn_glUniformSubroutinesuiv!: Deno.UnsafeFnPointer<
+  typeof def_glUniformSubroutinesuiv
+>;
 
 export function UniformSubroutinesuiv(
   shadertype: GLenum,
@@ -209,7 +235,9 @@ export const def_glGetUniformSubroutineuiv = {
   result: "void",
 } as const;
 
-let fn_glGetUniformSubroutineuiv!: Deno.UnsafeFnPointer<typeof def_glGetUniformSubroutineuiv>;
+let fn_glGetUniformSubroutineuiv!: Deno.UnsafeFnPointer<
+  typeof def_glGetUniformSubroutineuiv
+>;
 
 export function GetUniformSubroutineuiv(
   shadertype: GLenum,
@@ -228,7 +256,9 @@ export const def_glGetProgramStageiv = {
   result: "void",
 } as const;
 
-let fn_glGetProgramStageiv!: Deno.UnsafeFnPointer<typeof def_glGetProgramStageiv>;
+let fn_glGetProgramStageiv!: Deno.UnsafeFnPointer<
+  typeof def_glGetProgramStageiv
+>;
 
 export function GetProgramStageiv(
   program: GLuint,
@@ -246,12 +276,36 @@ export function GetProgramStageiv(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGetSubroutineUniformLocation = new Deno.UnsafeFnPointer(proc("glGetSubroutineUniformLocation")!, def_glGetSubroutineUniformLocation);
-  fn_glGetSubroutineIndex = new Deno.UnsafeFnPointer(proc("glGetSubroutineIndex")!, def_glGetSubroutineIndex);
-  fn_glGetActiveSubroutineUniformiv = new Deno.UnsafeFnPointer(proc("glGetActiveSubroutineUniformiv")!, def_glGetActiveSubroutineUniformiv);
-  fn_glGetActiveSubroutineUniformName = new Deno.UnsafeFnPointer(proc("glGetActiveSubroutineUniformName")!, def_glGetActiveSubroutineUniformName);
-  fn_glGetActiveSubroutineName = new Deno.UnsafeFnPointer(proc("glGetActiveSubroutineName")!, def_glGetActiveSubroutineName);
-  fn_glUniformSubroutinesuiv = new Deno.UnsafeFnPointer(proc("glUniformSubroutinesuiv")!, def_glUniformSubroutinesuiv);
-  fn_glGetUniformSubroutineuiv = new Deno.UnsafeFnPointer(proc("glGetUniformSubroutineuiv")!, def_glGetUniformSubroutineuiv);
-  fn_glGetProgramStageiv = new Deno.UnsafeFnPointer(proc("glGetProgramStageiv")!, def_glGetProgramStageiv);
+  fn_glGetSubroutineUniformLocation = new Deno.UnsafeFnPointer(
+    proc("glGetSubroutineUniformLocation")!,
+    def_glGetSubroutineUniformLocation,
+  );
+  fn_glGetSubroutineIndex = new Deno.UnsafeFnPointer(
+    proc("glGetSubroutineIndex")!,
+    def_glGetSubroutineIndex,
+  );
+  fn_glGetActiveSubroutineUniformiv = new Deno.UnsafeFnPointer(
+    proc("glGetActiveSubroutineUniformiv")!,
+    def_glGetActiveSubroutineUniformiv,
+  );
+  fn_glGetActiveSubroutineUniformName = new Deno.UnsafeFnPointer(
+    proc("glGetActiveSubroutineUniformName")!,
+    def_glGetActiveSubroutineUniformName,
+  );
+  fn_glGetActiveSubroutineName = new Deno.UnsafeFnPointer(
+    proc("glGetActiveSubroutineName")!,
+    def_glGetActiveSubroutineName,
+  );
+  fn_glUniformSubroutinesuiv = new Deno.UnsafeFnPointer(
+    proc("glUniformSubroutinesuiv")!,
+    def_glUniformSubroutinesuiv,
+  );
+  fn_glGetUniformSubroutineuiv = new Deno.UnsafeFnPointer(
+    proc("glGetUniformSubroutineuiv")!,
+    def_glGetUniformSubroutineuiv,
+  );
+  fn_glGetProgramStageiv = new Deno.UnsafeFnPointer(
+    proc("glGetProgramStageiv")!,
+    def_glGetProgramStageiv,
+  );
 }

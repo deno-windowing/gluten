@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -85,7 +99,9 @@ export const def_glReplacementCodeuiSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuiSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuiSUN>;
+let fn_glReplacementCodeuiSUN!: Deno.UnsafeFnPointer<
+  typeof def_glReplacementCodeuiSUN
+>;
 
 export function ReplacementCodeuiSUN(
   code: GLuint,
@@ -100,7 +116,9 @@ export const def_glReplacementCodeusSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeusSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeusSUN>;
+let fn_glReplacementCodeusSUN!: Deno.UnsafeFnPointer<
+  typeof def_glReplacementCodeusSUN
+>;
 
 export function ReplacementCodeusSUN(
   code: GLushort,
@@ -115,7 +133,9 @@ export const def_glReplacementCodeubSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeubSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeubSUN>;
+let fn_glReplacementCodeubSUN!: Deno.UnsafeFnPointer<
+  typeof def_glReplacementCodeubSUN
+>;
 
 export function ReplacementCodeubSUN(
   code: GLubyte,
@@ -130,7 +150,9 @@ export const def_glReplacementCodeuivSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeuivSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeuivSUN>;
+let fn_glReplacementCodeuivSUN!: Deno.UnsafeFnPointer<
+  typeof def_glReplacementCodeuivSUN
+>;
 
 export function ReplacementCodeuivSUN(
   code: Buffer,
@@ -145,7 +167,9 @@ export const def_glReplacementCodeusvSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeusvSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeusvSUN>;
+let fn_glReplacementCodeusvSUN!: Deno.UnsafeFnPointer<
+  typeof def_glReplacementCodeusvSUN
+>;
 
 export function ReplacementCodeusvSUN(
   code: Buffer,
@@ -160,7 +184,9 @@ export const def_glReplacementCodeubvSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodeubvSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodeubvSUN>;
+let fn_glReplacementCodeubvSUN!: Deno.UnsafeFnPointer<
+  typeof def_glReplacementCodeubvSUN
+>;
 
 export function ReplacementCodeubvSUN(
   code: Buffer,
@@ -175,7 +201,9 @@ export const def_glReplacementCodePointerSUN = {
   result: "void",
 } as const;
 
-let fn_glReplacementCodePointerSUN!: Deno.UnsafeFnPointer<typeof def_glReplacementCodePointerSUN>;
+let fn_glReplacementCodePointerSUN!: Deno.UnsafeFnPointer<
+  typeof def_glReplacementCodePointerSUN
+>;
 
 export function ReplacementCodePointerSUN(
   type: GLenum,
@@ -191,11 +219,32 @@ export function ReplacementCodePointerSUN(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glReplacementCodeuiSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuiSUN")!, def_glReplacementCodeuiSUN);
-  fn_glReplacementCodeusSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeusSUN")!, def_glReplacementCodeusSUN);
-  fn_glReplacementCodeubSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeubSUN")!, def_glReplacementCodeubSUN);
-  fn_glReplacementCodeuivSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeuivSUN")!, def_glReplacementCodeuivSUN);
-  fn_glReplacementCodeusvSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeusvSUN")!, def_glReplacementCodeusvSUN);
-  fn_glReplacementCodeubvSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodeubvSUN")!, def_glReplacementCodeubvSUN);
-  fn_glReplacementCodePointerSUN = new Deno.UnsafeFnPointer(proc("glReplacementCodePointerSUN")!, def_glReplacementCodePointerSUN);
+  fn_glReplacementCodeuiSUN = new Deno.UnsafeFnPointer(
+    proc("glReplacementCodeuiSUN")!,
+    def_glReplacementCodeuiSUN,
+  );
+  fn_glReplacementCodeusSUN = new Deno.UnsafeFnPointer(
+    proc("glReplacementCodeusSUN")!,
+    def_glReplacementCodeusSUN,
+  );
+  fn_glReplacementCodeubSUN = new Deno.UnsafeFnPointer(
+    proc("glReplacementCodeubSUN")!,
+    def_glReplacementCodeubSUN,
+  );
+  fn_glReplacementCodeuivSUN = new Deno.UnsafeFnPointer(
+    proc("glReplacementCodeuivSUN")!,
+    def_glReplacementCodeuivSUN,
+  );
+  fn_glReplacementCodeusvSUN = new Deno.UnsafeFnPointer(
+    proc("glReplacementCodeusvSUN")!,
+    def_glReplacementCodeusvSUN,
+  );
+  fn_glReplacementCodeubvSUN = new Deno.UnsafeFnPointer(
+    proc("glReplacementCodeubvSUN")!,
+    def_glReplacementCodeubvSUN,
+  );
+  fn_glReplacementCodePointerSUN = new Deno.UnsafeFnPointer(
+    proc("glReplacementCodePointerSUN")!,
+    def_glReplacementCodePointerSUN,
+  );
 }

@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -172,7 +186,9 @@ export const def_glGenFragmentShadersATI = {
   result: "u32",
 } as const;
 
-let fn_glGenFragmentShadersATI!: Deno.UnsafeFnPointer<typeof def_glGenFragmentShadersATI>;
+let fn_glGenFragmentShadersATI!: Deno.UnsafeFnPointer<
+  typeof def_glGenFragmentShadersATI
+>;
 
 export function GenFragmentShadersATI(
   range: GLuint,
@@ -187,7 +203,9 @@ export const def_glBindFragmentShaderATI = {
   result: "void",
 } as const;
 
-let fn_glBindFragmentShaderATI!: Deno.UnsafeFnPointer<typeof def_glBindFragmentShaderATI>;
+let fn_glBindFragmentShaderATI!: Deno.UnsafeFnPointer<
+  typeof def_glBindFragmentShaderATI
+>;
 
 export function BindFragmentShaderATI(
   id: GLuint,
@@ -202,7 +220,9 @@ export const def_glDeleteFragmentShaderATI = {
   result: "void",
 } as const;
 
-let fn_glDeleteFragmentShaderATI!: Deno.UnsafeFnPointer<typeof def_glDeleteFragmentShaderATI>;
+let fn_glDeleteFragmentShaderATI!: Deno.UnsafeFnPointer<
+  typeof def_glDeleteFragmentShaderATI
+>;
 
 export function DeleteFragmentShaderATI(
   id: GLuint,
@@ -217,7 +237,9 @@ export const def_glBeginFragmentShaderATI = {
   result: "void",
 } as const;
 
-let fn_glBeginFragmentShaderATI!: Deno.UnsafeFnPointer<typeof def_glBeginFragmentShaderATI>;
+let fn_glBeginFragmentShaderATI!: Deno.UnsafeFnPointer<
+  typeof def_glBeginFragmentShaderATI
+>;
 
 export function BeginFragmentShaderATI(): void {
   fn_glBeginFragmentShaderATI.call();
@@ -228,7 +250,9 @@ export const def_glEndFragmentShaderATI = {
   result: "void",
 } as const;
 
-let fn_glEndFragmentShaderATI!: Deno.UnsafeFnPointer<typeof def_glEndFragmentShaderATI>;
+let fn_glEndFragmentShaderATI!: Deno.UnsafeFnPointer<
+  typeof def_glEndFragmentShaderATI
+>;
 
 export function EndFragmentShaderATI(): void {
   fn_glEndFragmentShaderATI.call();
@@ -277,7 +301,9 @@ export const def_glColorFragmentOp1ATI = {
   result: "void",
 } as const;
 
-let fn_glColorFragmentOp1ATI!: Deno.UnsafeFnPointer<typeof def_glColorFragmentOp1ATI>;
+let fn_glColorFragmentOp1ATI!: Deno.UnsafeFnPointer<
+  typeof def_glColorFragmentOp1ATI
+>;
 
 export function ColorFragmentOp1ATI(
   op: GLenum,
@@ -300,11 +326,24 @@ export function ColorFragmentOp1ATI(
 }
 
 export const def_glColorFragmentOp2ATI = {
-  parameters: ["u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32"],
+  parameters: [
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+  ],
   result: "void",
 } as const;
 
-let fn_glColorFragmentOp2ATI!: Deno.UnsafeFnPointer<typeof def_glColorFragmentOp2ATI>;
+let fn_glColorFragmentOp2ATI!: Deno.UnsafeFnPointer<
+  typeof def_glColorFragmentOp2ATI
+>;
 
 export function ColorFragmentOp2ATI(
   op: GLenum,
@@ -333,11 +372,27 @@ export function ColorFragmentOp2ATI(
 }
 
 export const def_glColorFragmentOp3ATI = {
-  parameters: ["u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32"],
+  parameters: [
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+  ],
   result: "void",
 } as const;
 
-let fn_glColorFragmentOp3ATI!: Deno.UnsafeFnPointer<typeof def_glColorFragmentOp3ATI>;
+let fn_glColorFragmentOp3ATI!: Deno.UnsafeFnPointer<
+  typeof def_glColorFragmentOp3ATI
+>;
 
 export function ColorFragmentOp3ATI(
   op: GLenum,
@@ -376,7 +431,9 @@ export const def_glAlphaFragmentOp1ATI = {
   result: "void",
 } as const;
 
-let fn_glAlphaFragmentOp1ATI!: Deno.UnsafeFnPointer<typeof def_glAlphaFragmentOp1ATI>;
+let fn_glAlphaFragmentOp1ATI!: Deno.UnsafeFnPointer<
+  typeof def_glAlphaFragmentOp1ATI
+>;
 
 export function AlphaFragmentOp1ATI(
   op: GLenum,
@@ -401,7 +458,9 @@ export const def_glAlphaFragmentOp2ATI = {
   result: "void",
 } as const;
 
-let fn_glAlphaFragmentOp2ATI!: Deno.UnsafeFnPointer<typeof def_glAlphaFragmentOp2ATI>;
+let fn_glAlphaFragmentOp2ATI!: Deno.UnsafeFnPointer<
+  typeof def_glAlphaFragmentOp2ATI
+>;
 
 export function AlphaFragmentOp2ATI(
   op: GLenum,
@@ -428,11 +487,26 @@ export function AlphaFragmentOp2ATI(
 }
 
 export const def_glAlphaFragmentOp3ATI = {
-  parameters: ["u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32"],
+  parameters: [
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+    "u32",
+  ],
   result: "void",
 } as const;
 
-let fn_glAlphaFragmentOp3ATI!: Deno.UnsafeFnPointer<typeof def_glAlphaFragmentOp3ATI>;
+let fn_glAlphaFragmentOp3ATI!: Deno.UnsafeFnPointer<
+  typeof def_glAlphaFragmentOp3ATI
+>;
 
 export function AlphaFragmentOp3ATI(
   op: GLenum,
@@ -469,7 +543,9 @@ export const def_glSetFragmentShaderConstantATI = {
   result: "void",
 } as const;
 
-let fn_glSetFragmentShaderConstantATI!: Deno.UnsafeFnPointer<typeof def_glSetFragmentShaderConstantATI>;
+let fn_glSetFragmentShaderConstantATI!: Deno.UnsafeFnPointer<
+  typeof def_glSetFragmentShaderConstantATI
+>;
 
 export function SetFragmentShaderConstantATI(
   dst: GLuint,
@@ -483,18 +559,60 @@ export function SetFragmentShaderConstantATI(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glGenFragmentShadersATI = new Deno.UnsafeFnPointer(proc("glGenFragmentShadersATI")!, def_glGenFragmentShadersATI);
-  fn_glBindFragmentShaderATI = new Deno.UnsafeFnPointer(proc("glBindFragmentShaderATI")!, def_glBindFragmentShaderATI);
-  fn_glDeleteFragmentShaderATI = new Deno.UnsafeFnPointer(proc("glDeleteFragmentShaderATI")!, def_glDeleteFragmentShaderATI);
-  fn_glBeginFragmentShaderATI = new Deno.UnsafeFnPointer(proc("glBeginFragmentShaderATI")!, def_glBeginFragmentShaderATI);
-  fn_glEndFragmentShaderATI = new Deno.UnsafeFnPointer(proc("glEndFragmentShaderATI")!, def_glEndFragmentShaderATI);
-  fn_glPassTexCoordATI = new Deno.UnsafeFnPointer(proc("glPassTexCoordATI")!, def_glPassTexCoordATI);
-  fn_glSampleMapATI = new Deno.UnsafeFnPointer(proc("glSampleMapATI")!, def_glSampleMapATI);
-  fn_glColorFragmentOp1ATI = new Deno.UnsafeFnPointer(proc("glColorFragmentOp1ATI")!, def_glColorFragmentOp1ATI);
-  fn_glColorFragmentOp2ATI = new Deno.UnsafeFnPointer(proc("glColorFragmentOp2ATI")!, def_glColorFragmentOp2ATI);
-  fn_glColorFragmentOp3ATI = new Deno.UnsafeFnPointer(proc("glColorFragmentOp3ATI")!, def_glColorFragmentOp3ATI);
-  fn_glAlphaFragmentOp1ATI = new Deno.UnsafeFnPointer(proc("glAlphaFragmentOp1ATI")!, def_glAlphaFragmentOp1ATI);
-  fn_glAlphaFragmentOp2ATI = new Deno.UnsafeFnPointer(proc("glAlphaFragmentOp2ATI")!, def_glAlphaFragmentOp2ATI);
-  fn_glAlphaFragmentOp3ATI = new Deno.UnsafeFnPointer(proc("glAlphaFragmentOp3ATI")!, def_glAlphaFragmentOp3ATI);
-  fn_glSetFragmentShaderConstantATI = new Deno.UnsafeFnPointer(proc("glSetFragmentShaderConstantATI")!, def_glSetFragmentShaderConstantATI);
+  fn_glGenFragmentShadersATI = new Deno.UnsafeFnPointer(
+    proc("glGenFragmentShadersATI")!,
+    def_glGenFragmentShadersATI,
+  );
+  fn_glBindFragmentShaderATI = new Deno.UnsafeFnPointer(
+    proc("glBindFragmentShaderATI")!,
+    def_glBindFragmentShaderATI,
+  );
+  fn_glDeleteFragmentShaderATI = new Deno.UnsafeFnPointer(
+    proc("glDeleteFragmentShaderATI")!,
+    def_glDeleteFragmentShaderATI,
+  );
+  fn_glBeginFragmentShaderATI = new Deno.UnsafeFnPointer(
+    proc("glBeginFragmentShaderATI")!,
+    def_glBeginFragmentShaderATI,
+  );
+  fn_glEndFragmentShaderATI = new Deno.UnsafeFnPointer(
+    proc("glEndFragmentShaderATI")!,
+    def_glEndFragmentShaderATI,
+  );
+  fn_glPassTexCoordATI = new Deno.UnsafeFnPointer(
+    proc("glPassTexCoordATI")!,
+    def_glPassTexCoordATI,
+  );
+  fn_glSampleMapATI = new Deno.UnsafeFnPointer(
+    proc("glSampleMapATI")!,
+    def_glSampleMapATI,
+  );
+  fn_glColorFragmentOp1ATI = new Deno.UnsafeFnPointer(
+    proc("glColorFragmentOp1ATI")!,
+    def_glColorFragmentOp1ATI,
+  );
+  fn_glColorFragmentOp2ATI = new Deno.UnsafeFnPointer(
+    proc("glColorFragmentOp2ATI")!,
+    def_glColorFragmentOp2ATI,
+  );
+  fn_glColorFragmentOp3ATI = new Deno.UnsafeFnPointer(
+    proc("glColorFragmentOp3ATI")!,
+    def_glColorFragmentOp3ATI,
+  );
+  fn_glAlphaFragmentOp1ATI = new Deno.UnsafeFnPointer(
+    proc("glAlphaFragmentOp1ATI")!,
+    def_glAlphaFragmentOp1ATI,
+  );
+  fn_glAlphaFragmentOp2ATI = new Deno.UnsafeFnPointer(
+    proc("glAlphaFragmentOp2ATI")!,
+    def_glAlphaFragmentOp2ATI,
+  );
+  fn_glAlphaFragmentOp3ATI = new Deno.UnsafeFnPointer(
+    proc("glAlphaFragmentOp3ATI")!,
+    def_glAlphaFragmentOp3ATI,
+  );
+  fn_glSetFragmentShaderConstantATI = new Deno.UnsafeFnPointer(
+    proc("glSetFragmentShaderConstantATI")!,
+    def_glSetFragmentShaderConstantATI,
+  );
 }

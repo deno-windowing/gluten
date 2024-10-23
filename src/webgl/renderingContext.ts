@@ -1,6 +1,6 @@
 // https://registry.khronos.org/webgl/specs/latest/1.0/
 
-import { DwmWindow, getProcAddress } from "./deps.ts";
+import { type DwmWindow, getProcAddress } from "./deps.ts";
 import * as gl from "../../api/gles22.ts";
 import { _uniformLocation, glObjectName } from "./object.ts";
 import { cstr } from "./utils.ts";
@@ -88,7 +88,7 @@ export class WebGLRenderingContext {
    * It should match the height attribute of the window associated with this context,
    * but might differ if the implementation is not able to provide the requested height.
    */
-  get drawingBufferHeight() {
+  get drawingBufferHeight(): number {
     return this.window.framebufferSize.height;
   }
 
@@ -97,7 +97,7 @@ export class WebGLRenderingContext {
    * It should match the width attribute of the window associated with this context,
    * but might differ if the implementation is not able to provide the requested width.
    */
-  get drawingBufferWidth() {
+  get drawingBufferWidth(): number {
     return this.window.framebufferSize.width;
   }
 
@@ -106,7 +106,7 @@ export class WebGLRenderingContext {
   /**
    * Returns a WebGLContextAttributes object that contains the actual context parameters. Might return null, if the context is lost.
    */
-  getContextAttributes() {
+  getContextAttributes(): WebGLContextAttributes | null {
     return this.#attributes;
   }
 
@@ -244,7 +244,7 @@ export class WebGLRenderingContext {
   /**
    * Returns a value for the passed parameter name.
    */
-  getParameter(pname: number) {
+  getParameter(pname: number): string | number | Int32Array {
     switch (pname) {
       case this.VERSION:
         return `WebGL 1.0 (OpenGL ES 2.0 Deno ${Deno.version.deno})`;
@@ -299,7 +299,7 @@ export class WebGLRenderingContext {
   /**
    * Returns error information.
    */
-  getError() {
+  getError(): number {
     return gl.GetError();
   }
 
@@ -313,7 +313,7 @@ export class WebGLRenderingContext {
   /**
    * Tests whether a specific WebGL capability is enabled or not for this context.
    */
-  isEnabled(cap: number) {
+  isEnabled(cap: number): boolean {
     return gl.IsEnabled(cap) === gl.TRUE;
   }
 
@@ -424,7 +424,7 @@ export class WebGLRenderingContext {
   #bufferData1(target: number, size: number, usage: number) {
     gl.BufferData(
       target,
-      Deno.UnsafePointer.create(size),
+      Deno.UnsafePointer.create(BigInt(size)),
       new Uint8Array(size),
       usage,
     );
@@ -433,7 +433,7 @@ export class WebGLRenderingContext {
   #bufferData2(target: number, data: ArrayBufferView, usage: number) {
     gl.BufferData(
       target,
-      Deno.UnsafePointer.create(data.byteLength),
+      Deno.UnsafePointer.create(BigInt(data.byteLength)),
       new Uint8Array(data.buffer),
       usage,
     );
@@ -453,7 +453,7 @@ export class WebGLRenderingContext {
   /**
    * Creates and initializes a {@link WebGLBuffer} storing data such as vertices or colors.
    */
-  createBuffer() {
+  createBuffer(): WebGLBuffer {
     const buffer = new Uint32Array(1);
     gl.GenBuffers(1, buffer);
     return new WebGLBuffer(buffer[0]);
@@ -484,7 +484,7 @@ export class WebGLRenderingContext {
   /**
    * Creates and initializes a {@link WebGLFramebuffer} object.
    */
-  createFramebuffer() {
+  createFramebuffer(): WebGLFramebuffer {
     const framebuffer = new Uint32Array(1);
     gl.GenFramebuffers(1, framebuffer);
     return new WebGLFramebuffer(framebuffer[0]);
@@ -549,7 +549,7 @@ export class WebGLRenderingContext {
   /**
    * Create a WebGLRenderbuffer object and initialize it with a renderbuffer object name as if by calling glGenRenderbuffers.
    */
-  createRenderbuffer() {
+  createRenderbuffer(): WebGLRenderbuffer {
     const renderbuffer = new Uint32Array(1);
     gl.GenRenderbuffers(1, renderbuffer);
     return new WebGLRenderbuffer(renderbuffer[0]);
@@ -593,7 +593,7 @@ export class WebGLRenderingContext {
     );
   }
 
-  createTexture() {
+  createTexture(): WebGLTexture {
     const texture = new Uint32Array(1);
     gl.GenTextures(1, texture);
     return new WebGLTexture(texture[0]);
@@ -672,7 +672,7 @@ export class WebGLRenderingContext {
   /**
    * Creates and initializes a {@link WebGLProgram} object.
    */
-  createProgram() {
+  createProgram(): WebGLProgram {
     const program = gl.CreateProgram();
     return new WebGLProgram(program);
   }
@@ -680,7 +680,7 @@ export class WebGLRenderingContext {
   /**
    * Creates a WebGLShader that can then be configured further using {@link WebGLRenderingContext.shaderSource()} and {@link WebGLRenderingContext.compileShader()}.
    */
-  createShader(type: number) {
+  createShader(type: number): WebGLShader {
     const shader = gl.CreateShader(type);
     return new WebGLShader(shader);
   }
@@ -712,7 +712,10 @@ export class WebGLRenderingContext {
   /**
    * Return the value for the passed pname given the passed program. The type returned is the natural type for the requested pname.
    */
-  getProgramParameter(program: WebGLProgram, pname: number) {
+  getProgramParameter(
+    program: WebGLProgram,
+    pname: number,
+  ): number | boolean | undefined {
     switch (pname) {
       case gl.DELETE_STATUS:
       case gl.LINK_STATUS:
@@ -741,7 +744,11 @@ export class WebGLRenderingContext {
   getShaderPrecisionFormat(
     shaderType: number,
     precisionType: number,
-  ) {
+  ): {
+    rangeMin: number;
+    rangeMax: number;
+    precision: Int32Array;
+  } {
     const range = new Int32Array(2);
     const precision = new Int32Array(1);
     gl.GetShaderPrecisionFormat(shaderType, precisionType, range, precision);
@@ -756,7 +763,7 @@ export class WebGLRenderingContext {
    * If program was generated by a different WebGLRenderingContext than this one, generates an INVALID_OPERATION error.
    * Returns null if any OpenGL errors are generated during the execution of this function.
    */
-  getProgramInfoLog(program: WebGLProgram) {
+  getProgramInfoLog(program: WebGLProgram): string {
     const length = new Uint32Array(1);
     gl.GetProgramInfoLog(
       program[glObjectName],
@@ -784,7 +791,7 @@ export class WebGLRenderingContext {
   /**
    * Returns information about the given shader.
    */
-  getShaderParameter(shader: WebGLShader, pname: number) {
+  getShaderParameter(shader: WebGLShader, pname: number): number | boolean {
     switch (pname) {
       case gl.DELETE_STATUS:
       case gl.COMPILE_STATUS: {
@@ -807,7 +814,7 @@ export class WebGLRenderingContext {
   /**
    * Returns the information log for a shader object.
    */
-  getShaderInfoLog(shader: WebGLShader) {
+  getShaderInfoLog(shader: WebGLShader): string {
     const length = new Uint32Array(1);
     gl.GetShaderInfoLog(
       shader[glObjectName],
@@ -879,7 +886,11 @@ export class WebGLRenderingContext {
    * If the passed index is out of range, generates an INVALID_VALUE error and returns null.
    * Returns null if any OpenGL errors are generated during the execution of this function.
    */
-  getActiveAttrib(program: WebGLProgram, index: number) {
+  getActiveAttrib(program: WebGLProgram, index: number): {
+    name: string;
+    size: number;
+    type: number;
+  } {
     const name = new Uint8Array(256);
     const length = new Uint32Array(1);
     const size = new Uint32Array(1);
@@ -905,7 +916,11 @@ export class WebGLRenderingContext {
    * If the passed index is out of range, generates an INVALID_VALUE error and returns null.
    * Returns null if any OpenGL errors are generated during the execution of this function.
    */
-  getActiveUniform(program: WebGLProgram, index: number) {
+  getActiveUniform(program: WebGLProgram, index: number): {
+    name: string;
+    size: number;
+    type: number;
+  } {
     const name = new Uint8Array(256);
     const length = new Uint32Array(1);
     const size = new Uint32Array(1);
@@ -929,7 +944,7 @@ export class WebGLRenderingContext {
   /**
    * Returns the location of an attribute variable in a given {@link WebGLProgram}.
    */
-  getAttribLocation(program: WebGLProgram, name: string) {
+  getAttribLocation(program: WebGLProgram, name: string): number {
     return gl.GetAttribLocation(program[glObjectName], cstr(name));
   }
 
@@ -937,7 +952,10 @@ export class WebGLRenderingContext {
    * Return a new WebGLUniformLocation that represents the location of a specific uniform variable within a program object.
    * The return value is null if name does not correspond to an active uniform variable in the passed program.
    */
-  getUniformLocation(program: WebGLProgram, name: string) {
+  getUniformLocation(
+    program: WebGLProgram,
+    name: string,
+  ): WebGLUniformLocation | null {
     const location = gl.GetUniformLocation(program[glObjectName], cstr(name));
     return location < 0 ? null : new WebGLUniformLocation(location);
   }
@@ -1039,7 +1057,7 @@ export class WebGLRenderingContext {
       type,
       Number(normalized),
       stride,
-      Deno.UnsafePointer.create(offset),
+      Deno.UnsafePointer.create(BigInt(offset)),
     );
   }
 
@@ -1067,7 +1085,12 @@ export class WebGLRenderingContext {
    * then a non-null WebGLBuffer must be bound to the ELEMENT_ARRAY_BUFFER binding point or an INVALID_OPERATION error will be generated.
    */
   drawElements(mode: number, count: number, type: number, offset: number) {
-    gl.DrawElements(mode, count, type, Deno.UnsafePointer.create(offset));
+    gl.DrawElements(
+      mode,
+      count,
+      type,
+      Deno.UnsafePointer.create(BigInt(offset)),
+    );
   }
 
   finish() {
@@ -1112,7 +1135,7 @@ export class WebGLRenderingContext {
    * A returned object may have no constants or functions if the extension does not define any,
    * but a unique object must still be returned. That object is used to indicate that the extension has been enabled.
    */
-  getExtension(name: string) {
+  getExtension(name: string): null {
     console.log("STUB: getExtension:", name);
     return null;
   }

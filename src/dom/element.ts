@@ -23,7 +23,7 @@ export class Element extends EventTarget {
 export class HTMLElement extends Element {
   style: Record<string, string> = {};
 
-  get title() {
+  get title(): string {
     return "";
   }
   set title(_value: string) {}

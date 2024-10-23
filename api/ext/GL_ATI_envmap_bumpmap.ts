@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -76,7 +90,9 @@ export const def_glTexBumpParameterivATI = {
   result: "void",
 } as const;
 
-let fn_glTexBumpParameterivATI!: Deno.UnsafeFnPointer<typeof def_glTexBumpParameterivATI>;
+let fn_glTexBumpParameterivATI!: Deno.UnsafeFnPointer<
+  typeof def_glTexBumpParameterivATI
+>;
 
 export function TexBumpParameterivATI(
   pname: GLenum,
@@ -93,7 +109,9 @@ export const def_glTexBumpParameterfvATI = {
   result: "void",
 } as const;
 
-let fn_glTexBumpParameterfvATI!: Deno.UnsafeFnPointer<typeof def_glTexBumpParameterfvATI>;
+let fn_glTexBumpParameterfvATI!: Deno.UnsafeFnPointer<
+  typeof def_glTexBumpParameterfvATI
+>;
 
 export function TexBumpParameterfvATI(
   pname: GLenum,
@@ -110,7 +128,9 @@ export const def_glGetTexBumpParameterivATI = {
   result: "void",
 } as const;
 
-let fn_glGetTexBumpParameterivATI!: Deno.UnsafeFnPointer<typeof def_glGetTexBumpParameterivATI>;
+let fn_glGetTexBumpParameterivATI!: Deno.UnsafeFnPointer<
+  typeof def_glGetTexBumpParameterivATI
+>;
 
 export function GetTexBumpParameterivATI(
   pname: GLenum,
@@ -127,7 +147,9 @@ export const def_glGetTexBumpParameterfvATI = {
   result: "void",
 } as const;
 
-let fn_glGetTexBumpParameterfvATI!: Deno.UnsafeFnPointer<typeof def_glGetTexBumpParameterfvATI>;
+let fn_glGetTexBumpParameterfvATI!: Deno.UnsafeFnPointer<
+  typeof def_glGetTexBumpParameterfvATI
+>;
 
 export function GetTexBumpParameterfvATI(
   pname: GLenum,
@@ -141,8 +163,20 @@ export function GetTexBumpParameterfvATI(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glTexBumpParameterivATI = new Deno.UnsafeFnPointer(proc("glTexBumpParameterivATI")!, def_glTexBumpParameterivATI);
-  fn_glTexBumpParameterfvATI = new Deno.UnsafeFnPointer(proc("glTexBumpParameterfvATI")!, def_glTexBumpParameterfvATI);
-  fn_glGetTexBumpParameterivATI = new Deno.UnsafeFnPointer(proc("glGetTexBumpParameterivATI")!, def_glGetTexBumpParameterivATI);
-  fn_glGetTexBumpParameterfvATI = new Deno.UnsafeFnPointer(proc("glGetTexBumpParameterfvATI")!, def_glGetTexBumpParameterfvATI);
+  fn_glTexBumpParameterivATI = new Deno.UnsafeFnPointer(
+    proc("glTexBumpParameterivATI")!,
+    def_glTexBumpParameterivATI,
+  );
+  fn_glTexBumpParameterfvATI = new Deno.UnsafeFnPointer(
+    proc("glTexBumpParameterfvATI")!,
+    def_glTexBumpParameterfvATI,
+  );
+  fn_glGetTexBumpParameterivATI = new Deno.UnsafeFnPointer(
+    proc("glGetTexBumpParameterivATI")!,
+    def_glGetTexBumpParameterivATI,
+  );
+  fn_glGetTexBumpParameterfvATI = new Deno.UnsafeFnPointer(
+    proc("glGetTexBumpParameterfvATI")!,
+    def_glGetTexBumpParameterfvATI,
+  );
 }

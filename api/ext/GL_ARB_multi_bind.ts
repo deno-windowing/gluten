@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -150,7 +164,9 @@ export const def_glBindImageTextures = {
   result: "void",
 } as const;
 
-let fn_glBindImageTextures!: Deno.UnsafeFnPointer<typeof def_glBindImageTextures>;
+let fn_glBindImageTextures!: Deno.UnsafeFnPointer<
+  typeof def_glBindImageTextures
+>;
 
 export function BindImageTextures(
   first: GLuint,
@@ -169,7 +185,9 @@ export const def_glBindVertexBuffers = {
   result: "void",
 } as const;
 
-let fn_glBindVertexBuffers!: Deno.UnsafeFnPointer<typeof def_glBindVertexBuffers>;
+let fn_glBindVertexBuffers!: Deno.UnsafeFnPointer<
+  typeof def_glBindVertexBuffers
+>;
 
 export function BindVertexBuffers(
   first: GLuint,
@@ -189,10 +207,28 @@ export function BindVertexBuffers(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBindBuffersBase = new Deno.UnsafeFnPointer(proc("glBindBuffersBase")!, def_glBindBuffersBase);
-  fn_glBindBuffersRange = new Deno.UnsafeFnPointer(proc("glBindBuffersRange")!, def_glBindBuffersRange);
-  fn_glBindTextures = new Deno.UnsafeFnPointer(proc("glBindTextures")!, def_glBindTextures);
-  fn_glBindSamplers = new Deno.UnsafeFnPointer(proc("glBindSamplers")!, def_glBindSamplers);
-  fn_glBindImageTextures = new Deno.UnsafeFnPointer(proc("glBindImageTextures")!, def_glBindImageTextures);
-  fn_glBindVertexBuffers = new Deno.UnsafeFnPointer(proc("glBindVertexBuffers")!, def_glBindVertexBuffers);
+  fn_glBindBuffersBase = new Deno.UnsafeFnPointer(
+    proc("glBindBuffersBase")!,
+    def_glBindBuffersBase,
+  );
+  fn_glBindBuffersRange = new Deno.UnsafeFnPointer(
+    proc("glBindBuffersRange")!,
+    def_glBindBuffersRange,
+  );
+  fn_glBindTextures = new Deno.UnsafeFnPointer(
+    proc("glBindTextures")!,
+    def_glBindTextures,
+  );
+  fn_glBindSamplers = new Deno.UnsafeFnPointer(
+    proc("glBindSamplers")!,
+    def_glBindSamplers,
+  );
+  fn_glBindImageTextures = new Deno.UnsafeFnPointer(
+    proc("glBindImageTextures")!,
+    def_glBindImageTextures,
+  );
+  fn_glBindVertexBuffers = new Deno.UnsafeFnPointer(
+    proc("glBindVertexBuffers")!,
+    def_glBindVertexBuffers,
+  );
 }

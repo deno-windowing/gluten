@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -149,7 +163,9 @@ export const def_glCreateShaderObjectARB = {
   result: "buffer",
 } as const;
 
-let fn_glCreateShaderObjectARB!: Deno.UnsafeFnPointer<typeof def_glCreateShaderObjectARB>;
+let fn_glCreateShaderObjectARB!: Deno.UnsafeFnPointer<
+  typeof def_glCreateShaderObjectARB
+>;
 
 export function CreateShaderObjectARB(
   shaderType: GLenum,
@@ -200,7 +216,9 @@ export const def_glCreateProgramObjectARB = {
   result: "buffer",
 } as const;
 
-let fn_glCreateProgramObjectARB!: Deno.UnsafeFnPointer<typeof def_glCreateProgramObjectARB>;
+let fn_glCreateProgramObjectARB!: Deno.UnsafeFnPointer<
+  typeof def_glCreateProgramObjectARB
+>;
 
 export function CreateProgramObjectARB(): GLhandleARB {
   return fn_glCreateProgramObjectARB.call();
@@ -243,7 +261,9 @@ export const def_glUseProgramObjectARB = {
   result: "void",
 } as const;
 
-let fn_glUseProgramObjectARB!: Deno.UnsafeFnPointer<typeof def_glUseProgramObjectARB>;
+let fn_glUseProgramObjectARB!: Deno.UnsafeFnPointer<
+  typeof def_glUseProgramObjectARB
+>;
 
 export function UseProgramObjectARB(
   programObj: GLhandleARB,
@@ -258,7 +278,9 @@ export const def_glValidateProgramARB = {
   result: "void",
 } as const;
 
-let fn_glValidateProgramARB!: Deno.UnsafeFnPointer<typeof def_glValidateProgramARB>;
+let fn_glValidateProgramARB!: Deno.UnsafeFnPointer<
+  typeof def_glValidateProgramARB
+>;
 
 export function ValidateProgramARB(
   programObj: GLhandleARB,
@@ -585,7 +607,9 @@ export const def_glUniformMatrix2fvARB = {
   result: "void",
 } as const;
 
-let fn_glUniformMatrix2fvARB!: Deno.UnsafeFnPointer<typeof def_glUniformMatrix2fvARB>;
+let fn_glUniformMatrix2fvARB!: Deno.UnsafeFnPointer<
+  typeof def_glUniformMatrix2fvARB
+>;
 
 export function UniformMatrix2fvARB(
   location: GLint,
@@ -606,7 +630,9 @@ export const def_glUniformMatrix3fvARB = {
   result: "void",
 } as const;
 
-let fn_glUniformMatrix3fvARB!: Deno.UnsafeFnPointer<typeof def_glUniformMatrix3fvARB>;
+let fn_glUniformMatrix3fvARB!: Deno.UnsafeFnPointer<
+  typeof def_glUniformMatrix3fvARB
+>;
 
 export function UniformMatrix3fvARB(
   location: GLint,
@@ -627,7 +653,9 @@ export const def_glUniformMatrix4fvARB = {
   result: "void",
 } as const;
 
-let fn_glUniformMatrix4fvARB!: Deno.UnsafeFnPointer<typeof def_glUniformMatrix4fvARB>;
+let fn_glUniformMatrix4fvARB!: Deno.UnsafeFnPointer<
+  typeof def_glUniformMatrix4fvARB
+>;
 
 export function UniformMatrix4fvARB(
   location: GLint,
@@ -648,7 +676,9 @@ export const def_glGetObjectParameterfvARB = {
   result: "void",
 } as const;
 
-let fn_glGetObjectParameterfvARB!: Deno.UnsafeFnPointer<typeof def_glGetObjectParameterfvARB>;
+let fn_glGetObjectParameterfvARB!: Deno.UnsafeFnPointer<
+  typeof def_glGetObjectParameterfvARB
+>;
 
 export function GetObjectParameterfvARB(
   obj: GLhandleARB,
@@ -667,7 +697,9 @@ export const def_glGetObjectParameterivARB = {
   result: "void",
 } as const;
 
-let fn_glGetObjectParameterivARB!: Deno.UnsafeFnPointer<typeof def_glGetObjectParameterivARB>;
+let fn_glGetObjectParameterivARB!: Deno.UnsafeFnPointer<
+  typeof def_glGetObjectParameterivARB
+>;
 
 export function GetObjectParameterivARB(
   obj: GLhandleARB,
@@ -707,7 +739,9 @@ export const def_glGetAttachedObjectsARB = {
   result: "void",
 } as const;
 
-let fn_glGetAttachedObjectsARB!: Deno.UnsafeFnPointer<typeof def_glGetAttachedObjectsARB>;
+let fn_glGetAttachedObjectsARB!: Deno.UnsafeFnPointer<
+  typeof def_glGetAttachedObjectsARB
+>;
 
 export function GetAttachedObjectsARB(
   containerObj: GLhandleARB,
@@ -728,7 +762,9 @@ export const def_glGetUniformLocationARB = {
   result: "i32",
 } as const;
 
-let fn_glGetUniformLocationARB!: Deno.UnsafeFnPointer<typeof def_glGetUniformLocationARB>;
+let fn_glGetUniformLocationARB!: Deno.UnsafeFnPointer<
+  typeof def_glGetUniformLocationARB
+>;
 
 export function GetUniformLocationARB(
   programObj: GLhandleARB,
@@ -745,7 +781,9 @@ export const def_glGetActiveUniformARB = {
   result: "void",
 } as const;
 
-let fn_glGetActiveUniformARB!: Deno.UnsafeFnPointer<typeof def_glGetActiveUniformARB>;
+let fn_glGetActiveUniformARB!: Deno.UnsafeFnPointer<
+  typeof def_glGetActiveUniformARB
+>;
 
 export function GetActiveUniformARB(
   programObj: GLhandleARB,
@@ -810,7 +848,9 @@ export const def_glGetShaderSourceARB = {
   result: "void",
 } as const;
 
-let fn_glGetShaderSourceARB!: Deno.UnsafeFnPointer<typeof def_glGetShaderSourceARB>;
+let fn_glGetShaderSourceARB!: Deno.UnsafeFnPointer<
+  typeof def_glGetShaderSourceARB
+>;
 
 export function GetShaderSourceARB(
   obj: GLhandleARB,
@@ -828,43 +868,160 @@ export function GetShaderSourceARB(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glDeleteObjectARB = new Deno.UnsafeFnPointer(proc("glDeleteObjectARB")!, def_glDeleteObjectARB);
-  fn_glGetHandleARB = new Deno.UnsafeFnPointer(proc("glGetHandleARB")!, def_glGetHandleARB);
-  fn_glDetachObjectARB = new Deno.UnsafeFnPointer(proc("glDetachObjectARB")!, def_glDetachObjectARB);
-  fn_glCreateShaderObjectARB = new Deno.UnsafeFnPointer(proc("glCreateShaderObjectARB")!, def_glCreateShaderObjectARB);
-  fn_glShaderSourceARB = new Deno.UnsafeFnPointer(proc("glShaderSourceARB")!, def_glShaderSourceARB);
-  fn_glCompileShaderARB = new Deno.UnsafeFnPointer(proc("glCompileShaderARB")!, def_glCompileShaderARB);
-  fn_glCreateProgramObjectARB = new Deno.UnsafeFnPointer(proc("glCreateProgramObjectARB")!, def_glCreateProgramObjectARB);
-  fn_glAttachObjectARB = new Deno.UnsafeFnPointer(proc("glAttachObjectARB")!, def_glAttachObjectARB);
-  fn_glLinkProgramARB = new Deno.UnsafeFnPointer(proc("glLinkProgramARB")!, def_glLinkProgramARB);
-  fn_glUseProgramObjectARB = new Deno.UnsafeFnPointer(proc("glUseProgramObjectARB")!, def_glUseProgramObjectARB);
-  fn_glValidateProgramARB = new Deno.UnsafeFnPointer(proc("glValidateProgramARB")!, def_glValidateProgramARB);
-  fn_glUniform1fARB = new Deno.UnsafeFnPointer(proc("glUniform1fARB")!, def_glUniform1fARB);
-  fn_glUniform2fARB = new Deno.UnsafeFnPointer(proc("glUniform2fARB")!, def_glUniform2fARB);
-  fn_glUniform3fARB = new Deno.UnsafeFnPointer(proc("glUniform3fARB")!, def_glUniform3fARB);
-  fn_glUniform4fARB = new Deno.UnsafeFnPointer(proc("glUniform4fARB")!, def_glUniform4fARB);
-  fn_glUniform1iARB = new Deno.UnsafeFnPointer(proc("glUniform1iARB")!, def_glUniform1iARB);
-  fn_glUniform2iARB = new Deno.UnsafeFnPointer(proc("glUniform2iARB")!, def_glUniform2iARB);
-  fn_glUniform3iARB = new Deno.UnsafeFnPointer(proc("glUniform3iARB")!, def_glUniform3iARB);
-  fn_glUniform4iARB = new Deno.UnsafeFnPointer(proc("glUniform4iARB")!, def_glUniform4iARB);
-  fn_glUniform1fvARB = new Deno.UnsafeFnPointer(proc("glUniform1fvARB")!, def_glUniform1fvARB);
-  fn_glUniform2fvARB = new Deno.UnsafeFnPointer(proc("glUniform2fvARB")!, def_glUniform2fvARB);
-  fn_glUniform3fvARB = new Deno.UnsafeFnPointer(proc("glUniform3fvARB")!, def_glUniform3fvARB);
-  fn_glUniform4fvARB = new Deno.UnsafeFnPointer(proc("glUniform4fvARB")!, def_glUniform4fvARB);
-  fn_glUniform1ivARB = new Deno.UnsafeFnPointer(proc("glUniform1ivARB")!, def_glUniform1ivARB);
-  fn_glUniform2ivARB = new Deno.UnsafeFnPointer(proc("glUniform2ivARB")!, def_glUniform2ivARB);
-  fn_glUniform3ivARB = new Deno.UnsafeFnPointer(proc("glUniform3ivARB")!, def_glUniform3ivARB);
-  fn_glUniform4ivARB = new Deno.UnsafeFnPointer(proc("glUniform4ivARB")!, def_glUniform4ivARB);
-  fn_glUniformMatrix2fvARB = new Deno.UnsafeFnPointer(proc("glUniformMatrix2fvARB")!, def_glUniformMatrix2fvARB);
-  fn_glUniformMatrix3fvARB = new Deno.UnsafeFnPointer(proc("glUniformMatrix3fvARB")!, def_glUniformMatrix3fvARB);
-  fn_glUniformMatrix4fvARB = new Deno.UnsafeFnPointer(proc("glUniformMatrix4fvARB")!, def_glUniformMatrix4fvARB);
-  fn_glGetObjectParameterfvARB = new Deno.UnsafeFnPointer(proc("glGetObjectParameterfvARB")!, def_glGetObjectParameterfvARB);
-  fn_glGetObjectParameterivARB = new Deno.UnsafeFnPointer(proc("glGetObjectParameterivARB")!, def_glGetObjectParameterivARB);
-  fn_glGetInfoLogARB = new Deno.UnsafeFnPointer(proc("glGetInfoLogARB")!, def_glGetInfoLogARB);
-  fn_glGetAttachedObjectsARB = new Deno.UnsafeFnPointer(proc("glGetAttachedObjectsARB")!, def_glGetAttachedObjectsARB);
-  fn_glGetUniformLocationARB = new Deno.UnsafeFnPointer(proc("glGetUniformLocationARB")!, def_glGetUniformLocationARB);
-  fn_glGetActiveUniformARB = new Deno.UnsafeFnPointer(proc("glGetActiveUniformARB")!, def_glGetActiveUniformARB);
-  fn_glGetUniformfvARB = new Deno.UnsafeFnPointer(proc("glGetUniformfvARB")!, def_glGetUniformfvARB);
-  fn_glGetUniformivARB = new Deno.UnsafeFnPointer(proc("glGetUniformivARB")!, def_glGetUniformivARB);
-  fn_glGetShaderSourceARB = new Deno.UnsafeFnPointer(proc("glGetShaderSourceARB")!, def_glGetShaderSourceARB);
+  fn_glDeleteObjectARB = new Deno.UnsafeFnPointer(
+    proc("glDeleteObjectARB")!,
+    def_glDeleteObjectARB,
+  );
+  fn_glGetHandleARB = new Deno.UnsafeFnPointer(
+    proc("glGetHandleARB")!,
+    def_glGetHandleARB,
+  );
+  fn_glDetachObjectARB = new Deno.UnsafeFnPointer(
+    proc("glDetachObjectARB")!,
+    def_glDetachObjectARB,
+  );
+  fn_glCreateShaderObjectARB = new Deno.UnsafeFnPointer(
+    proc("glCreateShaderObjectARB")!,
+    def_glCreateShaderObjectARB,
+  );
+  fn_glShaderSourceARB = new Deno.UnsafeFnPointer(
+    proc("glShaderSourceARB")!,
+    def_glShaderSourceARB,
+  );
+  fn_glCompileShaderARB = new Deno.UnsafeFnPointer(
+    proc("glCompileShaderARB")!,
+    def_glCompileShaderARB,
+  );
+  fn_glCreateProgramObjectARB = new Deno.UnsafeFnPointer(
+    proc("glCreateProgramObjectARB")!,
+    def_glCreateProgramObjectARB,
+  );
+  fn_glAttachObjectARB = new Deno.UnsafeFnPointer(
+    proc("glAttachObjectARB")!,
+    def_glAttachObjectARB,
+  );
+  fn_glLinkProgramARB = new Deno.UnsafeFnPointer(
+    proc("glLinkProgramARB")!,
+    def_glLinkProgramARB,
+  );
+  fn_glUseProgramObjectARB = new Deno.UnsafeFnPointer(
+    proc("glUseProgramObjectARB")!,
+    def_glUseProgramObjectARB,
+  );
+  fn_glValidateProgramARB = new Deno.UnsafeFnPointer(
+    proc("glValidateProgramARB")!,
+    def_glValidateProgramARB,
+  );
+  fn_glUniform1fARB = new Deno.UnsafeFnPointer(
+    proc("glUniform1fARB")!,
+    def_glUniform1fARB,
+  );
+  fn_glUniform2fARB = new Deno.UnsafeFnPointer(
+    proc("glUniform2fARB")!,
+    def_glUniform2fARB,
+  );
+  fn_glUniform3fARB = new Deno.UnsafeFnPointer(
+    proc("glUniform3fARB")!,
+    def_glUniform3fARB,
+  );
+  fn_glUniform4fARB = new Deno.UnsafeFnPointer(
+    proc("glUniform4fARB")!,
+    def_glUniform4fARB,
+  );
+  fn_glUniform1iARB = new Deno.UnsafeFnPointer(
+    proc("glUniform1iARB")!,
+    def_glUniform1iARB,
+  );
+  fn_glUniform2iARB = new Deno.UnsafeFnPointer(
+    proc("glUniform2iARB")!,
+    def_glUniform2iARB,
+  );
+  fn_glUniform3iARB = new Deno.UnsafeFnPointer(
+    proc("glUniform3iARB")!,
+    def_glUniform3iARB,
+  );
+  fn_glUniform4iARB = new Deno.UnsafeFnPointer(
+    proc("glUniform4iARB")!,
+    def_glUniform4iARB,
+  );
+  fn_glUniform1fvARB = new Deno.UnsafeFnPointer(
+    proc("glUniform1fvARB")!,
+    def_glUniform1fvARB,
+  );
+  fn_glUniform2fvARB = new Deno.UnsafeFnPointer(
+    proc("glUniform2fvARB")!,
+    def_glUniform2fvARB,
+  );
+  fn_glUniform3fvARB = new Deno.UnsafeFnPointer(
+    proc("glUniform3fvARB")!,
+    def_glUniform3fvARB,
+  );
+  fn_glUniform4fvARB = new Deno.UnsafeFnPointer(
+    proc("glUniform4fvARB")!,
+    def_glUniform4fvARB,
+  );
+  fn_glUniform1ivARB = new Deno.UnsafeFnPointer(
+    proc("glUniform1ivARB")!,
+    def_glUniform1ivARB,
+  );
+  fn_glUniform2ivARB = new Deno.UnsafeFnPointer(
+    proc("glUniform2ivARB")!,
+    def_glUniform2ivARB,
+  );
+  fn_glUniform3ivARB = new Deno.UnsafeFnPointer(
+    proc("glUniform3ivARB")!,
+    def_glUniform3ivARB,
+  );
+  fn_glUniform4ivARB = new Deno.UnsafeFnPointer(
+    proc("glUniform4ivARB")!,
+    def_glUniform4ivARB,
+  );
+  fn_glUniformMatrix2fvARB = new Deno.UnsafeFnPointer(
+    proc("glUniformMatrix2fvARB")!,
+    def_glUniformMatrix2fvARB,
+  );
+  fn_glUniformMatrix3fvARB = new Deno.UnsafeFnPointer(
+    proc("glUniformMatrix3fvARB")!,
+    def_glUniformMatrix3fvARB,
+  );
+  fn_glUniformMatrix4fvARB = new Deno.UnsafeFnPointer(
+    proc("glUniformMatrix4fvARB")!,
+    def_glUniformMatrix4fvARB,
+  );
+  fn_glGetObjectParameterfvARB = new Deno.UnsafeFnPointer(
+    proc("glGetObjectParameterfvARB")!,
+    def_glGetObjectParameterfvARB,
+  );
+  fn_glGetObjectParameterivARB = new Deno.UnsafeFnPointer(
+    proc("glGetObjectParameterivARB")!,
+    def_glGetObjectParameterivARB,
+  );
+  fn_glGetInfoLogARB = new Deno.UnsafeFnPointer(
+    proc("glGetInfoLogARB")!,
+    def_glGetInfoLogARB,
+  );
+  fn_glGetAttachedObjectsARB = new Deno.UnsafeFnPointer(
+    proc("glGetAttachedObjectsARB")!,
+    def_glGetAttachedObjectsARB,
+  );
+  fn_glGetUniformLocationARB = new Deno.UnsafeFnPointer(
+    proc("glGetUniformLocationARB")!,
+    def_glGetUniformLocationARB,
+  );
+  fn_glGetActiveUniformARB = new Deno.UnsafeFnPointer(
+    proc("glGetActiveUniformARB")!,
+    def_glGetActiveUniformARB,
+  );
+  fn_glGetUniformfvARB = new Deno.UnsafeFnPointer(
+    proc("glGetUniformfvARB")!,
+    def_glGetUniformfvARB,
+  );
+  fn_glGetUniformivARB = new Deno.UnsafeFnPointer(
+    proc("glGetUniformivARB")!,
+    def_glGetUniformivARB,
+  );
+  fn_glGetShaderSourceARB = new Deno.UnsafeFnPointer(
+    proc("glGetShaderSourceARB")!,
+    def_glGetShaderSourceARB,
+  );
 }

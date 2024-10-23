@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -70,7 +84,9 @@ export const def_glFramebufferFoveationConfigQCOM = {
   result: "void",
 } as const;
 
-let fn_glFramebufferFoveationConfigQCOM!: Deno.UnsafeFnPointer<typeof def_glFramebufferFoveationConfigQCOM>;
+let fn_glFramebufferFoveationConfigQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferFoveationConfigQCOM
+>;
 
 export function FramebufferFoveationConfigQCOM(
   framebuffer: GLuint,
@@ -93,7 +109,9 @@ export const def_glFramebufferFoveationParametersQCOM = {
   result: "void",
 } as const;
 
-let fn_glFramebufferFoveationParametersQCOM!: Deno.UnsafeFnPointer<typeof def_glFramebufferFoveationParametersQCOM>;
+let fn_glFramebufferFoveationParametersQCOM!: Deno.UnsafeFnPointer<
+  typeof def_glFramebufferFoveationParametersQCOM
+>;
 
 export function FramebufferFoveationParametersQCOM(
   framebuffer: GLuint,
@@ -119,6 +137,12 @@ export function FramebufferFoveationParametersQCOM(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glFramebufferFoveationConfigQCOM = new Deno.UnsafeFnPointer(proc("glFramebufferFoveationConfigQCOM")!, def_glFramebufferFoveationConfigQCOM);
-  fn_glFramebufferFoveationParametersQCOM = new Deno.UnsafeFnPointer(proc("glFramebufferFoveationParametersQCOM")!, def_glFramebufferFoveationParametersQCOM);
+  fn_glFramebufferFoveationConfigQCOM = new Deno.UnsafeFnPointer(
+    proc("glFramebufferFoveationConfigQCOM")!,
+    def_glFramebufferFoveationConfigQCOM,
+  );
+  fn_glFramebufferFoveationParametersQCOM = new Deno.UnsafeFnPointer(
+    proc("glFramebufferFoveationParametersQCOM")!,
+    def_glFramebufferFoveationParametersQCOM,
+  );
 }

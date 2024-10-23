@@ -1,8 +1,20 @@
 /// This file is auto-generated. Do not edit.
 
 /// Util
-export type TypedArray = Int8Array | Uint8Array | Int16Array | Uint16Array | Int32Array | Uint32Array | Float32Array | Float64Array;
-const isTypedArray = (arr: unknown) => arr instanceof Int8Array || arr instanceof Uint8Array || arr instanceof Int16Array || arr instanceof Uint16Array || arr instanceof Int32Array || arr instanceof Uint32Array || arr instanceof Float32Array || arr instanceof Float64Array;
+export type TypedArray =
+  | Int8Array
+  | Uint8Array
+  | Int16Array
+  | Uint16Array
+  | Int32Array
+  | Uint32Array
+  | Float32Array
+  | Float64Array;
+const isTypedArray = (arr: unknown) =>
+  arr instanceof Int8Array || arr instanceof Uint8Array ||
+  arr instanceof Int16Array || arr instanceof Uint16Array ||
+  arr instanceof Int32Array || arr instanceof Uint32Array ||
+  arr instanceof Float32Array || arr instanceof Float64Array;
 export type Buffer = TypedArray | ArrayBuffer | null | Deno.PointerValue;
 
 export function bufferToFFI(buf: Buffer): Uint8Array | null {
@@ -12,7 +24,9 @@ export function bufferToFFI(buf: Buffer): Uint8Array | null {
   } else if (isTypedArray(buf)) {
     return new Uint8Array((buf as TypedArray).buffer);
   } else {
-    return new Uint8Array(Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1));
+    return new Uint8Array(
+      Deno.UnsafePointerView.getArrayBuffer((buf as Deno.PointerValue)!, 1),
+    );
   }
 }
 
@@ -178,7 +192,9 @@ export const def_glBeginVertexShaderEXT = {
   result: "void",
 } as const;
 
-let fn_glBeginVertexShaderEXT!: Deno.UnsafeFnPointer<typeof def_glBeginVertexShaderEXT>;
+let fn_glBeginVertexShaderEXT!: Deno.UnsafeFnPointer<
+  typeof def_glBeginVertexShaderEXT
+>;
 
 export function BeginVertexShaderEXT(): void {
   fn_glBeginVertexShaderEXT.call();
@@ -189,7 +205,9 @@ export const def_glEndVertexShaderEXT = {
   result: "void",
 } as const;
 
-let fn_glEndVertexShaderEXT!: Deno.UnsafeFnPointer<typeof def_glEndVertexShaderEXT>;
+let fn_glEndVertexShaderEXT!: Deno.UnsafeFnPointer<
+  typeof def_glEndVertexShaderEXT
+>;
 
 export function EndVertexShaderEXT(): void {
   fn_glEndVertexShaderEXT.call();
@@ -200,7 +218,9 @@ export const def_glBindVertexShaderEXT = {
   result: "void",
 } as const;
 
-let fn_glBindVertexShaderEXT!: Deno.UnsafeFnPointer<typeof def_glBindVertexShaderEXT>;
+let fn_glBindVertexShaderEXT!: Deno.UnsafeFnPointer<
+  typeof def_glBindVertexShaderEXT
+>;
 
 export function BindVertexShaderEXT(
   id: GLuint,
@@ -215,7 +235,9 @@ export const def_glGenVertexShadersEXT = {
   result: "u32",
 } as const;
 
-let fn_glGenVertexShadersEXT!: Deno.UnsafeFnPointer<typeof def_glGenVertexShadersEXT>;
+let fn_glGenVertexShadersEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGenVertexShadersEXT
+>;
 
 export function GenVertexShadersEXT(
   range: GLuint,
@@ -230,7 +252,9 @@ export const def_glDeleteVertexShaderEXT = {
   result: "void",
 } as const;
 
-let fn_glDeleteVertexShaderEXT!: Deno.UnsafeFnPointer<typeof def_glDeleteVertexShaderEXT>;
+let fn_glDeleteVertexShaderEXT!: Deno.UnsafeFnPointer<
+  typeof def_glDeleteVertexShaderEXT
+>;
 
 export function DeleteVertexShaderEXT(
   id: GLuint,
@@ -358,7 +382,9 @@ export const def_glInsertComponentEXT = {
   result: "void",
 } as const;
 
-let fn_glInsertComponentEXT!: Deno.UnsafeFnPointer<typeof def_glInsertComponentEXT>;
+let fn_glInsertComponentEXT!: Deno.UnsafeFnPointer<
+  typeof def_glInsertComponentEXT
+>;
 
 export function InsertComponentEXT(
   res: GLuint,
@@ -377,7 +403,9 @@ export const def_glExtractComponentEXT = {
   result: "void",
 } as const;
 
-let fn_glExtractComponentEXT!: Deno.UnsafeFnPointer<typeof def_glExtractComponentEXT>;
+let fn_glExtractComponentEXT!: Deno.UnsafeFnPointer<
+  typeof def_glExtractComponentEXT
+>;
 
 export function ExtractComponentEXT(
   res: GLuint,
@@ -436,7 +464,9 @@ export const def_glSetLocalConstantEXT = {
   result: "void",
 } as const;
 
-let fn_glSetLocalConstantEXT!: Deno.UnsafeFnPointer<typeof def_glSetLocalConstantEXT>;
+let fn_glSetLocalConstantEXT!: Deno.UnsafeFnPointer<
+  typeof def_glSetLocalConstantEXT
+>;
 
 export function SetLocalConstantEXT(
   id: GLuint,
@@ -591,7 +621,9 @@ export const def_glVariantPointerEXT = {
   result: "void",
 } as const;
 
-let fn_glVariantPointerEXT!: Deno.UnsafeFnPointer<typeof def_glVariantPointerEXT>;
+let fn_glVariantPointerEXT!: Deno.UnsafeFnPointer<
+  typeof def_glVariantPointerEXT
+>;
 
 export function VariantPointerEXT(
   id: GLuint,
@@ -612,7 +644,9 @@ export const def_glEnableVariantClientStateEXT = {
   result: "void",
 } as const;
 
-let fn_glEnableVariantClientStateEXT!: Deno.UnsafeFnPointer<typeof def_glEnableVariantClientStateEXT>;
+let fn_glEnableVariantClientStateEXT!: Deno.UnsafeFnPointer<
+  typeof def_glEnableVariantClientStateEXT
+>;
 
 export function EnableVariantClientStateEXT(
   id: GLuint,
@@ -627,7 +661,9 @@ export const def_glDisableVariantClientStateEXT = {
   result: "void",
 } as const;
 
-let fn_glDisableVariantClientStateEXT!: Deno.UnsafeFnPointer<typeof def_glDisableVariantClientStateEXT>;
+let fn_glDisableVariantClientStateEXT!: Deno.UnsafeFnPointer<
+  typeof def_glDisableVariantClientStateEXT
+>;
 
 export function DisableVariantClientStateEXT(
   id: GLuint,
@@ -642,7 +678,9 @@ export const def_glBindLightParameterEXT = {
   result: "u32",
 } as const;
 
-let fn_glBindLightParameterEXT!: Deno.UnsafeFnPointer<typeof def_glBindLightParameterEXT>;
+let fn_glBindLightParameterEXT!: Deno.UnsafeFnPointer<
+  typeof def_glBindLightParameterEXT
+>;
 
 export function BindLightParameterEXT(
   light: GLenum,
@@ -659,7 +697,9 @@ export const def_glBindMaterialParameterEXT = {
   result: "u32",
 } as const;
 
-let fn_glBindMaterialParameterEXT!: Deno.UnsafeFnPointer<typeof def_glBindMaterialParameterEXT>;
+let fn_glBindMaterialParameterEXT!: Deno.UnsafeFnPointer<
+  typeof def_glBindMaterialParameterEXT
+>;
 
 export function BindMaterialParameterEXT(
   face: GLenum,
@@ -676,7 +716,9 @@ export const def_glBindTexGenParameterEXT = {
   result: "u32",
 } as const;
 
-let fn_glBindTexGenParameterEXT!: Deno.UnsafeFnPointer<typeof def_glBindTexGenParameterEXT>;
+let fn_glBindTexGenParameterEXT!: Deno.UnsafeFnPointer<
+  typeof def_glBindTexGenParameterEXT
+>;
 
 export function BindTexGenParameterEXT(
   unit: GLenum,
@@ -695,7 +737,9 @@ export const def_glBindTextureUnitParameterEXT = {
   result: "u32",
 } as const;
 
-let fn_glBindTextureUnitParameterEXT!: Deno.UnsafeFnPointer<typeof def_glBindTextureUnitParameterEXT>;
+let fn_glBindTextureUnitParameterEXT!: Deno.UnsafeFnPointer<
+  typeof def_glBindTextureUnitParameterEXT
+>;
 
 export function BindTextureUnitParameterEXT(
   unit: GLenum,
@@ -727,7 +771,9 @@ export const def_glIsVariantEnabledEXT = {
   result: "u8",
 } as const;
 
-let fn_glIsVariantEnabledEXT!: Deno.UnsafeFnPointer<typeof def_glIsVariantEnabledEXT>;
+let fn_glIsVariantEnabledEXT!: Deno.UnsafeFnPointer<
+  typeof def_glIsVariantEnabledEXT
+>;
 
 export function IsVariantEnabledEXT(
   id: GLuint,
@@ -744,7 +790,9 @@ export const def_glGetVariantBooleanvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetVariantBooleanvEXT!: Deno.UnsafeFnPointer<typeof def_glGetVariantBooleanvEXT>;
+let fn_glGetVariantBooleanvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetVariantBooleanvEXT
+>;
 
 export function GetVariantBooleanvEXT(
   id: GLuint,
@@ -763,7 +811,9 @@ export const def_glGetVariantIntegervEXT = {
   result: "void",
 } as const;
 
-let fn_glGetVariantIntegervEXT!: Deno.UnsafeFnPointer<typeof def_glGetVariantIntegervEXT>;
+let fn_glGetVariantIntegervEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetVariantIntegervEXT
+>;
 
 export function GetVariantIntegervEXT(
   id: GLuint,
@@ -782,7 +832,9 @@ export const def_glGetVariantFloatvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetVariantFloatvEXT!: Deno.UnsafeFnPointer<typeof def_glGetVariantFloatvEXT>;
+let fn_glGetVariantFloatvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetVariantFloatvEXT
+>;
 
 export function GetVariantFloatvEXT(
   id: GLuint,
@@ -801,7 +853,9 @@ export const def_glGetVariantPointervEXT = {
   result: "void",
 } as const;
 
-let fn_glGetVariantPointervEXT!: Deno.UnsafeFnPointer<typeof def_glGetVariantPointervEXT>;
+let fn_glGetVariantPointervEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetVariantPointervEXT
+>;
 
 export function GetVariantPointervEXT(
   id: GLuint,
@@ -820,7 +874,9 @@ export const def_glGetInvariantBooleanvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetInvariantBooleanvEXT!: Deno.UnsafeFnPointer<typeof def_glGetInvariantBooleanvEXT>;
+let fn_glGetInvariantBooleanvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetInvariantBooleanvEXT
+>;
 
 export function GetInvariantBooleanvEXT(
   id: GLuint,
@@ -839,7 +895,9 @@ export const def_glGetInvariantIntegervEXT = {
   result: "void",
 } as const;
 
-let fn_glGetInvariantIntegervEXT!: Deno.UnsafeFnPointer<typeof def_glGetInvariantIntegervEXT>;
+let fn_glGetInvariantIntegervEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetInvariantIntegervEXT
+>;
 
 export function GetInvariantIntegervEXT(
   id: GLuint,
@@ -858,7 +916,9 @@ export const def_glGetInvariantFloatvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetInvariantFloatvEXT!: Deno.UnsafeFnPointer<typeof def_glGetInvariantFloatvEXT>;
+let fn_glGetInvariantFloatvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetInvariantFloatvEXT
+>;
 
 export function GetInvariantFloatvEXT(
   id: GLuint,
@@ -877,7 +937,9 @@ export const def_glGetLocalConstantBooleanvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetLocalConstantBooleanvEXT!: Deno.UnsafeFnPointer<typeof def_glGetLocalConstantBooleanvEXT>;
+let fn_glGetLocalConstantBooleanvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetLocalConstantBooleanvEXT
+>;
 
 export function GetLocalConstantBooleanvEXT(
   id: GLuint,
@@ -896,7 +958,9 @@ export const def_glGetLocalConstantIntegervEXT = {
   result: "void",
 } as const;
 
-let fn_glGetLocalConstantIntegervEXT!: Deno.UnsafeFnPointer<typeof def_glGetLocalConstantIntegervEXT>;
+let fn_glGetLocalConstantIntegervEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetLocalConstantIntegervEXT
+>;
 
 export function GetLocalConstantIntegervEXT(
   id: GLuint,
@@ -915,7 +979,9 @@ export const def_glGetLocalConstantFloatvEXT = {
   result: "void",
 } as const;
 
-let fn_glGetLocalConstantFloatvEXT!: Deno.UnsafeFnPointer<typeof def_glGetLocalConstantFloatvEXT>;
+let fn_glGetLocalConstantFloatvEXT!: Deno.UnsafeFnPointer<
+  typeof def_glGetLocalConstantFloatvEXT
+>;
 
 export function GetLocalConstantFloatvEXT(
   id: GLuint,
@@ -931,46 +997,172 @@ export function GetLocalConstantFloatvEXT(
 
 /** Loads all OpenGL API function pointers. */
 export function load(proc: (name: string) => Deno.PointerValue): void {
-  fn_glBeginVertexShaderEXT = new Deno.UnsafeFnPointer(proc("glBeginVertexShaderEXT")!, def_glBeginVertexShaderEXT);
-  fn_glEndVertexShaderEXT = new Deno.UnsafeFnPointer(proc("glEndVertexShaderEXT")!, def_glEndVertexShaderEXT);
-  fn_glBindVertexShaderEXT = new Deno.UnsafeFnPointer(proc("glBindVertexShaderEXT")!, def_glBindVertexShaderEXT);
-  fn_glGenVertexShadersEXT = new Deno.UnsafeFnPointer(proc("glGenVertexShadersEXT")!, def_glGenVertexShadersEXT);
-  fn_glDeleteVertexShaderEXT = new Deno.UnsafeFnPointer(proc("glDeleteVertexShaderEXT")!, def_glDeleteVertexShaderEXT);
-  fn_glShaderOp1EXT = new Deno.UnsafeFnPointer(proc("glShaderOp1EXT")!, def_glShaderOp1EXT);
-  fn_glShaderOp2EXT = new Deno.UnsafeFnPointer(proc("glShaderOp2EXT")!, def_glShaderOp2EXT);
-  fn_glShaderOp3EXT = new Deno.UnsafeFnPointer(proc("glShaderOp3EXT")!, def_glShaderOp3EXT);
-  fn_glSwizzleEXT = new Deno.UnsafeFnPointer(proc("glSwizzleEXT")!, def_glSwizzleEXT);
-  fn_glWriteMaskEXT = new Deno.UnsafeFnPointer(proc("glWriteMaskEXT")!, def_glWriteMaskEXT);
-  fn_glInsertComponentEXT = new Deno.UnsafeFnPointer(proc("glInsertComponentEXT")!, def_glInsertComponentEXT);
-  fn_glExtractComponentEXT = new Deno.UnsafeFnPointer(proc("glExtractComponentEXT")!, def_glExtractComponentEXT);
-  fn_glGenSymbolsEXT = new Deno.UnsafeFnPointer(proc("glGenSymbolsEXT")!, def_glGenSymbolsEXT);
-  fn_glSetInvariantEXT = new Deno.UnsafeFnPointer(proc("glSetInvariantEXT")!, def_glSetInvariantEXT);
-  fn_glSetLocalConstantEXT = new Deno.UnsafeFnPointer(proc("glSetLocalConstantEXT")!, def_glSetLocalConstantEXT);
-  fn_glVariantbvEXT = new Deno.UnsafeFnPointer(proc("glVariantbvEXT")!, def_glVariantbvEXT);
-  fn_glVariantsvEXT = new Deno.UnsafeFnPointer(proc("glVariantsvEXT")!, def_glVariantsvEXT);
-  fn_glVariantivEXT = new Deno.UnsafeFnPointer(proc("glVariantivEXT")!, def_glVariantivEXT);
-  fn_glVariantfvEXT = new Deno.UnsafeFnPointer(proc("glVariantfvEXT")!, def_glVariantfvEXT);
-  fn_glVariantdvEXT = new Deno.UnsafeFnPointer(proc("glVariantdvEXT")!, def_glVariantdvEXT);
-  fn_glVariantubvEXT = new Deno.UnsafeFnPointer(proc("glVariantubvEXT")!, def_glVariantubvEXT);
-  fn_glVariantusvEXT = new Deno.UnsafeFnPointer(proc("glVariantusvEXT")!, def_glVariantusvEXT);
-  fn_glVariantuivEXT = new Deno.UnsafeFnPointer(proc("glVariantuivEXT")!, def_glVariantuivEXT);
-  fn_glVariantPointerEXT = new Deno.UnsafeFnPointer(proc("glVariantPointerEXT")!, def_glVariantPointerEXT);
-  fn_glEnableVariantClientStateEXT = new Deno.UnsafeFnPointer(proc("glEnableVariantClientStateEXT")!, def_glEnableVariantClientStateEXT);
-  fn_glDisableVariantClientStateEXT = new Deno.UnsafeFnPointer(proc("glDisableVariantClientStateEXT")!, def_glDisableVariantClientStateEXT);
-  fn_glBindLightParameterEXT = new Deno.UnsafeFnPointer(proc("glBindLightParameterEXT")!, def_glBindLightParameterEXT);
-  fn_glBindMaterialParameterEXT = new Deno.UnsafeFnPointer(proc("glBindMaterialParameterEXT")!, def_glBindMaterialParameterEXT);
-  fn_glBindTexGenParameterEXT = new Deno.UnsafeFnPointer(proc("glBindTexGenParameterEXT")!, def_glBindTexGenParameterEXT);
-  fn_glBindTextureUnitParameterEXT = new Deno.UnsafeFnPointer(proc("glBindTextureUnitParameterEXT")!, def_glBindTextureUnitParameterEXT);
-  fn_glBindParameterEXT = new Deno.UnsafeFnPointer(proc("glBindParameterEXT")!, def_glBindParameterEXT);
-  fn_glIsVariantEnabledEXT = new Deno.UnsafeFnPointer(proc("glIsVariantEnabledEXT")!, def_glIsVariantEnabledEXT);
-  fn_glGetVariantBooleanvEXT = new Deno.UnsafeFnPointer(proc("glGetVariantBooleanvEXT")!, def_glGetVariantBooleanvEXT);
-  fn_glGetVariantIntegervEXT = new Deno.UnsafeFnPointer(proc("glGetVariantIntegervEXT")!, def_glGetVariantIntegervEXT);
-  fn_glGetVariantFloatvEXT = new Deno.UnsafeFnPointer(proc("glGetVariantFloatvEXT")!, def_glGetVariantFloatvEXT);
-  fn_glGetVariantPointervEXT = new Deno.UnsafeFnPointer(proc("glGetVariantPointervEXT")!, def_glGetVariantPointervEXT);
-  fn_glGetInvariantBooleanvEXT = new Deno.UnsafeFnPointer(proc("glGetInvariantBooleanvEXT")!, def_glGetInvariantBooleanvEXT);
-  fn_glGetInvariantIntegervEXT = new Deno.UnsafeFnPointer(proc("glGetInvariantIntegervEXT")!, def_glGetInvariantIntegervEXT);
-  fn_glGetInvariantFloatvEXT = new Deno.UnsafeFnPointer(proc("glGetInvariantFloatvEXT")!, def_glGetInvariantFloatvEXT);
-  fn_glGetLocalConstantBooleanvEXT = new Deno.UnsafeFnPointer(proc("glGetLocalConstantBooleanvEXT")!, def_glGetLocalConstantBooleanvEXT);
-  fn_glGetLocalConstantIntegervEXT = new Deno.UnsafeFnPointer(proc("glGetLocalConstantIntegervEXT")!, def_glGetLocalConstantIntegervEXT);
-  fn_glGetLocalConstantFloatvEXT = new Deno.UnsafeFnPointer(proc("glGetLocalConstantFloatvEXT")!, def_glGetLocalConstantFloatvEXT);
+  fn_glBeginVertexShaderEXT = new Deno.UnsafeFnPointer(
+    proc("glBeginVertexShaderEXT")!,
+    def_glBeginVertexShaderEXT,
+  );
+  fn_glEndVertexShaderEXT = new Deno.UnsafeFnPointer(
+    proc("glEndVertexShaderEXT")!,
+    def_glEndVertexShaderEXT,
+  );
+  fn_glBindVertexShaderEXT = new Deno.UnsafeFnPointer(
+    proc("glBindVertexShaderEXT")!,
+    def_glBindVertexShaderEXT,
+  );
+  fn_glGenVertexShadersEXT = new Deno.UnsafeFnPointer(
+    proc("glGenVertexShadersEXT")!,
+    def_glGenVertexShadersEXT,
+  );
+  fn_glDeleteVertexShaderEXT = new Deno.UnsafeFnPointer(
+    proc("glDeleteVertexShaderEXT")!,
+    def_glDeleteVertexShaderEXT,
+  );
+  fn_glShaderOp1EXT = new Deno.UnsafeFnPointer(
+    proc("glShaderOp1EXT")!,
+    def_glShaderOp1EXT,
+  );
+  fn_glShaderOp2EXT = new Deno.UnsafeFnPointer(
+    proc("glShaderOp2EXT")!,
+    def_glShaderOp2EXT,
+  );
+  fn_glShaderOp3EXT = new Deno.UnsafeFnPointer(
+    proc("glShaderOp3EXT")!,
+    def_glShaderOp3EXT,
+  );
+  fn_glSwizzleEXT = new Deno.UnsafeFnPointer(
+    proc("glSwizzleEXT")!,
+    def_glSwizzleEXT,
+  );
+  fn_glWriteMaskEXT = new Deno.UnsafeFnPointer(
+    proc("glWriteMaskEXT")!,
+    def_glWriteMaskEXT,
+  );
+  fn_glInsertComponentEXT = new Deno.UnsafeFnPointer(
+    proc("glInsertComponentEXT")!,
+    def_glInsertComponentEXT,
+  );
+  fn_glExtractComponentEXT = new Deno.UnsafeFnPointer(
+    proc("glExtractComponentEXT")!,
+    def_glExtractComponentEXT,
+  );
+  fn_glGenSymbolsEXT = new Deno.UnsafeFnPointer(
+    proc("glGenSymbolsEXT")!,
+    def_glGenSymbolsEXT,
+  );
+  fn_glSetInvariantEXT = new Deno.UnsafeFnPointer(
+    proc("glSetInvariantEXT")!,
+    def_glSetInvariantEXT,
+  );
+  fn_glSetLocalConstantEXT = new Deno.UnsafeFnPointer(
+    proc("glSetLocalConstantEXT")!,
+    def_glSetLocalConstantEXT,
+  );
+  fn_glVariantbvEXT = new Deno.UnsafeFnPointer(
+    proc("glVariantbvEXT")!,
+    def_glVariantbvEXT,
+  );
+  fn_glVariantsvEXT = new Deno.UnsafeFnPointer(
+    proc("glVariantsvEXT")!,
+    def_glVariantsvEXT,
+  );
+  fn_glVariantivEXT = new Deno.UnsafeFnPointer(
+    proc("glVariantivEXT")!,
+    def_glVariantivEXT,
+  );
+  fn_glVariantfvEXT = new Deno.UnsafeFnPointer(
+    proc("glVariantfvEXT")!,
+    def_glVariantfvEXT,
+  );
+  fn_glVariantdvEXT = new Deno.UnsafeFnPointer(
+    proc("glVariantdvEXT")!,
+    def_glVariantdvEXT,
+  );
+  fn_glVariantubvEXT = new Deno.UnsafeFnPointer(
+    proc("glVariantubvEXT")!,
+    def_glVariantubvEXT,
+  );
+  fn_glVariantusvEXT = new Deno.UnsafeFnPointer(
+    proc("glVariantusvEXT")!,
+    def_glVariantusvEXT,
+  );
+  fn_glVariantuivEXT = new Deno.UnsafeFnPointer(
+    proc("glVariantuivEXT")!,
+    def_glVariantuivEXT,
+  );
+  fn_glVariantPointerEXT = new Deno.UnsafeFnPointer(
+    proc("glVariantPointerEXT")!,
+    def_glVariantPointerEXT,
+  );
+  fn_glEnableVariantClientStateEXT = new Deno.UnsafeFnPointer(
+    proc("glEnableVariantClientStateEXT")!,
+    def_glEnableVariantClientStateEXT,
+  );
+  fn_glDisableVariantClientStateEXT = new Deno.UnsafeFnPointer(
+    proc("glDisableVariantClientStateEXT")!,
+    def_glDisableVariantClientStateEXT,
+  );
+  fn_glBindLightParameterEXT = new Deno.UnsafeFnPointer(
+    proc("glBindLightParameterEXT")!,
+    def_glBindLightParameterEXT,
+  );
+  fn_glBindMaterialParameterEXT = new Deno.UnsafeFnPointer(
+    proc("glBindMaterialParameterEXT")!,
+    def_glBindMaterialParameterEXT,
+  );
+  fn_glBindTexGenParameterEXT = new Deno.UnsafeFnPointer(
+    proc("glBindTexGenParameterEXT")!,
+    def_glBindTexGenParameterEXT,
+  );
+  fn_glBindTextureUnitParameterEXT = new Deno.UnsafeFnPointer(
+    proc("glBindTextureUnitParameterEXT")!,
+    def_glBindTextureUnitParameterEXT,
+  );
+  fn_glBindParameterEXT = new Deno.UnsafeFnPointer(
+    proc("glBindParameterEXT")!,
+    def_glBindParameterEXT,
+  );
+  fn_glIsVariantEnabledEXT = new Deno.UnsafeFnPointer(
+    proc("glIsVariantEnabledEXT")!,
+    def_glIsVariantEnabledEXT,
+  );
+  fn_glGetVariantBooleanvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetVariantBooleanvEXT")!,
+    def_glGetVariantBooleanvEXT,
+  );
+  fn_glGetVariantIntegervEXT = new Deno.UnsafeFnPointer(
+    proc("glGetVariantIntegervEXT")!,
+    def_glGetVariantIntegervEXT,
+  );
+  fn_glGetVariantFloatvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetVariantFloatvEXT")!,
+    def_glGetVariantFloatvEXT,
+  );
+  fn_glGetVariantPointervEXT = new Deno.UnsafeFnPointer(
+    proc("glGetVariantPointervEXT")!,
+    def_glGetVariantPointervEXT,
+  );
+  fn_glGetInvariantBooleanvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetInvariantBooleanvEXT")!,
+    def_glGetInvariantBooleanvEXT,
+  );
+  fn_glGetInvariantIntegervEXT = new Deno.UnsafeFnPointer(
+    proc("glGetInvariantIntegervEXT")!,
+    def_glGetInvariantIntegervEXT,
+  );
+  fn_glGetInvariantFloatvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetInvariantFloatvEXT")!,
+    def_glGetInvariantFloatvEXT,
+  );
+  fn_glGetLocalConstantBooleanvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetLocalConstantBooleanvEXT")!,
+    def_glGetLocalConstantBooleanvEXT,
+  );
+  fn_glGetLocalConstantIntegervEXT = new Deno.UnsafeFnPointer(
+    proc("glGetLocalConstantIntegervEXT")!,
+    def_glGetLocalConstantIntegervEXT,
+  );
+  fn_glGetLocalConstantFloatvEXT = new Deno.UnsafeFnPointer(
+    proc("glGetLocalConstantFloatvEXT")!,
+    def_glGetLocalConstantFloatvEXT,
+  );
 }

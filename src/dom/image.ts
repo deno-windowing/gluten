@@ -31,19 +31,19 @@ export class Image extends HTMLElement {
   #height = 0;
   #data = new Uint8Array(0);
 
-  get width() {
+  get width(): number {
     return this.#width;
   }
 
-  get height() {
+  get height(): number {
     return this.#height;
   }
 
-  get src() {
+  get src(): string {
     return this.#src;
   }
 
-  set src(src) {
+  set src(src: string) {
     this.#src = src;
     console.log(`[loader] Loading image ${src}`);
     fetch(src)
@@ -67,7 +67,7 @@ export class Image extends HTMLElement {
   }
 
   // Non-standard.
-  get rawData() {
+  get rawData(): Uint8Array {
     return this.#data;
   }
 
@@ -79,7 +79,7 @@ export class Image extends HTMLElement {
     this.addEventListener("error", callback);
   }
 
-  [Symbol.for("Deno.customInspect")]() {
+  [Symbol.for("Deno.customInspect")](): string {
     return `Image ${
       this.#data ? `<${this.width}x${this.height}>` : "<unresolved>"
     } { ${this.src} }`;

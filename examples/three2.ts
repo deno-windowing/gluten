@@ -71,12 +71,15 @@ function init() {
     scene.background = new THREE.Color(0xffffff);
 
     loader = new GCodeLoader();
-    loader.load("https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/models/gcode/benchy.gcode", function (object: any) {
-      object.position.set(-100, -20, 100);
-      scene.add(object);
+    loader.load(
+      "https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/models/gcode/benchy.gcode",
+      function (object: any) {
+        object.position.set(-100, -20, 100);
+        scene.add(object);
 
-      render();
-    });
+        render();
+      },
+    );
 
     pickingScene = new THREE.Scene();
     pickingTexture = new THREE.WebGLRenderTarget(1, 1);
