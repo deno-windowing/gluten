@@ -1,1 +1,1 @@
-export * from "https://deno.land/x/dwm@0.3.6/mod.ts";
+export * from "jsr:@gfx/dwm@0.3.8";
